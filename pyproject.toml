@@ -1,0 +1,22 @@
+[project]
+name = "hirest"
+version = "0.1.0"
+description = "The frist automated REST API Testing tool "
+authors = [
+    { name="anonymous", email="anonymous@" }
+]
+readme = "README.md"
+requires-python = "==3.10.16"
+
+dependencies = [
+    "requests" 
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+]
+
+[build-system]
+requires = ["uv"] 
+build-backend = "uv.build"
