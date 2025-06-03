@@ -1,0 +1,2492 @@
+[
+    {
+        "op_name": "get /api/calc/{op}/{arg1}/{arg2}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "arg1": [
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "double",
+                                    "input_space_category": "Positive Double",
+                                    "description": "A positive double value.",
+                                    "representative_samples": [
+                                        0.123,
+                                        1.456,
+                                        78.9,
+                                        3.14159,
+                                        2.71828,
+                                        6.022e+23
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "double",
+                                    "input_space_category": "Negative Double",
+                                    "description": "A negative double value.",
+                                    "representative_samples": [
+                                        -0.123,
+                                        -1.456,
+                                        -78.9,
+                                        -3.14159,
+                                        -2.71828,
+                                        -6.022e+23
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "double",
+                                    "input_space_category": "Zero",
+                                    "description": "The value zero.",
+                                    "representative_samples": [
+                                        0.0
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-Numeric Value",
+                                    "description": "A value that is not numeric.",
+                                    "representative_samples": [
+                                        "abc",
+                                        true,
+                                        null,
+                                        "1.23abc",
+                                        "NaN",
+                                        "Infinity"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Integer Value",
+                                    "description": "An integer value instead of a double.",
+                                    "representative_samples": [
+                                        1,
+                                        -1,
+                                        100,
+                                        -100,
+                                        0
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Empty Value",
+                                    "description": "An empty value.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                }
+                            ],
+                            "arg2": [
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "double",
+                                    "input_space_category": "Positive Double",
+                                    "description": "A positive double value.",
+                                    "representative_samples": [
+                                        0.123,
+                                        1.456,
+                                        78.9,
+                                        3.14159,
+                                        2.71828,
+                                        6.022e+23
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "double",
+                                    "input_space_category": "Negative Double",
+                                    "description": "A negative double value.",
+                                    "representative_samples": [
+                                        -0.123,
+                                        -1.456,
+                                        -78.9,
+                                        -3.14159,
+                                        -2.71828,
+                                        -6.022e+23
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "double",
+                                    "input_space_category": "Zero",
+                                    "description": "The value zero.",
+                                    "representative_samples": [
+                                        0.0
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-Numeric Value",
+                                    "description": "A value that is not numeric.",
+                                    "representative_samples": [
+                                        "abc",
+                                        true,
+                                        null,
+                                        "1.23abc",
+                                        "NaN",
+                                        "Infinity"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Integer Value",
+                                    "description": "An integer value instead of a double.",
+                                    "representative_samples": [
+                                        1,
+                                        -1,
+                                        100,
+                                        -100,
+                                        0
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Empty Value",
+                                    "description": "An empty value.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                }
+                            ],
+                            "op": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z0-9]+$",
+                                    "input_space_category": "Operation Name",
+                                    "description": "A valid operation name as a non-empty string.",
+                                    "representative_samples": [
+                                        "add",
+                                        "subtract",
+                                        "multiply",
+                                        "divide",
+                                        "concat",
+                                        "reverse"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z0-9]+$",
+                                    "input_space_category": "Algorithm Name",
+                                    "description": "A valid algorithm name related to string processing.",
+                                    "representative_samples": [
+                                        "sort",
+                                        "search",
+                                        "hash",
+                                        "encode",
+                                        "decode",
+                                        "compress"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z0-9]+$",
+                                    "input_space_category": "Single Character",
+                                    "description": "A single character representing an operation.",
+                                    "representative_samples": [
+                                        "a",
+                                        "b",
+                                        "c",
+                                        "x",
+                                        "y",
+                                        "z"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-Alphanumeric Characters",
+                                    "description": "A string containing non-alphanumeric characters.",
+                                    "representative_samples": [
+                                        "add!",
+                                        "sub@tract",
+                                        "multi*ply",
+                                        "div#ide",
+                                        "conca$t",
+                                        "rever%se"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Numeric String",
+                                    "description": "A string that is purely numeric.",
+                                    "representative_samples": [
+                                        "123",
+                                        "456",
+                                        "789",
+                                        "101112",
+                                        "131415",
+                                        "161718"
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "arg1",
+                            "arg2",
+                            "op"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space2",
+                "satisfied_dependencies": "Scalable space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {},
+                        "parameter": [],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/cookie/{name}/{val}/{site}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "name": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\w\\-]+$",
+                                    "input_space_category": "Alphanumeric",
+                                    "description": "A string consisting of alphanumeric characters.",
+                                    "representative_samples": [
+                                        "cookieName1",
+                                        "sessionID",
+                                        "user123"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\w\\-]+$",
+                                    "input_space_category": "With Hyphens",
+                                    "description": "A string consisting of alphanumeric characters and hyphens.",
+                                    "representative_samples": [
+                                        "cookie-name",
+                                        "session-id",
+                                        "user-123"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\w\\-]+$",
+                                    "input_space_category": "With Underscores",
+                                    "description": "A string consisting of alphanumeric characters and underscores.",
+                                    "representative_samples": [
+                                        "cookie_name",
+                                        "session_id",
+                                        "user_123"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string input.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Special Characters",
+                                    "description": "A string containing special characters not allowed.",
+                                    "representative_samples": [
+                                        "cookie@name",
+                                        "session#id",
+                                        "user!123"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Whitespace",
+                                    "description": "A string containing whitespace.",
+                                    "representative_samples": [
+                                        "cookie name",
+                                        "session id",
+                                        "user 123"
+                                    ]
+                                }
+                            ],
+                            "site": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\w\\-]+$",
+                                    "input_space_category": "Alphanumeric",
+                                    "description": "A string consisting of alphanumeric characters.",
+                                    "representative_samples": [
+                                        "exampleSite1",
+                                        "myWebsite",
+                                        "site123"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\w\\-]+$",
+                                    "input_space_category": "With Hyphens",
+                                    "description": "A string consisting of alphanumeric characters and hyphens.",
+                                    "representative_samples": [
+                                        "example-site",
+                                        "my-website",
+                                        "site-123"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\w\\-]+$",
+                                    "input_space_category": "With Underscores",
+                                    "description": "A string consisting of alphanumeric characters and underscores.",
+                                    "representative_samples": [
+                                        "example_site",
+                                        "my_website",
+                                        "site_123"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string input.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Special Characters",
+                                    "description": "A string containing special characters not allowed.",
+                                    "representative_samples": [
+                                        "example@site",
+                                        "my#website",
+                                        "site!123"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Whitespace",
+                                    "description": "A string containing whitespace.",
+                                    "representative_samples": [
+                                        "example site",
+                                        "my website",
+                                        "site 123"
+                                    ]
+                                }
+                            ],
+                            "val": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\w\\-]+$",
+                                    "input_space_category": "Alphanumeric",
+                                    "description": "A string consisting of alphanumeric characters.",
+                                    "representative_samples": [
+                                        "value123",
+                                        "token456",
+                                        "data789"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\w\\-]+$",
+                                    "input_space_category": "With Hyphens",
+                                    "description": "A string consisting of alphanumeric characters and hyphens.",
+                                    "representative_samples": [
+                                        "value-123",
+                                        "token-456",
+                                        "data-789"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\w\\-]+$",
+                                    "input_space_category": "With Underscores",
+                                    "description": "A string consisting of alphanumeric characters and underscores.",
+                                    "representative_samples": [
+                                        "value_123",
+                                        "token_456",
+                                        "data_789"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string input.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Special Characters",
+                                    "description": "A string containing special characters not allowed.",
+                                    "representative_samples": [
+                                        "value@123",
+                                        "token#456",
+                                        "data!789"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Whitespace",
+                                    "description": "A string containing whitespace.",
+                                    "representative_samples": [
+                                        "value 123",
+                                        "token 456",
+                                        "data 789"
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "name",
+                            "site",
+                            "val"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/costfuns/{i}/{s}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "i": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "int32",
+                                    "input_space_category": "Positive Integers",
+                                    "description": "Positive integer values that may be used as indices or counts.",
+                                    "representative_samples": [
+                                        1,
+                                        25,
+                                        123,
+                                        456,
+                                        789,
+                                        1024
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "int32",
+                                    "input_space_category": "Negative Integers",
+                                    "description": "Negative integer values that may be used in certain algorithm edge cases.",
+                                    "representative_samples": [
+                                        -1,
+                                        -25,
+                                        -123,
+                                        -456,
+                                        -789,
+                                        -1024
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "int32",
+                                    "input_space_category": "Zero",
+                                    "description": "The integer value zero, often used as a special case in algorithms.",
+                                    "representative_samples": [
+                                        0
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-integer Values",
+                                    "description": "Values that are not integers, leading to invalid inputs.",
+                                    "representative_samples": [
+                                        "one",
+                                        12.3,
+                                        "123",
+                                        true,
+                                        null,
+                                        []
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Overflow Integers",
+                                    "description": "Integer values that are too large or too small for practical purposes.",
+                                    "representative_samples": [
+                                        2147483648,
+                                        -2147483649,
+                                        9999999999,
+                                        -9999999999,
+                                        5000000000,
+                                        -5000000000
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Empty Value",
+                                    "description": "Empty value or no value provided for the integer input.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                }
+                            ],
+                            "s": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Alphabetic Strings",
+                                    "description": "Strings consisting of alphabetic characters only.",
+                                    "representative_samples": [
+                                        "abc",
+                                        "hello",
+                                        "world",
+                                        "string",
+                                        "test",
+                                        "algorithm"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Alphanumeric Strings",
+                                    "description": "Strings consisting of both alphabetic and numeric characters.",
+                                    "representative_samples": [
+                                        "abc123",
+                                        "hello123",
+                                        "world2021",
+                                        "string456",
+                                        "test789",
+                                        "algorithm9"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Whitespace Strings",
+                                    "description": "Strings consisting of alpha characters along with whitespace.",
+                                    "representative_samples": [
+                                        "new string",
+                                        " test ",
+                                        "hello world",
+                                        "alg o rhythm",
+                                        "alpha beta",
+                                        "example string"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Empty Strings",
+                                    "description": "String values that are empty.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-string Values",
+                                    "description": "Values that are not strings.",
+                                    "representative_samples": [
+                                        123,
+                                        true,
+                                        null,
+                                        [],
+                                        {},
+                                        12.34
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Special Character Strings",
+                                    "description": "Strings containing special characters that may not be allowed.",
+                                    "representative_samples": [
+                                        "abc#",
+                                        "hello@",
+                                        "world$",
+                                        "string%",
+                                        "!test",
+                                        "algorithm&"
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "i",
+                            "s"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/dateparse/{dayname}/{monthname}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "dayname": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)$",
+                                    "input_space_category": "Valid Day Names",
+                                    "description": "Correctly spelled and capitalized day names.",
+                                    "representative_samples": [
+                                        "Monday",
+                                        "Tuesday",
+                                        "Wednesday",
+                                        "Thursday",
+                                        "Friday",
+                                        "Saturday",
+                                        "Sunday"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Abbreviated Day Names",
+                                    "description": "Common abbreviations for day names.",
+                                    "representative_samples": [
+                                        "Mon",
+                                        "Tue",
+                                        "Wed",
+                                        "Thu",
+                                        "Fri",
+                                        "Sat",
+                                        "Sun"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Lowercase Day Names",
+                                    "description": "Day names in lowercase.",
+                                    "representative_samples": [
+                                        "monday",
+                                        "tuesday",
+                                        "wednesday",
+                                        "thursday",
+                                        "friday",
+                                        "saturday",
+                                        "sunday"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Incorrectly Spelled Day Names",
+                                    "description": "Day names with spelling errors.",
+                                    "representative_samples": [
+                                        "Mondey",
+                                        "Tuesdy",
+                                        "Wensday",
+                                        "Thursay",
+                                        "Fridy",
+                                        "Saterday",
+                                        "Sundy"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Non-Day Strings",
+                                    "description": "Strings that are not day names.",
+                                    "representative_samples": [
+                                        "January",
+                                        "Hello",
+                                        "123",
+                                        "Day",
+                                        "Weekday",
+                                        "Holiday",
+                                        "Funday"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string input.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                }
+                            ],
+                            "monthname": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^(January|February|March|April|May|June|July|August|September|October|November|December)$",
+                                    "input_space_category": "Valid Month Names",
+                                    "description": "Correctly spelled and capitalized month names.",
+                                    "representative_samples": [
+                                        "January",
+                                        "February",
+                                        "March",
+                                        "April",
+                                        "May",
+                                        "June",
+                                        "July",
+                                        "August",
+                                        "September",
+                                        "October",
+                                        "November",
+                                        "December"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Abbreviated Month Names",
+                                    "description": "Common abbreviations for month names.",
+                                    "representative_samples": [
+                                        "Jan",
+                                        "Feb",
+                                        "Mar",
+                                        "Apr",
+                                        "May",
+                                        "Jun",
+                                        "Jul",
+                                        "Aug",
+                                        "Sep",
+                                        "Oct",
+                                        "Nov",
+                                        "Dec"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Lowercase Month Names",
+                                    "description": "Month names in lowercase.",
+                                    "representative_samples": [
+                                        "january",
+                                        "february",
+                                        "march",
+                                        "april",
+                                        "may",
+                                        "june",
+                                        "july",
+                                        "august",
+                                        "september",
+                                        "october",
+                                        "november",
+                                        "december"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Incorrectly Spelled Month Names",
+                                    "description": "Month names with spelling errors.",
+                                    "representative_samples": [
+                                        "Januery",
+                                        "Febuary",
+                                        "Marh",
+                                        "Aprl",
+                                        "Jne",
+                                        "Jly",
+                                        "Agust"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Non-Month Strings",
+                                    "description": "Strings that are not month names.",
+                                    "representative_samples": [
+                                        "Monday",
+                                        "Hello",
+                                        "123",
+                                        "Month",
+                                        "Year",
+                                        "Season",
+                                        "Holiday"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string input.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "dayname",
+                            "monthname"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space2",
+                "satisfied_dependencies": "Scalable space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {},
+                        "parameter": [],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/filesuffix/{directory}/{file}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "directory": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\w\\/]+$",
+                                    "input_space_category": "Basic Directory Name",
+                                    "description": "Simple directory names without special characters.",
+                                    "representative_samples": [
+                                        "documents",
+                                        "downloads",
+                                        "devel"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\w\\/]+$",
+                                    "input_space_category": "Nested Directory Path",
+                                    "description": "A more complex path mimicking nested directories.",
+                                    "representative_samples": [
+                                        "home/user/docs",
+                                        "var/log/http",
+                                        "usr/bin"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\w\\/]+$",
+                                    "input_space_category": "Directory with Underscores",
+                                    "description": "Directories where underscores are used instead of spaces.",
+                                    "representative_samples": [
+                                        "my_files",
+                                        "work_projects",
+                                        "test_data"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "No directory name provided.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Directory with Invalid Characters",
+                                    "description": "Directory names contain characters not typically allowed.",
+                                    "representative_samples": [
+                                        "dir#name",
+                                        "my|folder",
+                                        "<documents>"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-String Values",
+                                    "description": "Invalid non-string values provided for directory.",
+                                    "representative_samples": [
+                                        123,
+                                        true,
+                                        null
+                                    ]
+                                }
+                            ],
+                            "file": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\w\\.]+$",
+                                    "input_space_category": "Basic File Names",
+                                    "description": "File names consisting of alphanumeric characters.",
+                                    "representative_samples": [
+                                        "report",
+                                        "notes",
+                                        "index"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\w\\.]+$",
+                                    "input_space_category": "File Names with Extensions",
+                                    "description": "File names that include common file extensions.",
+                                    "representative_samples": [
+                                        "report.docx",
+                                        "notes.txt",
+                                        "index.html"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\w\\.]+$",
+                                    "input_space_category": "File Names with Underscores",
+                                    "description": "File names using underscores as separators.",
+                                    "representative_samples": [
+                                        "meeting_notes",
+                                        "project_plan",
+                                        "image_file"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "No file name provided.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "File Names with Invalid Characters",
+                                    "description": "File names that include characters not typically allowed.",
+                                    "representative_samples": [
+                                        "file@name",
+                                        "my*file",
+                                        "{document}"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-String Values",
+                                    "description": "Invalid non-string values provided for file name.",
+                                    "representative_samples": [
+                                        456,
+                                        false,
+                                        null
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "directory",
+                            "file"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space2",
+                "satisfied_dependencies": "Scalable space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {},
+                        "parameter": [],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/notypevar/{i}/{s}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "i": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "int32",
+                                    "input_space_category": "Non-negative Integer",
+                                    "description": "The parameter 'i' must be a non-negative integer.",
+                                    "representative_samples": [
+                                        0,
+                                        1,
+                                        123,
+                                        456,
+                                        789,
+                                        1024
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "int32",
+                                    "input_space_category": "Typical Integer Values",
+                                    "description": "Common integer values used in typical scenarios.",
+                                    "representative_samples": [
+                                        10,
+                                        20,
+                                        30,
+                                        40,
+                                        50,
+                                        60
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "int32",
+                                    "input_space_category": "Large Integer Values",
+                                    "description": "Large integer values to test the upper limits.",
+                                    "representative_samples": [
+                                        10000,
+                                        20000,
+                                        30000,
+                                        40000,
+                                        50000,
+                                        60000
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "integer",
+                                    "format": null,
+                                    "input_space_category": "Negative Integer",
+                                    "description": "Negative integer values which are not allowed.",
+                                    "representative_samples": [
+                                        -1,
+                                        -10,
+                                        -100,
+                                        -1000,
+                                        -5000,
+                                        -9999
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-Integer Values",
+                                    "description": "Values that are not integers.",
+                                    "representative_samples": [
+                                        "abc",
+                                        12.34,
+                                        true,
+                                        null,
+                                        "123",
+                                        [
+                                            1,
+                                            2,
+                                            3
+                                        ]
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "integer",
+                                    "format": null,
+                                    "input_space_category": "Exceeding Integer Limits",
+                                    "description": "Integer values exceeding typical limits.",
+                                    "representative_samples": [
+                                        2147483648,
+                                        9999999999,
+                                        10000000000,
+                                        123456789012345,
+                                        9876543210,
+                                        999999999999
+                                    ]
+                                }
+                            ],
+                            "s": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Alphanumeric String",
+                                    "description": "The parameter 's' must be a non-empty alphanumeric string.",
+                                    "representative_samples": [
+                                        "abc",
+                                        "123abc",
+                                        "xyz789",
+                                        "testString",
+                                        "helloWorld",
+                                        "sampleText"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Special Character String",
+                                    "description": "Strings containing special characters.",
+                                    "representative_samples": [
+                                        "hello_world",
+                                        "test@123",
+                                        "string#value",
+                                        "data$info",
+                                        "example%text",
+                                        "sample&data"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Long String",
+                                    "description": "Long strings to test the upper limits.",
+                                    "representative_samples": [
+                                        "ThisIsAVeryLongStringToTestTheUpperLimitsOfTheStringParameter",
+                                        "AnotherExampleOfALongStringToEnsureTheAPIHandlesItCorrectly",
+                                        "YetAnotherLongStringToTestTheStringParameterHandling",
+                                        "LongStringExampleForTestingPurposes",
+                                        "StringWithManyCharactersToTestLimits",
+                                        "TestingWithALongStringToEnsureProperHandling"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string which is not allowed.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-String Values",
+                                    "description": "Values that are not strings.",
+                                    "representative_samples": [
+                                        123,
+                                        true,
+                                        null,
+                                        [
+                                            1,
+                                            2,
+                                            3
+                                        ],
+                                        {
+                                            "key": "value"
+                                        },
+                                        12.34
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Exceeding String Length",
+                                    "description": "Strings exceeding typical length limits.",
+                                    "representative_samples": [
+                                        "ThisStringIsWayTooLongAndExceedsTheTypicalLengthLimitForTestingPurposes",
+                                        "AnotherStringThatIsExcessivelyLongAndShouldNotBeAcceptedByTheAPI",
+                                        "ExceedinglyLongStringToTestTheLimitsOfTheStringParameterHandling",
+                                        "StringThatIsFarTooLongForNormalUsageAndShouldBeRejected",
+                                        "TestingWithAnExcessivelyLongStringToEnsureProperHandling",
+                                        "StringWithExcessiveLengthToTestAPIConstraints"
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "i",
+                            "s"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/ordered4/{w}/{x}/{z}/{y}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "w": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Alphanumeric",
+                                    "description": "A string containing alphanumeric characters.",
+                                    "representative_samples": [
+                                        "abc123",
+                                        "xyz789",
+                                        "test456",
+                                        "sample001",
+                                        "data2023",
+                                        "info999"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Special Characters",
+                                    "description": "A string containing special characters.",
+                                    "representative_samples": [
+                                        "!@#",
+                                        "$%^",
+                                        "&*()",
+                                        "_+{}",
+                                        "|~<>",
+                                        "?/\\"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Mixed Characters",
+                                    "description": "A string containing a mix of alphanumeric and special characters.",
+                                    "representative_samples": [
+                                        "abc!123",
+                                        "xyz@789",
+                                        "test#456",
+                                        "sample$001",
+                                        "data%2023",
+                                        "info&999"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string input.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Whitespace Only",
+                                    "description": "A string containing only whitespace characters.",
+                                    "representative_samples": [
+                                        " ",
+                                        "   ",
+                                        "\t",
+                                        "\n",
+                                        "\r",
+                                        "\t \n"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-String Input",
+                                    "description": "Input that is not a string.",
+                                    "representative_samples": [
+                                        123,
+                                        true,
+                                        null,
+                                        [],
+                                        {},
+                                        45.67
+                                    ]
+                                }
+                            ],
+                            "x": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Alphanumeric",
+                                    "description": "A string containing alphanumeric characters.",
+                                    "representative_samples": [
+                                        "abc123",
+                                        "xyz789",
+                                        "test456",
+                                        "sample001",
+                                        "data2023",
+                                        "info999"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Special Characters",
+                                    "description": "A string containing special characters.",
+                                    "representative_samples": [
+                                        "!@#",
+                                        "$%^",
+                                        "&*()",
+                                        "_+{}",
+                                        "|~<>",
+                                        "?/\\"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Mixed Characters",
+                                    "description": "A string containing a mix of alphanumeric and special characters.",
+                                    "representative_samples": [
+                                        "abc!123",
+                                        "xyz@789",
+                                        "test#456",
+                                        "sample$001",
+                                        "data%2023",
+                                        "info&999"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string input.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Whitespace Only",
+                                    "description": "A string containing only whitespace characters.",
+                                    "representative_samples": [
+                                        " ",
+                                        "   ",
+                                        "\t",
+                                        "\n",
+                                        "\r",
+                                        "\t \n"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-String Input",
+                                    "description": "Input that is not a string.",
+                                    "representative_samples": [
+                                        123,
+                                        true,
+                                        null,
+                                        [],
+                                        {},
+                                        45.67
+                                    ]
+                                }
+                            ],
+                            "y": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Alphanumeric",
+                                    "description": "A string containing alphanumeric characters.",
+                                    "representative_samples": [
+                                        "abc123",
+                                        "xyz789",
+                                        "test456",
+                                        "sample001",
+                                        "data2023",
+                                        "info999"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Special Characters",
+                                    "description": "A string containing special characters.",
+                                    "representative_samples": [
+                                        "!@#",
+                                        "$%^",
+                                        "&*()",
+                                        "_+{}",
+                                        "|~<>",
+                                        "?/\\"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Mixed Characters",
+                                    "description": "A string containing a mix of alphanumeric and special characters.",
+                                    "representative_samples": [
+                                        "abc!123",
+                                        "xyz@789",
+                                        "test#456",
+                                        "sample$001",
+                                        "data%2023",
+                                        "info&999"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string input.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Whitespace Only",
+                                    "description": "A string containing only whitespace characters.",
+                                    "representative_samples": [
+                                        " ",
+                                        "   ",
+                                        "\t",
+                                        "\n",
+                                        "\r",
+                                        "\t \n"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-String Input",
+                                    "description": "Input that is not a string.",
+                                    "representative_samples": [
+                                        123,
+                                        true,
+                                        null,
+                                        [],
+                                        {},
+                                        45.67
+                                    ]
+                                }
+                            ],
+                            "z": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Alphanumeric",
+                                    "description": "A string containing alphanumeric characters.",
+                                    "representative_samples": [
+                                        "abc123",
+                                        "xyz789",
+                                        "test456",
+                                        "sample001",
+                                        "data2023",
+                                        "info999"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Special Characters",
+                                    "description": "A string containing special characters.",
+                                    "representative_samples": [
+                                        "!@#",
+                                        "$%^",
+                                        "&*()",
+                                        "_+{}",
+                                        "|~<>",
+                                        "?/\\"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Mixed Characters",
+                                    "description": "A string containing a mix of alphanumeric and special characters.",
+                                    "representative_samples": [
+                                        "abc!123",
+                                        "xyz@789",
+                                        "test#456",
+                                        "sample$001",
+                                        "data%2023",
+                                        "info&999"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string input.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Whitespace Only",
+                                    "description": "A string containing only whitespace characters.",
+                                    "representative_samples": [
+                                        " ",
+                                        "   ",
+                                        "\t",
+                                        "\n",
+                                        "\r",
+                                        "\t \n"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-String Input",
+                                    "description": "Input that is not a string.",
+                                    "representative_samples": [
+                                        123,
+                                        true,
+                                        null,
+                                        [],
+                                        {},
+                                        45.67
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "w",
+                            "x",
+                            "y",
+                            "z"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/pat/{txt}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "txt": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Alphanumeric string",
+                                    "description": "Simple alphanumeric strings suitable for basic regex operations.",
+                                    "representative_samples": [
+                                        "abc123",
+                                        "hello456",
+                                        "RegexTest",
+                                        "Pattern001",
+                                        "Example99",
+                                        "TestString"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Alphanumeric with symbols",
+                                    "description": "Strings containing alphanumeric characters and common symbols.",
+                                    "representative_samples": [
+                                        "abc@123!",
+                                        "hello#456$",
+                                        "regex_test!",
+                                        "pattern*001&",
+                                        "example-99_",
+                                        "test.string"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Whitespace included",
+                                    "description": "Strings containing spaces, tabs or newline characters.",
+                                    "representative_samples": [
+                                        "   leading spaces",
+                                        "trailing spaces   ",
+                                        "tabs\tare\there",
+                                        "new\nline",
+                                        "mix \t of whitespace"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string, which is not valid since 'txt' must be non-empty.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-String Input",
+                                    "description": "Inputs that are not of type string.",
+                                    "representative_samples": [
+                                        123,
+                                        true,
+                                        null,
+                                        [],
+                                        {}
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Very Long String",
+                                    "description": "Strings that exceed reasonable lengths for processing by regex functions.",
+                                    "representative_samples": [
+                                        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                                        "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+                                        "longstring_longstring_longstring_longstring_longstring_"
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "txt"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space2",
+                "satisfied_dependencies": "Scalable space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {},
+                        "parameter": [],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/pat/{txt}/{pat}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "pat": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Simple Pattern",
+                                    "description": "A simple pattern string that can be used for matching.",
+                                    "representative_samples": [
+                                        "abc",
+                                        "123",
+                                        "xyz",
+                                        "hello",
+                                        "test",
+                                        "pattern"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Complex Pattern",
+                                    "description": "A complex pattern string that includes special characters.",
+                                    "representative_samples": [
+                                        "a*b",
+                                        "1+2=3",
+                                        "x|y",
+                                        "h?llo",
+                                        "t.st",
+                                        "p@ttern"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Pattern with Spaces",
+                                    "description": "A pattern string that includes spaces.",
+                                    "representative_samples": [
+                                        "a b c",
+                                        "1 2 3",
+                                        "x y z",
+                                        "hello world",
+                                        "test pattern",
+                                        "pattern match"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string input.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-String Input",
+                                    "description": "Input that is not a string.",
+                                    "representative_samples": [
+                                        123,
+                                        true,
+                                        null,
+                                        [],
+                                        {}
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Excessively Long String",
+                                    "description": "A string that exceeds typical length constraints.",
+                                    "representative_samples": [
+                                        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                                        "patternpatternpatternpatternpatternpatternpatternpatternpatternpatternpatternpatternpatternpatternpatternpatternpatternpatternpatternpattern",
+                                        "longstringlongstringlongstringlongstringlongstringlongstringlongstringlongstringlongstringlongstring"
+                                    ]
+                                }
+                            ],
+                            "txt": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Simple Text",
+                                    "description": "A simple text string for matching.",
+                                    "representative_samples": [
+                                        "abc",
+                                        "123",
+                                        "xyz",
+                                        "hello",
+                                        "test",
+                                        "text"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Complex Text",
+                                    "description": "A complex text string that includes special characters.",
+                                    "representative_samples": [
+                                        "a*b",
+                                        "1+2=3",
+                                        "x|y",
+                                        "h?llo",
+                                        "t.st",
+                                        "t@xt"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Text with Spaces",
+                                    "description": "A text string that includes spaces.",
+                                    "representative_samples": [
+                                        "a b c",
+                                        "1 2 3",
+                                        "x y z",
+                                        "hello world",
+                                        "test text",
+                                        "text match"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string input.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-String Input",
+                                    "description": "Input that is not a string.",
+                                    "representative_samples": [
+                                        123,
+                                        true,
+                                        null,
+                                        [],
+                                        {}
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Excessively Long String",
+                                    "description": "A string that exceeds typical length constraints.",
+                                    "representative_samples": [
+                                        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                                        "texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext",
+                                        "longstringlongstringlongstringlongstringlongstringlongstringlongstringlongstringlongstringlongstring"
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "pat",
+                            "txt"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space2",
+                "satisfied_dependencies": "Scalable space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {},
+                        "parameter": [],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/text2txt/{word1}/{word2}/{word3}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "word1": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[^/]+$",
+                                    "input_space_category": "Alphabetic",
+                                    "description": "Short alphabetic string.",
+                                    "representative_samples": [
+                                        "hello",
+                                        "world",
+                                        "example"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[^/]+$",
+                                    "input_space_category": "Alphanumeric",
+                                    "description": "Mix of alphabetic and numeric characters.",
+                                    "representative_samples": [
+                                        "abc123",
+                                        "test456",
+                                        "data789"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[^/]+$",
+                                    "input_space_category": "Symbols-included",
+                                    "description": "String with symbols but not including slash.",
+                                    "representative_samples": [
+                                        "hello-world",
+                                        "example_test",
+                                        "text#value"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "The parameter is an empty string.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Contains Slash",
+                                    "description": "The string contains a slash which is not allowed in path segments.",
+                                    "representative_samples": [
+                                        "path/segment",
+                                        "word/another",
+                                        "slash/inside"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Only Spaces",
+                                    "description": "The string only contains spaces.",
+                                    "representative_samples": [
+                                        "   ",
+                                        "     ",
+                                        "  "
+                                    ]
+                                }
+                            ],
+                            "word2": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[^/]+$",
+                                    "input_space_category": "Alphabetic",
+                                    "description": "Short alphabetic string.",
+                                    "representative_samples": [
+                                        "apple",
+                                        "orange",
+                                        "banana"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[^/]+$",
+                                    "input_space_category": "Alphanumeric",
+                                    "description": "Mix of alphabetic and numeric characters.",
+                                    "representative_samples": [
+                                        "cat123",
+                                        "dog456",
+                                        "fish789"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[^/]+$",
+                                    "input_space_category": "Symbols-included",
+                                    "description": "String with symbols but not including slash.",
+                                    "representative_samples": [
+                                        "first-last",
+                                        "input_test",
+                                        "value#data"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "The parameter is an empty string.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Contains Slash",
+                                    "description": "The string contains a slash which are not allowed in path segments.",
+                                    "representative_samples": [
+                                        "step/by-step",
+                                        "alpha/beta",
+                                        "path/part"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Only Spaces",
+                                    "description": "The string only contains spaces.",
+                                    "representative_samples": [
+                                        "   ",
+                                        "     ",
+                                        "  "
+                                    ]
+                                }
+                            ],
+                            "word3": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[^/]+$",
+                                    "input_space_category": "Alphabetic",
+                                    "description": "Short alphabetic string.",
+                                    "representative_samples": [
+                                        "coffee",
+                                        "tea",
+                                        "milk"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[^/]+$",
+                                    "input_space_category": "Alphanumeric",
+                                    "description": "Mix of alphabetic and numeric characters.",
+                                    "representative_samples": [
+                                        "book123",
+                                        "note456",
+                                        "paper789"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[^/]+$",
+                                    "input_space_category": "Symbols-included",
+                                    "description": "String with symbols but not including slash.",
+                                    "representative_samples": [
+                                        "input-output",
+                                        "final_test",
+                                        "data#info"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "The parameter is an empty string.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Contains Slash",
+                                    "description": "The string contains a slash which are not allowed in path segments.",
+                                    "representative_samples": [
+                                        "go/stop",
+                                        "start/end",
+                                        "run/walk"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Only Spaces",
+                                    "description": "The string only contains spaces.",
+                                    "representative_samples": [
+                                        "   ",
+                                        "     ",
+                                        "  "
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "word1",
+                            "word2",
+                            "word3"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space2",
+                "satisfied_dependencies": "Scalable space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {},
+                        "parameter": [],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/title/{sex}/{title}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "sex": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z]+$",
+                                    "input_space_category": "Common Sex Identifiers",
+                                    "description": "Common identifiers for sex such as male, female, etc.",
+                                    "representative_samples": [
+                                        "male",
+                                        "female",
+                                        "nonbinary",
+                                        "transgender",
+                                        "genderfluid",
+                                        "agender"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z]+$",
+                                    "input_space_category": "Abbreviated Sex Identifiers",
+                                    "description": "Abbreviated identifiers for sex such as M, F, etc.",
+                                    "representative_samples": [
+                                        "M",
+                                        "F",
+                                        "NB",
+                                        "TG",
+                                        "GF",
+                                        "AG"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z]+$",
+                                    "input_space_category": "Cultural Sex Identifiers",
+                                    "description": "Cultural identifiers for sex such as hijra, two-spirit, etc.",
+                                    "representative_samples": [
+                                        "hijra",
+                                        "two-spirit",
+                                        "fa'afafine",
+                                        "bakla",
+                                        "kathoey",
+                                        "muxes"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string input.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Numeric Input",
+                                    "description": "Input that is numeric instead of a string.",
+                                    "representative_samples": [
+                                        "123",
+                                        "456",
+                                        "789",
+                                        "0",
+                                        "999",
+                                        "1001"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Special Characters",
+                                    "description": "Input containing special characters.",
+                                    "representative_samples": [
+                                        "@male",
+                                        "female!",
+                                        "#nonbinary",
+                                        "transgender$",
+                                        "%genderfluid",
+                                        "^agender"
+                                    ]
+                                }
+                            ],
+                            "title": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z]+$",
+                                    "input_space_category": "Common Titles",
+                                    "description": "Common titles such as Mr, Mrs, etc.",
+                                    "representative_samples": [
+                                        "Mr",
+                                        "Mrs",
+                                        "Miss",
+                                        "Dr",
+                                        "Prof",
+                                        "Mx"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z]+$",
+                                    "input_space_category": "Professional Titles",
+                                    "description": "Professional titles such as CEO, CTO, etc.",
+                                    "representative_samples": [
+                                        "CEO",
+                                        "CTO",
+                                        "CFO",
+                                        "COO",
+                                        "VP",
+                                        "Director"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z]+$",
+                                    "input_space_category": "Honorific Titles",
+                                    "description": "Honorific titles such as Sir, Dame, etc.",
+                                    "representative_samples": [
+                                        "Sir",
+                                        "Dame",
+                                        "Lord",
+                                        "Lady",
+                                        "Baron",
+                                        "Count"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Empty String",
+                                    "description": "An empty string input.",
+                                    "representative_samples": [
+                                        ""
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Numeric Input",
+                                    "description": "Input that is numeric instead of a string.",
+                                    "representative_samples": [
+                                        "123",
+                                        "456",
+                                        "789",
+                                        "0",
+                                        "999",
+                                        "1001"
+                                    ]
+                                },
+                                {
+                                    "tag": "invalid",
+                                    "type": "string",
+                                    "format": null,
+                                    "input_space_category": "Special Characters",
+                                    "description": "Input containing special characters.",
+                                    "representative_samples": [
+                                        "@Mr",
+                                        "Mrs!",
+                                        "#Miss",
+                                        "Dr$",
+                                        "%Prof",
+                                        "^Mx"
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "sex",
+                            "title"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space2",
+                "satisfied_dependencies": "Scalable space.",
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {},
+                        "parameter": [],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    }
+]

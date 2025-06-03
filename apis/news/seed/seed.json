@@ -1,0 +1,2058 @@
+[
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Numeric ID",
+                "description": "A non-empty numeric string representing the author's ID.",
+                "representative_samples": [
+                    "123456",
+                    "987654",
+                    "001122",
+                    "202020",
+                    "555666",
+                    "777888"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Country Name with Hyphen",
+                "description": "A non-empty string with hyphen representing the country name.",
+                "representative_samples": [
+                    "Cote-d'Ivoire",
+                    "Timor-Leste",
+                    "Bosnia-Herzegovina",
+                    "Papua-New-Guinea",
+                    "Trinidad-and-Tobago",
+                    "Antigua-and-Barbuda"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Numeric ID",
+                "description": "A non-empty numeric string representing the author's ID.",
+                "representative_samples": [
+                    "123456",
+                    "987654",
+                    "001122",
+                    "202020",
+                    "555666",
+                    "777888"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Single Word Country Name",
+                "description": "A non-empty single word string representing the country name.",
+                "representative_samples": [
+                    "France",
+                    "Germany",
+                    "Brazil",
+                    "Japan",
+                    "India",
+                    "Canada"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Alphabetic ID",
+                "description": "A non-empty alphabetic string representing the author's ID.",
+                "representative_samples": [
+                    "AuthorOne",
+                    "WriterX",
+                    "JournalistY",
+                    "EditorZ",
+                    "NewsmanA",
+                    "ReporterB"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Country Name with Hyphen",
+                "description": "A non-empty string with hyphen representing the country name.",
+                "representative_samples": [
+                    "Cote-d'Ivoire",
+                    "Timor-Leste",
+                    "Bosnia-Herzegovina",
+                    "Papua-New-Guinea",
+                    "Trinidad-and-Tobago",
+                    "Antigua-and-Barbuda"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Alphabetic ID",
+                "description": "A non-empty alphabetic string representing the author's ID.",
+                "representative_samples": [
+                    "AuthorOne",
+                    "WriterX",
+                    "JournalistY",
+                    "EditorZ",
+                    "NewsmanA",
+                    "ReporterB"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Single Word Country Name",
+                "description": "A non-empty single word string representing the country name.",
+                "representative_samples": [
+                    "France",
+                    "Germany",
+                    "Brazil",
+                    "Japan",
+                    "India",
+                    "Canada"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Alphanumeric ID",
+                "description": "A non-empty alphanumeric string representing the author's ID.",
+                "representative_samples": [
+                    "author123",
+                    "A1B2C3",
+                    "xyz789",
+                    "AuthorID001",
+                    "newsWriter42",
+                    "journalist007"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Multi-Word Country Name",
+                "description": "A non-empty multi-word string representing the country name.",
+                "representative_samples": [
+                    "United States",
+                    "South Korea",
+                    "New Zealand",
+                    "United Kingdom",
+                    "Saudi Arabia",
+                    "South Africa"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Alphanumeric ID",
+                "description": "A non-empty alphanumeric string representing the author's ID.",
+                "representative_samples": [
+                    "author123",
+                    "A1B2C3",
+                    "xyz789",
+                    "AuthorID001",
+                    "newsWriter42",
+                    "journalist007"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Single Word Country Name",
+                "description": "A non-empty single word string representing the country name.",
+                "representative_samples": [
+                    "France",
+                    "Germany",
+                    "Brazil",
+                    "Japan",
+                    "India",
+                    "Canada"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Valid Author ID",
+                "description": "A non-empty string representing the ID of the author who created the news.",
+                "representative_samples": [
+                    "author123",
+                    "johnDoe45",
+                    "writer001",
+                    "newsMaker",
+                    "creatorX",
+                    "journalist9"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Valid Country Name",
+                "description": "A non-empty string indicating the country related to the news.",
+                "representative_samples": [
+                    "United States",
+                    "Canada",
+                    "Germany",
+                    "Australia",
+                    "India",
+                    "Brazil"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "Long News Text",
+                "description": "A longer text input for the news article.",
+                "representative_samples": [
+                    "In a surprising turn of events, the stock market reached an all-time high today, with major indices showing significant gains. Experts attribute this surge to positive economic data and investor optimism.",
+                    "The weather forecast for the upcoming week predicts sunny skies and warm temperatures across the region. Meteorologists suggest taking advantage of the pleasant weather for outdoor activities.",
+                    "In a thrilling match, the local sports team clinched the championship title, defeating their rivals in a nail-biting finish. Fans celebrated the victory with enthusiasm and pride.",
+                    "The government announced a new policy aimed at boosting economic growth and supporting small businesses. The policy includes tax incentives and grants for eligible enterprises.",
+                    "The latest smartphone model has been released, featuring cutting-edge technology and innovative design. Consumers are eager to experience the new features and enhancements.",
+                    "Health experts emphasize the importance of maintaining a balanced diet for overall well-being. They recommend incorporating a variety of fruits, vegetables, and whole grains into daily meals."
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Valid Author ID",
+                "description": "A non-empty string representing the ID of the author who created the news.",
+                "representative_samples": [
+                    "author123",
+                    "johnDoe45",
+                    "writer001",
+                    "newsMaker",
+                    "creatorX",
+                    "journalist9"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Valid Country Name",
+                "description": "A non-empty string indicating the country related to the news.",
+                "representative_samples": [
+                    "United States",
+                    "Canada",
+                    "Germany",
+                    "Australia",
+                    "India",
+                    "Brazil"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "Long News Text",
+                "description": "A longer text input for the news article.",
+                "representative_samples": [
+                    "In a surprising turn of events, the stock market reached an all-time high today, with major indices showing significant gains. Experts attribute this surge to positive economic data and investor optimism.",
+                    "The weather forecast for the upcoming week predicts sunny skies and warm temperatures across the region. Meteorologists suggest taking advantage of the pleasant weather for outdoor activities.",
+                    "In a thrilling match, the local sports team clinched the championship title, defeating their rivals in a nail-biting finish. Fans celebrated the victory with enthusiasm and pride.",
+                    "The government announced a new policy aimed at boosting economic growth and supporting small businesses. The policy includes tax incentives and grants for eligible enterprises.",
+                    "The latest smartphone model has been released, featuring cutting-edge technology and innovative design. Consumers are eager to experience the new features and enhancements.",
+                    "Health experts emphasize the importance of maintaining a balanced diet for overall well-being. They recommend incorporating a variety of fruits, vegetables, and whole grains into daily meals."
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Valid Author ID",
+                "description": "A non-empty string representing the ID of the author who created the news.",
+                "representative_samples": [
+                    "author123",
+                    "johnDoe45",
+                    "writer001",
+                    "newsMaker",
+                    "creatorX",
+                    "journalist9"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Valid Country Name",
+                "description": "A non-empty string indicating the country related to the news.",
+                "representative_samples": [
+                    "United States",
+                    "Canada",
+                    "Germany",
+                    "Australia",
+                    "India",
+                    "Brazil"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "Long News Text",
+                "description": "A longer text input for the news article.",
+                "representative_samples": [
+                    "In a surprising turn of events, the stock market reached an all-time high today, with major indices showing significant gains. Experts attribute this surge to positive economic data and investor optimism.",
+                    "The weather forecast for the upcoming week predicts sunny skies and warm temperatures across the region. Meteorologists suggest taking advantage of the pleasant weather for outdoor activities.",
+                    "In a thrilling match, the local sports team clinched the championship title, defeating their rivals in a nail-biting finish. Fans celebrated the victory with enthusiasm and pride.",
+                    "The government announced a new policy aimed at boosting economic growth and supporting small businesses. The policy includes tax incentives and grants for eligible enterprises.",
+                    "The latest smartphone model has been released, featuring cutting-edge technology and innovative design. Consumers are eager to experience the new features and enhancements.",
+                    "Health experts emphasize the importance of maintaining a balanced diet for overall well-being. They recommend incorporating a variety of fruits, vegetables, and whole grains into daily meals."
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Valid Author ID",
+                "description": "A non-empty string representing the ID of the author who created the news.",
+                "representative_samples": [
+                    "author123",
+                    "johnDoe45",
+                    "writer001",
+                    "newsMaker",
+                    "creatorX",
+                    "journalist9"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Valid Country Name",
+                "description": "A non-empty string indicating the country related to the news.",
+                "representative_samples": [
+                    "United States",
+                    "Canada",
+                    "Germany",
+                    "Australia",
+                    "India",
+                    "Brazil"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "Long News Text",
+                "description": "A longer text input for the news article.",
+                "representative_samples": [
+                    "In a surprising turn of events, the stock market reached an all-time high today, with major indices showing significant gains. Experts attribute this surge to positive economic data and investor optimism.",
+                    "The weather forecast for the upcoming week predicts sunny skies and warm temperatures across the region. Meteorologists suggest taking advantage of the pleasant weather for outdoor activities.",
+                    "In a thrilling match, the local sports team clinched the championship title, defeating their rivals in a nail-biting finish. Fans celebrated the victory with enthusiasm and pride.",
+                    "The government announced a new policy aimed at boosting economic growth and supporting small businesses. The policy includes tax incentives and grants for eligible enterprises.",
+                    "The latest smartphone model has been released, featuring cutting-edge technology and innovative design. Consumers are eager to experience the new features and enhancements.",
+                    "Health experts emphasize the importance of maintaining a balanced diet for overall well-being. They recommend incorporating a variety of fruits, vegetables, and whole grains into daily meals."
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Valid Author ID",
+                "description": "A non-empty string representing the ID of the author who created the news.",
+                "representative_samples": [
+                    "author123",
+                    "johnDoe45",
+                    "writer001",
+                    "newsMaker",
+                    "creatorX",
+                    "journalist9"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Valid Country Name",
+                "description": "A non-empty string indicating the country related to the news.",
+                "representative_samples": [
+                    "United States",
+                    "Canada",
+                    "Germany",
+                    "Australia",
+                    "India",
+                    "Brazil"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "Short News Text",
+                "description": "A short text input for the news article.",
+                "representative_samples": [
+                    "Breaking news: Market hits record high.",
+                    "Weather update: Sunny skies expected.",
+                    "Sports: Local team wins championship.",
+                    "Politics: New policy announced.",
+                    "Technology: New smartphone released.",
+                    "Health: Tips for a balanced diet."
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Valid Author ID",
+                "description": "A non-empty string representing the ID of the author who created the news.",
+                "representative_samples": [
+                    "author123",
+                    "johnDoe45",
+                    "writer001",
+                    "newsMaker",
+                    "creatorX",
+                    "journalist9"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Valid Country Name",
+                "description": "A non-empty string indicating the country related to the news.",
+                "representative_samples": [
+                    "United States",
+                    "Canada",
+                    "Germany",
+                    "Australia",
+                    "India",
+                    "Brazil"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "Short News Text",
+                "description": "A short text input for the news article.",
+                "representative_samples": [
+                    "Breaking news: Market hits record high.",
+                    "Weather update: Sunny skies expected.",
+                    "Sports: Local team wins championship.",
+                    "Politics: New policy announced.",
+                    "Technology: New smartphone released.",
+                    "Health: Tips for a balanced diet."
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Valid Author ID",
+                "description": "A non-empty string representing the ID of the author who created the news.",
+                "representative_samples": [
+                    "author123",
+                    "johnDoe45",
+                    "writer001",
+                    "newsMaker",
+                    "creatorX",
+                    "journalist9"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Valid Country Name",
+                "description": "A non-empty string indicating the country related to the news.",
+                "representative_samples": [
+                    "United States",
+                    "Canada",
+                    "Germany",
+                    "Australia",
+                    "India",
+                    "Brazil"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "Long News Text",
+                "description": "A longer text input for the news article.",
+                "representative_samples": [
+                    "In a surprising turn of events, the stock market reached an all-time high today, with major indices showing significant gains. Experts attribute this surge to positive economic data and investor optimism.",
+                    "The weather forecast for the upcoming week predicts sunny skies and warm temperatures across the region. Meteorologists suggest taking advantage of the pleasant weather for outdoor activities.",
+                    "In a thrilling match, the local sports team clinched the championship title, defeating their rivals in a nail-biting finish. Fans celebrated the victory with enthusiasm and pride.",
+                    "The government announced a new policy aimed at boosting economic growth and supporting small businesses. The policy includes tax incentives and grants for eligible enterprises.",
+                    "The latest smartphone model has been released, featuring cutting-edge technology and innovative design. Consumers are eager to experience the new features and enhancements.",
+                    "Health experts emphasize the importance of maintaining a balanced diet for overall well-being. They recommend incorporating a variety of fruits, vegetables, and whole grains into daily meals."
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Valid Author ID",
+                "description": "A non-empty string representing the ID of the author who created the news.",
+                "representative_samples": [
+                    "author123",
+                    "johnDoe45",
+                    "writer001",
+                    "newsMaker",
+                    "creatorX",
+                    "journalist9"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Valid Country Name",
+                "description": "A non-empty string indicating the country related to the news.",
+                "representative_samples": [
+                    "United States",
+                    "Canada",
+                    "Germany",
+                    "Australia",
+                    "India",
+                    "Brazil"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "Short News Text",
+                "description": "A short text input for the news article.",
+                "representative_samples": [
+                    "Breaking news: Market hits record high.",
+                    "Weather update: Sunny skies expected.",
+                    "Sports: Local team wins championship.",
+                    "Politics: New policy announced.",
+                    "Technology: New smartphone released.",
+                    "Health: Tips for a balanced diet."
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Short Numeric String",
+                "description": "A short numeric string representing the news id.",
+                "representative_samples": [
+                    "1",
+                    "12",
+                    "34",
+                    "56",
+                    "78",
+                    "90"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Long Numeric String",
+                "description": "A long numeric string representing the news id.",
+                "representative_samples": [
+                    "12345678901234567890",
+                    "98765432109876543210",
+                    "11111111111111111111",
+                    "22222222222222222222",
+                    "33333333333333333333",
+                    "44444444444444444444"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Short Numeric String",
+                "description": "A short numeric string representing the news id.",
+                "representative_samples": [
+                    "1",
+                    "12",
+                    "34",
+                    "56",
+                    "78",
+                    "90"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Valid Numeric String",
+                "description": "A non-empty string that represents a numeric identifier of the news article.",
+                "representative_samples": [
+                    "123",
+                    "456789",
+                    "987654321",
+                    "2023",
+                    "1001",
+                    "56789"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Short Numeric String",
+                "description": "A short numeric string representing the news id.",
+                "representative_samples": [
+                    "1",
+                    "12",
+                    "34",
+                    "56",
+                    "78",
+                    "90"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Short Numeric String",
+                "description": "A short numeric string representing the news id.",
+                "representative_samples": [
+                    "1",
+                    "12",
+                    "34",
+                    "56",
+                    "78",
+                    "90"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Long Numeric String",
+                "description": "A long numeric string representing the news id.",
+                "representative_samples": [
+                    "12345678901234567890",
+                    "98765432109876543210",
+                    "11111111111111111111",
+                    "22222222222222222222",
+                    "33333333333333333333",
+                    "44444444444444444444"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Valid Numeric String",
+                "description": "A non-empty string that represents a numeric identifier of the news article.",
+                "representative_samples": [
+                    "123",
+                    "456789",
+                    "987654321",
+                    "2023",
+                    "1001",
+                    "56789"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space3-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric String",
+                "description": "A non-empty string that represents the numeric ID of the news article.",
+                "representative_samples": [
+                    "123",
+                    "4567",
+                    "89012",
+                    "345678",
+                    "9012345",
+                    "67890123"
+                ]
+            },
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Alphanumeric String",
+                "description": "A string consisting of alphanumeric characters.",
+                "representative_samples": [
+                    "author123",
+                    "johnDoe",
+                    "A1B2C3",
+                    "writer007",
+                    "newsman",
+                    "editorX"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Country Name",
+                "description": "A string representing the name of a country.",
+                "representative_samples": [
+                    "United States",
+                    "Canada",
+                    "Germany",
+                    "France",
+                    "Australia",
+                    "Japan"
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": "string",
+                "format": "YYYY-MM-DDTHH:MM:SSZ",
+                "input_space_category": "ISO 8601 Date-Time",
+                "description": "A string representing a date-time in ISO 8601 format.",
+                "representative_samples": [
+                    "2023-01-01T12:00:00Z",
+                    "2022-12-31T23:59:59Z",
+                    "2021-06-15T08:30:00Z",
+                    "2020-07-20T14:45:00Z",
+                    "2019-11-11T11:11:11Z",
+                    "2018-05-05T05:05:05Z"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]*$",
+                "input_space_category": "Long Text",
+                "description": "A longer text input for the news content.",
+                "representative_samples": [
+                    "In a surprising turn of events, the local government has announced a new policy aimed at improving public transportation.",
+                    "The recent economic downturn has led to widespread job losses, with many industries struggling to stay afloat.",
+                    "A new study has revealed the potential health benefits of a plant-based diet, sparking interest among nutritionists and health enthusiasts.",
+                    "In a historic moment, the country's national team has won the championship, bringing pride and joy to fans across the nation.",
+                    "The ongoing climate crisis has prompted urgent calls for action, with experts warning of the dire consequences of inaction.",
+                    "A groundbreaking discovery in the field of medicine has opened up new possibilities for the treatment of chronic diseases."
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Alphanumeric String",
+                "description": "A string consisting of alphanumeric characters.",
+                "representative_samples": [
+                    "news123",
+                    "article456",
+                    "story789",
+                    "report001",
+                    "update002",
+                    "headline003"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric String",
+                "description": "A non-empty string that represents the numeric ID of the news article.",
+                "representative_samples": [
+                    "123",
+                    "4567",
+                    "89012",
+                    "345678",
+                    "9012345",
+                    "67890123"
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Alphanumeric String",
+                "description": "A string consisting of alphanumeric characters.",
+                "representative_samples": [
+                    "news123",
+                    "article456",
+                    "story789",
+                    "report001",
+                    "update002",
+                    "headline003"
+                ]
+            },
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Alphanumeric String",
+                "description": "A string consisting of alphanumeric characters.",
+                "representative_samples": [
+                    "author123",
+                    "johnDoe",
+                    "A1B2C3",
+                    "writer007",
+                    "newsman",
+                    "editorX"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Country Name",
+                "description": "A string representing the name of a country.",
+                "representative_samples": [
+                    "United States",
+                    "Canada",
+                    "Germany",
+                    "France",
+                    "Australia",
+                    "Japan"
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": "string",
+                "format": "YYYY-MM-DDTHH:MM:SSZ",
+                "input_space_category": "ISO 8601 Date-Time",
+                "description": "A string representing a date-time in ISO 8601 format.",
+                "representative_samples": [
+                    "2023-01-01T12:00:00Z",
+                    "2022-12-31T23:59:59Z",
+                    "2021-06-15T08:30:00Z",
+                    "2020-07-20T14:45:00Z",
+                    "2019-11-11T11:11:11Z",
+                    "2018-05-05T05:05:05Z"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]*$",
+                "input_space_category": "Short Text",
+                "description": "A short text input for the news content.",
+                "representative_samples": [
+                    "Breaking news!",
+                    "Latest update.",
+                    "News flash.",
+                    "Top story.",
+                    "Headline news.",
+                    "Special report."
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric String",
+                "description": "A non-empty string that represents the numeric ID of the news article.",
+                "representative_samples": [
+                    "123",
+                    "4567",
+                    "89012",
+                    "345678",
+                    "9012345",
+                    "67890123"
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Alphanumeric String",
+                "description": "A string consisting of alphanumeric characters.",
+                "representative_samples": [
+                    "news123",
+                    "article456",
+                    "story789",
+                    "report001",
+                    "update002",
+                    "headline003"
+                ]
+            },
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Alphanumeric String",
+                "description": "A string consisting of alphanumeric characters.",
+                "representative_samples": [
+                    "author123",
+                    "johnDoe",
+                    "A1B2C3",
+                    "writer007",
+                    "newsman",
+                    "editorX"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Country Name",
+                "description": "A string representing the name of a country.",
+                "representative_samples": [
+                    "United States",
+                    "Canada",
+                    "Germany",
+                    "France",
+                    "Australia",
+                    "Japan"
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": "string",
+                "format": "YYYY-MM-DDTHH:MM:SSZ",
+                "input_space_category": "ISO 8601 Date-Time",
+                "description": "A string representing a date-time in ISO 8601 format.",
+                "representative_samples": [
+                    "2023-01-01T12:00:00Z",
+                    "2022-12-31T23:59:59Z",
+                    "2021-06-15T08:30:00Z",
+                    "2020-07-20T14:45:00Z",
+                    "2019-11-11T11:11:11Z",
+                    "2018-05-05T05:05:05Z"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]*$",
+                "input_space_category": "Long Text",
+                "description": "A longer text input for the news content.",
+                "representative_samples": [
+                    "In a surprising turn of events, the local government has announced a new policy aimed at improving public transportation.",
+                    "The recent economic downturn has led to widespread job losses, with many industries struggling to stay afloat.",
+                    "A new study has revealed the potential health benefits of a plant-based diet, sparking interest among nutritionists and health enthusiasts.",
+                    "In a historic moment, the country's national team has won the championship, bringing pride and joy to fans across the nation.",
+                    "The ongoing climate crisis has prompted urgent calls for action, with experts warning of the dire consequences of inaction.",
+                    "A groundbreaking discovery in the field of medicine has opened up new possibilities for the treatment of chronic diseases."
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric String",
+                "description": "A non-empty string that represents the numeric ID of the news article.",
+                "representative_samples": [
+                    "123",
+                    "4567",
+                    "89012",
+                    "345678",
+                    "9012345",
+                    "67890123"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric String",
+                "description": "A non-empty string that represents the numeric ID of the news article.",
+                "representative_samples": [
+                    "123",
+                    "4567",
+                    "89012",
+                    "345678",
+                    "9012345",
+                    "67890123"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space3-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric String",
+                "description": "A non-empty string that represents the numeric ID of the news article.",
+                "representative_samples": [
+                    "123",
+                    "4567",
+                    "89012",
+                    "345678",
+                    "9012345",
+                    "67890123"
+                ]
+            },
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Alphanumeric String",
+                "description": "A string consisting of alphanumeric characters.",
+                "representative_samples": [
+                    "author123",
+                    "johnDoe",
+                    "A1B2C3",
+                    "writer007",
+                    "newsman",
+                    "editorX"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Country Name",
+                "description": "A string representing the name of a country.",
+                "representative_samples": [
+                    "United States",
+                    "Canada",
+                    "Germany",
+                    "France",
+                    "Australia",
+                    "Japan"
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": "string",
+                "format": "YYYY-MM-DDTHH:MM:SSZ",
+                "input_space_category": "ISO 8601 Date-Time",
+                "description": "A string representing a date-time in ISO 8601 format.",
+                "representative_samples": [
+                    "2023-01-01T12:00:00Z",
+                    "2022-12-31T23:59:59Z",
+                    "2021-06-15T08:30:00Z",
+                    "2020-07-20T14:45:00Z",
+                    "2019-11-11T11:11:11Z",
+                    "2018-05-05T05:05:05Z"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]*$",
+                "input_space_category": "Long Text",
+                "description": "A longer text input for the news content.",
+                "representative_samples": [
+                    "In a surprising turn of events, the local government has announced a new policy aimed at improving public transportation.",
+                    "The recent economic downturn has led to widespread job losses, with many industries struggling to stay afloat.",
+                    "A new study has revealed the potential health benefits of a plant-based diet, sparking interest among nutritionists and health enthusiasts.",
+                    "In a historic moment, the country's national team has won the championship, bringing pride and joy to fans across the nation.",
+                    "The ongoing climate crisis has prompted urgent calls for action, with experts warning of the dire consequences of inaction.",
+                    "A groundbreaking discovery in the field of medicine has opened up new possibilities for the treatment of chronic diseases."
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Alphanumeric String",
+                "description": "A string consisting of alphanumeric characters.",
+                "representative_samples": [
+                    "news123",
+                    "article456",
+                    "story789",
+                    "report001",
+                    "update002",
+                    "headline003"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric String",
+                "description": "A non-empty string that represents the numeric ID of the news article.",
+                "representative_samples": [
+                    "123",
+                    "4567",
+                    "89012",
+                    "345678",
+                    "9012345",
+                    "67890123"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space3-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric String",
+                "description": "A non-empty string that represents the numeric ID of the news article.",
+                "representative_samples": [
+                    "123",
+                    "4567",
+                    "89012",
+                    "345678",
+                    "9012345",
+                    "67890123"
+                ]
+            },
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Alphanumeric String",
+                "description": "A string consisting of alphanumeric characters.",
+                "representative_samples": [
+                    "author123",
+                    "johnDoe",
+                    "A1B2C3",
+                    "writer007",
+                    "newsman",
+                    "editorX"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z ]+$",
+                "input_space_category": "Country Name",
+                "description": "A string representing the name of a country.",
+                "representative_samples": [
+                    "United States",
+                    "Canada",
+                    "Germany",
+                    "France",
+                    "Australia",
+                    "Japan"
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": "string",
+                "format": "YYYY-MM-DDTHH:MM:SSZ",
+                "input_space_category": "ISO 8601 Date-Time",
+                "description": "A string representing a date-time in ISO 8601 format.",
+                "representative_samples": [
+                    "2023-01-01T12:00:00Z",
+                    "2022-12-31T23:59:59Z",
+                    "2021-06-15T08:30:00Z",
+                    "2020-07-20T14:45:00Z",
+                    "2019-11-11T11:11:11Z",
+                    "2018-05-05T05:05:05Z"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]*$",
+                "input_space_category": "Short Text",
+                "description": "A short text input for the news content.",
+                "representative_samples": [
+                    "Breaking news!",
+                    "Latest update.",
+                    "News flash.",
+                    "Top story.",
+                    "Headline news.",
+                    "Special report."
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+$",
+                "input_space_category": "Alphanumeric String",
+                "description": "A string consisting of alphanumeric characters.",
+                "representative_samples": [
+                    "news123",
+                    "article456",
+                    "story789",
+                    "report001",
+                    "update002",
+                    "headline003"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Leading Zero Numeric ID",
+                "description": "A numeric ID with leading zeros, still valid as it contains only numeric characters.",
+                "representative_samples": [
+                    "00123",
+                    "000456",
+                    "000000987",
+                    "01234",
+                    "00001",
+                    "0000001"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Maximum Length Numeric ID",
+                "description": "A numeric ID with a large number of digits, testing the upper boundary of length.",
+                "representative_samples": [
+                    "12345678901234567890",
+                    "98765432109876543210",
+                    "11111111111111111111",
+                    "22222222222222222222",
+                    "33333333333333333333",
+                    "44444444444444444444"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Valid Numeric ID",
+                "description": "A non-empty string containing only numeric characters representing the news article ID.",
+                "representative_samples": [
+                    "123",
+                    "456789",
+                    "987654321",
+                    "1001",
+                    "202020",
+                    "55555"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Leading Zero Numeric ID",
+                "description": "A numeric ID with leading zeros, still valid as it contains only numeric characters.",
+                "representative_samples": [
+                    "00123",
+                    "000456",
+                    "000000987",
+                    "01234",
+                    "00001",
+                    "0000001"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Leading Zero Numeric ID",
+                "description": "A numeric ID with leading zeros, still valid as it contains only numeric characters.",
+                "representative_samples": [
+                    "00123",
+                    "000456",
+                    "000000987",
+                    "01234",
+                    "00001",
+                    "0000001"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Valid Numeric ID",
+                "description": "A non-empty string containing only numeric characters representing the news article ID.",
+                "representative_samples": [
+                    "123",
+                    "456789",
+                    "987654321",
+                    "1001",
+                    "202020",
+                    "55555"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Valid Numeric ID",
+                "description": "A non-empty string containing only numeric characters representing the news article ID.",
+                "representative_samples": [
+                    "123",
+                    "456789",
+                    "987654321",
+                    "1001",
+                    "202020",
+                    "55555"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Maximum Length Numeric ID",
+                "description": "A numeric ID with a large number of digits, testing the upper boundary of length.",
+                "representative_samples": [
+                    "12345678901234567890",
+                    "98765432109876543210",
+                    "11111111111111111111",
+                    "22222222222222222222",
+                    "33333333333333333333",
+                    "44444444444444444444"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "Boundary News ID",
+                "description": "Boundary values for the news ID, including zero and small positive integers.",
+                "representative_samples": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "Large News ID",
+                "description": "A large non-negative integer representing the unique identifier of the news article.",
+                "representative_samples": [
+                    100000,
+                    999999,
+                    1234567,
+                    9876543,
+                    2147483647,
+                    999999999
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "Large News ID",
+                "description": "A large non-negative integer representing the unique identifier of the news article.",
+                "representative_samples": [
+                    100000,
+                    999999,
+                    1234567,
+                    9876543,
+                    2147483647,
+                    999999999
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Special Characters",
+                "description": "Text containing special characters and punctuation.",
+                "representative_samples": [
+                    "Hello, world! @2023 #news",
+                    "Breaking: New policy announced! $economy",
+                    "Weather update: Sunny & warm.",
+                    "Sports: Team wins championship! #victory",
+                    "Tech: New gadget released! #innovation"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "Boundary News ID",
+                "description": "Boundary values for the news ID, including zero and small positive integers.",
+                "representative_samples": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Short Text",
+                "description": "A short text input for the news content.",
+                "representative_samples": [
+                    "Breaking news!",
+                    "Update: New policy announced.",
+                    "Weather forecast: Sunny.",
+                    "Sports: Team wins championship.",
+                    "Economy: Market trends upward.",
+                    "Technology: New gadget released."
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "Boundary News ID",
+                "description": "Boundary values for the news ID, including zero and small positive integers.",
+                "representative_samples": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Special Characters",
+                "description": "Text containing special characters and punctuation.",
+                "representative_samples": [
+                    "Hello, world! @2023 #news",
+                    "Breaking: New policy announced! $economy",
+                    "Weather update: Sunny & warm.",
+                    "Sports: Team wins championship! #victory",
+                    "Tech: New gadget released! #innovation"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "Valid News ID",
+                "description": "A non-negative integer representing the unique identifier of the news article.",
+                "representative_samples": [
+                    0,
+                    123,
+                    456,
+                    789,
+                    1001,
+                    2020
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Long Text",
+                "description": "A longer text input for the news content.",
+                "representative_samples": [
+                    "In a surprising turn of events, the government has announced a new policy aimed at improving the economy. Experts are weighing in on the potential impacts.",
+                    "The local sports team has won the championship after a thrilling match that kept fans on the edge of their seats. Celebrations are ongoing throughout the city.",
+                    "The weather forecast for the week predicts sunny skies with mild temperatures, making it perfect for outdoor activities and events.",
+                    "Technology enthusiasts are excited about the release of a new gadget that promises to revolutionize the way we interact with our devices.",
+                    "The stock market has shown a steady upward trend, with investors optimistic about future growth and opportunities."
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "Large News ID",
+                "description": "A large non-negative integer representing the unique identifier of the news article.",
+                "representative_samples": [
+                    100000,
+                    999999,
+                    1234567,
+                    9876543,
+                    2147483647,
+                    999999999
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "Boundary News ID",
+                "description": "Boundary values for the news ID, including zero and small positive integers.",
+                "representative_samples": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Special Characters",
+                "description": "Text containing special characters and punctuation.",
+                "representative_samples": [
+                    "Hello, world! @2023 #news",
+                    "Breaking: New policy announced! $economy",
+                    "Weather update: Sunny & warm.",
+                    "Sports: Team wins championship! #victory",
+                    "Tech: New gadget released! #innovation"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    }
+]

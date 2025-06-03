@@ -1,0 +1,519 @@
+[
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2}(-[A-Z]{2})?$",
+                "input_space_category": "Specific language code",
+                "description": "A valid language code with a specific variant.",
+                "representative_samples": [
+                    "en-US",
+                    "de-DE",
+                    "fr-FR",
+                    "es-ES",
+                    "pt-BR",
+                    "it-IT"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2}(-[A-Z]{2})?$",
+                "input_space_category": "General language code",
+                "description": "A valid general language code without a specific variant.",
+                "representative_samples": [
+                    "en",
+                    "de",
+                    "fr",
+                    "es",
+                    "pt",
+                    "it"
+                ]
+            },
+            "data": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]*$",
+                "input_space_category": "Non-empty data",
+                "description": "A non-empty string of data to be checked.",
+                "representative_samples": [
+                    "Sample data for checking.",
+                    "Data input example.",
+                    "This is a test data string.",
+                    "Data: 1234567890",
+                    "Checking data input.",
+                    "Data validation example."
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^auto$",
+                "input_space_category": "Auto-detect language",
+                "description": "The 'auto' value for automatic language detection.",
+                "representative_samples": [
+                    "auto"
+                ]
+            },
+            "preferredVariants": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2}(-[A-Z]{2})?(,[a-z]{2}(-[A-Z]{2})?)*$",
+                "input_space_category": "Mixed language variants",
+                "description": "A mix of specific and general language variants.",
+                "representative_samples": [
+                    "en,de",
+                    "fr,es-MX",
+                    "pt,it-CH",
+                    "en-US,fr",
+                    "de,es-ES",
+                    "it,pt-BR"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space5-subspace2"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2}(-[A-Z]{2})?$",
+                "input_space_category": "Specific language code",
+                "description": "A valid language code with a specific variant.",
+                "representative_samples": [
+                    "en-US",
+                    "de-DE",
+                    "fr-FR",
+                    "es-ES",
+                    "pt-BR",
+                    "it-IT"
+                ]
+            },
+            "enabledOnly": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean true",
+                "description": "The boolean value true.",
+                "representative_samples": [
+                    true
+                ]
+            },
+            "enabledCategories": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+(,[A-Za-z0-9]+)*$",
+                "input_space_category": "Multiple category IDs",
+                "description": "Multiple valid category IDs, comma-separated.",
+                "representative_samples": [
+                    "CAT1,CAT2",
+                    "CAT3,CAT4",
+                    "CAT5,CAT6",
+                    "CAT7,CAT8",
+                    "CAT9,CAT10",
+                    "CAT11,CAT12"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space6-subspace1",
+            "space3-subspace1",
+            "space5-subspace2",
+            "space4-subspace1"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2}(-[A-Z]{2})?$",
+                "input_space_category": "Specific language code",
+                "description": "A valid language code with a specific variant.",
+                "representative_samples": [
+                    "en-US",
+                    "de-DE",
+                    "fr-FR",
+                    "es-ES",
+                    "pt-BR",
+                    "it-IT"
+                ]
+            },
+            "data": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]*$",
+                "input_space_category": "Long data",
+                "description": "A longer string of data to be checked.",
+                "representative_samples": [
+                    "Data input with a long string of characters to test the system's handling of large inputs.",
+                    "This is a long data string used for testing purposes, containing various characters and symbols.",
+                    "The quick brown fox jumps over the lazy dog multiple times to create a long data input.",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    "Data input with special characters: !@#$%^&*()_+[]{}|;:',.<>/?",
+                    "Testing data input with a mix of letters, numbers, and symbols to ensure comprehensive coverage."
+                ]
+            },
+            "motherTongue": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2}(-[A-Z]{2})?$",
+                "input_space_category": "Specific language code",
+                "description": "A valid language code with a specific variant.",
+                "representative_samples": [
+                    "en-US",
+                    "de-DE",
+                    "fr-FR",
+                    "es-ES",
+                    "pt-BR",
+                    "it-IT"
+                ]
+            },
+            "disabledRules": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+(,[A-Za-z0-9]+)*$",
+                "input_space_category": "Multiple rule IDs",
+                "description": "Multiple valid rule IDs, comma-separated.",
+                "representative_samples": [
+                    "RULE1,RULE2",
+                    "RULE3,RULE4",
+                    "RULE5,RULE6",
+                    "RULE7,RULE8",
+                    "RULE9,RULE10",
+                    "RULE11,RULE12"
+                ]
+            },
+            "disabledCategories": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+(,[A-Za-z0-9]+)*$",
+                "input_space_category": "Single category ID",
+                "description": "A single valid category ID.",
+                "representative_samples": [
+                    "CAT1",
+                    "CAT2",
+                    "CAT3",
+                    "CAT4",
+                    "CAT5",
+                    "CAT6"
+                ]
+            },
+            "preferredVariants": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2}(-[A-Z]{2})?(,[a-z]{2}(-[A-Z]{2})?)*$",
+                "input_space_category": "Single language variant",
+                "description": "A single valid language variant.",
+                "representative_samples": [
+                    "en-GB",
+                    "de-AT",
+                    "fr-CA",
+                    "es-MX",
+                    "pt-PT",
+                    "it-CH"
+                ]
+            },
+            "enabledOnly": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean true",
+                "description": "The boolean value true.",
+                "representative_samples": [
+                    true
+                ]
+            },
+            "enabledCategories": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+(,[A-Za-z0-9]+)*$",
+                "input_space_category": "Mixed category IDs",
+                "description": "A mix of category IDs with different formats.",
+                "representative_samples": [
+                    "CAT1,cat2",
+                    "Cat3,CAT4",
+                    "cat5,CAT6",
+                    "CAT7,cat8",
+                    "Cat9,CAT10",
+                    "cat11,CAT12"
+                ]
+            },
+            "altLanguages": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2}(-[A-Z]{2})?(,[a-z]{2}(-[A-Z]{2})?)*$",
+                "input_space_category": "Mixed language codes",
+                "description": "A mix of specific and general language codes.",
+                "representative_samples": [
+                    "en,de",
+                    "fr,es-MX",
+                    "pt,it-CH",
+                    "en-US,fr",
+                    "de,es-ES",
+                    "it,pt-BR"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^auto$",
+                "input_space_category": "Auto-detect language",
+                "description": "The 'auto' value for automatic language detection.",
+                "representative_samples": [
+                    "auto"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space3-subspace1",
+            "space4-subspace1",
+            "space5-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2}(-[A-Z]{2})?$",
+                "input_space_category": "Specific language code",
+                "description": "A valid language code with a specific variant.",
+                "representative_samples": [
+                    "en-US",
+                    "de-DE",
+                    "fr-FR",
+                    "es-ES",
+                    "pt-BR",
+                    "it-IT"
+                ]
+            },
+            "preferredVariants": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2}(-[A-Z]{2})?(,[a-z]{2}(-[A-Z]{2})?)*$",
+                "input_space_category": "Multiple language variants",
+                "description": "Multiple valid language variants, comma-separated.",
+                "representative_samples": [
+                    "en-GB,de-AT",
+                    "fr-CA,es-MX",
+                    "pt-PT,it-CH",
+                    "en-US,fr-FR",
+                    "de-DE,es-ES",
+                    "it-IT,pt-BR"
+                ]
+            },
+            "altLanguages": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2}(-[A-Z]{2})?(,[a-z]{2}(-[A-Z]{2})?)*$",
+                "input_space_category": "Single language code",
+                "description": "A single valid language code.",
+                "representative_samples": [
+                    "en-GB",
+                    "de-AT",
+                    "fr-CA",
+                    "es-MX",
+                    "pt-PT",
+                    "it-CH"
+                ]
+            },
+            "enabledOnly": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean true",
+                "description": "The boolean value true.",
+                "representative_samples": [
+                    true
+                ]
+            },
+            "enabledRules": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9]+(,[A-Za-z0-9]+)*$",
+                "input_space_category": "Multiple rule IDs",
+                "description": "Multiple valid rule IDs, comma-separated.",
+                "representative_samples": [
+                    "RULE1,RULE2",
+                    "RULE3,RULE4",
+                    "RULE5,RULE6",
+                    "RULE7,RULE8",
+                    "RULE9,RULE10",
+                    "RULE11,RULE12"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]*$",
+                "input_space_category": "Long text",
+                "description": "A longer string of text to be checked.",
+                "representative_samples": [
+                    "Once upon a time, in a land far, far away, there lived a king who ruled with wisdom and kindness.",
+                    "In the midst of the bustling city, there was a small, quaint café that served the best coffee in town.",
+                    "The sun set over the horizon, painting the sky in hues of orange and pink, as the day came to a peaceful end.",
+                    "As the rain poured down, the streets glistened with reflections of the city lights, creating a mesmerizing scene.",
+                    "The library was a haven of knowledge, filled with books that transported readers to different worlds and times.",
+                    "With each passing season, the garden bloomed with vibrant colors, a testament to the beauty of nature."
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^auto$",
+                "input_space_category": "Auto-detect language",
+                "description": "The 'auto' value for automatic language detection.",
+                "representative_samples": [
+                    "auto"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    }
+]

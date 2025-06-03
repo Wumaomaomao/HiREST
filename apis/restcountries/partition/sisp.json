@@ -1,0 +1,2744 @@
+[
+    {
+        "op_name": "get /v1/all",
+        "type": "none",
+        "param_name": "No Parameters",
+        "format": [],
+        "valid": [
+            {
+                "param_name": "No Parameters",
+                "category": "No Input Required",
+                "description": "This API does not require any input parameters.",
+                "samples": []
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "No Parameters",
+                "category": "Unexpected Input",
+                "description": "Any input provided would be considered invalid as the API does not accept parameters.",
+                "samples": [
+                    "unexpected",
+                    123,
+                    true,
+                    null,
+                    {
+                        "key": "value"
+                    },
+                    [
+                        1,
+                        2,
+                        3
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/alpha/{alphacode}",
+        "type": "string",
+        "param_name": "alphacode",
+        "format": [],
+        "valid": [
+            {
+                "param_name": "alphacode",
+                "category": "Standard alpha codes",
+                "description": "Typical alpha codes consisting of 2 or 3 alphabetic characters representing country codes.",
+                "samples": [
+                    "US",
+                    "GBR",
+                    "FR",
+                    "IND",
+                    "CN",
+                    "BRA"
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Longer valid codes",
+                "description": "Longer strings of alphabetic characters which could be extended country or regional codes.",
+                "samples": [
+                    "EUROPE",
+                    "AFRICA",
+                    "ASIA",
+                    "CARIBBEAN",
+                    "MIDDLEEAST",
+                    "LATAM"
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Mixed alphanumeric codes",
+                "description": "Alpha codes including both letters and numbers that might represent specific subregions or special codes.",
+                "samples": [
+                    "A1",
+                    "B2C",
+                    "X9Y",
+                    "Z12",
+                    "US1",
+                    "GB2"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "alphacode",
+                "category": "Empty string",
+                "description": "An empty string which does not fulfill the requirement of non-empty alphacode.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Non-string input",
+                "description": "Input values not of string type.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    45.67,
+                    {},
+                    []
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Strings with special characters or spaces",
+                "description": "Strings containing characters that likely do not fit the alpha code pattern, including special characters or whitespace.",
+                "samples": [
+                    "US#",
+                    "G+BR",
+                    "FR@",
+                    " IND",
+                    "CN ",
+                    "B-R"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/alpha",
+        "type": "string",
+        "param_name": "codes",
+        "format": [
+            "^[A-Za-z0-9]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "codes",
+                "category": "Alpha-3 country codes",
+                "description": "Three-letter country codes commonly used to represent countries.",
+                "samples": [
+                    "USA",
+                    "CAN",
+                    "GBR",
+                    "FRA",
+                    "DEU",
+                    "JPN"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Alpha-2 country codes",
+                "description": "Two-letter country codes commonly used to represent countries.",
+                "samples": [
+                    "US",
+                    "CA",
+                    "GB",
+                    "FR",
+                    "DE",
+                    "JP"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Numeric country codes",
+                "description": "Numeric codes used to represent countries.",
+                "samples": [
+                    "840",
+                    "124",
+                    "826",
+                    "250",
+                    "276",
+                    "392"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "codes",
+                "category": "Empty string",
+                "description": "An empty string which is not allowed as a valid code.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Special characters",
+                "description": "Codes containing special characters which are not valid.",
+                "samples": [
+                    "US@",
+                    "C#N",
+                    "G!B",
+                    "F$A",
+                    "D*E",
+                    "J&P"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Excessive length",
+                "description": "Codes that are excessively long and not valid.",
+                "samples": [
+                    "UNITEDSTATESOFAMERICA",
+                    "CANADACANADA",
+                    "GREATBRITAIN",
+                    "FRANCEFRANCE",
+                    "GERMANYGERMANY",
+                    "JAPANJAPAN"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/currency/{currency}",
+        "type": "string",
+        "param_name": "currency",
+        "format": [
+            "^[A-Z]{3}$"
+        ],
+        "valid": [
+            {
+                "param_name": "currency",
+                "category": "Standard ISO 4217 Currency Code",
+                "description": "A valid currency code following the ISO 4217 standard, consisting of three uppercase letters.",
+                "samples": [
+                    "USD",
+                    "EUR",
+                    "JPY",
+                    "GBP",
+                    "AUD",
+                    "CAD"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Non-standard Currency Code",
+                "description": "A non-standard currency code that is not part of ISO 4217 but still follows the format of three uppercase letters.",
+                "samples": [
+                    "ABC",
+                    "XYZ",
+                    "LMN",
+                    "QRS",
+                    "TUV",
+                    "NOP"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Custom Currency Code",
+                "description": "A custom currency code used for testing purposes, following the format of three uppercase letters.",
+                "samples": [
+                    "AAA",
+                    "BBB",
+                    "CCC",
+                    "DDD",
+                    "EEE",
+                    "FFF"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "currency",
+                "category": "Lowercase Letters",
+                "description": "Currency codes that are in lowercase letters, violating the format requirement.",
+                "samples": [
+                    "usd",
+                    "eur",
+                    "jpy",
+                    "gbp",
+                    "aud",
+                    "cad"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Incorrect Length",
+                "description": "Currency codes that do not have the correct length of three characters.",
+                "samples": [
+                    "US",
+                    "EURO",
+                    "JP",
+                    "GB",
+                    "AUS",
+                    "CA"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Non-Alphabetic Characters",
+                "description": "Currency codes containing non-alphabetic characters.",
+                "samples": [
+                    "US1",
+                    "EU@",
+                    "J#Y",
+                    "G$P",
+                    "A%U",
+                    "C&D"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/name/{name}",
+        "type": "string",
+        "param_name": "name",
+        "format": [
+            "^[A-Za-z\\s]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "name",
+                "category": "Country Name",
+                "description": "A valid country name as a non-empty string.",
+                "samples": [
+                    "Canada",
+                    "United States",
+                    "Mexico",
+                    "France",
+                    "Germany",
+                    "Japan"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Country Name with Spaces",
+                "description": "A valid country name with spaces.",
+                "samples": [
+                    "United Kingdom",
+                    "South Korea",
+                    "New Zealand",
+                    "Saudi Arabia",
+                    "South Africa",
+                    "Costa Rica"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Country Name with Mixed Case",
+                "description": "A valid country name with mixed case letters.",
+                "samples": [
+                    "bRaZiL",
+                    "iTaLy",
+                    "InDiA",
+                    "ChInA",
+                    "RuSsIa",
+                    "AuStRaLiA"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "name",
+                "category": "Empty String",
+                "description": "An empty string input.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Non-String Input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    [],
+                    {}
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "String with Special Characters",
+                "description": "A string containing special characters.",
+                "samples": [
+                    "C@nada",
+                    "Mex!co",
+                    "Fr@nce",
+                    "Germ@ny",
+                    "Jap@n",
+                    "Br@zil"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/name/{name}",
+        "type": "boolean",
+        "param_name": "fullText",
+        "format": [],
+        "valid": [
+            {
+                "param_name": "fullText",
+                "category": "Boolean True",
+                "description": "A boolean value representing true.",
+                "samples": [
+                    true
+                ]
+            },
+            {
+                "param_name": "fullText",
+                "category": "Boolean False",
+                "description": "A boolean value representing false.",
+                "samples": [
+                    false
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fullText",
+                "category": "Non-Boolean Value",
+                "description": "A value that is not a boolean.",
+                "samples": [
+                    "true",
+                    "false",
+                    1,
+                    0,
+                    "yes",
+                    "no"
+                ]
+            },
+            {
+                "param_name": "fullText",
+                "category": "Empty Value",
+                "description": "An empty value.",
+                "samples": [
+                    null,
+                    ""
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/callingcode/{callingcode}",
+        "type": "string",
+        "param_name": "callingcode",
+        "format": [
+            "^[0-9]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "callingcode",
+                "category": "Valid Numeric Calling Code",
+                "description": "A valid calling code consisting of numeric digits associated with a country.",
+                "samples": [
+                    "1",
+                    "44",
+                    "91",
+                    "81",
+                    "33",
+                    "49"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Valid Extended Calling Code",
+                "description": "A valid calling code with more than two digits, representing specific regions or countries.",
+                "samples": [
+                    "123",
+                    "234",
+                    "345",
+                    "456",
+                    "567",
+                    "678"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Valid Short Calling Code",
+                "description": "A valid calling code with a single digit, typically used for large countries.",
+                "samples": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "callingcode",
+                "category": "Non-Numeric String",
+                "description": "A string that contains non-numeric characters, violating the format of calling codes.",
+                "samples": [
+                    "abc",
+                    "code123",
+                    "call!code",
+                    "123abc",
+                    "code#",
+                    "call@"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Empty String",
+                "description": "An empty string, which does not represent any calling code.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Invalid Numeric Format",
+                "description": "A numeric string that does not correspond to any valid calling code.",
+                "samples": [
+                    "000",
+                    "999",
+                    "123456",
+                    "0001",
+                    "987654",
+                    "0000"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/capital/{capital}",
+        "type": "string",
+        "param_name": "capital",
+        "format": [
+            "^[A-Za-z\\s]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "capital",
+                "category": "Common Capital Names",
+                "description": "Names of well-known capital cities.",
+                "samples": [
+                    "Paris",
+                    "Tokyo",
+                    "Washington",
+                    "London",
+                    "Berlin",
+                    "Ottawa"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Capital Names with Spaces",
+                "description": "Capital city names that include spaces.",
+                "samples": [
+                    "New Delhi",
+                    "Mexico City",
+                    "Buenos Aires",
+                    "Kuala Lumpur",
+                    "Abu Dhabi",
+                    "San Jose"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Capital Names with Mixed Case",
+                "description": "Capital city names with mixed uppercase and lowercase letters.",
+                "samples": [
+                    "cairo",
+                    "Beijing",
+                    "Helsinki",
+                    "Lisbon",
+                    "Madrid",
+                    "Rome"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "capital",
+                "category": "Empty String",
+                "description": "An empty string input.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Non-String Input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    45.67,
+                    []
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "String with Special Characters",
+                "description": "Capital names containing special characters or numbers.",
+                "samples": [
+                    "Paris123",
+                    "Tokyo!",
+                    "Wash@ington",
+                    "Lon#don",
+                    "Ber1in",
+                    "Ott@wa"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/region/{region}",
+        "type": "string",
+        "param_name": "region",
+        "format": [
+            "^[A-Za-z0-9\\-\\_]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "region",
+                "category": "Country Name",
+                "description": "A valid country name as a region identifier.",
+                "samples": [
+                    "UnitedStates",
+                    "Canada",
+                    "Germany",
+                    "Australia",
+                    "Japan",
+                    "Brazil"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Country Code",
+                "description": "A valid country code as a region identifier.",
+                "samples": [
+                    "US",
+                    "CA",
+                    "DE",
+                    "AU",
+                    "JP",
+                    "BR"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Geographical Region",
+                "description": "A valid geographical region name.",
+                "samples": [
+                    "NorthAmerica",
+                    "Europe",
+                    "Asia",
+                    "SouthAmerica",
+                    "Africa",
+                    "Oceania"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "region",
+                "category": "Empty String",
+                "description": "An empty string input.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Invalid Characters",
+                "description": "Input containing invalid characters for a region identifier.",
+                "samples": [
+                    "United States!",
+                    "C@nada",
+                    "Ger#many",
+                    "Austra*lia",
+                    "Jap@n",
+                    "Bra$zil"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Non-String Input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    45.67,
+                    [],
+                    {}
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/subregion/{subregion}",
+        "type": "string",
+        "param_name": "subregion",
+        "format": [
+            "^[A-Za-z0-9_-]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "subregion",
+                "category": "Alphanumeric",
+                "description": "A non-empty alphanumeric string representing a subregion.",
+                "samples": [
+                    "north_america",
+                    "europe",
+                    "asia",
+                    "africa",
+                    "oceania",
+                    "antarctica"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Alphanumeric with hyphen",
+                "description": "A non-empty alphanumeric string with hyphens representing a subregion.",
+                "samples": [
+                    "latin-america",
+                    "middle-east",
+                    "south-east-asia",
+                    "sub-saharan-africa",
+                    "central-europe",
+                    "north-east"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Alphanumeric with underscore",
+                "description": "A non-empty alphanumeric string with underscores representing a subregion.",
+                "samples": [
+                    "north_america",
+                    "eastern_europe",
+                    "southern_asia",
+                    "western_africa",
+                    "central_asia",
+                    "northern_europe"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "subregion",
+                "category": "Empty String",
+                "description": "An empty string which is not a valid subregion identifier.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Special Characters",
+                "description": "A string containing special characters which are not valid in subregion identifiers.",
+                "samples": [
+                    "north@america",
+                    "europe#1",
+                    "asia!",
+                    "africa$",
+                    "oceania%",
+                    "antarctica^"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Whitespace",
+                "description": "A string containing only whitespace or leading/trailing whitespace.",
+                "samples": [
+                    " ",
+                    " north_america",
+                    "europe ",
+                    "  asia  ",
+                    "\t",
+                    "\n"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/lang/{lang}",
+        "type": "string",
+        "param_name": "lang",
+        "format": [
+            "^[a-zA-Z]{2,3}$"
+        ],
+        "valid": [
+            {
+                "param_name": "lang",
+                "category": "ISO 639-1 Language Codes",
+                "description": "Two-letter language codes as per ISO 639-1 standard.",
+                "samples": [
+                    "en",
+                    "fr",
+                    "es",
+                    "de",
+                    "it",
+                    "ja"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "ISO 639-2 Language Codes",
+                "description": "Three-letter language codes as per ISO 639-2 standard.",
+                "samples": [
+                    "eng",
+                    "fra",
+                    "spa",
+                    "deu",
+                    "ita",
+                    "jpn"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Commonly Used Language Codes",
+                "description": "Commonly used language codes in various applications.",
+                "samples": [
+                    "zh",
+                    "ru",
+                    "ar",
+                    "pt",
+                    "hi",
+                    "ko"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "lang",
+                "category": "Empty String",
+                "description": "An empty string input.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Invalid Format",
+                "description": "Strings that do not conform to the expected language code format.",
+                "samples": [
+                    "123",
+                    "abcd",
+                    "en-US",
+                    "english",
+                    "fr1",
+                    "es!"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Non-String Input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    [],
+                    {}
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/all",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^[A-Za-z,]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single Field",
+                "description": "A single field name to specify which country information to include.",
+                "samples": [
+                    "name",
+                    "code",
+                    "population",
+                    "capital",
+                    "region",
+                    "currency"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple Fields",
+                "description": "Multiple field names separated by commas to specify which country information to include.",
+                "samples": [
+                    "name,code",
+                    "population,capital",
+                    "region,currency",
+                    "name,region,capital",
+                    "code,currency,population",
+                    "name,code,region"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "All Fields",
+                "description": "A string indicating all available fields to include in the response.",
+                "samples": [
+                    "name,code,population,capital,region,currency",
+                    "code,name,region,population,capital,currency",
+                    "population,capital,region,code,name,currency",
+                    "currency,region,capital,population,code,name",
+                    "capital,region,name,code,population,currency",
+                    "region,code,name,capital,population,currency"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Invalid Characters",
+                "description": "The parameter fields contains invalid characters.",
+                "samples": [
+                    "name@code",
+                    "population#capital",
+                    "region!currency",
+                    "name$region%capital",
+                    "code^currency&population",
+                    "name*code(region)"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Non-String Input",
+                "description": "The parameter fields is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    [
+                        "name",
+                        "code"
+                    ],
+                    {
+                        "field": "name"
+                    },
+                    45.67
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Excessive Length",
+                "description": "The parameter fields exceeds typical length constraints.",
+                "samples": [
+                    "name,code,population,capital,region,currency,name,code,population,capital,region,currency,name,code,population,capital,region,currency",
+                    "code,name,region,population,capital,currency,code,name,region,population,capital,currency,code,name,region,population,capital,currency",
+                    "population,capital,region,code,name,currency,population,capital,region,code,name,currency,population,capital,region,code,name,currency",
+                    "currency,region,capital,population,code,name,currency,region,capital,population,code,name,currency,region,capital,population,code,name",
+                    "capital,region,name,code,population,currency,capital,region,name,code,population,currency,capital,region,name,code,population,currency",
+                    "region,code,name,capital,population,currency,region,code,name,capital,population,currency,region,code,name,capital,population,currency"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/alpha/{alphacode}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^[A-Za-z,]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single field",
+                "description": "A single field name to retrieve information.",
+                "samples": [
+                    "name",
+                    "population",
+                    "capital",
+                    "currency",
+                    "language",
+                    "region"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple fields",
+                "description": "Multiple field names separated by commas.",
+                "samples": [
+                    "name,population",
+                    "capital,currency,language",
+                    "region,subregion",
+                    "area,borders",
+                    "languages,translations",
+                    "timezones,callingCodes"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "All fields",
+                "description": "A keyword to retrieve all available fields.",
+                "samples": [
+                    "all",
+                    "everything",
+                    "complete",
+                    "full",
+                    "entire",
+                    "total"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Invalid characters",
+                "description": "Field names containing invalid characters.",
+                "samples": [
+                    "name@population",
+                    "capital#currency",
+                    "language$region",
+                    "area!borders",
+                    "languages%translations",
+                    "timezones^callingCodes"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    [],
+                    {},
+                    45.67
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Excessive length",
+                "description": "Field names exceeding typical length.",
+                "samples": [
+                    "namepopulationcapitalcurrencylanguage",
+                    "regionregionregionregionregionregionregion",
+                    "areaareabordersbordersbordersbordersborders",
+                    "languageslanguageslanguageslanguageslanguages",
+                    "timezonestimezonestimezonestimezonestimezones",
+                    "callingCodescallingCodescallingCodescallingCodes"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/alpha/{alphacode}",
+        "type": "string",
+        "param_name": "alphacode",
+        "format": [
+            "^[A-Za-z]{2,3}$"
+        ],
+        "valid": [
+            {
+                "param_name": "alphacode",
+                "category": "Two-letter country code",
+                "description": "Standard two-letter country codes.",
+                "samples": [
+                    "US",
+                    "CA",
+                    "GB",
+                    "FR",
+                    "DE",
+                    "JP"
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Three-letter country code",
+                "description": "Standard three-letter country codes.",
+                "samples": [
+                    "USA",
+                    "CAN",
+                    "GBR",
+                    "FRA",
+                    "DEU",
+                    "JPN"
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Special country code",
+                "description": "Special codes for regions or territories.",
+                "samples": [
+                    "EU",
+                    "UN",
+                    "AU",
+                    "AS",
+                    "AF",
+                    "NA"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "alphacode",
+                "category": "Empty string",
+                "description": "An empty string input.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Invalid format",
+                "description": "Codes that do not follow the standard format.",
+                "samples": [
+                    "123",
+                    "US1",
+                    "CANADA",
+                    "GB-",
+                    "FR@",
+                    "DE!"
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    [],
+                    {},
+                    45.67
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/alpha",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^[A-Za-z0-9,]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single field",
+                "description": "A single field name as a string.",
+                "samples": [
+                    "name",
+                    "population",
+                    "area",
+                    "capital",
+                    "currency",
+                    "language"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple fields",
+                "description": "Multiple field names separated by commas.",
+                "samples": [
+                    "name,population",
+                    "area,capital,currency",
+                    "language,timezone",
+                    "name,area,language",
+                    "population,capital",
+                    "currency,language"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Empty string",
+                "description": "An empty string indicating no specific fields requested.",
+                "samples": [
+                    ""
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    [],
+                    {}
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Invalid format",
+                "description": "String with invalid characters or format.",
+                "samples": [
+                    "name;population",
+                    "area|capital",
+                    "currency&language",
+                    "name population",
+                    "area:capital",
+                    "currency#language"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Excessive length",
+                "description": "String that exceeds typical length expectations.",
+                "samples": [
+                    "name,population,area,capital,currency,language,timezone,region,continent,government",
+                    "field1,field2,field3,field4,field5,field6,field7,field8,field9,field10"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/alpha",
+        "type": "string",
+        "param_name": "codes",
+        "format": [
+            "^[A-Za-z0-9]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "codes",
+                "category": "Single code",
+                "description": "A single country code as a string.",
+                "samples": [
+                    "US",
+                    "GB",
+                    "FR",
+                    "DE",
+                    "JP",
+                    "CN"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Multiple codes",
+                "description": "Multiple country codes separated by commas.",
+                "samples": [
+                    "US,GB,FR",
+                    "DE,JP,CN",
+                    "IN,BR,RU",
+                    "CA,MX,AU",
+                    "ZA,EG,NG",
+                    "KR,IT,ES"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Alphanumeric codes",
+                "description": "Codes that include both letters and numbers.",
+                "samples": [
+                    "US1",
+                    "GB2",
+                    "FR3",
+                    "DE4",
+                    "JP5",
+                    "CN6"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "codes",
+                "category": "Empty string",
+                "description": "An empty string which is invalid for required parameter.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    [],
+                    {}
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Invalid format",
+                "description": "String with invalid characters or format.",
+                "samples": [
+                    "US;GB",
+                    "FR|DE",
+                    "JP&CN",
+                    "IN BR",
+                    "CA:MX",
+                    "AU#ZA"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/currency/{currency}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^[A-Za-z,]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single field",
+                "description": "A single field name to specify the information to be returned.",
+                "samples": [
+                    "name",
+                    "code",
+                    "country"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple fields",
+                "description": "Multiple field names separated by commas to specify the information to be returned.",
+                "samples": [
+                    "name,code",
+                    "country,name",
+                    "code,country"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "All fields",
+                "description": "A string indicating all fields should be returned.",
+                "samples": [
+                    "all",
+                    "full",
+                    "complete"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Invalid format",
+                "description": "String with invalid format, such as special characters or incorrect separators.",
+                "samples": [
+                    "name;code",
+                    "country|name",
+                    "code&country"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Empty string",
+                "description": "An empty string input.",
+                "samples": [
+                    ""
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/currency/{currency}",
+        "type": "string",
+        "param_name": "currency",
+        "format": [
+            "^[A-Za-z]{3}$"
+        ],
+        "valid": [
+            {
+                "param_name": "currency",
+                "category": "Common currency codes",
+                "description": "Standard three-letter currency codes.",
+                "samples": [
+                    "USD",
+                    "EUR",
+                    "JPY"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Less common currency codes",
+                "description": "Three-letter currency codes for less common currencies.",
+                "samples": [
+                    "AED",
+                    "ZAR",
+                    "BRL"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Historical currency codes",
+                "description": "Three-letter codes for currencies that are no longer in use.",
+                "samples": [
+                    "DEM",
+                    "FRF",
+                    "ITL"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "currency",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Invalid format",
+                "description": "String with invalid format, such as incorrect length or special characters.",
+                "samples": [
+                    "US",
+                    "EURO",
+                    "JPY!"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Empty string",
+                "description": "An empty string input.",
+                "samples": [
+                    ""
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/name/{name}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Comma-separated fields",
+                "description": "A string specifying additional data fields to be included, separated by commas.",
+                "samples": [
+                    "population,area,capital",
+                    "languages,currencies",
+                    "timezones,flags",
+                    "borders,regionalBlocs",
+                    "alpha2Code,alpha3Code",
+                    "cioc,name"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Single field",
+                "description": "A single field specifying additional data to be included.",
+                "samples": [
+                    "population",
+                    "capital",
+                    "currencies",
+                    "languages",
+                    "region",
+                    "subregion"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Empty string",
+                "description": "An empty string indicating no additional fields.",
+                "samples": [
+                    ""
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Non-string value",
+                "description": "The value of fields is not a string.",
+                "samples": [
+                    123,
+                    [
+                        "population",
+                        "area"
+                    ],
+                    true,
+                    null,
+                    {
+                        "field": "population"
+                    },
+                    45.67
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Excessively long string",
+                "description": "A string that is excessively long, beyond the typical field names length.",
+                "samples": [
+                    "population,area,capital,languages,currencies,region,subregion,demonym,gini,latlng,altSpellings,relevance",
+                    "abcdefghijklmnopqrstu... (more than 100 chars)"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Semantically incorrect field names",
+                "description": "Field names that are incorrect or not recognized.",
+                "samples": [
+                    "unknownField",
+                    "populationn,capitol",
+                    " ",
+                    "population,fields,area"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/name/{name}",
+        "type": "string",
+        "param_name": "name",
+        "format": [],
+        "valid": [
+            {
+                "param_name": "name",
+                "category": "Standard country names",
+                "description": "Names of countries in a typical format.",
+                "samples": [
+                    "Germany",
+                    "France",
+                    "Brazil",
+                    "India",
+                    "Japan",
+                    "Canada"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Country names with spaces",
+                "description": "Country names containing spaces.",
+                "samples": [
+                    "United States",
+                    "New Zealand",
+                    "South Korea",
+                    "United Arab Emirates",
+                    "Saudi Arabia",
+                    "Dominican Republic"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Country names with special characters",
+                "description": "Country names that may include special characters like hyphens or apostrophes.",
+                "samples": [
+                    "Côte d'Ivoire",
+                    "Timor-Leste",
+                    "Bosnia and Herzegovina",
+                    "Papua New Guinea",
+                    "Antigua and Barbuda",
+                    "Trinidad and Tobago"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "name",
+                "category": "Empty string",
+                "description": "The name parameter is empty.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Non-string value",
+                "description": "The name is not a string.",
+                "samples": [
+                    456,
+                    true,
+                    null,
+                    {
+                        "country": "Germany"
+                    },
+                    78.91,
+                    [
+                        "France"
+                    ]
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Excessively long name",
+                "description": "A country name that is excessively long and unlikely to exist.",
+                "samples": [
+                    "AThisIsAnExceedinglyLongCountryNameThatSurpassesTheUsualCharacterLimitOfCountryNamesAndShouldNotBeValid",
+                    "CountryNameWithMoreThan100CharactersLongSuchAsThisOneThatIsUnnecessaryAndInvalid"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/name/{name}",
+        "type": "boolean",
+        "param_name": "fullText",
+        "format": [],
+        "valid": [
+            {
+                "param_name": "fullText",
+                "category": "Boolean truthy",
+                "description": "Boolean true indicating full-text search.",
+                "samples": [
+                    true
+                ]
+            },
+            {
+                "param_name": "fullText",
+                "category": "Boolean falsy",
+                "description": "Boolean false indicating no full-text search.",
+                "samples": [
+                    false
+                ]
+            },
+            {
+                "param_name": "fullText",
+                "category": "String representation of boolean true",
+                "description": "String 'true' indicating full-text search.",
+                "samples": [
+                    "true"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fullText",
+                "category": "Non-boolean value",
+                "description": "The fullText parameter is not a boolean.",
+                "samples": [
+                    123,
+                    "yes",
+                    "no",
+                    "FALSE",
+                    null,
+                    {
+                        "fullText": true
+                    }
+                ]
+            },
+            {
+                "param_name": "fullText",
+                "category": "String representation of boolean false",
+                "description": "String 'false' that is not treated as a boolean.",
+                "samples": [
+                    "false"
+                ]
+            },
+            {
+                "param_name": "fullText",
+                "category": "Arrays or objects",
+                "description": "The fullText parameter as an array or object.",
+                "samples": [
+                    [],
+                    [
+                        "true"
+                    ],
+                    {},
+                    {
+                        "isFullText": false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/callingcode/{callingcode}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^[A-Za-z,]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single field",
+                "description": "A single field name to include in the response.",
+                "samples": [
+                    "name",
+                    "code",
+                    "population"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple fields",
+                "description": "Multiple field names separated by commas to include in the response.",
+                "samples": [
+                    "name,code",
+                    "population,area",
+                    "name,code,population"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "All fields",
+                "description": "A wildcard or special keyword to include all fields in the response.",
+                "samples": [
+                    "all",
+                    "*",
+                    "full"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Invalid characters",
+                "description": "Field names containing invalid characters.",
+                "samples": [
+                    "name#",
+                    "code@",
+                    "popu!lation"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Empty string",
+                "description": "An empty string input.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/callingcode/{callingcode}",
+        "type": "string",
+        "param_name": "callingcode",
+        "format": [
+            "^[0-9]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "callingcode",
+                "category": "Valid calling code",
+                "description": "A valid calling code consisting of digits.",
+                "samples": [
+                    "1",
+                    "44",
+                    "91",
+                    "81",
+                    "33",
+                    "49"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Leading zeros",
+                "description": "A valid calling code with leading zeros.",
+                "samples": [
+                    "001",
+                    "044",
+                    "091"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Long calling code",
+                "description": "A valid calling code with more than three digits.",
+                "samples": [
+                    "1234",
+                    "56789",
+                    "987654"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "callingcode",
+                "category": "Non-numeric characters",
+                "description": "Calling code containing non-numeric characters.",
+                "samples": [
+                    "abc",
+                    "12a",
+                    "45#"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Empty string",
+                "description": "An empty string input.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/capital/{capital}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^[A-Za-z,]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single field",
+                "description": "A single field name to include in the response.",
+                "samples": [
+                    "population",
+                    "area",
+                    "gdp"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple fields",
+                "description": "Multiple field names separated by commas.",
+                "samples": [
+                    "population,area",
+                    "gdp,climate",
+                    "population,area,gdp"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "All fields",
+                "description": "A keyword to include all available fields.",
+                "samples": [
+                    "all"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Invalid characters",
+                "description": "Field names containing invalid characters.",
+                "samples": [
+                    "popul@tion",
+                    "area#",
+                    "gdp$"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Empty string",
+                "description": "An empty string input.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/capital/{capital}",
+        "type": "string",
+        "param_name": "capital",
+        "format": [
+            "^[A-Za-z ]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "capital",
+                "category": "Single word capital",
+                "description": "A single word representing the name of a capital city.",
+                "samples": [
+                    "Paris",
+                    "Tokyo",
+                    "Berlin"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Multi-word capital",
+                "description": "A multi-word name representing the name of a capital city.",
+                "samples": [
+                    "New Delhi",
+                    "Buenos Aires",
+                    "Abu Dhabi"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Capital with special characters",
+                "description": "A capital name with special characters like hyphens or apostrophes.",
+                "samples": [
+                    "N'Djamena",
+                    "St. John's",
+                    "Ho Chi Minh City"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "capital",
+                "category": "Invalid characters",
+                "description": "Capital names containing invalid characters.",
+                "samples": [
+                    "Par!s",
+                    "Toky0",
+                    "Berl1n"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Empty string",
+                "description": "An empty string input.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/region/{region}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Specific fields",
+                "description": "A comma-separated list of specific fields to include in the response.",
+                "samples": [
+                    "name,code",
+                    "population,area",
+                    "languages,currency"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Single field",
+                "description": "A single field to include in the response.",
+                "samples": [
+                    "name",
+                    "code",
+                    "population"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Empty string",
+                "description": "An empty string indicating no specific fields are requested.",
+                "samples": [
+                    ""
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Invalid format",
+                "description": "Input that does not follow the expected format of a comma-separated list of fields.",
+                "samples": [
+                    "name;code",
+                    "population|area",
+                    "languages currency"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Excessively long string",
+                "description": "A string that exceeds the typical length for field names.",
+                "samples": [
+                    "name,code,population,area,languages,currency,timezone,climate,demographics,economy,government,history,transportation,education,healthcare"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/region/{region}",
+        "type": "string",
+        "param_name": "region",
+        "format": [],
+        "valid": [
+            {
+                "param_name": "region",
+                "category": "Standard region code",
+                "description": "A standard region code or name.",
+                "samples": [
+                    "US",
+                    "EU",
+                    "ASIA",
+                    "NA",
+                    "SA",
+                    "AF"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Full region name",
+                "description": "A full region name.",
+                "samples": [
+                    "United States",
+                    "European Union",
+                    "Asia",
+                    "North America",
+                    "South America",
+                    "Africa"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Abbreviated region name",
+                "description": "An abbreviated region name.",
+                "samples": [
+                    "USA",
+                    "EU",
+                    "AS",
+                    "NA",
+                    "SA",
+                    "AF"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "region",
+                "category": "Empty string",
+                "description": "An empty string input.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Invalid characters",
+                "description": "Input that contains invalid characters.",
+                "samples": [
+                    "US@",
+                    "EU#",
+                    "AS$",
+                    "NA%",
+                    "SA^",
+                    "AF&"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/subregion/{subregion}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^[A-Za-z,]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single field",
+                "description": "A single field name to be included in the response.",
+                "samples": [
+                    "name",
+                    "population",
+                    "area",
+                    "capital",
+                    "currency",
+                    "language"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple fields",
+                "description": "Multiple field names separated by commas to be included in the response.",
+                "samples": [
+                    "name,population",
+                    "area,capital,currency",
+                    "language,name,area",
+                    "population,capital",
+                    "currency,language",
+                    "name,area,population"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "All fields",
+                "description": "A wildcard or keyword indicating all fields should be included.",
+                "samples": [
+                    "all",
+                    "everything",
+                    "full",
+                    "complete",
+                    "entire",
+                    "total"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Invalid characters",
+                "description": "Field names containing invalid characters.",
+                "samples": [
+                    "name@",
+                    "pop#ulation",
+                    "area$",
+                    "cap!ital",
+                    "cur^rency",
+                    "lang*guage"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Empty string",
+                "description": "An empty string input.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    [],
+                    {}
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/subregion/{subregion}",
+        "type": "string",
+        "param_name": "subregion",
+        "format": [
+            "^[A-Za-z0-9]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "subregion",
+                "category": "Subregion name",
+                "description": "A valid subregion name.",
+                "samples": [
+                    "Europe",
+                    "Asia",
+                    "Africa",
+                    "Americas",
+                    "Oceania",
+                    "Antarctica"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Subregion code",
+                "description": "A valid subregion code.",
+                "samples": [
+                    "EU",
+                    "AS",
+                    "AF",
+                    "AM",
+                    "OC",
+                    "AN"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Mixed case subregion name",
+                "description": "A valid subregion name with mixed case letters.",
+                "samples": [
+                    "eUrOpE",
+                    "aSiA",
+                    "aFrIcA",
+                    "aMeRiCaS",
+                    "oCeAnIa",
+                    "aNtArCtIcA"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "subregion",
+                "category": "Invalid characters",
+                "description": "Subregion names containing invalid characters.",
+                "samples": [
+                    "Europe!",
+                    "Asia@",
+                    "Africa#",
+                    "Americas$",
+                    "Oceania%",
+                    "Antarctica^"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Empty string",
+                "description": "An empty string input.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    [],
+                    {}
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/lang/{lang}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^[A-Za-z,]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single field",
+                "description": "A single field name to specify the information to include in the response.",
+                "samples": [
+                    "name",
+                    "code",
+                    "population",
+                    "area",
+                    "capital",
+                    "currency"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple fields",
+                "description": "Multiple field names separated by commas to specify the information to include in the response.",
+                "samples": [
+                    "name,code",
+                    "population,area,capital",
+                    "currency,language",
+                    "name,capital,currency",
+                    "area,population",
+                    "code,language"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Empty string",
+                "description": "An empty string indicating no specific fields are requested.",
+                "samples": [
+                    ""
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Invalid characters",
+                "description": "Field names containing invalid characters.",
+                "samples": [
+                    "name@code",
+                    "population#area",
+                    "capital$currency",
+                    "name!capital",
+                    "area%population",
+                    "code^language"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    [
+                        "name",
+                        "code"
+                    ],
+                    {
+                        "field": "name"
+                    }
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Excessive length",
+                "description": "Field names exceeding typical length constraints.",
+                "samples": [
+                    "name,name,name,name,name,name,name,name,name,name",
+                    "code,code,code,code,code,code,code,code,code,code",
+                    "population,population,population,population,population",
+                    "area,area,area,area,area,area,area,area,area,area",
+                    "capital,capital,capital,capital,capital,capital,capital",
+                    "currency,currency,currency,currency,currency,currency"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/lang/{lang}",
+        "type": "string",
+        "param_name": "lang",
+        "format": [
+            "^[A-Za-z]{2,3}$"
+        ],
+        "valid": [
+            {
+                "param_name": "lang",
+                "category": "Standard language codes",
+                "description": "Valid language codes typically used in ISO 639-1 or ISO 639-2 standards.",
+                "samples": [
+                    "en",
+                    "fr",
+                    "de",
+                    "es",
+                    "it",
+                    "zh"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Extended language codes",
+                "description": "Extended language codes that may include three-letter codes.",
+                "samples": [
+                    "eng",
+                    "fra",
+                    "deu",
+                    "spa",
+                    "ita",
+                    "zho"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Non-standard but valid codes",
+                "description": "Non-standard codes that are still valid within certain contexts.",
+                "samples": [
+                    "abc",
+                    "xyz",
+                    "qwe",
+                    "rty",
+                    "uio",
+                    "asd"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "lang",
+                "category": "Empty string",
+                "description": "An empty string which is not a valid language code.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Invalid format",
+                "description": "Language codes with invalid format or characters.",
+                "samples": [
+                    "123",
+                    "en1",
+                    "fr!",
+                    "de@",
+                    "es#",
+                    "it$"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Excessive length",
+                "description": "Language codes exceeding typical length constraints.",
+                "samples": [
+                    "english",
+                    "french",
+                    "german",
+                    "spanish",
+                    "italian",
+                    "chinese"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/demonym/{demonym}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^[A-Za-z,]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single field",
+                "description": "A single field name to specify which information should be returned.",
+                "samples": [
+                    "population",
+                    "language",
+                    "currency"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple fields",
+                "description": "Multiple field names separated by commas to specify which information should be returned.",
+                "samples": [
+                    "population,language",
+                    "currency,capital",
+                    "language,currency,population"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Empty string",
+                "description": "An empty string indicating no specific fields are requested.",
+                "samples": [
+                    ""
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Invalid characters",
+                "description": "Field names containing invalid characters.",
+                "samples": [
+                    "popul@tion",
+                    "lang#uage",
+                    "curren$cy"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Excessive length",
+                "description": "A string that exceeds the typical length for field names.",
+                "samples": [
+                    "populationlanguagecurrencycapital",
+                    "field1,field2,field3,field4,field5,field6,field7,field8,field9,field10"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/demonym/{demonym}",
+        "type": "string",
+        "param_name": "demonym",
+        "format": [
+            "^[A-Za-z]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "demonym",
+                "category": "Common demonym",
+                "description": "A common demonym representing a country or region.",
+                "samples": [
+                    "American",
+                    "Canadian",
+                    "French"
+                ]
+            },
+            {
+                "param_name": "demonym",
+                "category": "Less common demonym",
+                "description": "A less common demonym representing a country or region.",
+                "samples": [
+                    "Icelander",
+                    "Maltese",
+                    "Nepalese"
+                ]
+            },
+            {
+                "param_name": "demonym",
+                "category": "Historical demonym",
+                "description": "A historical demonym that may not be in current use.",
+                "samples": [
+                    "Prussian",
+                    "Byzantine",
+                    "Carthaginian"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "demonym",
+                "category": "Empty string",
+                "description": "An empty string which is not a valid demonym.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "demonym",
+                "category": "Invalid characters",
+                "description": "Demonym containing invalid characters.",
+                "samples": [
+                    "Americ@n",
+                    "Canad!an",
+                    "Fr3nch"
+                ]
+            },
+            {
+                "param_name": "demonym",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    456,
+                    false,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/regionalbloc/{regionalbloc}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^[A-Za-z,]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single field",
+                "description": "A single field name to include in the response.",
+                "samples": [
+                    "name",
+                    "population",
+                    "area",
+                    "capital",
+                    "currency",
+                    "language"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple fields",
+                "description": "Multiple field names separated by commas to include in the response.",
+                "samples": [
+                    "name,population",
+                    "area,capital,currency",
+                    "language,name",
+                    "population,area",
+                    "capital,currency,language",
+                    "name,area"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "All fields",
+                "description": "A string indicating all fields should be included.",
+                "samples": [
+                    "all",
+                    "everything",
+                    "complete",
+                    "full",
+                    "entire",
+                    "whole"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Invalid characters",
+                "description": "Field names containing invalid characters.",
+                "samples": [
+                    "name@",
+                    "pop#ulation",
+                    "area$",
+                    "cap!ital",
+                    "cur^rency",
+                    "lang*age"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    [],
+                    {},
+                    45.67
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Excessive length",
+                "description": "Field names exceeding typical length constraints.",
+                "samples": [
+                    "namepopulationareacapitalcurrencylanguage",
+                    "fieldnamefieldnamefieldnamefieldnamefieldnamefieldname",
+                    "longfieldnamelongfieldnamelongfieldnamelongfieldname",
+                    "excessivelylongfieldnameexcessivelylongfieldname",
+                    "supercalifragilisticexpialidocious",
+                    "pneumonoultramicroscopicsilicovolcanoconiosis"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/regionalbloc/{regionalbloc}",
+        "type": "string",
+        "param_name": "regionalbloc",
+        "format": [
+            "^[A-Za-z0-9]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "regionalbloc",
+                "category": "Standard bloc identifier",
+                "description": "A valid identifier for a regional bloc.",
+                "samples": [
+                    "EU",
+                    "NAFTA",
+                    "ASEAN",
+                    "AU",
+                    "SAARC",
+                    "MERCOSUR"
+                ]
+            },
+            {
+                "param_name": "regionalbloc",
+                "category": "Lowercase identifier",
+                "description": "A lowercase identifier for a regional bloc.",
+                "samples": [
+                    "eu",
+                    "nafta",
+                    "asean",
+                    "au",
+                    "saarc",
+                    "mercosur"
+                ]
+            },
+            {
+                "param_name": "regionalbloc",
+                "category": "Mixed case identifier",
+                "description": "An identifier with mixed case letters.",
+                "samples": [
+                    "Eu",
+                    "NaFtA",
+                    "Asean",
+                    "Au",
+                    "Saarc",
+                    "Mercosur"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "regionalbloc",
+                "category": "Empty string",
+                "description": "An empty string input.",
+                "samples": [
+                    ""
+                ]
+            },
+            {
+                "param_name": "regionalbloc",
+                "category": "Invalid characters",
+                "description": "Identifier containing invalid characters.",
+                "samples": [
+                    "EU@",
+                    "NAFTA#",
+                    "ASEAN$",
+                    "AU!",
+                    "SAARC^",
+                    "MERCOSUR*"
+                ]
+            },
+            {
+                "param_name": "regionalbloc",
+                "category": "Non-string input",
+                "description": "Input that is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    [],
+                    {},
+                    45.67
+                ]
+            }
+        ]
+    }
+]
