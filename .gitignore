@@ -172,3 +172,8 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# HiREST testing logs
+apis/*/log
+apis/*/exec_log
+apis/*/result

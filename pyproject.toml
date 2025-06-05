@@ -1,22 +1,29 @@
+[build-system]
+requires = ["setuptools >=77.0.3"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "hirest"
 version = "0.1.0"
-description = "The frist automated REST API Testing tool "
-authors = [
-    { name="anonymous", email="anonymous@" }
-]
+description = "hirest"
+authors = [{ name = "anonymous"}]
 readme = "README.md"
 requires-python = "==3.10.16"
 
 dependencies = [
-    "requests" 
+    "requests >=2.32.3,<=2.33.0",
+    "tqdm >=4.67.1,<=4.68.0",
+    "python-dotenv >=1.1.0,<=1.2.0",
+    "openai >=1.83.0,<=1.84.0",
+    "pyyaml >=6.0.2,<=6.1.0",
 ]
 
-[project.optional-dependencies]
-dev = [
-    "black",
-]
+[dependency-groups]
+dev = ["black >=24.3.0,<25.0.0"]
+[tool.black]
+line-length = 88
+target-version = ["py310"]
 
-[build-system]
-requires = ["uv"] 
-build-backend = "uv.build"
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["hirest*"]

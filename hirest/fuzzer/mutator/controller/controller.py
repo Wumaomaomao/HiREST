@@ -4,7 +4,7 @@ from hirest.model.testcase import TestCase
 
 from hirest.fuzzer.input_space_manager import InputSpaceManager
 from hirest.fuzzer.mutator.operator.mutator import Mutator
-from hirest.fuzzer.mutator.strategy import SelectStrategy, RandomSelectStrategy
+from hirest.fuzzer.mutator.strategy import SISPSelectStrategy, SelectStrategy
 
 
 class MutationController(ABC):
@@ -23,7 +23,7 @@ class MutationController(ABC):
         self,
         input_space_manager: InputSpaceManager,
         mutators: list[Mutator],
-        select_strategy: SelectStrategy = RandomSelectStrategy(),
+        select_strategy: SelectStrategy = None,
     ):
         """
         Initialize the MutationController with an InputSpaceManager.
