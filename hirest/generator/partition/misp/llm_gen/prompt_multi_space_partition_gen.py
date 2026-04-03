@@ -469,7 +469,7 @@ The output should be a valid JSON object structured as follows:
                     ],
                     "parameter-value": [
                         "Parameter 3 = A"
-                    ]
+                    ],
                     "parameter-parameter": [
                         "Parameter 4 = Parameter 5"
                     ]
@@ -662,6 +662,11 @@ The output should be a valid JSON object structured as follows:
                     ],
                     "parameter-value": [],
                     "parameter-parameter": []
+                },
+                {
+                    "parameter": [],
+                    "parameter-value": [],
+                    "parameter-parameter": []
                 }
             }
         }
@@ -739,7 +744,11 @@ The output should be a valid JSON object structured as follows:
                     "username",
                     "password"
                 ],
-                "subspace1": {},
+                "subspace1": {
+                    "parameter": [],
+                    "parameter-value": [],
+                    "parameter-parameter": []
+                },
                 "subspace2": {
                     "parameter": [
                         "username",
