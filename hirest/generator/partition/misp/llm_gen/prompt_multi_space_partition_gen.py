@@ -7,14 +7,14 @@
 # 1.每个约束空间(除了第一个和最后一个）根据某条参数之间的约束关系唯一确定。
 # 2.一个API中的所有约束空间以“space1”，“space2”，“space3”，。。。，“spaceN”（N>=2）表示，每个约束空间中包含以下内容：
 #     - subspaceX（X>=1）：满足父空间约束关系的所有情况。
-#     - error_spaceX（X>=1)：违反父空间约束关系的所有情况。
-# 3.每个subspaceX(X>=1)或error_spaceX(X>=1)包含三项：
-#     - parameter: 参数存在性。即该子空间满足或违反父空间约束关系的情况中所有存在的参数。
+#     - error_spaceX（X>=0）：违反父空间约束关系的所有情况。
+# 3.每个subspaceX(X>=1)或error_spaceX(X>=0)包含三项：
+#     - parameter: 参数存在性。即该子空间满足或违反父空间约束关系的情况中所有涉及的参数。
 #     - parameter-value：参数与值之间的关系。在子空间满足或违反父空间约束关系的情况下，用自然语言描述所有参数与值之间的关系。
 #     - parameter-parameter：参数与参数之间的关系。在子空间满足或违反父空间约束关系的情况下，用自然语言描述所有参数与参数之间的关系。
-# 4.无论任何API，都必须包含以下两个space：
+# 4.无论任何API，都必须包含以下两个维度的space：
 #     - Minimum input space：该space代表该API的最小（强制）输入参数，该space名字强制定为space1，并且其中只有一个subspace1。
-#     - Expandable Parameter Space：该space包含所有不涉及任何多参数约束关系并且required字段为false的参数，该空间强制加在最后一个，并且其中只有一个subspace1.
+#     - Expandable Parameter Spaces：用于动态加入不涉及任何约束关系的可选参数。对于每个独立的可选参数，你需要为它们独立创建一个space，并且每个space必须且只能包含两个subspace, 其中一个是满足该可选参数存在的subspace，另一个是满足该可选参数不存在的error_space。
 # Input Format
 # Two JSON inputs, INPUT1 and INPUT2.
 # - INPUT1: Contains dependency relationships for parameters in each method of several APIs.
@@ -81,7 +81,7 @@ The output should be a valid JSON object structured as follows:
                 "satisfied-dependencies": "Description of dependency 1.",
                 "subspace1": {
                     "parameter": [ ... ],
-                    "parameter-value": [ ... ]
+                    "parameter-value": [ ... ],
                     "parameter-parameter": [ ... ]
                 },
                 "subspace2": {
@@ -228,13 +228,18 @@ prompt_example_misp = """
                 }
             },
             "space4": {
-                "satisfied-dependencies": "Scalable space.",
+                "satisfied-dependencies": "Scalable space for the optional parameter named 'check'.",
                 "subspace1": {
                     "parameter": [
                         "check"
                     ],
                     "parameter-value": [],
                     "parameter-parameter": []
+                },
+                "subspace2": {
+                    "parameter": [],
+                    "parameter-value": [],
+                    "parameter-parameter": []   
                 }
             }
         }
@@ -298,7 +303,11 @@ prompt_example_misp = """
             },
             "space2": {
                 "satisfied-dependencies": "The parameters username and password either exist simultaneously or do not exist at the same time.",
-                "subspace1": {},
+                "subspace1": {
+                    "parameter": [],
+                    "parameter-value": [],
+                    "parameter-parameter": []
+                },
                 "subspace2": {
                     "parameter": [
                         "username",
@@ -341,20 +350,20 @@ You now need to partition the constraint space of an API based on the constraint
 
 # Instruction
 
-1. Each constraint space (except for the first and last ones) is **uniquely** determined based on the a constraint relationship between parameters.
+1. Each constraint space (except for the 'minimum input space' and 'expandable parameter spaces') is **uniquely** determined based on the a constraint relationship between parameters.
 
 2. All constraint spaces in an API are labeled as "space1", "space2", "space3",..., "spaceN"(N>=2). Each constraint space contains the following content:
     - subspaceX (X>=1): All cases that satisfy the constraint relationship of the parent space.
-    - error_spaceX (X>=1): All cases that violate the constraints of the parent space.
+    - error_spaceX (X>=0): All cases that violate the constraints of the parent space.
 
-3. Each subspaceX (X>=1) or error_spaceX (X>=1) contains three items:
+3. Each subspaceX (X>=1) or error_spaceX (X>=0) contains three items:
     - parameter: Existence of parameter. All existing parameters in the case where the subspace satisfies or violates the constraint relationship of the parent space.
     - parameter value: The relationship between parameter and value. Describe the all relationships between parameters and values in natural language when the subspace satisfies or violates the constraints of the parent space.
     - parameter parameter: The relationship between parameters. Describe the all relationships between parameter and parameter in natural language when the subspace satisfies or violates the constraints of the parent space.
 
-4. Regardless of the API, it must include the following two spaces:
-    - minimum input space: This space represents the minimum (mandatory) input parameter of the API, with the space name forcibly set to "space1" and only have "subspace1".
-    - expandable parameter space: This space contains all parameters that do not involve any multi parameter constraint relationships and have a required field of false. This space is forcibly added to the last one, and there is only "subspace1" in it.
+4. Regardless of the API, output must include the following two spaces:
+    - minimum input space: This space represents the minimum (mandatory) input parameters of the API, with the space name forcibly set to "space1" and only have "subspace1".
+    - expandable parameter spaces: Used for dynamically adding optional parameters that have no inter-parameter constraints. You MUST create a distinct, independent space for EACH of these optional parameters. Every such space MUST contain EXACTLY TWO subspaces: A subspace where the optional parameter is present and a subspace where the optional parameter is absent.
 
 # Input Format
 
