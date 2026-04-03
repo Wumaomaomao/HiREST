@@ -6,6 +6,7 @@
 # Instruction
 # 1.每个约束空间(除了第一个和最后一个）根据某条参数之间的约束关系唯一确定。
 # 2.一个API中的所有约束空间以“space1”，“space2”，“space3”，。。。，“spaceN”（N>=2）表示，每个约束空间中包含以下内容：
+#     - involved-parameters：该约束空间涉及的参数。即该约束空间满足或违反父空间约束关系的情况中所有涉及的参数。
 #     - subspaceX（X>=1）：满足父空间约束关系的所有情况。
 #     - error_spaceX（X>=0）：违反父空间约束关系的所有情况。
 # 3.每个subspaceX(X>=1)或error_spaceX(X>=0)包含三项：
@@ -22,7 +23,7 @@
 #
 # Output Format
 # Notes
-# -确保所有依赖关系都准确反映在分区空间中。
+# - 确保所有依赖关系都准确反映在分区空间中。
 # -考虑可能违反依赖关系的子空间，以实现全面的测试覆盖率。
 # -只有在基于依赖关系划分的空间中才能存在错误空间，即在最小（强制）输入空间和可扩展输入空间中没有错误空间。
 # -必须注意的是，INPUT1中每条消息中“参数值”和“参数参数”之间的两类差异很容易混淆。您需要确认逻辑符号的左侧和右侧是参数还是值。
@@ -71,6 +72,7 @@ The output should be a valid JSON object structured as follows:
         "post": {
             "space1": {
                 "satisfied-dependencies": "Minimum input space.",
+                "involved-parameters": [ ... ],
                 "subspace1": {
                     "parameter": [ ... ],
                     "parameter-value": [ ... ],
@@ -79,6 +81,7 @@ The output should be a valid JSON object structured as follows:
             },
             "space2": {
                 "satisfied-dependencies": "Description of dependency 1.",
+                "involved-parameters": [ ... ],
                 "subspace1": {
                     "parameter": [ ... ],
                     "parameter-value": [ ... ],
@@ -169,6 +172,9 @@ prompt_example_misp = """
         "post": {
             "space1": {
                 "satisfied-dependencies": "Minimum input space.",
+                "involved-parameters": [
+                    "sex"
+                ],
                 "subspace1": {
                     "parameter": [
                         "sex"
@@ -179,6 +185,10 @@ prompt_example_misp = """
             },
             "space2": {
                 "satisfied-dependencies": "Either the parameter male or the parameter female is required.",
+                "involved-parameters": [
+                    "male",
+                    "female"
+                ],
                 "subspace1": {
                     "parameter": [
                         "male"
@@ -206,6 +216,10 @@ prompt_example_misp = """
             },
             "space3": {
                 "satisfied-dependencies": "The parameter rule is only available when the parameter sex is set to auto.",
+                "involved-parameters": [
+                    "rule",
+                    "sex"
+                ],
                 "subspace1": {
                     "parameter": [
                         "rule"
@@ -229,6 +243,9 @@ prompt_example_misp = """
             },
             "space4": {
                 "satisfied-dependencies": "Scalable space for the optional parameter named 'check'.",
+                "involved-parameters": [
+                    "check"
+                ],
                 "subspace1": {
                     "parameter": [
                         "check"
@@ -293,6 +310,9 @@ prompt_example_misp = """
         "get": {
             "space1": {
                 "satisfied-dependencies": "Minimum input space.",
+                "involved_parameters": [
+                    "cookie"
+                ],
                 "subspace1": {
                     "parameter": [
                         "cookie"
@@ -303,6 +323,10 @@ prompt_example_misp = """
             },
             "space2": {
                 "satisfied-dependencies": "The parameters username and password either exist simultaneously or do not exist at the same time.",
+                "involved-parameters": [
+                    "username",
+                    "password"
+                ],
                 "subspace1": {
                     "parameter": [],
                     "parameter-value": [],
@@ -353,6 +377,7 @@ You now need to partition the constraint space of an API based on the constraint
 1. Each constraint space (except for the 'minimum input space' and 'expandable parameter spaces') is **uniquely** determined based on the a constraint relationship between parameters.
 
 2. All constraint spaces in an API are labeled as "space1", "space2", "space3",..., "spaceN"(N>=2). Each constraint space contains the following content:
+    - involved-parameters: The parameter scope for this constraint space. It explicitly lists all parameters participating in the constraint relationship.
     - subspaceX (X>=1): All cases that satisfy the constraint relationship of the parent space.
     - error_spaceX (X>=0): All cases that violate the constraints of the parent space.
 
@@ -424,6 +449,7 @@ The output should be a valid JSON object structured as follows:
         "post": {
             "space1": {
                 "satisfied-dependencies": "Minimum input space.",
+                "involved-parameters": [ Parameter 1, Parameter 2, ... ],
                 "subspace1": {
                     "parameter": [
                         "Parameter 1",
@@ -436,6 +462,7 @@ The output should be a valid JSON object structured as follows:
             },
             "space2": {
                 "satisfied-dependencies": "Description of dependency 1.",
+                "involved-parameters": [ Parameter 3, Parameter 4, Parameter 5, ... ],
                 "subspace1": {
                     "parameter": [
                         "Parameter 4"
@@ -478,6 +505,7 @@ The output should be a valid JSON object structured as follows:
         "get": {
             "space1": {
                 "satisfied-dependencies": "Minimum input space.",
+                "involved-parameters": [ ... ],
                 "subspace1": {
                     ...
                 }
@@ -554,6 +582,9 @@ The output should be a valid JSON object structured as follows:
         "post": {
             "space1": {
                 "satisfied-dependencies": "Minimum input space.",
+                "involved-parameters": [
+                    "sex"
+                ],
                 "subspace1": {
                     "parameter": [
                         "sex"
@@ -564,6 +595,10 @@ The output should be a valid JSON object structured as follows:
             },
             "space2": {
                 "satisfied-dependencies": "Either the parameter male or the parameter female is required.",
+                "involved-parameters": [
+                    "male",
+                    "female"
+                ],
                 "subspace1": {
                     "parameter": [
                         "male"
@@ -591,10 +626,14 @@ The output should be a valid JSON object structured as follows:
             },
             "space3": {
                 "satisfied-dependencies": "The parameter rule is only available when the parameter sex is set to auto.",
+                "involved-parameters": [
+                    "rule",
+                    "sex"
+                ],
                 "subspace1": {
                     "parameter": [
                         "rule"
-                    ]
+                    ],
                     "parameter-value": [
                         "sex = auto"
                     ],
@@ -614,6 +653,9 @@ The output should be a valid JSON object structured as follows:
             },
             "space4": {
                 "satisfied-dependencies": "Scalable space.",
+                "involved-parameters": [
+                    "check"
+                ],
                 "subspace1": {
                     "parameter": [
                         "check"
@@ -680,6 +722,9 @@ The output should be a valid JSON object structured as follows:
         "get": {
             "space1": {
                 "satisfied-dependencies": "Minimum input space.",
+                "involved-parameters": [
+                    "cookie"
+                ],
                 "subspace1": {
                     "parameter": [
                         "cookie"
@@ -690,6 +735,10 @@ The output should be a valid JSON object structured as follows:
             },
             "space2": {
                 "satisfied-dependencies": "The parameters username and password either exist simultaneously or do not exist at the same time.",
+                "involved-parameters": [
+                    "username",
+                    "password"
+                ],
                 "subspace1": {},
                 "subspace2": {
                     "parameter": [
