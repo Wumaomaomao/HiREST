@@ -11,8 +11,9 @@
 #     - 类型错误。输入的参数类型非定义的类型。
 #     - 语义错误。违反业务规则的输入，导致不能正确实现API业务逻辑。
 #     - 空值。输入为空。
-# 3.每个参数至少提供3个有效输入空间和3个无效输入空间，每个空间至少提供6个空间内的示例值，这些值可以随机生成，但必须符合所属空间的约束。
-# 4.在每个输入空间的示例值中，您必须只提供有效的JSON。不要包含像`.repeat（）`这样的代码表达式。所有字符串都必须是完全展开的文字值。JSON的任何部分都不允许使用JavaScript、Python或伪代码。
+# 3.当参数的required属性为true时，必须在无效输入空间中提供<MISS_KEY>作为input_space_category的一个类别，描述缺失该参数会导致的异常或错误。而当参数的required属性为false时，必须在有效输入空间中提供<MISS_KEY>作为input_space_category的一个类别，描述缺失该参数时API的正常响应。
+# 4.每个参数至少提供3个有效输入空间和3个无效输入空间，每个空间至少提供6个空间内的示例值，这些值可以随机生成，但必须符合所属空间的约束。
+# 5.在每个输入空间的示例值中，您必须只提供有效的JSON。不要包含像`.repeat（）`这样的代码表达式。所有字符串都必须是完全展开的文字值。JSON的任何部分都不允许使用JavaScript、Python或伪代码。
 # Input Format
 # 一共有两个输入，分别为INPUT1和INPUT2：
 # INPUT1提供了API的逻辑功能和参数约束信息：
@@ -172,6 +173,13 @@ prompt_example_sisp = r"""
                     true,
                     null
                 ]
+            },
+            {
+                "input_space_category": "<MISS_KEY>",
+                "description": "The parameter UserId is missing from the request.",
+                "representative_samples": [
+                    null
+                ]
             }
         ],
         "operationId": null,
@@ -204,6 +212,13 @@ prompt_example_sisp = r"""
                     "A1b2C3d4E5f6",
                     "Aa1"
                 ]
+            },
+            {
+                "input_space_category": "<MISS_KEY>",
+                "description": "The parameter password is missing from the request.",
+                "representative_samples": [
+                    null
+                ]
             }
         ],
         "operationId": null,
@@ -232,6 +247,13 @@ prompt_example_sisp = r"""
                 "representative_samples": [
                     "Once upon a time, in a land far, far away, there lived a king who ruled with wisdom and kindness.",
                     "In the midst of the bustling city, there was a small, quaint caf\u00e9 that served the best coffee in town."
+                ]
+            },
+            {
+                "input_space_category": "<MISS_KEY>",
+                "description": "The parameter introduction is missing from the request.",
+                "representative_samples": [
+                    null
                 ]
             }
         ],
@@ -282,6 +304,10 @@ You need to partition the single parameter input space for all parameters in the
     - **Type error**: The input parameter type is not a defined type.
     - **Semantic error**: Input that violates business rules leads to incorrect implementation of API business logic.
     - **Empty value**: The input is empty.
+
+3. Handle <MISS_KEY> as an input_space_category based on the parameter's required attribute:
+    - If true: Place in the invalid input space, describing the error/exception caused by its omission.
+    - If false: Place in the valid input space, describing the normal API response when omitted.
 
 3. Each parameter should provide at least 3 valid input spaces and 3 invalid input spaces, with at least 6 sample values in each space. These values can be randomly generated, but must comply with the constraints of the space they belong to.
 
