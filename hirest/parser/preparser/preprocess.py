@@ -91,10 +91,15 @@ class Preprocess:
         if schema_type == "object":
             for prop, prop_schema in schema.get("properties", {}).items():
                 full_name = f"{prefix}.{prop}" if prefix else prop
+                # fields.extend(self.extract_schema_fields(
+                #     prop_schema,
+                #     prefix=full_name,
+                #     required_fields=prop_schema.get("required", [])
+                # ))
                 fields.extend(self.extract_schema_fields(
                     prop_schema,
                     prefix=full_name,
-                    required_fields=prop_schema.get("required", [])
+                    required_fields=required_fields
                 ))
         elif schema_type == "array":
             items_schema = schema.get("items", {})

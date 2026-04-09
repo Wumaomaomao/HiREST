@@ -91,7 +91,7 @@ class Fuzzer:
                 except Exception as e:
                     logger.error(
                         f"Error raised during the fuzzing process: {e}", exc_info=True
-                    )
+                    )                    
                     continue
 
         logger.info(

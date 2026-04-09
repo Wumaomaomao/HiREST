@@ -1,3 +1,4 @@
+import json
 import logging, logging.config, argparse
 from datetime import datetime
 from pathlib import Path
@@ -35,7 +36,7 @@ class SimpleJsonFormatter(logging.Formatter):
         log_record = record.getMessage()
         return json.dumps(log_record, indent=4)
 
-def config_logging(service_name: str):
+def config_logging(service_name: str, exec_log_only: bool = False):
     service_name = service_name.lower()
     date = datetime.now().strftime("%Y-%m-%d")
     time = datetime.now().strftime("%H%M%S")
@@ -51,6 +52,10 @@ def config_logging(service_name: str):
     result_dir = Path(f"apis/{service_name}/result/{date}")
     result_dir.mkdir(parents=True, exist_ok=True)
     result_filepath = result_dir / f"{service_name}_result_{date}_{time}.json"
+
+    hirest_handlers = ["console", "file"]
+    if exec_log_only:
+        hirest_handlers = []
 
     LOGGING_CONFIG = {
         "version": 1,
@@ -94,7 +99,7 @@ def config_logging(service_name: str):
         "loggers": {
             "hirest": {
                 "level": "DEBUG",
-                "handlers": ["console", "file"],
+                "handlers": hirest_handlers,
                 "propagate": False,
             },
             "hirest.fuzzer.executor": {
@@ -137,7 +142,7 @@ SERVICE = {
     }
 }
 
-base_path = "/root/ase/HiREST"
+base_path = "/root/HiREST"
 
 
 if __name__ == "__main__":
@@ -145,11 +150,12 @@ if __name__ == "__main__":
     parser.add_argument('--service', type=str, required=True, help='Name of the service to fuzz')
     parser.add_argument('--time_limit', type=int, default=3600, help='Time limit for fuzzing (seconds)')
     parser.add_argument('--requests', type=int, default=1000, help='Maximum number of requests')
+    parser.add_argument('--exec-log-only', action='store_true', help='Disable normal logs and only keep exec_log output')
     args = parser.parse_args()
 
-    def fuzzing_service(service_name: str, max_requests: int, time_limit: int):
+    def fuzzing_service(service_name: str, max_requests: int, time_limit: int, exec_log_only: bool = False):
         base_url = SERVICE[service_name]["base_url"]
-        config_logging(service_name)
+        config_logging(service_name, exec_log_only=exec_log_only)
         logger = logging.getLogger(__name__)
 
         input_space_manager = InputSpaceManager()
@@ -188,5 +194,5 @@ if __name__ == "__main__":
 
         fuzzer.start()
 
-    fuzzing_service(args.service, args.requests, args.time_limit)
+    fuzzing_service(args.service, args.requests, args.time_limit, args.exec_log_only)
 

@@ -84,7 +84,16 @@ def single_space_partition_gen_every(operation_data_path: str, llm_und_data: lis
     for idx, item in enumerate(operation_data, start=1):
         print(f"\n\33[34m[offline][INFO] Processing API {idx}/{len(operation_data)}: {item['raw_doc_slide']['method'].lower()} {item['raw_doc_slide']['path']}\33[0m")
         param_data = json.dumps(item["param_list"])
-        matched = next((api for api in llm_und_data if api["api_name"] == f"{item['raw_doc_slide']['method'].lower()} {item['raw_doc_slide']['path']}"), None)
+        target_api_name = f"{item['raw_doc_slide']['method'].lower()} {item['raw_doc_slide']['path']}"
+        matched = next(
+            (
+                api_item
+                for api_item in (llm_und_data or [])
+                if isinstance(api_item, dict)
+                and (api_item.get("api_name") or api_item.get("api_name:")) == target_api_name
+            ),
+            None,
+        )
         llm_und = json.dumps(matched)
         single_task_prompt = f"""
 
@@ -100,7 +109,7 @@ def single_space_partition_gen_every(operation_data_path: str, llm_und_data: lis
 
         """.strip()
 
-        LLM_MODEL: str = "gpt-4o"
+        LLM_MODEL: str = "gpt-5"
         messages: list[dict[str, str]] = [
             {
                 "role": "system",

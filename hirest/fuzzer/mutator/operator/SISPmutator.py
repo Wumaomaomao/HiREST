@@ -124,31 +124,60 @@ class SISPMutator(Mutator):
             
         op_name = testcase.operation.op_name
         param_name = sisp_ss.param_name
-
-        mss = testcase.query_mixed_subspace_by_param(param_name, type)
-
-        if mss == []:
-            logger.warning(
-                f"No MixedSingleSpace found for operation '{op_name}' and parameter '{param_name}' in subspace."
-            )
-            return None
-
-        # avoid selecting the same category as the original SISP_SS
-        selectable_categories = []
-        for item in mss:
-            if item.input_space_category != sisp_ss.category:
-                selectable_categories.append(item.input_space_category)
         
-        if len(selectable_categories) == 0:
-            logger.warning(
-                f"No selectable categories found for operation '{op_name}' and parameter '{param_name}'."
-            )
-            return sisp_ss
+        """
+        valid mutation: sample a valid effective sisp_ss from matched subspace.
+        """
+        if type == "valid":
+            effective_sisps = input_space_manager._resolve_effective_sisp_ss(testcase, param_name)
+            selected_sisps = [sisp for sisp in effective_sisps if sisp.category != sisp_ss.category]
+            if not selected_sisps:
+                logger.warning(
+                    f"No alternative valid SISP_SS found for operation '{op_name}' and parameter '{param_name}' in subspace."
+                )
+                return sisp_ss
+            logger.debug(f"Found {len(selected_sisps)} alternative valid SISP_SS for operation '{op_name}' and parameter '{param_name}' in subspace.")
+            new_sisp_ss = random.choice(selected_sisps)
+            logger.debug(f"Selected new valid SISP_SS '{new_sisp_ss}' for operation '{op_name}'")
+            return new_sisp_ss
+        else:
+            selected_invalid_sisp_ss_list = input_space_manager.query_invalid_sisp_ss_by_param_name(testcase, param_name)
+            if not selected_invalid_sisp_ss_list or len(selected_invalid_sisp_ss_list) == 0:
+                logger.warning(
+                    f"No invalid SISP_SS found for operation '{op_name}' and parameter '{param_name}' in subspace."
+                )
+                return sisp_ss
+            else:
+                selected_sisp_ss = random.choice(selected_invalid_sisp_ss_list)
+                logger.debug(f"Selected new invalid SISP_SS '{selected_sisp_ss}' for operation '{op_name}' and parameter '{param_name}' in subspace.")
+                return selected_sisp_ss
         
-        choice = random.choice(selectable_categories)
-        new_sisp_ss = input_space_manager.sisps[op_name][
-            param_name
-        ].select_ss_by_category(choice)
+        
+
+        # mss = testcase.query_mixed_subspace_by_param(param_name, type)
+                               
+        # if mss == []:
+        #     logger.warning(
+        #         f"No MixedSingleSpace found for operation '{op_name}' and parameter '{param_name}' in subspace."
+        #     )
+        #     return None
+
+        # # avoid selecting the same category as the original SISP_SS
+        # selectable_categories = []
+        # for item in mss:
+        #     if item.input_space_category != sisp_ss.category:
+        #         selectable_categories.append(item.input_space_category)
+        
+        # if len(selectable_categories) == 0:
+        #     logger.warning(
+        #         f"No selectable categories found for operation '{op_name}' and parameter '{param_name}'."
+        #     )
+        #     return sisp_ss
+        
+        # choice = random.choice(selectable_categories)
+        # new_sisp_ss = input_space_manager.sisps[op_name][
+        #     param_name
+        # ].select_ss_by_category(choice)
 
         return new_sisp_ss
     

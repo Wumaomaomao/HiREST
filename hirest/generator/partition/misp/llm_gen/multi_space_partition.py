@@ -42,7 +42,7 @@ def multi_space_partition_gen(dep: dict, op_data_path: str) -> dict:
     
         """.strip()
 
-        LLM_MODEL: str = "gpt-4o"
+        LLM_MODEL: str = "gpt-5"
         messages: list[dict[str, str]] = [
             {
                 "role": "system",

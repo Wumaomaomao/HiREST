@@ -33,7 +33,7 @@ def get_swagger_understanding_s(data: dict, service_knowl: str) -> list:
 
                 """.strip()
 
-            LLM_MODEL: str = "gpt-4o"
+            LLM_MODEL: str = "gpt-5"
             messages: list[dict[str, str]] = [
                 {
                     "role": "system",
@@ -47,6 +47,11 @@ def get_swagger_understanding_s(data: dict, service_knowl: str) -> list:
 
             resp = OpenAIChatLLM(LLM_MODEL).invoke(messages)
             result = retry(resp, 1)
+
+            # Normalize occasional key typo from LLM outputs (e.g., "api_name:").
+            if isinstance(result, dict):
+                if "api_name" not in result and "api_name:" in result:
+                    result["api_name"] = result.pop("api_name:")
             results.append(result)
 
     print(f"\n\033[34m[offline][INFO] llm understand for sisp:\033[0m\n{results}")

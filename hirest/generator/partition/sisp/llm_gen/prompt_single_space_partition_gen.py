@@ -305,7 +305,7 @@ You need to partition the single parameter input space for all parameters in the
     - **Semantic error**: Input that violates business rules leads to incorrect implementation of API business logic.
     - **Empty value**: The input is empty.
 
-3. Handle <MISS_KEY> as an input_space_category based on the parameter's required attribute:
+3. Handle <MISS_KEY> as an input_space_category based on the parameter's **required attribute**:
     - If true: Place in the invalid input space, describing the error/exception caused by its omission.
     - If false: Place in the valid input space, describing the normal API response when omitted.
 

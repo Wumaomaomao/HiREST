@@ -18,7 +18,12 @@ class MISPMutator(Mutator):
         # Check if the site is in the matched MISP spaces of the test case
         input_space_manager: InputSpaceManager = kwargs.get("input_space_manager")
         site: MISP_SS = kwargs.get("site")
-
+        """
+        fix in 2026/4/5:
+        for valid mutation, all misp_ss need be concerned.
+        """
+        # logger.debug(f"For valid muation, all misp_ss need be concerned.")
+        # return testcase
         if not input_space_manager:
             logger.warning("Input space manager is not provided.")
             return testcase

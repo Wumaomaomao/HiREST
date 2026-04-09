@@ -17,7 +17,7 @@ def get_swagger_understanding_service(data: dict) -> str:
 
     """.strip()
 
-    LLM_MODEL: str = "gpt-4o"
+    LLM_MODEL: str = "gpt-5"
     messages: list[dict[str, str]] = [
         {
             "role": "system",

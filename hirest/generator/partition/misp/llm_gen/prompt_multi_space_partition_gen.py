@@ -387,7 +387,7 @@ You now need to partition the constraint space of an API based on the constraint
     - parameter parameter: The relationship between parameters. Describe the all relationships between parameter and parameter in natural language when the subspace satisfies or violates the constraints of the parent space.
 
 4. Regardless of the API, output must include the following two spaces:
-    - minimum input space: This space represents the minimum (mandatory) input parameters of the API, with the space name forcibly set to "space1" and only have "subspace1".
+    - minimum input space: This space represents the minimum **required** input parameters of the API, with the space name forcibly set to "space1" and only have "subspace1".
     - expandable parameter spaces: Used for dynamically adding optional parameters that have no inter-parameter constraints. You MUST create a distinct, independent space for EACH of these optional parameters. Every such space MUST contain EXACTLY TWO subspaces: A subspace where the optional parameter is present and a subspace where the optional parameter is absent.
 
 # Input Format

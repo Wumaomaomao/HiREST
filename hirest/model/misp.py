@@ -59,6 +59,9 @@ class MISP_SS(BaseModel):
     satisfied_dependencies: str = Field(
         ..., description="The satisfied dependencies of the space."
     )
+    involved_parameters: List[str] = Field(
+        ..., description="The parameters involved in the space."
+    )
     subspace_list: List[Subspace] = Field(
         ..., description="The subspaces and error_spaces of the space."
     )

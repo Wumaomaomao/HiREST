@@ -95,10 +95,35 @@ class TestCase(BaseModel):
         """Create a new test case based on the operation template with empty request content."""
         return cls(
             operation=testcase.operation,
-            matched_MISP=testcase.matched_MISP,
-            matched_Subspace=testcase.matched_Subspace,
-            matched_SISP=testcase.matched_SISP,
+            matched_MISP=testcase.matched_MISP.copy() if testcase.matched_MISP else None,
+            matched_Subspace=testcase.matched_Subspace.copy() if testcase.matched_Subspace else None,
+            matched_SISP=testcase.matched_SISP.copy() if testcase.matched_SISP else None,
         )
+    
+    @classmethod
+    def backup(cls, testcase: "TestCase") -> "TestCase":
+        """Create a backup of the test case, this is used for mutation, because the mutation may fail, we need to backup the original test case."""
+        return cls(
+            operation=testcase.operation,
+            matched_MISP=testcase.matched_MISP.copy() if testcase.matched_MISP else None,
+            matched_Subspace=testcase.matched_Subspace.copy() if testcase.matched_Subspace else None,
+            matched_SISP=testcase.matched_SISP.copy() if testcase.matched_SISP else None,
+            param_vals=testcase.param_vals.copy() if testcase.param_vals else None,
+            request=testcase.request.copy() if testcase.request else None,
+            response=testcase.response.copy() if testcase.response else None,
+            mutation_type=testcase.mutation_type,
+        )
+    
+    def restore(self, backup: "TestCase") -> None:
+        """Restore the test case from the backup, this is used for mutation, because the mutation may fail, we need to restore the original test case."""
+        self.operation = backup.operation
+        self.matched_MISP = backup.matched_MISP.copy() if backup.matched_MISP else None
+        self.matched_Subspace = backup.matched_Subspace.copy() if backup.matched_Subspace else None
+        self.matched_SISP = backup.matched_SISP.copy() if backup.matched_SISP else None
+        self.param_vals = backup.param_vals.copy() if backup.param_vals else None
+        self.request = backup.request.copy() if backup.request else None
+        self.response = backup.response.copy() if backup.response else None
+        self.mutation_type = backup.mutation_type if backup.mutation_type else None
 
     def generate_param_vals(self) -> None:
         """Generate parameter values for the test case based on the matched SISP spaces."""
@@ -178,7 +203,28 @@ class TestCase(BaseModel):
             param_name (str): The name of the parameter.
             val (Any): The value to be set.
         """
-        self.param_vals[param_name] = val
+        if val == "<MISS_KEY>":
+            logger.debug(f'Set the parameter: {param_name} to "<MISS_KEY>", which indicates the parameter key is missing in the request.')
+            self.param_vals.pop(param_name, None)
+        else:
+            self.param_vals[param_name] = val
+
+    
+    def query_mss_by_param(self, param_name: str) -> List[MixedSingleSpace]:
+        """Query the mixed single space list by parameter name.
+        Args:
+            param_name (str): The name of the parameter.
+        Returns:
+            List[MixedSingleSpace]: The mixed single space with the specified parameter name.
+        """
+        if self.matched_Subspace is None:
+            return []
+
+        mss_list = list[MixedSingleSpace]()
+        for entry in self.matched_Subspace.values():
+            mss_list.extend(entry.query_mss_by_param(param_name))
+
+        return mss_list
 
 
 class TestCasePool(BaseModel):

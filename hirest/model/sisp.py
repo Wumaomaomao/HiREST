@@ -23,10 +23,14 @@ class SISP_SS(BaseModel):
 
     def generate_val(self) -> Any:
         """generate a sample value from the SISP SS.
+        <MISS_KEY> is a special category that indicates the parameter key is missing in the request, and the value is set to "<MISS_KEY>".
         Returns:
             Any: the generated sample value.
         """
-        return random.choice(self.samples)
+        if self.category == "<MISS_KEY>":
+            return "<MISS_KEY>"
+        else:
+            return random.choice(self.samples)
 
 
 class SISP(BaseModel):
