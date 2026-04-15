@@ -1,0 +1,934 @@
+[
+    {
+        "method": "get",
+        "url": "/api/calc/{op}/{arg1}/{arg2}",
+        "op_name": "get /api/calc/{op}/{arg1}/{arg2}",
+        "param_list": [
+            {
+                "param_name": "arg1",
+                "param_type": "path",
+                "val_type": "number",
+                "is_required": true,
+                "description": "arg1"
+            },
+            {
+                "param_name": "arg2",
+                "param_type": "path",
+                "val_type": "number",
+                "is_required": true,
+                "description": "arg2"
+            },
+            {
+                "param_name": "op",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "op"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/api/calc/{op}/{arg1}/{arg2}",
+            "summary": "calc",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "arg1",
+                    "in": "path",
+                    "description": "arg1",
+                    "required": true,
+                    "schema": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "example": 0.123
+                },
+                {
+                    "name": "arg2",
+                    "in": "path",
+                    "description": "arg2",
+                    "required": true,
+                    "schema": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "example": 0.123
+                },
+                {
+                    "name": "op",
+                    "in": "path",
+                    "description": "op",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "calcUsingGET"
+        },
+        "dependencies": [
+            "If the parameter op denotes a division-like operation (e.g., divide, '/', mod, '%'), then arg2 must not be 0;",
+            "If the parameter op denotes an integer-only operation (e.g., mod, gcd), then both arg1 and arg2 must be integers (no fractional part);",
+            "If the parameter op denotes a logarithm with base arg2 (e.g., log), then arg1 must be greater than 0, and arg2 must be greater than 0 and not equal to 1;",
+            "If the parameter op denotes an exponent/root where a negative base with a non-integer exponent is invalid in the real domain, then when arg1 is negative, arg2 must be an integer;"
+        ]
+    },
+    {
+        "method": "get",
+        "url": "/api/cookie/{name}/{val}/{site}",
+        "op_name": "get /api/cookie/{name}/{val}/{site}",
+        "param_list": [
+            {
+                "param_name": "name",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "name"
+            },
+            {
+                "param_name": "site",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "site"
+            },
+            {
+                "param_name": "val",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "val"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/api/cookie/{name}/{val}/{site}",
+            "summary": "cookie",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "name",
+                    "in": "path",
+                    "description": "name",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                },
+                {
+                    "name": "site",
+                    "in": "path",
+                    "description": "site",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                },
+                {
+                    "name": "val",
+                    "in": "path",
+                    "description": "val",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "cookieUsingGET"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "get",
+        "url": "/api/costfuns/{i}/{s}",
+        "op_name": "get /api/costfuns/{i}/{s}",
+        "param_list": [
+            {
+                "param_name": "i",
+                "param_type": "path",
+                "val_type": "integer",
+                "is_required": true,
+                "description": "i"
+            },
+            {
+                "param_name": "s",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "s"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/api/costfuns/{i}/{s}",
+            "summary": "costfuns",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "i",
+                    "in": "path",
+                    "description": "i",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "example": 123
+                },
+                {
+                    "name": "s",
+                    "in": "path",
+                    "description": "s",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "costfunsUsingGET"
+        },
+        "dependencies": [
+            "The allowed values or format of s depend on i (i selects a specific cost function or mode that constrains which s values are valid);"
+        ]
+    },
+    {
+        "method": "get",
+        "url": "/api/dateparse/{dayname}/{monthname}",
+        "op_name": "get /api/dateparse/{dayname}/{monthname}",
+        "param_list": [
+            {
+                "param_name": "dayname",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "dayname"
+            },
+            {
+                "param_name": "monthname",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "monthname"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/api/dateparse/{dayname}/{monthname}",
+            "summary": "dateParse",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "dayname",
+                    "in": "path",
+                    "description": "dayname",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                },
+                {
+                    "name": "monthname",
+                    "in": "path",
+                    "description": "monthname",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "dateParseUsingGET"
+        },
+        "dependencies": [
+            "The language/locale of dayname and monthname must be consistent (if dayname is provided in a given language, monthname must be in the same language);"
+        ]
+    },
+    {
+        "method": "get",
+        "url": "/api/filesuffix/{directory}/{file}",
+        "op_name": "get /api/filesuffix/{directory}/{file}",
+        "param_list": [
+            {
+                "param_name": "directory",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "directory"
+            },
+            {
+                "param_name": "file",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "file"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/api/filesuffix/{directory}/{file}",
+            "summary": "fileSuffix",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "directory",
+                    "in": "path",
+                    "description": "directory",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                },
+                {
+                    "name": "file",
+                    "in": "path",
+                    "description": "file",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "fileSuffixUsingGET"
+        },
+        "dependencies": [
+            "The file path specified by file must reside under the directory specified by directory; otherwise the suffix cannot be computed;",
+            "directory and file must be combined without duplicate or missing path separators (avoid directory ending with a separator together with file starting with a separator, and avoid neither providing a separator);"
+        ]
+    },
+    {
+        "method": "get",
+        "url": "/api/notypevar/{i}/{s}",
+        "op_name": "get /api/notypevar/{i}/{s}",
+        "param_list": [
+            {
+                "param_name": "i",
+                "param_type": "path",
+                "val_type": "integer",
+                "is_required": true,
+                "description": "i"
+            },
+            {
+                "param_name": "s",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "s"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/api/notypevar/{i}/{s}",
+            "summary": "notyPevar",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "i",
+                    "in": "path",
+                    "description": "i",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "example": 123
+                },
+                {
+                    "name": "s",
+                    "in": "path",
+                    "description": "s",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "notyPevarUsingGET"
+        },
+        "dependencies": [
+            "The allowed values or format of s depend on i (i selects a variant that constrains which s values are valid);"
+        ]
+    },
+    {
+        "method": "get",
+        "url": "/api/ordered4/{w}/{x}/{z}/{y}",
+        "op_name": "get /api/ordered4/{w}/{x}/{z}/{y}",
+        "param_list": [
+            {
+                "param_name": "w",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "w"
+            },
+            {
+                "param_name": "x",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "x"
+            },
+            {
+                "param_name": "y",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "y"
+            },
+            {
+                "param_name": "z",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "z"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/api/ordered4/{w}/{x}/{z}/{y}",
+            "summary": "ordered4",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "w",
+                    "in": "path",
+                    "description": "w",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                },
+                {
+                    "name": "x",
+                    "in": "path",
+                    "description": "x",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                },
+                {
+                    "name": "y",
+                    "in": "path",
+                    "description": "y",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                },
+                {
+                    "name": "z",
+                    "in": "path",
+                    "description": "z",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "ordered4UsingGET"
+        },
+        "dependencies": [
+            "The four parameters are expected to satisfy a predefined ordering constraint; specifically, their values should be in nondecreasing lexicographic order w <= x <= y <= z;"
+        ]
+    },
+    {
+        "method": "get",
+        "url": "/api/pat/{txt}",
+        "op_name": "get /api/pat/{txt}",
+        "param_list": [
+            {
+                "param_name": "txt",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "txt"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/api/pat/{txt}",
+            "summary": "regex",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "txt",
+                    "in": "path",
+                    "description": "txt",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "regexUsingGET"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "get",
+        "url": "/api/pat/{txt}/{pat}",
+        "op_name": "get /api/pat/{txt}/{pat}",
+        "param_list": [
+            {
+                "param_name": "pat",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "pat"
+            },
+            {
+                "param_name": "txt",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "txt"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/api/pat/{txt}/{pat}",
+            "summary": "pat",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "pat",
+                    "in": "path",
+                    "description": "pat",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                },
+                {
+                    "name": "txt",
+                    "in": "path",
+                    "description": "txt",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "patUsingGET"
+        },
+        "dependencies": [
+            "If pat is provided, it must be a syntactically valid regular expression that can be applied to txt; invalid patterns in pat make the (txt, pat) combination invalid;"
+        ]
+    },
+    {
+        "method": "get",
+        "url": "/api/text2txt/{word1}/{word2}/{word3}",
+        "op_name": "get /api/text2txt/{word1}/{word2}/{word3}",
+        "param_list": [
+            {
+                "param_name": "word1",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "word1"
+            },
+            {
+                "param_name": "word2",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "word2"
+            },
+            {
+                "param_name": "word3",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "word3"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/api/text2txt/{word1}/{word2}/{word3}",
+            "summary": "text2txt",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "word1",
+                    "in": "path",
+                    "description": "word1",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                },
+                {
+                    "name": "word2",
+                    "in": "path",
+                    "description": "word2",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                },
+                {
+                    "name": "word3",
+                    "in": "path",
+                    "description": "word3",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "text2txtUsingGET"
+        },
+        "dependencies": [
+            "If the operation replaces word1 with word2 within word3, then for a meaningful change word1 should occur within word3; otherwise the (word1, word3) combination yields no modification;",
+            "If word1 equals word2, the substitution is a no-op and the (word1, word2) combination produces no change to word3;"
+        ]
+    },
+    {
+        "method": "get",
+        "url": "/api/title/{sex}/{title}",
+        "op_name": "get /api/title/{sex}/{title}",
+        "param_list": [
+            {
+                "param_name": "sex",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "sex"
+            },
+            {
+                "param_name": "title",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "title"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/api/title/{sex}/{title}",
+            "summary": "title",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "sex",
+                    "in": "path",
+                    "description": "sex",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                },
+                {
+                    "name": "title",
+                    "in": "path",
+                    "description": "title",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "abc"
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "titleUsingGET"
+        },
+        "dependencies": [
+            "The allowed values of title depend on sex (e.g., if sex is male then titles like 'Mr' are allowed while female-specific titles are not; if sex is female then titles like 'Ms/Mrs/Miss' are allowed while male-specific titles are not);",
+            "If title is gender-neutral (e.g., 'Mx'), it may be used with any value of sex;"
+        ]
+    }
+]

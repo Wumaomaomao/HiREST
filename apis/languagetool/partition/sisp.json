@@ -1,0 +1,1044 @@
+[
+    {
+        "op_name": "post /check",
+        "type": "string",
+        "param_name": "text",
+        "format": [
+            "^[\\s\\S]*$"
+        ],
+        "valid": [
+            {
+                "param_name": "text",
+                "category": "Plain text sentences",
+                "description": "Typical plain text content to be checked.",
+                "samples": [
+                    "Hello, world.",
+                    "This is a test.",
+                    "I like apples.",
+                    "Please check this.",
+                    "Grammar check sample.",
+                    "Short text sample."
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "Text containing markup literals",
+                "description": "Text that includes markup tags; markup is ignored during checks.",
+                "samples": [
+                    "An <b>example</b>.",
+                    "<p>Hello</p>",
+                    "A <i>simple</i> test.",
+                    "<a href=\"#\">link</a>",
+                    "<div>Text</div>",
+                    "Line with <br> tag."
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "Multilingual and Unicode text",
+                "description": "Unicode text from various languages.",
+                "samples": [
+                    "Olá mundo!",
+                    "Über den Wolken.",
+                    "こんにちは世界",
+                    "Привет, мир.",
+                    "Café au lait.",
+                    "¡Hola, señor!",
+                    "مرحبا بالعالم",
+                    "안녕하세요 세계"
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "<MISS_KEY>",
+                "description": "The 'text' parameter is omitted. Valid only if 'data' is provided in the same request.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "text",
+                "category": "Non-string type",
+                "description": "Values that are not strings.",
+                "samples": [
+                    123,
+                    0,
+                    true,
+                    false,
+                    12.5,
+                    {
+                        "a": 1
+                    }
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "Empty or whitespace-only string",
+                "description": "Empty or whitespace-only strings provide no content to check.",
+                "samples": [
+                    "",
+                    " ",
+                    "  ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "Control characters only",
+                "description": "Strings consisting solely of control characters.",
+                "samples": [
+                    "\u0000",
+                    "\u0001",
+                    "\u0002",
+                    "\u0007",
+                    "\b",
+                    "\u001f"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "post /check",
+        "type": "string",
+        "param_name": "data",
+        "format": [
+            "stringified JSON with 'annotation' array"
+        ],
+        "valid": [
+            {
+                "param_name": "data",
+                "category": "Minimal annotation with text segments",
+                "description": "Valid JSON string with only text segments in the 'annotation' array.",
+                "samples": [
+                    "{\"annotation\":[{\"text\":\"Hi\"}]}",
+                    "{\"annotation\":[{\"text\":\"Test\"}]}",
+                    "{\"annotation\":[{\"text\":\"Hello\"}]}",
+                    "{\"annotation\":[{\"text\":\"World\"}]}",
+                    "{\"annotation\":[{\"text\":\"A b\"}]}",
+                    "{\"annotation\":[{\"text\":\"Ok\"}]}"
+                ]
+            },
+            {
+                "param_name": "data",
+                "category": "Mixed text and markup segments",
+                "description": "Valid JSON string mixing text and markup elements.",
+                "samples": [
+                    "{\"annotation\":[{\"text\":\"A\"},{\"markup\":\"<b>\"},{\"text\":\"B\"}]}",
+                    "{\"annotation\":[{\"text\":\"t\"},{\"markup\":\"<i>\"}]}",
+                    "{\"annotation\":[{\"markup\":\"<br>\"},{\"text\":\"x\"}]}",
+                    "{\"annotation\":[{\"text\":\"x\"},{\"markup\":\"<p>\"}]}",
+                    "{\"annotation\":[{\"text\":\"a\"},{\"markup\":\"<u>\"},{\"text\":\"b\"}]}",
+                    "{\"annotation\":[{\"markup\":\"<b>\"},{\"text\":\"y\"}]}"
+                ]
+            },
+            {
+                "param_name": "data",
+                "category": "Markup interpreted as whitespace via interpretAs",
+                "description": "Valid JSON string using interpretAs to map markup to whitespace.",
+                "samples": [
+                    "{\"annotation\":[{\"markup\":\"<p>\",\"interpretAs\":\"\\n\\n\"},{\"text\":\"Hi\"}]}",
+                    "{\"annotation\":[{\"markup\":\"<p>\",\"interpretAs\":\" \\n\"},{\"text\":\"A\"}]}",
+                    "{\"annotation\":[{\"text\":\"A\"},{\"markup\":\"<p>\",\"interpretAs\":\"\\n\"}]}",
+                    "{\"annotation\":[{\"markup\":\"<br>\",\"interpretAs\":\"\\n\"},{\"text\":\"t\"}]}",
+                    "{\"annotation\":[{\"markup\":\"<p>\",\"interpretAs\":\"\\n\\n\"}]}",
+                    "{\"annotation\":[{\"text\":\"x\"},{\"markup\":\"<p>\",\"interpretAs\":\" \\n\"}]}"
+                ]
+            },
+            {
+                "param_name": "data",
+                "category": "<MISS_KEY>",
+                "description": "The 'data' parameter is omitted. Valid only if 'text' is provided in the same request.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "data",
+                "category": "Non-string type",
+                "description": "Values that are not strings.",
+                "samples": [
+                    123,
+                    0,
+                    true,
+                    false,
+                    null,
+                    {
+                        "annotation": [
+                            {
+                                "text": "Hi"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "param_name": "data",
+                "category": "Not a valid JSON string",
+                "description": "Strings that are not valid JSON.",
+                "samples": [
+                    "not json",
+                    "{",
+                    "{\"annotation\":}",
+                    "{\"annotation\":[}",
+                    "{\"text\":\"x\"}",
+                    "[]"
+                ]
+            },
+            {
+                "param_name": "data",
+                "category": "JSON string with wrong schema",
+                "description": "JSON strings that don't follow the expected 'annotation' array schema.",
+                "samples": [
+                    "{\"annotation\":null}",
+                    "{\"annotation\":{}}",
+                    "{\"annotation\":[1]}",
+                    "{\"annotation\":[{\"foo\":1}]}",
+                    "{\"ann\":[{\"text\":\"x\"}]}",
+                    "{\"annotation\":[{\"markup\":5}]}"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "post /check",
+        "type": "string",
+        "param_name": "language",
+        "format": [
+            "^([a-z]{2,3})(-[A-Z]{2})?$|^auto$"
+        ],
+        "valid": [
+            {
+                "param_name": "language",
+                "category": "Language with variant for spell checking",
+                "description": "Languages that require and include a regional variant.",
+                "samples": [
+                    "en-GB",
+                    "en-US",
+                    "de-DE",
+                    "pt-BR",
+                    "pt-PT",
+                    "en-AU",
+                    "fr-FR",
+                    "zh-CN"
+                ]
+            },
+            {
+                "param_name": "language",
+                "category": "Language without variant",
+                "description": "Languages that can be specified without a regional variant.",
+                "samples": [
+                    "fr",
+                    "es",
+                    "nl",
+                    "ru",
+                    "pl",
+                    "it",
+                    "de"
+                ]
+            },
+            {
+                "param_name": "language",
+                "category": "Automatic detection",
+                "description": "Let the server detect the language automatically.",
+                "samples": [
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "language",
+                "category": "<MISS_KEY>",
+                "description": "Required parameter 'language' is missing.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "language",
+                "category": "Wrongly formatted language codes",
+                "description": "Codes with wrong casing, separators, or invalid patterns.",
+                "samples": [
+                    "EN-US",
+                    "en_US",
+                    "e",
+                    "english",
+                    "en--US",
+                    "en GB"
+                ]
+            },
+            {
+                "param_name": "language",
+                "category": "Non-string or unacceptable types",
+                "description": "Values that are not strings.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    {},
+                    [],
+                    12.5
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "post /check",
+        "type": "string",
+        "param_name": "altLanguages",
+        "format": [
+            "^[a-z]{2,3}(-[A-Z]{2})?(,[a-z]{2,3}(-[A-Z]{2})?)*$"
+        ],
+        "valid": [
+            {
+                "param_name": "altLanguages",
+                "category": "Single non-variant language code",
+                "description": "A single code for languages that do not require variants.",
+                "samples": [
+                    "fr",
+                    "es",
+                    "nl",
+                    "ru",
+                    "it",
+                    "pl"
+                ]
+            },
+            {
+                "param_name": "altLanguages",
+                "category": "Multiple languages with required variants",
+                "description": "Comma-separated list; variant-required languages include full variants.",
+                "samples": [
+                    "en-GB,de-AT",
+                    "en-US,de-DE",
+                    "en-GB,pt-PT",
+                    "en-AU,de-CH",
+                    "en-GB,de-LU",
+                    "en-CA,pt-BR"
+                ]
+            },
+            {
+                "param_name": "altLanguages",
+                "category": "Portuguese variants only",
+                "description": "Valid when specifying only Portuguese variants.",
+                "samples": [
+                    "pt-PT",
+                    "pt-BR",
+                    "pt-PT,pt-BR",
+                    "pt-BR,pt-PT",
+                    "pt-PT,pt-PT",
+                    "pt-BR,pt-BR"
+                ]
+            },
+            {
+                "param_name": "altLanguages",
+                "category": "<MISS_KEY>",
+                "description": "The 'altLanguages' parameter is omitted.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "altLanguages",
+                "category": "Variant languages without required variant",
+                "description": "Languages like English/German/Portuguese must include the variant.",
+                "samples": [
+                    "en",
+                    "de",
+                    "pt",
+                    "en,fr",
+                    "pt,de",
+                    "en,pt"
+                ]
+            },
+            {
+                "param_name": "altLanguages",
+                "category": "Malformed comma-separated list",
+                "description": "Lists with bad separators, spaces, or empty items.",
+                "samples": [
+                    "en-GB, de-DE",
+                    "fr,",
+                    ",de-DE",
+                    "en-GB,,de-DE",
+                    "en_GB",
+                    "en-GB ,de-DE"
+                ]
+            },
+            {
+                "param_name": "altLanguages",
+                "category": "Unknown or invalid codes",
+                "description": "Codes that do not correspond to supported languages or variants.",
+                "samples": [
+                    "zz",
+                    "zz-ZZ",
+                    "aa-XX",
+                    "abc",
+                    "en-XY",
+                    "de-QQ"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "post /check",
+        "type": "string",
+        "param_name": "motherTongue",
+        "format": [
+            "^[a-z]{2,3}(-[A-Z]{2})?$"
+        ],
+        "valid": [
+            {
+                "param_name": "motherTongue",
+                "category": "Two-letter codes",
+                "description": "Valid ISO language codes without region.",
+                "samples": [
+                    "de",
+                    "fr",
+                    "es",
+                    "nl",
+                    "ru",
+                    "it"
+                ]
+            },
+            {
+                "param_name": "motherTongue",
+                "category": "Language with variant",
+                "description": "Valid language codes with a regional variant.",
+                "samples": [
+                    "en-US",
+                    "en-GB",
+                    "fr-CA",
+                    "de-AT",
+                    "pt-BR",
+                    "es-MX"
+                ]
+            },
+            {
+                "param_name": "motherTongue",
+                "category": "<MISS_KEY>",
+                "description": "The 'motherTongue' parameter is omitted.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "motherTongue",
+                "category": "Wrongly formatted language codes",
+                "description": "Wrong case, underscores, or invalid patterns.",
+                "samples": [
+                    "EN",
+                    "de_de",
+                    "en_US",
+                    "english",
+                    "e",
+                    "fr-FR-CA"
+                ]
+            },
+            {
+                "param_name": "motherTongue",
+                "category": "Empty or whitespace",
+                "description": "Empty or whitespace-only values.",
+                "samples": [
+                    "",
+                    " ",
+                    "\n",
+                    "\t",
+                    "\r",
+                    "  "
+                ]
+            },
+            {
+                "param_name": "motherTongue",
+                "category": "Non-string types",
+                "description": "Values that are not strings.",
+                "samples": [
+                    0,
+                    3.14,
+                    true,
+                    false,
+                    {},
+                    []
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "post /check",
+        "type": "string",
+        "param_name": "preferredVariants",
+        "format": [
+            "^[a-z]{2,3}-[A-Z]{2}(,[a-z]{2,3}-[A-Z]{2})*$"
+        ],
+        "valid": [
+            {
+                "param_name": "preferredVariants",
+                "category": "Single variant code",
+                "description": "A single preferred variant (applicable when language=auto).",
+                "samples": [
+                    "en-GB",
+                    "en-US",
+                    "de-DE",
+                    "de-AT",
+                    "fr-CA",
+                    "pt-BR"
+                ]
+            },
+            {
+                "param_name": "preferredVariants",
+                "category": "Multiple variant codes",
+                "description": "Comma-separated preferred variants (applicable when language=auto).",
+                "samples": [
+                    "en-GB,de-AT",
+                    "en-US,fr-CA",
+                    "de-DE,fr-CH",
+                    "en-AU,de-DE",
+                    "pt-BR,pt-PT",
+                    "en-GB,en-AU"
+                ]
+            },
+            {
+                "param_name": "preferredVariants",
+                "category": "<MISS_KEY>",
+                "description": "The 'preferredVariants' parameter is omitted (common when language is not auto).",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "preferredVariants",
+                "category": "Base languages without variants",
+                "description": "Values that omit required regional variants.",
+                "samples": [
+                    "en",
+                    "de",
+                    "en,de",
+                    "fr,es",
+                    "pt",
+                    "en,fr-CA"
+                ]
+            },
+            {
+                "param_name": "preferredVariants",
+                "category": "Malformed codes or separators",
+                "description": "Wrong case, underscores, spaces, or non-existent regions.",
+                "samples": [
+                    "EN-GB",
+                    "en_GB",
+                    "en GB",
+                    "en-UK",
+                    "de_DE",
+                    "en-*"
+                ]
+            },
+            {
+                "param_name": "preferredVariants",
+                "category": "Non-string or empty",
+                "description": "Values that are not strings or are empty.",
+                "samples": [
+                    "",
+                    " ",
+                    123,
+                    true,
+                    false,
+                    []
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "post /check",
+        "type": "string",
+        "param_name": "enabledRules",
+        "format": [
+            "^[A-Za-z0-9._-]+(,[A-Za-z0-9._-]+)*$"
+        ],
+        "valid": [
+            {
+                "param_name": "enabledRules",
+                "category": "Single rule ID",
+                "description": "Enable a single rule by its ID.",
+                "samples": [
+                    "EN_QUOTES",
+                    "UPPERCASE_SENTENCE_START",
+                    "COMMA_PARENTHESIS_WHITESPACE",
+                    "WHITESPACE_RULE",
+                    "MORFOLOGIK_RULE_EN_US",
+                    "EN_UNPAIRED_BRACKETS"
+                ]
+            },
+            {
+                "param_name": "enabledRules",
+                "category": "Multiple rule IDs",
+                "description": "Comma-separated list of rule IDs to enable.",
+                "samples": [
+                    "EN_QUOTES,WHITESPACE_RULE",
+                    "UPPERCASE_SENTENCE_START,EN_QUOTES",
+                    "MORFOLOGIK_RULE_EN_US,EN_UNPAIRED_BRACKETS",
+                    "EN_QUOTES,COMMA_PARENTHESIS_WHITESPACE",
+                    "WHITESPACE_RULE,EN_UNPAIRED_BRACKETS",
+                    "EN_QUOTES,UPPERCASE_SENTENCE_START,WHITESPACE_RULE"
+                ]
+            },
+            {
+                "param_name": "enabledRules",
+                "category": "<MISS_KEY>",
+                "description": "No specific rules are explicitly enabled.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "enabledRules",
+                "category": "IDs with spaces or invalid characters",
+                "description": "Rule IDs must not contain spaces or punctuation beyond . _ -",
+                "samples": [
+                    "EN QUOTES",
+                    "UPPERCASE SENTENCE START",
+                    "WHITE SPACE",
+                    "EN:QUOTES",
+                    "RULE#1",
+                    "COMMA, SPACE"
+                ]
+            },
+            {
+                "param_name": "enabledRules",
+                "category": "Malformed comma-separated list",
+                "description": "Lists with empty tokens, leading/trailing commas, or stray spaces.",
+                "samples": [
+                    "EN_QUOTES,",
+                    "EN_QUOTES,,WHITESPACE_RULE",
+                    ",EN_QUOTES",
+                    " , ",
+                    "EN_QUOTES, ,EN_UNPAIRED_BRACKETS",
+                    "EN_QUOTES ,WHITESPACE_RULE"
+                ]
+            },
+            {
+                "param_name": "enabledRules",
+                "category": "Non-string types",
+                "description": "Values that are not strings.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    {},
+                    [],
+                    3.14
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "post /check",
+        "type": "string",
+        "param_name": "disabledRules",
+        "format": [
+            "^[A-Za-z0-9._-]+(,[A-Za-z0-9._-]+)*$"
+        ],
+        "valid": [
+            {
+                "param_name": "disabledRules",
+                "category": "Single rule ID",
+                "description": "Disable a single rule by its ID.",
+                "samples": [
+                    "EN_QUOTES",
+                    "UPPERCASE_SENTENCE_START",
+                    "COMMA_PARENTHESIS_WHITESPACE",
+                    "WHITESPACE_RULE",
+                    "MORFOLOGIK_RULE_EN_US",
+                    "EN_UNPAIRED_BRACKETS"
+                ]
+            },
+            {
+                "param_name": "disabledRules",
+                "category": "Multiple rule IDs",
+                "description": "Comma-separated list of rule IDs to disable.",
+                "samples": [
+                    "EN_QUOTES,WHITESPACE_RULE",
+                    "UPPERCASE_SENTENCE_START,EN_QUOTES",
+                    "MORFOLOGIK_RULE_EN_US,EN_UNPAIRED_BRACKETS",
+                    "EN_QUOTES,COMMA_PARENTHESIS_WHITESPACE",
+                    "WHITESPACE_RULE,EN_UNPAIRED_BRACKETS",
+                    "EN_QUOTES,UPPERCASE_SENTENCE_START,WHITESPACE_RULE"
+                ]
+            },
+            {
+                "param_name": "disabledRules",
+                "category": "<MISS_KEY>",
+                "description": "No rules are explicitly disabled.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "disabledRules",
+                "category": "IDs with spaces or invalid characters",
+                "description": "Rule IDs must not contain spaces or punctuation beyond . _ -",
+                "samples": [
+                    "EN QUOTES",
+                    "UPPERCASE SENTENCE START",
+                    "WHITE SPACE",
+                    "EN:QUOTES",
+                    "RULE#1",
+                    "COMMA, SPACE"
+                ]
+            },
+            {
+                "param_name": "disabledRules",
+                "category": "Malformed comma-separated list",
+                "description": "Lists with empty tokens, leading/trailing commas, or stray spaces.",
+                "samples": [
+                    "EN_QUOTES,",
+                    "EN_QUOTES,,WHITESPACE_RULE",
+                    ",EN_QUOTES",
+                    " , ",
+                    "EN_QUOTES, ,EN_UNPAIRED_BRACKETS",
+                    "EN_QUOTES ,WHITESPACE_RULE"
+                ]
+            },
+            {
+                "param_name": "disabledRules",
+                "category": "Non-string types",
+                "description": "Values that are not strings.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    {},
+                    [],
+                    3.14
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "post /check",
+        "type": "string",
+        "param_name": "enabledCategories",
+        "format": [
+            "^[A-Z_]+(,[A-Z_]+)*$"
+        ],
+        "valid": [
+            {
+                "param_name": "enabledCategories",
+                "category": "Single category ID",
+                "description": "Enable a single category by its ID.",
+                "samples": [
+                    "TYPOS",
+                    "GRAMMAR",
+                    "PUNCTUATION",
+                    "STYLE",
+                    "CASING",
+                    "CONFUSED_WORDS"
+                ]
+            },
+            {
+                "param_name": "enabledCategories",
+                "category": "Multiple category IDs",
+                "description": "Comma-separated list of category IDs to enable.",
+                "samples": [
+                    "TYPOS,GRAMMAR",
+                    "STYLE,PUNCTUATION",
+                    "GRAMMAR,STYLE",
+                    "CASING,TYPOS",
+                    "CONFUSED_WORDS,GRAMMAR",
+                    "PUNCTUATION,GRAMMAR,STYLE"
+                ]
+            },
+            {
+                "param_name": "enabledCategories",
+                "category": "<MISS_KEY>",
+                "description": "No categories are explicitly enabled.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "enabledCategories",
+                "category": "Wrong case or spaces",
+                "description": "Category IDs must be uppercase and underscore-separated.",
+                "samples": [
+                    "typos",
+                    "Grammar",
+                    "STYLE-GUIDE",
+                    "CONFUSED WORDS",
+                    "Punctu@tion",
+                    "CA SING"
+                ]
+            },
+            {
+                "param_name": "enabledCategories",
+                "category": "Malformed comma-separated list",
+                "description": "Lists with empty tokens or stray spaces.",
+                "samples": [
+                    "TYPOS,",
+                    "GRAMMAR,,STYLE",
+                    ",STYLE",
+                    "TYPOS, STYLE",
+                    " ,GRAMMAR",
+                    "TYPOS, ,GRAMMAR"
+                ]
+            },
+            {
+                "param_name": "enabledCategories",
+                "category": "Non-string types",
+                "description": "Values that are not strings.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    {},
+                    [],
+                    3.14
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "post /check",
+        "type": "string",
+        "param_name": "disabledCategories",
+        "format": [
+            "^[A-Z_]+(,[A-Z_]+)*$"
+        ],
+        "valid": [
+            {
+                "param_name": "disabledCategories",
+                "category": "Single category ID",
+                "description": "Disable a single category by its ID.",
+                "samples": [
+                    "TYPOS",
+                    "GRAMMAR",
+                    "PUNCTUATION",
+                    "STYLE",
+                    "CASING",
+                    "CONFUSED_WORDS"
+                ]
+            },
+            {
+                "param_name": "disabledCategories",
+                "category": "Multiple category IDs",
+                "description": "Comma-separated list of category IDs to disable.",
+                "samples": [
+                    "TYPOS,GRAMMAR",
+                    "STYLE,PUNCTUATION",
+                    "GRAMMAR,STYLE",
+                    "CASING,TYPOS",
+                    "CONFUSED_WORDS,GRAMMAR",
+                    "PUNCTUATION,GRAMMAR,STYLE"
+                ]
+            },
+            {
+                "param_name": "disabledCategories",
+                "category": "<MISS_KEY>",
+                "description": "No categories are explicitly disabled.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "disabledCategories",
+                "category": "Wrong case or spaces",
+                "description": "Category IDs must be uppercase and underscore-separated.",
+                "samples": [
+                    "typos",
+                    "Grammar",
+                    "STYLE-GUIDE",
+                    "CONFUSED WORDS",
+                    "Punctu@tion",
+                    "CA SING"
+                ]
+            },
+            {
+                "param_name": "disabledCategories",
+                "category": "Malformed comma-separated list",
+                "description": "Lists with empty tokens or stray spaces.",
+                "samples": [
+                    "TYPOS,",
+                    "GRAMMAR,,STYLE",
+                    ",STYLE",
+                    "TYPOS, STYLE",
+                    " ,GRAMMAR",
+                    "TYPOS, ,GRAMMAR"
+                ]
+            },
+            {
+                "param_name": "disabledCategories",
+                "category": "Non-string types",
+                "description": "Values that are not strings.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    {},
+                    [],
+                    3.14
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "post /check",
+        "type": "boolean",
+        "param_name": "enabledOnly",
+        "format": [
+            "boolean"
+        ],
+        "valid": [
+            {
+                "param_name": "enabledOnly",
+                "category": "Boolean true",
+                "description": "Only specifically enabled rules/categories are active.",
+                "samples": [
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true
+                ]
+            },
+            {
+                "param_name": "enabledOnly",
+                "category": "Boolean false",
+                "description": "Default behavior; all rules/categories except explicitly disabled are active.",
+                "samples": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ]
+            },
+            {
+                "param_name": "enabledOnly",
+                "category": "<MISS_KEY>",
+                "description": "Parameter omitted; defaults to false.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "enabledOnly",
+                "category": "String or textual booleans",
+                "description": "Boolean values provided as strings.",
+                "samples": [
+                    "true",
+                    "false",
+                    "True",
+                    "False",
+                    "yes",
+                    "no"
+                ]
+            },
+            {
+                "param_name": "enabledOnly",
+                "category": "Numeric values",
+                "description": "Numbers used instead of boolean.",
+                "samples": [
+                    1,
+                    0,
+                    -1,
+                    2,
+                    10,
+                    100
+                ]
+            },
+            {
+                "param_name": "enabledOnly",
+                "category": "Other non-boolean types",
+                "description": "Unsupported types for a boolean parameter.",
+                "samples": [
+                    {},
+                    [],
+                    "on",
+                    "off",
+                    3.14,
+                    "0"
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,3280 @@
+[
+    {
+        "op_name": "get /api/bessj/{n}/{x}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "involved_parameters": [
+                    "n",
+                    "x"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "n": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?(0|[1-9][0-9]*)$",
+                                    "input_space_category": "Small non-negative orders (0–10)",
+                                    "description": "Typical Bessel orders commonly used; valid int32 with no decimal part.",
+                                    "representative_samples": [
+                                        0,
+                                        1,
+                                        2,
+                                        3,
+                                        5,
+                                        10
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?(0|[1-9][0-9]*)$",
+                                    "input_space_category": "High positive orders within int32 range",
+                                    "description": "Larger non-negative orders that still fit in 32-bit signed integer limits.",
+                                    "representative_samples": [
+                                        32767,
+                                        65535,
+                                        1000000,
+                                        100000000,
+                                        2147483646,
+                                        2147483647
+                                    ]
+                                }
+                            ],
+                            "x": [
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^-?(?:\\d+(?:\\.\\d+)?|\\d*\\.\\d+)$",
+                                    "input_space_category": "Typical finite real numbers",
+                                    "description": "Common decimal literals without scientific notation, finite and parseable as double.",
+                                    "representative_samples": [
+                                        -3.14,
+                                        -0.001,
+                                        0,
+                                        0.5,
+                                        2.71828,
+                                        10.5
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^-?(?:\\d+(?:\\.\\d+)?|\\d*\\.\\d+)$",
+                                    "input_space_category": "Large magnitude finite decimals (no exponent)",
+                                    "description": "Larger absolute values expressed as plain decimal literals (no spaces or exponent).",
+                                    "representative_samples": [
+                                        123456789.0,
+                                        -987654321.123,
+                                        1000000000000.0,
+                                        -2500000000000.75,
+                                        99999999999999.98,
+                                        -100000000000000.0
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": null,
+                                    "input_space_category": "Near-zero values",
+                                    "description": "Small magnitude values around zero, expressed without scientific notation.",
+                                    "representative_samples": [
+                                        0.0,
+                                        -0.0,
+                                        1e-12,
+                                        -1e-12,
+                                        0.0001,
+                                        -0.0001
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "n",
+                            "x"
+                        ],
+                        "parameter_value": [
+                            "n is a non-negative integer",
+                            "x is a real number"
+                        ],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space2",
+                "satisfied_dependencies": "Parameter x is a real-valued argument; there is no inter-parameter constraint between n and x.",
+                "involved_parameters": [
+                    "n",
+                    "x"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "n": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?(0|[1-9][0-9]*)$",
+                                    "input_space_category": "Small non-negative orders (0–10)",
+                                    "description": "Typical Bessel orders commonly used; valid int32 with no decimal part.",
+                                    "representative_samples": [
+                                        0,
+                                        1,
+                                        2,
+                                        3,
+                                        5,
+                                        10
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?(0|[1-9][0-9]*)$",
+                                    "input_space_category": "High positive orders within int32 range",
+                                    "description": "Larger non-negative orders that still fit in 32-bit signed integer limits.",
+                                    "representative_samples": [
+                                        32767,
+                                        65535,
+                                        1000000,
+                                        100000000,
+                                        2147483646,
+                                        2147483647
+                                    ]
+                                }
+                            ],
+                            "x": [
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^-?(?:\\d+(?:\\.\\d+)?|\\d*\\.\\d+)$",
+                                    "input_space_category": "Typical finite real numbers",
+                                    "description": "Common decimal literals without scientific notation, finite and parseable as double.",
+                                    "representative_samples": [
+                                        -3.14,
+                                        -0.001,
+                                        0,
+                                        0.5,
+                                        2.71828,
+                                        10.5
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^-?(?:\\d+(?:\\.\\d+)?|\\d*\\.\\d+)$",
+                                    "input_space_category": "Large magnitude finite decimals (no exponent)",
+                                    "description": "Larger absolute values expressed as plain decimal literals (no spaces or exponent).",
+                                    "representative_samples": [
+                                        123456789.0,
+                                        -987654321.123,
+                                        1000000000000.0,
+                                        -2500000000000.75,
+                                        99999999999999.98,
+                                        -100000000000000.0
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": null,
+                                    "input_space_category": "Near-zero values",
+                                    "description": "Small magnitude values around zero, expressed without scientific notation.",
+                                    "representative_samples": [
+                                        0.0,
+                                        -0.0,
+                                        1e-12,
+                                        -1e-12,
+                                        0.0001,
+                                        -0.0001
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "n",
+                            "x"
+                        ],
+                        "parameter_value": [
+                            "n is a non-negative integer",
+                            "x is a real number"
+                        ],
+                        "parameter_parameter": [
+                            "No inter-parameter constraint between n and x"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/expint/{n}/{x}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "involved_parameters": [
+                    "n",
+                    "x"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "n": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Small positive orders (n >= 1, typical use)",
+                                    "description": "Valid positive integer orders commonly used for E_n(x) computations.",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        10
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Moderate positive orders",
+                                    "description": "Valid medium-size positive integers where computation remains practical.",
+                                    "representative_samples": [
+                                        20,
+                                        50,
+                                        100,
+                                        256,
+                                        512,
+                                        1024
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Large positive orders near 32-bit boundary",
+                                    "description": "Large but valid positive integers within 32-bit signed range.",
+                                    "representative_samples": [
+                                        1000000,
+                                        50000000,
+                                        214748364,
+                                        1000000000,
+                                        2147483646,
+                                        2147483647
+                                    ]
+                                }
+                            ],
+                            "x": [
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Positive finite real numbers (decimal literals)",
+                                    "description": "x strictly greater than 0, finite, provided as decimal literals using dot as the decimal separator.",
+                                    "representative_samples": [
+                                        0.1,
+                                        0.0001,
+                                        1.0,
+                                        2.5,
+                                        3.1415,
+                                        10.0
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Positive finite real numbers (scientific notation)",
+                                    "description": "x strictly greater than 0 in scientific notation; values are finite and use dot where fractional part is present.",
+                                    "representative_samples": [
+                                        1e-05,
+                                        70.0,
+                                        0.00999,
+                                        2.0,
+                                        350.0,
+                                        6.022e+23
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Very small positive finite x near zero (but > 0)",
+                                    "description": "x is positive and very close to zero to test convergence behavior; still finite and nonzero.",
+                                    "representative_samples": [
+                                        1e-308,
+                                        1e-300,
+                                        1e-250,
+                                        1e-200,
+                                        1e-100,
+                                        1e-50
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "n",
+                            "x"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space2",
+                "satisfied_dependencies": "For the exponential integral E_n(x), parameter n must be a positive integer (n ≥ 1);",
+                "involved_parameters": [
+                    "n"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "n": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Small positive orders (n >= 1, typical use)",
+                                    "description": "Valid positive integer orders commonly used for E_n(x) computations.",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        10
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Moderate positive orders",
+                                    "description": "Valid medium-size positive integers where computation remains practical.",
+                                    "representative_samples": [
+                                        20,
+                                        50,
+                                        100,
+                                        256,
+                                        512,
+                                        1024
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Large positive orders near 32-bit boundary",
+                                    "description": "Large but valid positive integers within 32-bit signed range.",
+                                    "representative_samples": [
+                                        1000000,
+                                        50000000,
+                                        214748364,
+                                        1000000000,
+                                        2147483646,
+                                        2147483647
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "n"
+                        ],
+                        "parameter_value": [
+                            "n is an integer and n ≥ 1"
+                        ],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space1",
+                        "single_parameter_spaces": {
+                            "n": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Non-positive integers (≤ 0)",
+                                    "description": "Integer values ≤ 0, violating n ≥ 1.",
+                                    "representative_samples": [
+                                        0,
+                                        -1,
+                                        -2,
+                                        -100
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "n"
+                        ],
+                        "parameter_value": [
+                            "n is an integer and n ≤ 0"
+                        ],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space2",
+                        "single_parameter_spaces": {
+                            "n": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-integer values",
+                                    "description": "Values that are not integers (e.g., floats or non-numeric strings), violating the integer requirement.",
+                                    "representative_samples": [
+                                        3.14,
+                                        "abc",
+                                        "1e-3",
+                                        "2.0"
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "n"
+                        ],
+                        "parameter_value": [
+                            "n is not an integer"
+                        ],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space3",
+                "satisfied_dependencies": "Parameter x must be a positive real number (x > 0); there is no inter-parameter constraint between n and x beyond domain validity.",
+                "involved_parameters": [
+                    "x"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "x": [
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Positive finite real numbers (decimal literals)",
+                                    "description": "x strictly greater than 0, finite, provided as decimal literals using dot as the decimal separator.",
+                                    "representative_samples": [
+                                        0.1,
+                                        0.0001,
+                                        1.0,
+                                        2.5,
+                                        3.1415,
+                                        10.0
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Positive finite real numbers (scientific notation)",
+                                    "description": "x strictly greater than 0 in scientific notation; values are finite and use dot where fractional part is present.",
+                                    "representative_samples": [
+                                        1e-05,
+                                        70.0,
+                                        0.00999,
+                                        2.0,
+                                        350.0,
+                                        6.022e+23
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Very small positive finite x near zero (but > 0)",
+                                    "description": "x is positive and very close to zero to test convergence behavior; still finite and nonzero.",
+                                    "representative_samples": [
+                                        1e-308,
+                                        1e-300,
+                                        1e-250,
+                                        1e-200,
+                                        1e-100,
+                                        1e-50
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "x"
+                        ],
+                        "parameter_value": [
+                            "x is a real number and x > 0"
+                        ],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space1",
+                        "single_parameter_spaces": {
+                            "x": [
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Non-positive real numbers (≤ 0)",
+                                    "description": "Real numbers ≤ 0, violating x > 0.",
+                                    "representative_samples": [
+                                        0,
+                                        -1,
+                                        -0.001,
+                                        -1000.0
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "x"
+                        ],
+                        "parameter_value": [
+                            "x is a real number and x ≤ 0"
+                        ],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space2",
+                        "single_parameter_spaces": {
+                            "x": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "Non-real values",
+                                    "description": "Values that are not real numbers per the expected numeric format (e.g., NaN, Infinity, alphabetic strings).",
+                                    "representative_samples": [
+                                        "NaN",
+                                        "Infinity",
+                                        "-Infinity",
+                                        "abc"
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "x"
+                        ],
+                        "parameter_value": [
+                            "x is not a real number"
+                        ],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "involved_parameters": [
+                    "m",
+                    "n",
+                    "x"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "m": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Small numerator degrees of freedom (1-10)",
+                                    "description": "Positive 32-bit integers from 1 to 10, common small m values.",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        5,
+                                        7,
+                                        10
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Moderate numerator degrees of freedom (11-1000)",
+                                    "description": "Positive 32-bit integers for typical mid-range m values.",
+                                    "representative_samples": [
+                                        11,
+                                        30,
+                                        57,
+                                        100,
+                                        256,
+                                        999
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Large numerator degrees of freedom (>=1000) within int32",
+                                    "description": "Larger positive m values still within 32-bit signed integer range.",
+                                    "representative_samples": [
+                                        1000,
+                                        4096,
+                                        10000,
+                                        65535,
+                                        1000000,
+                                        2147483647
+                                    ]
+                                }
+                            ],
+                            "n": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Small denominator degrees of freedom (1-10)",
+                                    "description": "Positive 32-bit integers from 1 to 10, common small n values.",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        4,
+                                        6,
+                                        8,
+                                        10
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Moderate denominator degrees of freedom (11-1000)",
+                                    "description": "Positive 32-bit integers for typical mid-range n values.",
+                                    "representative_samples": [
+                                        11,
+                                        25,
+                                        64,
+                                        128,
+                                        512,
+                                        999
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Large denominator degrees of freedom (>=1000) within int32",
+                                    "description": "Larger positive n values still within 32-bit signed integer range.",
+                                    "representative_samples": [
+                                        1000,
+                                        2048,
+                                        10000,
+                                        65536,
+                                        1000000,
+                                        2147483647
+                                    ]
+                                }
+                            ],
+                            "x": [
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^(?:\\d+)(?:\\.\\d+)?$",
+                                    "input_space_category": "Zero and small positive values",
+                                    "description": "Finite, non-negative values near zero in standard decimal notation.",
+                                    "representative_samples": [
+                                        0,
+                                        0.1,
+                                        0.25,
+                                        0.5,
+                                        1,
+                                        2.5
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^(?:\\d+)(?:\\.\\d+)?$",
+                                    "input_space_category": "Typical moderate values",
+                                    "description": "Common non-negative x values for F-distribution evaluation.",
+                                    "representative_samples": [
+                                        3.1415,
+                                        5,
+                                        12.34,
+                                        25,
+                                        56.789,
+                                        100
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^(?:\\d+)(?:\\.\\d+)?$",
+                                    "input_space_category": "Large finite values in standard decimal notation",
+                                    "description": "Large non-negative x values provided without scientific notation.",
+                                    "representative_samples": [
+                                        1000,
+                                        123456.789,
+                                        100000,
+                                        2500000.5,
+                                        5000000,
+                                        9876543.21
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "m",
+                            "n",
+                            "x"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space2",
+                "satisfied_dependencies": "Parameters m and n (degrees of freedom) must be positive integers (m > 0 and n > 0);",
+                "involved_parameters": [
+                    "m",
+                    "n"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "m": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Small numerator degrees of freedom (1-10)",
+                                    "description": "Positive 32-bit integers from 1 to 10, common small m values.",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        5,
+                                        7,
+                                        10
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Moderate numerator degrees of freedom (11-1000)",
+                                    "description": "Positive 32-bit integers for typical mid-range m values.",
+                                    "representative_samples": [
+                                        11,
+                                        30,
+                                        57,
+                                        100,
+                                        256,
+                                        999
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Large numerator degrees of freedom (>=1000) within int32",
+                                    "description": "Larger positive m values still within 32-bit signed integer range.",
+                                    "representative_samples": [
+                                        1000,
+                                        4096,
+                                        10000,
+                                        65535,
+                                        1000000,
+                                        2147483647
+                                    ]
+                                }
+                            ],
+                            "n": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Small denominator degrees of freedom (1-10)",
+                                    "description": "Positive 32-bit integers from 1 to 10, common small n values.",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        4,
+                                        6,
+                                        8,
+                                        10
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Moderate denominator degrees of freedom (11-1000)",
+                                    "description": "Positive 32-bit integers for typical mid-range n values.",
+                                    "representative_samples": [
+                                        11,
+                                        25,
+                                        64,
+                                        128,
+                                        512,
+                                        999
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Large denominator degrees of freedom (>=1000) within int32",
+                                    "description": "Larger positive n values still within 32-bit signed integer range.",
+                                    "representative_samples": [
+                                        1000,
+                                        2048,
+                                        10000,
+                                        65536,
+                                        1000000,
+                                        2147483647
+                                    ]
+                                }
+                            ],
+                            "x": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "The parameter x is missing from the request.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "m",
+                            "n"
+                        ],
+                        "parameter_value": [
+                            "m > 0",
+                            "n > 0"
+                        ],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space1",
+                        "single_parameter_spaces": {
+                            "m": [],
+                            "n": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Small denominator degrees of freedom (1-10)",
+                                    "description": "Positive 32-bit integers from 1 to 10, common small n values.",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        4,
+                                        6,
+                                        8,
+                                        10
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Moderate denominator degrees of freedom (11-1000)",
+                                    "description": "Positive 32-bit integers for typical mid-range n values.",
+                                    "representative_samples": [
+                                        11,
+                                        25,
+                                        64,
+                                        128,
+                                        512,
+                                        999
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Large denominator degrees of freedom (>=1000) within int32",
+                                    "description": "Larger positive n values still within 32-bit signed integer range.",
+                                    "representative_samples": [
+                                        1000,
+                                        2048,
+                                        10000,
+                                        65536,
+                                        1000000,
+                                        2147483647
+                                    ]
+                                }
+                            ],
+                            "x": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "The parameter x is missing from the request.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "m",
+                            "n"
+                        ],
+                        "parameter_value": [
+                            "m <= 0",
+                            "n > 0"
+                        ],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space2",
+                        "single_parameter_spaces": {
+                            "m": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Small numerator degrees of freedom (1-10)",
+                                    "description": "Positive 32-bit integers from 1 to 10, common small m values.",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        5,
+                                        7,
+                                        10
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Moderate numerator degrees of freedom (11-1000)",
+                                    "description": "Positive 32-bit integers for typical mid-range m values.",
+                                    "representative_samples": [
+                                        11,
+                                        30,
+                                        57,
+                                        100,
+                                        256,
+                                        999
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Large numerator degrees of freedom (>=1000) within int32",
+                                    "description": "Larger positive m values still within 32-bit signed integer range.",
+                                    "representative_samples": [
+                                        1000,
+                                        4096,
+                                        10000,
+                                        65535,
+                                        1000000,
+                                        2147483647
+                                    ]
+                                }
+                            ],
+                            "n": [],
+                            "x": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "The parameter x is missing from the request.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "m",
+                            "n"
+                        ],
+                        "parameter_value": [
+                            "m > 0",
+                            "n <= 0"
+                        ],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space3",
+                        "single_parameter_spaces": {
+                            "m": [],
+                            "n": [],
+                            "x": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "The parameter x is missing from the request.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "m",
+                            "n"
+                        ],
+                        "parameter_value": [
+                            "m <= 0",
+                            "n <= 0"
+                        ],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space3",
+                "satisfied_dependencies": "Parameter x must be a non-negative real number (x ≥ 0); there is no inter-parameter constraint between x and m,n beyond domain validity.",
+                "involved_parameters": [
+                    "x"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "x": [
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^(?:\\d+)(?:\\.\\d+)?$",
+                                    "input_space_category": "Zero and small positive values",
+                                    "description": "Finite, non-negative values near zero in standard decimal notation.",
+                                    "representative_samples": [
+                                        0,
+                                        0.1,
+                                        0.25,
+                                        0.5,
+                                        1,
+                                        2.5
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^(?:\\d+)(?:\\.\\d+)?$",
+                                    "input_space_category": "Typical moderate values",
+                                    "description": "Common non-negative x values for F-distribution evaluation.",
+                                    "representative_samples": [
+                                        3.1415,
+                                        5,
+                                        12.34,
+                                        25,
+                                        56.789,
+                                        100
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^(?:\\d+)(?:\\.\\d+)?$",
+                                    "input_space_category": "Large finite values in standard decimal notation",
+                                    "description": "Large non-negative x values provided without scientific notation.",
+                                    "representative_samples": [
+                                        1000,
+                                        123456.789,
+                                        100000,
+                                        2500000.5,
+                                        5000000,
+                                        9876543.21
+                                    ]
+                                }
+                            ],
+                            "m": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "The parameter m is missing from the request.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ],
+                            "n": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "The parameter n is missing from the request.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "x"
+                        ],
+                        "parameter_value": [
+                            "x >= 0"
+                        ],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space1",
+                        "single_parameter_spaces": {
+                            "x": [],
+                            "m": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "The parameter m is missing from the request.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ],
+                            "n": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "The parameter n is missing from the request.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "x"
+                        ],
+                        "parameter_value": [
+                            "x < 0"
+                        ],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/gammq/{a}/{x}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "involved_parameters": [
+                    "a",
+                    "x"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "a": [
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Small positive a near 0 (a > 0, close to boundary)",
+                                    "description": "Finite positive real numbers very close to 0, testing numerical stability while respecting a > 0.",
+                                    "representative_samples": [
+                                        1e-12,
+                                        1e-08,
+                                        1e-06,
+                                        0.0001,
+                                        0.001,
+                                        0.01
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Moderate positive a (typical values)",
+                                    "description": "Common finite positive values for a where computation is well-conditioned.",
+                                    "representative_samples": [
+                                        0.1,
+                                        0.25,
+                                        0.5,
+                                        1,
+                                        2.5,
+                                        9.9
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Large positive a",
+                                    "description": "Finite larger values of a to test scaling and convergence behavior.",
+                                    "representative_samples": [
+                                        10,
+                                        20,
+                                        50,
+                                        100,
+                                        250.5,
+                                        1000
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Scientific notation positive a",
+                                    "description": "Finite positive values expressed in scientific notation, ensuring parser handles exponents.",
+                                    "representative_samples": [
+                                        300.0,
+                                        2000.0,
+                                        75.0,
+                                        6.7,
+                                        0.09,
+                                        0.00042
+                                    ]
+                                }
+                            ],
+                            "x": [
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Zero boundary (x = 0)",
+                                    "description": "Exact zero inputs are valid and test edge conditions for Q(a, x).",
+                                    "representative_samples": [
+                                        0,
+                                        0.0,
+                                        0.0,
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Small positive x near 0",
+                                    "description": "Finite small positive values close to 0 to test sensitivity and convergence.",
+                                    "representative_samples": [
+                                        1e-12,
+                                        1e-08,
+                                        1e-06,
+                                        0.0001,
+                                        0.001,
+                                        0.01
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Moderate positive x (typical values)",
+                                    "description": "Common finite nonnegative values used in statistical applications.",
+                                    "representative_samples": [
+                                        0.5,
+                                        1,
+                                        2.5,
+                                        5,
+                                        10,
+                                        25
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Large nonnegative x",
+                                    "description": "Large finite nonnegative values to test asymptotic behavior and numerical stability.",
+                                    "representative_samples": [
+                                        100,
+                                        1000,
+                                        10000,
+                                        1000000,
+                                        12345.67,
+                                        99000000.0
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "a",
+                            "x"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space2",
+                "satisfied_dependencies": "For the complemented incomplete gamma Q(a, x), parameter a must be greater than 0 (a > 0);",
+                "involved_parameters": [
+                    "a"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "a": [
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Small positive a near 0 (a > 0, close to boundary)",
+                                    "description": "Finite positive real numbers very close to 0, testing numerical stability while respecting a > 0.",
+                                    "representative_samples": [
+                                        1e-12,
+                                        1e-08,
+                                        1e-06,
+                                        0.0001,
+                                        0.001,
+                                        0.01
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Moderate positive a (typical values)",
+                                    "description": "Common finite positive values for a where computation is well-conditioned.",
+                                    "representative_samples": [
+                                        0.1,
+                                        0.25,
+                                        0.5,
+                                        1,
+                                        2.5,
+                                        9.9
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Large positive a",
+                                    "description": "Finite larger values of a to test scaling and convergence behavior.",
+                                    "representative_samples": [
+                                        10,
+                                        20,
+                                        50,
+                                        100,
+                                        250.5,
+                                        1000
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Scientific notation positive a",
+                                    "description": "Finite positive values expressed in scientific notation, ensuring parser handles exponents.",
+                                    "representative_samples": [
+                                        300.0,
+                                        2000.0,
+                                        75.0,
+                                        6.7,
+                                        0.09,
+                                        0.00042
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "a"
+                        ],
+                        "parameter_value": [
+                            "a > 0"
+                        ],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space1",
+                        "single_parameter_spaces": {
+                            "a": []
+                        },
+                        "parameter": [
+                            "a"
+                        ],
+                        "parameter_value": [
+                            "a = 0"
+                        ],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space2",
+                        "single_parameter_spaces": {
+                            "a": []
+                        },
+                        "parameter": [
+                            "a"
+                        ],
+                        "parameter_value": [
+                            "a < 0"
+                        ],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space3",
+                "satisfied_dependencies": "Parameter x must be a non-negative real number (x ≥ 0); there is no inter-parameter constraint between a and x beyond domain validity.",
+                "involved_parameters": [
+                    "x"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "x": [
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Zero boundary (x = 0)",
+                                    "description": "Exact zero inputs are valid and test edge conditions for Q(a, x).",
+                                    "representative_samples": [
+                                        0,
+                                        0.0,
+                                        0.0,
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Small positive x near 0",
+                                    "description": "Finite small positive values close to 0 to test sensitivity and convergence.",
+                                    "representative_samples": [
+                                        1e-12,
+                                        1e-08,
+                                        1e-06,
+                                        0.0001,
+                                        0.001,
+                                        0.01
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Moderate positive x (typical values)",
+                                    "description": "Common finite nonnegative values used in statistical applications.",
+                                    "representative_samples": [
+                                        0.5,
+                                        1,
+                                        2.5,
+                                        5,
+                                        10,
+                                        25
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "number",
+                                    "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                                    "input_space_category": "Large nonnegative x",
+                                    "description": "Large finite nonnegative values to test asymptotic behavior and numerical stability.",
+                                    "representative_samples": [
+                                        100,
+                                        1000,
+                                        10000,
+                                        1000000,
+                                        12345.67,
+                                        99000000.0
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "x"
+                        ],
+                        "parameter_value": [
+                            "x ≥ 0"
+                        ],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space1",
+                        "single_parameter_spaces": {
+                            "x": []
+                        },
+                        "parameter": [
+                            "x"
+                        ],
+                        "parameter_value": [
+                            "x < 0"
+                        ],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/remainder/{a}/{b}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "involved_parameters": [
+                    "a",
+                    "b"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "a": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Typical positive int32 values",
+                                    "description": "Positive integers within 32-bit signed range, encoded as plain decimal strings without non-numeric characters.",
+                                    "representative_samples": [
+                                        "1",
+                                        "7",
+                                        "42",
+                                        "256",
+                                        "123456",
+                                        "2147483"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Typical negative int32 values",
+                                    "description": "Negative integers within 32-bit signed range, encoded as plain decimal strings with a leading minus sign.",
+                                    "representative_samples": [
+                                        "-2",
+                                        "-15",
+                                        "-999",
+                                        "-32768",
+                                        "-1000000",
+                                        "-2147487"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Boundary and special values",
+                                    "description": "Edge values at or near the int32 boundaries and zero; all encoded as plain decimal strings.",
+                                    "representative_samples": [
+                                        "0",
+                                        "-0",
+                                        "2147483647",
+                                        "-2147483648",
+                                        "2147483646",
+                                        "-2147483647"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Zero-padded decimal strings",
+                                    "description": "Valid int32 numeric values represented with leading zeros in the path segment.",
+                                    "representative_samples": [
+                                        "0000",
+                                        "0001",
+                                        "0010",
+                                        "000123",
+                                        "-0005",
+                                        "0002147483"
+                                    ]
+                                }
+                            ],
+                            "b": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Typical positive non-zero int32 values",
+                                    "description": "Positive non-zero integers within 32-bit signed range, encoded as plain decimal strings.",
+                                    "representative_samples": [
+                                        "1",
+                                        "2",
+                                        "7",
+                                        "100",
+                                        "123456",
+                                        "2147483647"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Typical negative non-zero int32 values",
+                                    "description": "Negative non-zero integers within 32-bit signed range, encoded as plain decimal strings with a leading minus sign.",
+                                    "representative_samples": [
+                                        "-1",
+                                        "-2",
+                                        "-7",
+                                        "-100",
+                                        "-123456",
+                                        "-2147483648"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Boundary extremes (non-zero)",
+                                    "description": "Edge values at or near the int32 limits, explicitly excluding zero.",
+                                    "representative_samples": [
+                                        "2147483647",
+                                        "2147483646",
+                                        "-2147483648",
+                                        "-2147483647",
+                                        "999999",
+                                        "-999999"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Zero-padded non-zero decimals",
+                                    "description": "Valid non-zero int32 values represented with leading zeros in the path segment.",
+                                    "representative_samples": [
+                                        "0001",
+                                        "0010",
+                                        "000123",
+                                        "-0005",
+                                        "0002147483",
+                                        "0000000001"
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "a",
+                            "b"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space2",
+                "satisfied_dependencies": "To compute the remainder a mod b, parameter b must not be 0.",
+                "involved_parameters": [
+                    "b"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "b": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Typical positive non-zero int32 values",
+                                    "description": "Positive non-zero integers within 32-bit signed range, encoded as plain decimal strings.",
+                                    "representative_samples": [
+                                        "1",
+                                        "2",
+                                        "7",
+                                        "100",
+                                        "123456",
+                                        "2147483647"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Typical negative non-zero int32 values",
+                                    "description": "Negative non-zero integers within 32-bit signed range, encoded as plain decimal strings with a leading minus sign.",
+                                    "representative_samples": [
+                                        "-1",
+                                        "-2",
+                                        "-7",
+                                        "-100",
+                                        "-123456",
+                                        "-2147483648"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Boundary extremes (non-zero)",
+                                    "description": "Edge values at or near the int32 limits, explicitly excluding zero.",
+                                    "representative_samples": [
+                                        "2147483647",
+                                        "2147483646",
+                                        "-2147483648",
+                                        "-2147483647",
+                                        "999999",
+                                        "-999999"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Zero-padded non-zero decimals",
+                                    "description": "Valid non-zero int32 values represented with leading zeros in the path segment.",
+                                    "representative_samples": [
+                                        "0001",
+                                        "0010",
+                                        "000123",
+                                        "-0005",
+                                        "0002147483",
+                                        "0000000001"
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "b"
+                        ],
+                        "parameter_value": [
+                            "b != 0"
+                        ],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space1",
+                        "single_parameter_spaces": {
+                            "b": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^-?\\d+$",
+                                    "input_space_category": "Zero value",
+                                    "description": "Zero value for b (violates the non-zero constraint).",
+                                    "representative_samples": [
+                                        "0",
+                                        "-0",
+                                        "0000"
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "b"
+                        ],
+                        "parameter_value": [
+                            "b = 0"
+                        ],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/triangle/{a}/{b}/{c}",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "involved_parameters": [
+                    "a",
+                    "b",
+                    "c"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "a": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "b": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "c": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "a",
+                            "b",
+                            "c"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space2",
+                "satisfied_dependencies": "All three edges a, b, and c must be positive integers;",
+                "involved_parameters": [
+                    "a",
+                    "b",
+                    "c"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "a": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "b": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "c": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "a",
+                            "b",
+                            "c"
+                        ],
+                        "parameter_value": [
+                            "a is an integer greater than 0",
+                            "b is an integer greater than 0",
+                            "c is an integer greater than 0"
+                        ],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space1",
+                        "single_parameter_spaces": {
+                            "a": [],
+                            "b": [],
+                            "c": []
+                        },
+                        "parameter": [
+                            "a",
+                            "b",
+                            "c"
+                        ],
+                        "parameter_value": [
+                            "At least one of a, b, c is less than or equal to 0"
+                        ],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space2",
+                        "single_parameter_spaces": {
+                            "a": [],
+                            "b": [],
+                            "c": []
+                        },
+                        "parameter": [
+                            "a",
+                            "b",
+                            "c"
+                        ],
+                        "parameter_value": [
+                            "At least one of a, b, c is not an integer (e.g., non-numeric or fractional)"
+                        ],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space3",
+                "satisfied_dependencies": "To form a valid (non-degenerate) triangle, the triangle inequalities must hold simultaneously: a + b > c, a + c > b, and b + c > a;",
+                "involved_parameters": [
+                    "a",
+                    "b",
+                    "c"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "a": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "b": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "c": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "a",
+                            "b",
+                            "c"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": [
+                            "a + b > c",
+                            "a + c > b",
+                            "b + c > a"
+                        ]
+                    },
+                    {
+                        "subspace_name": "error_space1",
+                        "single_parameter_spaces": {
+                            "a": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "b": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "c": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "a",
+                            "b",
+                            "c"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": [
+                            "a + b <= c"
+                        ]
+                    },
+                    {
+                        "subspace_name": "error_space2",
+                        "single_parameter_spaces": {
+                            "a": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "b": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "c": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "a",
+                            "b",
+                            "c"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": [
+                            "a + c <= b"
+                        ]
+                    },
+                    {
+                        "subspace_name": "error_space3",
+                        "single_parameter_spaces": {
+                            "a": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "b": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "c": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "a",
+                            "b",
+                            "c"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": [
+                            "b + c <= a"
+                        ]
+                    }
+                ]
+            },
+            {
+                "space_name": "space4",
+                "satisfied_dependencies": "If a = b = c, the triangle is equilateral; if exactly two of a, b, c are equal, the triangle is isosceles; if all three are different, it is scalene.",
+                "involved_parameters": [
+                    "a",
+                    "b",
+                    "c"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "a": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "b": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "c": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "a",
+                            "b",
+                            "c"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": [
+                            "a = b",
+                            "b = c"
+                        ]
+                    },
+                    {
+                        "subspace_name": "subspace2",
+                        "single_parameter_spaces": {
+                            "a": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "b": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "c": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "a",
+                            "b",
+                            "c"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": [
+                            "Exactly two of a, b, c are equal and the remaining one is different (i.e., a = b and c != a; or a = c and b != a; or b = c and a != b)"
+                        ]
+                    },
+                    {
+                        "subspace_name": "subspace3",
+                        "single_parameter_spaces": {
+                            "a": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "b": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ],
+                            "c": [
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Lower bound small positive integers",
+                                    "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                                    "representative_samples": [
+                                        1,
+                                        2,
+                                        3,
+                                        4,
+                                        5,
+                                        6
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "Typical mid-range positive integers",
+                                    "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                                    "representative_samples": [
+                                        12,
+                                        25,
+                                        100,
+                                        256,
+                                        999,
+                                        12345
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "integer",
+                                    "format": "^[1-9]\\d*$",
+                                    "input_space_category": "High positive integers near max int32",
+                                    "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                                    "representative_samples": [
+                                        2147483647,
+                                        2147483000,
+                                        2000000000,
+                                        1999999999,
+                                        1500000000,
+                                        1000000000
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "a",
+                            "b",
+                            "c"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": [
+                            "a != b",
+                            "b != c",
+                            "a != c"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

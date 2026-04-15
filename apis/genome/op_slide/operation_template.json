@@ -1,0 +1,1617 @@
+[
+    {
+        "method": "post",
+        "url": "/annotation",
+        "op_name": "post /annotation",
+        "param_list": [
+            {
+                "param_name": "isoformOverrideSource",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "Isoform override source. For example uniprot"
+            },
+            {
+                "param_name": "token",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"}"
+            },
+            {
+                "param_name": "fields",
+                "param_type": "query",
+                "val_type": "array",
+                "is_required": false,
+                "description": "Comma separated list of fields to include (case-sensitive!). For example: hotspots"
+            },
+            {
+                "param_name": "[]",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/annotation",
+            "summary": "Retrieves VEP annotation for the provided list of variants",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "isoformOverrideSource",
+                    "in": "query",
+                    "description": "Isoform override source. For example uniprot",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "token",
+                    "in": "query",
+                    "description": "Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"}",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "in": "query",
+                    "description": "Comma separated list of fields to include (case-sensitive!). For example: hotspots",
+                    "style": "form",
+                    "explode": true,
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "default": "hotspots"
+                        }
+                    }
+                }
+            ],
+            "requestBody": {
+                "description": "List of variants. For example [\"X:g.66937331T>A\",\"17:g.41242962_41242963insGA\"] (GRCh37) or [\"1:g.182712A>C\", \"2:g.265023C>T\", \"3:g.319781del\", \"19:g.110753dup\", \"1:g.1385015_1387562del\"] (GRCh38)",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/VariantAnnotation"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchVariantAnnotationPOST"
+        },
+        "dependencies": [
+            "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+        ]
+    },
+    {
+        "method": "post",
+        "url": "/annotation/dbsnp/",
+        "op_name": "post /annotation/dbsnp/",
+        "param_list": [
+            {
+                "param_name": "isoformOverrideSource",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "Isoform override source. For example uniprot"
+            },
+            {
+                "param_name": "token",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"}"
+            },
+            {
+                "param_name": "fields",
+                "param_type": "query",
+                "val_type": "array",
+                "is_required": false,
+                "description": "Comma separated list of fields to include (case-sensitive!). For example: annotation_summary"
+            },
+            {
+                "param_name": "[]",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/annotation/dbsnp/",
+            "summary": "Retrieves VEP annotation for the provided list of dbSNP ids",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "isoformOverrideSource",
+                    "in": "query",
+                    "description": "Isoform override source. For example uniprot",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "token",
+                    "in": "query",
+                    "description": "Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"}",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "in": "query",
+                    "description": "Comma separated list of fields to include (case-sensitive!). For example: annotation_summary",
+                    "style": "form",
+                    "explode": true,
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "default": "annotation_summary"
+                        }
+                    }
+                }
+            ],
+            "requestBody": {
+                "description": "List of variant IDs. For example [\"rs116035550\"]",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/VariantAnnotation"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchVariantAnnotationByIdPOST"
+        },
+        "dependencies": [
+            "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+        ]
+    },
+    {
+        "method": "get",
+        "url": "/annotation/dbsnp/{variantId}",
+        "op_name": "get /annotation/dbsnp/{variantId}",
+        "param_list": [
+            {
+                "param_name": "variantId",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "dbSNP id. For example rs116035550."
+            },
+            {
+                "param_name": "isoformOverrideSource",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "Isoform override source. For example uniprot"
+            },
+            {
+                "param_name": "token",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"}"
+            },
+            {
+                "param_name": "fields",
+                "param_type": "query",
+                "val_type": "array",
+                "is_required": false,
+                "description": "Comma separated list of fields to include (case-sensitive!). For example: annotation_summary"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/annotation/dbsnp/{variantId}",
+            "summary": "Retrieves VEP annotation for the give dbSNP id",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "variantId",
+                    "in": "path",
+                    "description": "dbSNP id. For example rs116035550.",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "isoformOverrideSource",
+                    "in": "query",
+                    "description": "Isoform override source. For example uniprot",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "token",
+                    "in": "query",
+                    "description": "Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"}",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "in": "query",
+                    "description": "Comma separated list of fields to include (case-sensitive!). For example: annotation_summary",
+                    "style": "form",
+                    "explode": true,
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "default": "annotation_summary"
+                        }
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VariantAnnotation"
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchVariantAnnotationByIdGET"
+        },
+        "dependencies": [
+            "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+        ]
+    },
+    {
+        "method": "post",
+        "url": "/annotation/genomic",
+        "op_name": "post /annotation/genomic",
+        "param_list": [
+            {
+                "param_name": "isoformOverrideSource",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "Isoform override source. For example uniprot"
+            },
+            {
+                "param_name": "token",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"}"
+            },
+            {
+                "param_name": "fields",
+                "param_type": "query",
+                "val_type": "array",
+                "is_required": false,
+                "description": "Comma separated list of fields to include (case-sensitive!). For example: hotspots"
+            },
+            {
+                "param_name": "[].chromosome",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": true,
+                "description": "Chromosome"
+            },
+            {
+                "param_name": "[].start",
+                "param_type": "body",
+                "val_type": "integer",
+                "is_required": true,
+                "description": "Start Position"
+            },
+            {
+                "param_name": "[].end",
+                "param_type": "body",
+                "val_type": "integer",
+                "is_required": true,
+                "description": "End Position"
+            },
+            {
+                "param_name": "[].referenceAllele",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": true,
+                "description": "Reference Allele"
+            },
+            {
+                "param_name": "[].variantAllele",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": true,
+                "description": "Variant Allele"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/annotation/genomic",
+            "summary": "Retrieves VEP annotation for the provided list of genomic locations",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "isoformOverrideSource",
+                    "in": "query",
+                    "description": "Isoform override source. For example uniprot",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "token",
+                    "in": "query",
+                    "description": "Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"}",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "in": "query",
+                    "description": "Comma separated list of fields to include (case-sensitive!). For example: hotspots",
+                    "style": "form",
+                    "explode": true,
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "default": "hotspots"
+                        }
+                    }
+                }
+            ],
+            "requestBody": {
+                "description": "List of Genomic Locations",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "required": [
+                                    "chromosome",
+                                    "end",
+                                    "referenceAllele",
+                                    "start",
+                                    "variantAllele"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "chromosome": {
+                                        "type": "string",
+                                        "description": "Chromosome"
+                                    },
+                                    "start": {
+                                        "type": "integer",
+                                        "description": "Start Position",
+                                        "format": "int32"
+                                    },
+                                    "end": {
+                                        "type": "integer",
+                                        "description": "End Position",
+                                        "format": "int32"
+                                    },
+                                    "referenceAllele": {
+                                        "type": "string",
+                                        "description": "Reference Allele"
+                                    },
+                                    "variantAllele": {
+                                        "type": "string",
+                                        "description": "Variant Allele"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/VariantAnnotation"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchVariantAnnotationByGenomicLocationPOST"
+        },
+        "dependencies": [
+            "For each genomic location item in the request body, the properties chromosome, start, end, referenceAllele, and variantAllele must all be provided together (all-or-none);",
+            "Within each genomic location item, start must be less than or equal to end;",
+            "Within each genomic location item, referenceAllele and variantAllele must both be provided and must not be identical;",
+            "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+        ]
+    },
+    {
+        "method": "get",
+        "url": "/annotation/genomic/{genomicLocation}",
+        "op_name": "get /annotation/genomic/{genomicLocation}",
+        "param_list": [
+            {
+                "param_name": "genomicLocation",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "A genomic location. For example 7,140453136,140453136,A,T"
+            },
+            {
+                "param_name": "isoformOverrideSource",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "Isoform override source. For example uniprot"
+            },
+            {
+                "param_name": "token",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"}"
+            },
+            {
+                "param_name": "fields",
+                "param_type": "query",
+                "val_type": "array",
+                "is_required": false,
+                "description": "Comma separated list of fields to include (case-sensitive!). For example: hotspots"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/annotation/genomic/{genomicLocation}",
+            "summary": "Retrieves VEP annotation for the provided genomic location",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "genomicLocation",
+                    "in": "path",
+                    "description": "A genomic location. For example 7,140453136,140453136,A,T",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "isoformOverrideSource",
+                    "in": "query",
+                    "description": "Isoform override source. For example uniprot",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "token",
+                    "in": "query",
+                    "description": "Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"}",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "in": "query",
+                    "description": "Comma separated list of fields to include (case-sensitive!). For example: hotspots",
+                    "style": "form",
+                    "explode": true,
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "default": "hotspots"
+                        }
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VariantAnnotation"
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchVariantAnnotationByGenomicLocationGET"
+        },
+        "dependencies": [
+            "The genomicLocation path value must provide exactly five comma-separated components in the order: chromosome,start,end,referenceAllele,variantAllele; start must be less than or equal to end;",
+            "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+        ]
+    },
+    {
+        "method": "get",
+        "url": "/annotation/{variant}",
+        "op_name": "get /annotation/{variant}",
+        "param_list": [
+            {
+                "param_name": "variant",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "Variant. For example 17:g.41242962_41242963insGA"
+            },
+            {
+                "param_name": "isoformOverrideSource",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "Isoform override source. For example uniprot"
+            },
+            {
+                "param_name": "token",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"}"
+            },
+            {
+                "param_name": "fields",
+                "param_type": "query",
+                "val_type": "array",
+                "is_required": false,
+                "description": "Comma separated list of fields to include (case-sensitive!). For example: hotspots"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/annotation/{variant}",
+            "summary": "Retrieves VEP annotation for the provided variant",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "variant",
+                    "in": "path",
+                    "description": "Variant. For example 17:g.41242962_41242963insGA",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "isoformOverrideSource",
+                    "in": "query",
+                    "description": "Isoform override source. For example uniprot",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "token",
+                    "in": "query",
+                    "description": "Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"}",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "in": "query",
+                    "description": "Comma separated list of fields to include (case-sensitive!). For example: hotspots",
+                    "style": "form",
+                    "explode": true,
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "default": "hotspots"
+                        }
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VariantAnnotation"
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchVariantAnnotationGET"
+        },
+        "dependencies": [
+            "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+        ]
+    },
+    {
+        "method": "post",
+        "url": "/ensembl/canonical-gene/entrez",
+        "op_name": "post /ensembl/canonical-gene/entrez",
+        "param_list": [
+            {
+                "param_name": "[]",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/ensembl/canonical-gene/entrez",
+            "summary": "Retrieves canonical Ensembl Gene ID by Entrez Gene Ids",
+            "description": null,
+            "parameters": [],
+            "requestBody": {
+                "description": "List of Entrez Gene Ids. For example [\"23140\",\"26009\",\"100131879\"]",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EnsemblGene"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "get",
+        "url": "/ensembl/canonical-gene/entrez/{entrezGeneId}",
+        "op_name": "get /ensembl/canonical-gene/entrez/{entrezGeneId}",
+        "param_list": [
+            {
+                "param_name": "entrezGeneId",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "An Entrez Gene Id. For example 23140"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/ensembl/canonical-gene/entrez/{entrezGeneId}",
+            "summary": "Retrieves Ensembl canonical gene id by Entrez Gene Id",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "entrezGeneId",
+                    "in": "path",
+                    "description": "An Entrez Gene Id. For example 23140",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EnsemblGene"
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchCanonicalEnsemblGeneIdByEntrezGeneIdGET"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "post",
+        "url": "/ensembl/canonical-gene/hgnc",
+        "op_name": "post /ensembl/canonical-gene/hgnc",
+        "param_list": [
+            {
+                "param_name": "[]",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/ensembl/canonical-gene/hgnc",
+            "summary": "Retrieves canonical Ensembl Gene ID by Hugo Symbols",
+            "description": null,
+            "parameters": [],
+            "requestBody": {
+                "description": "List of Hugo Symbols. For example [\"TP53\",\"PIK3CA\",\"BRCA1\"]",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EnsemblGene"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchCanonicalEnsemblGeneIdByHugoSymbolsPOST"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "get",
+        "url": "/ensembl/canonical-gene/hgnc/{hugoSymbol}",
+        "op_name": "get /ensembl/canonical-gene/hgnc/{hugoSymbol}",
+        "param_list": [
+            {
+                "param_name": "hugoSymbol",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "A Hugo Symbol. For example TP53"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/ensembl/canonical-gene/hgnc/{hugoSymbol}",
+            "summary": "Retrieves Ensembl canonical gene id by Hugo Symbol",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "hugoSymbol",
+                    "in": "path",
+                    "description": "A Hugo Symbol. For example TP53",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EnsemblGene"
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchCanonicalEnsemblGeneIdByHugoSymbolGET"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "post",
+        "url": "/ensembl/canonical-transcript/hgnc",
+        "op_name": "post /ensembl/canonical-transcript/hgnc",
+        "param_list": [
+            {
+                "param_name": "isoformOverrideSource",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "Isoform override source. For example uniprot"
+            },
+            {
+                "param_name": "[]",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/ensembl/canonical-transcript/hgnc",
+            "summary": "Retrieves Ensembl canonical transcripts by Hugo Symbols",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "isoformOverrideSource",
+                    "in": "query",
+                    "description": "Isoform override source. For example uniprot",
+                    "schema": {
+                        "type": "string",
+                        "default": "uniprot"
+                    }
+                }
+            ],
+            "requestBody": {
+                "description": "List of Hugo Symbols. For example [\"TP53\",\"PIK3CA\",\"BRCA1\"]",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EnsemblTranscript"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "get",
+        "url": "/ensembl/canonical-transcript/hgnc/{hugoSymbol}",
+        "op_name": "get /ensembl/canonical-transcript/hgnc/{hugoSymbol}",
+        "param_list": [
+            {
+                "param_name": "hugoSymbol",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "A Hugo Symbol. For example TP53"
+            },
+            {
+                "param_name": "isoformOverrideSource",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "Isoform override source. For example uniprot"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/ensembl/canonical-transcript/hgnc/{hugoSymbol}",
+            "summary": "Retrieves Ensembl canonical transcript by Hugo Symbol",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "hugoSymbol",
+                    "in": "path",
+                    "description": "A Hugo Symbol. For example TP53",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "isoformOverrideSource",
+                    "in": "query",
+                    "description": "Isoform override source. For example uniprot",
+                    "schema": {
+                        "type": "string",
+                        "default": "uniprot"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EnsemblTranscript"
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchCanonicalEnsemblTranscriptByHugoSymbolGET"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "get",
+        "url": "/ensembl/transcript",
+        "op_name": "get /ensembl/transcript",
+        "param_list": [
+            {
+                "param_name": "geneId",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "An Ensembl gene ID. For example ENSG00000136999"
+            },
+            {
+                "param_name": "proteinId",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "An Ensembl protein ID. For example ENSP00000439985"
+            },
+            {
+                "param_name": "hugoSymbol",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "A Hugo Symbol For example ARF5"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/ensembl/transcript",
+            "summary": "Retrieves Ensembl Transcripts by protein ID, and gene ID. Retrieves all transcripts in case no query parameter provided",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "geneId",
+                    "in": "query",
+                    "description": "An Ensembl gene ID. For example ENSG00000136999",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "proteinId",
+                    "in": "query",
+                    "description": "An Ensembl protein ID. For example ENSP00000439985",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "hugoSymbol",
+                    "in": "query",
+                    "description": "A Hugo Symbol For example ARF5",
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EnsemblTranscript"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchEnsemblTranscriptsGET"
+        },
+        "dependencies": [
+            "The geneId, proteinId, and hugoSymbol query parameters are independent optional filters; if none are provided, all transcripts are returned;"
+        ]
+    },
+    {
+        "method": "post",
+        "url": "/ensembl/transcript",
+        "op_name": "post /ensembl/transcript",
+        "param_list": [
+            {
+                "param_name": "geneIds[]",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "hugoSymbols[]",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "proteinIds[]",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "transcriptIds[]",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/ensembl/transcript",
+            "summary": "Retrieves Ensembl Transcripts by Ensembl transcript IDs, hugo Symbols, protein IDs, or gene IDs",
+            "description": null,
+            "parameters": [],
+            "requestBody": {
+                "description": "List of Ensembl transcript IDs. For example [\"ENST00000361390\", \"ENST00000361453\", \"ENST00000361624\"]<br>OR<br>List of Hugo Symbols. For example [\"TP53\", \"PIK3CA\", \"BRCA1\"]<br>OR<br>List of Ensembl protein IDs. For example [\"ENSP00000439985\", \"ENSP00000478460\", \"ENSP00000346196\"]<br>OR<br>List of Ensembl gene IDs. For example [\"ENSG00000136999\", \"ENSG00000272398\", \"ENSG00000198695\"]",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "geneIds": {
+                                    "type": "array",
+                                    "description": "List of Ensembl gene IDs. For example [\"ENSG00000136999\", \"ENSG00000272398\", \"ENSG00000198695\"]",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "hugoSymbols": {
+                                    "type": "array",
+                                    "description": "List of Hugo Symbols. For example [\"TP53\", \"PIK3CA\", \"BRCA1\"]",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "proteinIds": {
+                                    "type": "array",
+                                    "description": "List of Ensembl protein IDs. For example [\"ENSP00000439985\", \"ENSP00000478460\", \"ENSP00000346196\"]",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "transcriptIds": {
+                                    "type": "array",
+                                    "description": "List of Ensembl transcript IDs. For example [\"ENST00000361390\", \"ENST00000361453\", \"ENST00000361624\"]",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EnsemblTranscript"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchEnsemblTranscriptsByEnsemblFilterPOST"
+        },
+        "dependencies": [
+            "In the request body ensemblFilter, exactly one of the arrays transcriptIds, hugoSymbols, proteinIds, or geneIds should be provided and non-empty (Only One);",
+            "At least one of transcriptIds, hugoSymbols, proteinIds, or geneIds must be provided in the request body; if more than one are supplied simultaneously, the request should be treated as invalid or ambiguous;"
+        ]
+    },
+    {
+        "method": "get",
+        "url": "/ensembl/transcript/{transcriptId}",
+        "op_name": "get /ensembl/transcript/{transcriptId}",
+        "param_list": [
+            {
+                "param_name": "transcriptId",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "An Ensembl transcript ID. For example ENST00000361390"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/ensembl/transcript/{transcriptId}",
+            "summary": "Retrieves the transcript by an Ensembl transcript ID",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "transcriptId",
+                    "in": "path",
+                    "description": "An Ensembl transcript ID. For example ENST00000361390",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EnsemblTranscript"
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchEnsemblTranscriptByTranscriptIdGET"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "get",
+        "url": "/ensembl/xrefs",
+        "op_name": "get /ensembl/xrefs",
+        "param_list": [
+            {
+                "param_name": "accession",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": true,
+                "description": "Ensembl gene accession. For example ENSG00000169083"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/ensembl/xrefs",
+            "summary": "Perform lookups of Ensembl identifiers and retrieve their external references in other databases",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "accession",
+                    "in": "query",
+                    "description": "Ensembl gene accession. For example ENSG00000169083",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/GeneXref"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchGeneXrefsGET"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "post",
+        "url": "/pdb/header",
+        "op_name": "post /pdb/header",
+        "param_list": [
+            {
+                "param_name": "[]",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/pdb/header",
+            "summary": "Retrieves PDB header info by a PDB id",
+            "description": null,
+            "parameters": [],
+            "requestBody": {
+                "description": "List of pdb ids, for example [\"1a37\",\"1a4o\"]",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/PdbHeader"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchPdbHeaderPOST"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "get",
+        "url": "/pdb/header/{pdbId}",
+        "op_name": "get /pdb/header/{pdbId}",
+        "param_list": [
+            {
+                "param_name": "pdbId",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "PDB id, for example 1a37"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/pdb/header/{pdbId}",
+            "summary": "Retrieves PDB header info by a PDB id",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "pdbId",
+                    "in": "path",
+                    "description": "PDB id, for example 1a37",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PdbHeader"
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchPdbHeaderGET"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "post",
+        "url": "/pfam/domain",
+        "op_name": "post /pfam/domain",
+        "param_list": [
+            {
+                "param_name": "[]",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/pfam/domain",
+            "summary": "Retrieves PFAM domains by PFAM domain accession IDs",
+            "description": null,
+            "parameters": [],
+            "requestBody": {
+                "description": "List of PFAM domain accession IDs. For example [\"PF02827\",\"PF00093\",\"PF15276\"]",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/PfamDomain"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchPfamDomainsByPfamAccessionPOST"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "get",
+        "url": "/pfam/domain/{pfamAccession}",
+        "op_name": "get /pfam/domain/{pfamAccession}",
+        "param_list": [
+            {
+                "param_name": "pfamAccession",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "A PFAM domain accession ID. For example PF02827"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/pfam/domain/{pfamAccession}",
+            "summary": "Retrieves a PFAM domain by a PFAM domain ID",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "pfamAccession",
+                    "in": "path",
+                    "description": "A PFAM domain accession ID. For example PF02827",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PfamDomain"
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchPfamDomainsByAccessionGET"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "get",
+        "url": "/ptm/experimental",
+        "op_name": "get /ptm/experimental",
+        "param_list": [
+            {
+                "param_name": "ensemblTranscriptId",
+                "param_type": "query",
+                "val_type": "string",
+                "is_required": false,
+                "description": "Ensembl Transcript ID. For example ENST00000646891"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/ptm/experimental",
+            "summary": "Retrieves PTM entries by Ensembl Transcript ID",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "ensemblTranscriptId",
+                    "in": "query",
+                    "description": "Ensembl Transcript ID. For example ENST00000646891",
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/PostTranslationalModification"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchPostTranslationalModificationsGET"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "post",
+        "url": "/ptm/experimental",
+        "op_name": "post /ptm/experimental",
+        "param_list": [
+            {
+                "param_name": "transcriptIds[]",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/ptm/experimental",
+            "summary": "Retrieves PTM entries by Ensembl Transcript IDs",
+            "description": null,
+            "parameters": [],
+            "requestBody": {
+                "description": "List of Ensembl transcript IDs. For example [\"ENST00000420316\", \"ENST00000646891\", \"ENST00000371953\"]",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "transcriptIds": {
+                                    "type": "array",
+                                    "description": "List of Ensembl transcript IDs. For example [\"ENST00000361390\", \"ENST00000361453\", \"ENST00000361624\"]",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/PostTranslationalModification"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchPostTranslationalModificationsByPtmFilterPOST"
+        },
+        "dependencies": [
+            "The request body ptmFilter must include the transcriptIds array, and it must contain at least one Ensembl transcript ID;"
+        ]
+    },
+    {
+        "method": "get",
+        "url": "/version",
+        "op_name": "get /version",
+        "param_list": [],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/version",
+            "summary": "Retrieve Genome Nexus Version",
+            "description": null,
+            "parameters": [],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Version"
+                            }
+                        }
+                    }
+                }
+            },
+            "operationId": "fetchVersionGET"
+        },
+        "dependencies": []
+    }
+]

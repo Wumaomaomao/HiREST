@@ -178,7 +178,6 @@ apis/*/log
 apis/*/exec_log
 apis/*/result
 apis/demo/
-apis/*/partition
 apis_old/
-apis/
+
 scripts/

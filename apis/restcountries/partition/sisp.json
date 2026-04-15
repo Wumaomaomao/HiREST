@@ -1,0 +1,4310 @@
+[
+    {
+        "op_name": "get /v1/alpha/{alphacode}",
+        "type": "string",
+        "param_name": "alphacode",
+        "format": [
+            "^(?:[A-Za-z]{2}|[A-Za-z]{3})$",
+            "ISO 3166-1 alpha-2/alpha-3 letters only; uppercase preferred"
+        ],
+        "valid": [
+            {
+                "param_name": "alphacode",
+                "category": "Valid alpha-2 ISO codes (uppercase)",
+                "description": "Exactly 2 uppercase English letters corresponding to recognized ISO 3166-1 alpha-2 country codes.",
+                "samples": [
+                    "US",
+                    "GB",
+                    "DE",
+                    "FR",
+                    "JP",
+                    "BR"
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Valid alpha-3 ISO codes (uppercase)",
+                "description": "Exactly 3 uppercase English letters corresponding to recognized ISO 3166-1 alpha-3 country codes.",
+                "samples": [
+                    "USA",
+                    "GBR",
+                    "DEU",
+                    "FRA",
+                    "JPN",
+                    "BRA"
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Valid ISO codes in lowercase (case-insensitive acceptance)",
+                "description": "Lowercase versions of recognized ISO alpha-2 or alpha-3 codes; service may treat input case-insensitively.",
+                "samples": [
+                    "us",
+                    "gbr",
+                    "de",
+                    "fra",
+                    "jp",
+                    "br"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "alphacode",
+                "category": "<MISS_KEY>",
+                "description": "Path parameter alphacode is omitted; request path lacks the required segment, causing route mismatch or validation error.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Wrong length (letters but not 2 or 3)",
+                "description": "Alphabetic strings whose length is not exactly 2 or 3.",
+                "samples": [
+                    "U",
+                    "USAA",
+                    "ABCDE",
+                    "A",
+                    "ABCD",
+                    "MNOP"
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Contains non-letter characters",
+                "description": "Values include digits or special characters; only A–Z letters are allowed.",
+                "samples": [
+                    "U2",
+                    "9A",
+                    "U$",
+                    "A_",
+                    "1US",
+                    "US!"
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Multiple codes provided",
+                "description": "Input includes more than one code separated by commas, spaces, or other delimiters; only one code is allowed.",
+                "samples": [
+                    "US,CA",
+                    "GBR USA",
+                    "DE/FR",
+                    "US|MX",
+                    "JP;KR",
+                    "BR, AR"
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Well-formed but unrecognized code",
+                "description": "Exactly 2 or 3 letters but not a valid ISO 3166-1 alpha-2 or alpha-3 code recognized by the service.",
+                "samples": [
+                    "AA",
+                    "QQ",
+                    "ZZ",
+                    "AAA",
+                    "ZZZ",
+                    "XXX"
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Non-string type",
+                "description": "The parameter value is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    45.67,
+                    {},
+                    []
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/alpha",
+        "type": "string",
+        "param_name": "codes",
+        "format": [
+            "^[A-Za-z]{2,3}(?:,[A-Za-z]{2,3})*$",
+            "^[A-Z]{2,3}(?:,[A-Z]{2,3})*$"
+        ],
+        "valid": [
+            {
+                "param_name": "codes",
+                "category": "Single valid alpha-2 code",
+                "description": "A single ISO 3166-1 alpha-2 country code; letters only, case-insensitive, no spaces.",
+                "samples": [
+                    "US",
+                    "GB",
+                    "DE",
+                    "FR",
+                    "JP",
+                    "CA"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Multiple alpha-2 codes (comma-separated, no spaces)",
+                "description": "Two or more ISO 3166-1 alpha-2 codes separated by commas, no spaces.",
+                "samples": [
+                    "US,GB,DE",
+                    "FR,IT,ES",
+                    "JP,KR,CN",
+                    "CA,MX,US",
+                    "BR,AR,CL",
+                    "AU,NZ,SG"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Multiple alpha-3 codes (comma-separated, no spaces)",
+                "description": "Two or more ISO 3166-1 alpha-3 codes separated by commas, no spaces.",
+                "samples": [
+                    "USA,GBR,DEU",
+                    "FRA,ITA,ESP",
+                    "JPN,KOR,CHN",
+                    "CAN,MEX,USA",
+                    "BRA,ARG,CHL",
+                    "AUS,NZL,SGP"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Mixed alpha-2 and alpha-3 codes",
+                "description": "A mix of ISO 3166-1 alpha-2 and alpha-3 codes separated by commas, no spaces.",
+                "samples": [
+                    "US,GBR,DE",
+                    "FRA,IT,ES",
+                    "JP,KOR,CHN",
+                    "CA,MEX,USA",
+                    "BR,ARG,CL",
+                    "AU,NZL,SG"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Lowercase or mixed-case codes (valid, case-insensitive)",
+                "description": "Valid ISO codes in lowercase or mixed case; service treats codes case-insensitively.",
+                "samples": [
+                    "us",
+                    "gbr",
+                    "De,fr",
+                    "jpn,kr,cn",
+                    "Ca,mx,us",
+                    "br,aRg,cl"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "codes",
+                "category": "<MISS_KEY>",
+                "description": "The required query parameter 'codes' is omitted from the request.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Contains spaces or tabs",
+                "description": "Codes include spaces before/after items or around commas, which violates the no-space rule.",
+                "samples": [
+                    "US, GB",
+                    " USA",
+                    "GBR ,DEU",
+                    "US ,GB",
+                    "fr ,it",
+                    "JP ,KR,CN"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Empty items or stray commas",
+                "description": "Leading/trailing commas or consecutive commas create empty code entries.",
+                "samples": [
+                    ",US",
+                    "US,",
+                    "US,,GB",
+                    ",,US",
+                    "US,,,GB",
+                    ",US,GB,"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Non-alphabetic characters in segments",
+                "description": "One or more segments contain digits or symbols; only letters A–Z are allowed.",
+                "samples": [
+                    "U$",
+                    "G1",
+                    "D-E",
+                    "FR!",
+                    "JP@",
+                    "C#N"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Wrong segment length",
+                "description": "One or more segments are not exactly 2 or 3 letters (e.g., 1-letter or 4+ letters).",
+                "samples": [
+                    "U",
+                    "USAA",
+                    "G,DE",
+                    "FRAN,IT",
+                    "JPNN,CHN",
+                    "C,MX,USA"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Well-formed but non-existent ISO codes",
+                "description": "Segments are 2 or 3 letters but do not correspond to assigned ISO 3166-1 codes.",
+                "samples": [
+                    "XX",
+                    "ZZ",
+                    "QQ",
+                    "ZZZ",
+                    "AAA",
+                    "XKX"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Non-string type",
+                "description": "The 'codes' parameter is provided as a non-string type, violating the expected string type.",
+                "samples": [
+                    123,
+                    0,
+                    true,
+                    false,
+                    45.67,
+                    []
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/currency/{currency}",
+        "type": "string",
+        "param_name": "currency",
+        "format": [
+            "^[A-Z]{3}$"
+        ],
+        "valid": [
+            {
+                "param_name": "currency",
+                "category": "Major ISO 4217 codes (uppercase)",
+                "description": "Widely used and recognized currency codes supplied in uppercase A–Z.",
+                "samples": [
+                    "USD",
+                    "EUR",
+                    "JPY",
+                    "GBP",
+                    "AUD",
+                    "CAD"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Additional widely used ISO codes (uppercase)",
+                "description": "Other valid and commonly used ISO 4217 codes in uppercase A–Z.",
+                "samples": [
+                    "CHF",
+                    "CNY",
+                    "SEK",
+                    "NZD",
+                    "NOK",
+                    "KRW"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Emerging market ISO codes (uppercase)",
+                "description": "Valid ISO 4217 codes for emerging market currencies in uppercase A–Z.",
+                "samples": [
+                    "BRL",
+                    "INR",
+                    "MXN",
+                    "ZAR",
+                    "TRY",
+                    "IDR"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "currency",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'currency' is omitted from the request path, causing routing or validation errors.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Wrong length (not exactly 3 characters)",
+                "description": "Values that are shorter or longer than 3 characters violate the ISO code length requirement.",
+                "samples": [
+                    "",
+                    "US",
+                    "EURO",
+                    "J",
+                    "USDA",
+                    "ABCD"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Contains non-letters (digits, symbols, or whitespace)",
+                "description": "Values include characters outside A–Z letters (e.g., digits, punctuation, or spaces).",
+                "samples": [
+                    "US1",
+                    "E$R",
+                    "JP_",
+                    "G B",
+                    "CNY!",
+                    "12A"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Unknown or unrecognized ISO code",
+                "description": "Three-letter alphabetic strings that are not recognized ISO 4217 currency codes by the service.",
+                "samples": [
+                    "ZZZ",
+                    "QQQ",
+                    "ABC",
+                    "AAA",
+                    "BBB",
+                    "TTT"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Type error: non-string values",
+                "description": "Values that are not strings (numbers, booleans, objects) violate the expected type.",
+                "samples": [
+                    123,
+                    0,
+                    3.14,
+                    true,
+                    false,
+                    {
+                        "code": "USD"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/name/{name}",
+        "type": "string",
+        "param_name": "name",
+        "format": [
+            "URL-encoded path-segment; spaces and non-ASCII must be percent-encoded",
+            "No '/' characters within value; non-empty",
+            "^(?!.*\\/).+$"
+        ],
+        "valid": [
+            {
+                "param_name": "name",
+                "category": "ASCII single-word country names (case-insensitive)",
+                "description": "Non-empty ASCII letters only, no spaces or slashes. Case-insensitive matching.",
+                "samples": [
+                    "france",
+                    "Germany",
+                    "JAPAN",
+                    "brazil",
+                    "Canada",
+                    "italy"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Multi-word names with spaces URL-encoded",
+                "description": "Country names containing spaces must encode spaces as %20; no slashes allowed.",
+                "samples": [
+                    "United%20States",
+                    "New%20Zealand",
+                    "Saudi%20Arabia",
+                    "Papua%20New%20Guinea",
+                    "Bosnia%20and%20Herzegovina",
+                    "Czech%20Republic"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Names with diacritics URL-encoded",
+                "description": "Names containing non-ASCII characters (accents/diacritics) must be percent-encoded; spaces encoded as %20.",
+                "samples": [
+                    "S%C3%A3o%20Tom%C3%A9%20e%20Pr%C3%ADncipe",
+                    "R%C3%A9union",
+                    "Cura%C3%A7ao",
+                    "Espa%C3%B1a",
+                    "%C3%85land%20Islands",
+                    "C%C3%B4te%20d%27Ivoire"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "name",
+                "category": "<MISS_KEY>",
+                "description": "Required path parameter is omitted, causing path resolution or validation error.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Unencoded spaces or diacritics",
+                "description": "Spaces or non-ASCII characters provided without percent-encoding.",
+                "samples": [
+                    "United States",
+                    "Côte d'Ivoire",
+                    "São Tomé e Príncipe",
+                    "Papua New Guinea",
+                    "Réunion",
+                    "España"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Contains slashes",
+                "description": "Value includes '/' which breaks path segment constraints.",
+                "samples": [
+                    "United/States",
+                    "France/Paris",
+                    "/Germany",
+                    "Brazil/",
+                    "Congo/DRC",
+                    "Korea/North"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Malformed percent-encoding",
+                "description": "Invalid or incomplete percent-encoding sequences in the path value.",
+                "samples": [
+                    "United%2GStates",
+                    "Re%union",
+                    "Cote% d'Ivoire",
+                    "%ZZland",
+                    "Fran%ce",
+                    "S%C3%Ao%20Paulo"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Non-string input type",
+                "description": "Value is not a string (e.g., number, boolean, array, or object).",
+                "samples": [
+                    123,
+                    0,
+                    true,
+                    false,
+                    [],
+                    {}
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/name/{name}",
+        "type": "boolean",
+        "param_name": "fullText",
+        "format": [
+            "boolean literal: true|false"
+        ],
+        "valid": [
+            {
+                "param_name": "fullText",
+                "category": "<MISS_KEY>",
+                "description": "Query parameter omitted; API defaults to false (partial/contains matching).",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "fullText",
+                "category": "Exact match enabled",
+                "description": "Boolean true to request exact full-name matching.",
+                "samples": [
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true
+                ]
+            },
+            {
+                "param_name": "fullText",
+                "category": "Partial match (default behavior) explicitly set",
+                "description": "Boolean false explicitly provided to use partial/name-contains matching.",
+                "samples": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fullText",
+                "category": "Case-incorrect boolean tokens",
+                "description": "Boolean provided as a case-incorrect string instead of a proper boolean literal.",
+                "samples": [
+                    "True",
+                    "FALSE",
+                    "False",
+                    "TRUE",
+                    "tRue",
+                    "FaLsE"
+                ]
+            },
+            {
+                "param_name": "fullText",
+                "category": "Non-boolean values",
+                "description": "Values that are not boolean literals.",
+                "samples": [
+                    "1",
+                    "0",
+                    "yes",
+                    "no",
+                    "on",
+                    "off"
+                ]
+            },
+            {
+                "param_name": "fullText",
+                "category": "Empty or whitespace-only",
+                "description": "Empty or whitespace-only values are invalid for a boolean.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "  \t "
+                ]
+            },
+            {
+                "param_name": "fullText",
+                "category": "Comma-separated or multiple values",
+                "description": "Multiple boolean-like tokens provided in one parameter value.",
+                "samples": [
+                    "true,false",
+                    "false,true",
+                    "true,true",
+                    "false,false",
+                    "true,1",
+                    "yes,no"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/callingcode/{callingcode}",
+        "type": "string",
+        "param_name": "callingcode",
+        "format": [
+            "^[1-9][0-9]{0,2}$"
+        ],
+        "valid": [
+            {
+                "param_name": "callingcode",
+                "category": "Valid 2-digit European calling codes",
+                "description": "Digits-only path segment with length 2 representing valid European country calling codes.",
+                "samples": [
+                    "30",
+                    "31",
+                    "32",
+                    "33",
+                    "34",
+                    "39"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Valid 2-digit Asia-Pacific calling codes",
+                "description": "Digits-only path segment with length 2 representing valid Asia-Pacific country calling codes.",
+                "samples": [
+                    "60",
+                    "61",
+                    "62",
+                    "63",
+                    "64",
+                    "65"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Valid 3-digit Middle East/Asia calling codes",
+                "description": "Digits-only path segment with length 3 representing valid Middle East/Asia country calling codes.",
+                "samples": [
+                    "970",
+                    "971",
+                    "972",
+                    "973",
+                    "974",
+                    "975"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "callingcode",
+                "category": "Contains non-digit characters",
+                "description": "Includes letters, spaces, '+' sign, or punctuation; violates digits-only requirement.",
+                "samples": [
+                    "+44",
+                    "44-",
+                    "9a1",
+                    " 91",
+                    "91 ",
+                    "44#"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Starts with international prefix '00'",
+                "description": "Digits-only but starts with the international call prefix '00', which is not allowed in the path.",
+                "samples": [
+                    "00",
+                    "001",
+                    "004",
+                    "0044",
+                    "0091",
+                    "00358"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Leading zero (digits-only but invalid by E.164 semantics)",
+                "description": "Digits-only strings starting with '0' are not valid country calling codes.",
+                "samples": [
+                    "0",
+                    "01",
+                    "05",
+                    "09",
+                    "010",
+                    "099"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Length out of bounds",
+                "description": "Empty or longer than 3 digits; violates the 1-3 digit length expectation.",
+                "samples": [
+                    "",
+                    "1234",
+                    "4444",
+                    "0000",
+                    "3580",
+                    "99999"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'callingcode' is omitted from the request path, causing routing or validation failure.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/capital/{capital}",
+        "type": "string",
+        "param_name": "capital",
+        "format": [
+            "^(?:%[0-9A-Fa-f]{2}|[A-Za-z0-9\\-_.~])+$",
+            "Non-empty; spaces/diacritics must be percent-encoded; no '/'"
+        ],
+        "valid": [
+            {
+                "param_name": "capital",
+                "category": "Single-word ASCII capital (no encoding needed)",
+                "description": "A non-empty single token consisting of unreserved ASCII characters only (letters), no spaces or special characters.",
+                "samples": [
+                    "Paris",
+                    "Tokyo",
+                    "Berlin",
+                    "Ottawa",
+                    "Canberra",
+                    "Nairobi"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Multi-word capital with spaces percent-encoded",
+                "description": "Multi-word capital names where every space is encoded as %20.",
+                "samples": [
+                    "Buenos%20Aires",
+                    "Abu%20Dhabi",
+                    "New%20Delhi",
+                    "Sri%20Jayawardenepura%20Kotte",
+                    "Port%20Vila",
+                    "San%20Salvador"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Capital with diacritics percent-encoded (UTF-8)",
+                "description": "Capital names containing diacritics encoded using UTF-8 percent-encoding.",
+                "samples": [
+                    "Bras%C3%ADlia",
+                    "Reykjav%C3%ADk",
+                    "Bogot%C3%A1",
+                    "Asunci%C3%B3n",
+                    "S%C3%A3o%20Tom%C3%A9",
+                    "Yaound%C3%A9"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "capital",
+                "category": "Unencoded spaces or diacritics",
+                "description": "Values contain raw spaces or diacritic characters that are not URL-encoded.",
+                "samples": [
+                    "New Delhi",
+                    "Buenos Aires",
+                    "San José",
+                    "Brasília",
+                    "Yaoundé",
+                    "Abu Dhabi"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Contains forward slash '/'",
+                "description": "Values include unencoded '/' which would break the path segment.",
+                "samples": [
+                    "Abu/Dhabi",
+                    "New/Delhi",
+                    "Port-au/Prince",
+                    "Paris/France",
+                    "Mexico/City",
+                    "Sana%27a/Yemen"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Empty or whitespace-only after decoding",
+                "description": "Values that are empty or decode to only whitespace.",
+                "samples": [
+                    "",
+                    " ",
+                    "  ",
+                    "%20",
+                    "%20%20",
+                    "%09"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Type error: non-string values",
+                "description": "Values whose type is not a string.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    3.14,
+                    [
+                        "Paris"
+                    ],
+                    {
+                        "city": "Paris"
+                    }
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Malformed percent-encoding",
+                "description": "Values contain invalid or incomplete percent-encoding sequences.",
+                "samples": [
+                    "Bogot%A1",
+                    "Reykjav%EDk",
+                    "S%C3%A3o%20Tom%E9",
+                    "%",
+                    "%C3%Z1",
+                    "Bras% C3%ADlia"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'capital' is omitted from the request path segment.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/region/{region}",
+        "type": "string",
+        "param_name": "region",
+        "format": [
+            "^[^/]+$",
+            "^[A-Za-z][A-Za-z\\-]*(?:%20[A-Za-z\\-]+)*$"
+        ],
+        "valid": [
+            {
+                "param_name": "region",
+                "category": "Canonical standardized regions",
+                "description": "Exact supported global region names as recognized by the service.",
+                "samples": [
+                    "Africa",
+                    "Americas",
+                    "Asia",
+                    "Europe",
+                    "Oceania",
+                    "Antarctica"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Case-insensitive region names",
+                "description": "Region names accepted case-insensitively by the service.",
+                "samples": [
+                    "africa",
+                    "americas",
+                    "asia",
+                    "europe",
+                    "oceania",
+                    "ANTARCTICA"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "URL-encoded multi-word or hyphenated regions",
+                "description": "Supported regions that include spaces or hyphens; spaces must be URL-encoded as %20.",
+                "samples": [
+                    "Middle%20East",
+                    "Latin%20America",
+                    "Northern%20Europe",
+                    "Sub-Saharan%20Africa",
+                    "South-Eastern%20Asia",
+                    "Central%20America"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "region",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter is omitted from the request URL.",
+                "samples": [
+                    null
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Unknown or unsupported region",
+                "description": "A non-empty string not in the service's supported region list.",
+                "samples": [
+                    "Atlantis",
+                    "Gondor",
+                    "Eurasia",
+                    "NorthAmerica",
+                    "USA",
+                    "Westeros"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Contains '/' or encoded slash in path segment",
+                "description": "Path segment includes '/' or a percent-encoded slash, which is not allowed.",
+                "samples": [
+                    "Asia/China",
+                    "Americas/North",
+                    "Europe/Western",
+                    "Africa/East",
+                    "Oceania/Australia",
+                    "Americas%2FNorth"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Unencoded spaces or reserved characters",
+                "description": "Spaces or reserved characters are not URL-encoded.",
+                "samples": [
+                    "North America",
+                    "Latin America",
+                    "Middle East",
+                    "Europe?",
+                    "Asia&",
+                    "Africa#"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Malformed percent-encoding",
+                "description": "Invalid or incomplete percent-encoding sequences.",
+                "samples": [
+                    "Middle%2",
+                    "Latin%ZZAmerica",
+                    "%",
+                    "Asia%2G",
+                    "%2",
+                    "Europe%20%2"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Empty or whitespace-only after decoding",
+                "description": "Empty string or only whitespace (encoded or unencoded).",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "%20",
+                    "%20%20",
+                    "%09"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Wrong type",
+                "description": "Non-string types provided for a string path parameter.",
+                "samples": [
+                    123,
+                    0,
+                    true,
+                    false,
+                    3.14,
+                    {
+                        "region": "Asia"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/subregion/{subregion}",
+        "type": "string",
+        "param_name": "subregion",
+        "format": [
+            "^(?:[A-Za-z]+(?:\\-[A-Za-z]+)?)(?:%20[A-Za-z]+(?:\\-[A-Za-z]+)?)*$",
+            "URL-encoded path segment: letters and hyphens; spaces encoded as %20; no slashes"
+        ],
+        "valid": [
+            {
+                "param_name": "subregion",
+                "category": "Direction-based subregions (URL-encoded spaces)",
+                "description": "Known subregions whose names include directional terms. Spaces are encoded with %20; only letters and optional hyphens are used; no slashes.",
+                "samples": [
+                    "Northern%20Africa",
+                    "Western%20Africa",
+                    "Eastern%20Africa",
+                    "Southern%20Europe",
+                    "Northern%20Europe",
+                    "Eastern%20Asia"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Asia and Americas subregions (properly URL-encoded)",
+                "description": "Recognized subregions in Asia and the Americas with spaces encoded as %20 and no slashes.",
+                "samples": [
+                    "Western%20Asia",
+                    "Central%20Asia",
+                    "Southern%20Asia",
+                    "South-Eastern%20Asia",
+                    "Northern%20America",
+                    "South%20America"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Oceania and related subregions (encoded if needed)",
+                "description": "Recognized subregions in Oceania and nearby classifications; single-word names do not require encoding; multi-word names use %20.",
+                "samples": [
+                    "Polynesia",
+                    "Micronesia",
+                    "Melanesia",
+                    "Australia%20and%20New%20Zealand",
+                    "Antarctic",
+                    "Caribbean"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "subregion",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter subregion is omitted from the request URL, resulting in routing/validation failure.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Unencoded spaces in path segment",
+                "description": "Spaces are not URL-encoded, violating path encoding rules.",
+                "samples": [
+                    "Western Africa",
+                    "Southern Europe",
+                    "Central America",
+                    "South America",
+                    "Northern America",
+                    "Australia and New Zealand"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Contains slashes or path traversal",
+                "description": "Value includes literal or encoded slashes or traversal sequences that break the path segment.",
+                "samples": [
+                    "Western/Africa",
+                    "Southern/Europe",
+                    "../Western%20Africa",
+                    "Asia/Western",
+                    "Northern%20Europe/",
+                    "%2FWestern%20Asia"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Empty or whitespace-only",
+                "description": "Empty string or only whitespace (including URL-encoded whitespace), which is disallowed.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "%20",
+                    "%20%20",
+                    "%09"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Non-string type",
+                "description": "The subregion must be a string; other JSON types are invalid.",
+                "samples": [
+                    123,
+                    0,
+                    1.5,
+                    true,
+                    false,
+                    []
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Unknown or unsupported subregion name",
+                "description": "Names that do not match any subregion recognized by the service.",
+                "samples": [
+                    "Middle%20East",
+                    "Scandinavia",
+                    "Levant",
+                    "Caucasus",
+                    "Baltics",
+                    "Iberia"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Malformed percent-encoding",
+                "description": "Improper or incomplete percent-encoding sequences.",
+                "samples": [
+                    "Western%2G%20Africa",
+                    "Northern%20Europe%",
+                    "%ZZ",
+                    "South%2 America",
+                    "Australia%20and%20New%20Zealand%%",
+                    "Central%20%2"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v1/lang/{lang}",
+        "type": "string",
+        "param_name": "lang",
+        "format": [
+            "^[A-Za-z]{2}$",
+            "^[A-Za-z]{3}$",
+            "^[A-Za-z]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "lang",
+                "category": "ISO 639-1 lowercase two-letter codes",
+                "description": "Supported two-letter language codes in lowercase letters only.",
+                "samples": [
+                    "en",
+                    "fr",
+                    "es",
+                    "de",
+                    "it",
+                    "pt"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "ISO 639-2/3 lowercase three-letter codes",
+                "description": "Supported three-letter language codes in lowercase letters only.",
+                "samples": [
+                    "eng",
+                    "fra",
+                    "spa",
+                    "deu",
+                    "ita",
+                    "por"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Case-insensitive variants of valid codes",
+                "description": "Alphabetic language codes accepted regardless of case.",
+                "samples": [
+                    "EN",
+                    "Fr",
+                    "eS",
+                    "DEU",
+                    "ItA",
+                    "PoR"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Recognized full language names (alphabetic only)",
+                "description": "Alphabetic language names that match supported languages; no spaces or symbols.",
+                "samples": [
+                    "english",
+                    "french",
+                    "spanish",
+                    "german",
+                    "italian",
+                    "portuguese"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "lang",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'lang' is omitted from the request path, causing routing or validation failure.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Empty or whitespace-only",
+                "description": "Value is empty or contains only whitespace characters.",
+                "samples": [
+                    "",
+                    " ",
+                    "  ",
+                    "   ",
+                    "\t",
+                    "\n"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Non-alphabetic characters present",
+                "description": "Contains digits, hyphens, underscores, or locale-style subtags which violate the alphabetic-only rule.",
+                "samples": [
+                    "en1",
+                    "fr-FR",
+                    "en_US",
+                    "pt-BR",
+                    "es-419",
+                    "zh_CN"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Type mismatch (non-string)",
+                "description": "Value is not a string type.",
+                "samples": [
+                    123,
+                    0,
+                    true,
+                    false,
+                    [],
+                    {}
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Unsupported or unknown alphabetic values",
+                "description": "Alphabetic values that do not correspond to supported language identifiers.",
+                "samples": [
+                    "zz",
+                    "qq",
+                    "xx",
+                    "zzz",
+                    "unknownlanguage",
+                    "thisisaverylonglanguageidentifierthatisunlikelytoberecognized"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/all",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^(?:name|alpha2Code|alpha3Code|region|capital|population|languages|currencies|flag)$",
+            "^(?:name|alpha2Code|alpha3Code|region|capital|population|languages|currencies|flag)(?:[,;](?:name|alpha2Code|alpha3Code|region|capital|population|languages|currencies|flag))*$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single valid field token",
+                "description": "A single supported attribute name without spaces or delimiters.",
+                "samples": [
+                    "name",
+                    "alpha2Code",
+                    "alpha3Code",
+                    "region",
+                    "capital",
+                    "population"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple valid fields (comma-delimited)",
+                "description": "Two or more supported attribute names separated by commas, with no spaces.",
+                "samples": [
+                    "name,alpha2Code",
+                    "name,alpha3Code,region",
+                    "capital,population",
+                    "languages,currencies",
+                    "flag,name,region",
+                    "alpha2Code,alpha3Code,flag"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple valid fields (semicolon-delimited)",
+                "description": "Two or more supported attribute names separated by semicolons, with no spaces.",
+                "samples": [
+                    "name;alpha2Code",
+                    "name;alpha3Code;region",
+                    "capital;population",
+                    "languages;currencies",
+                    "flag;name;region",
+                    "alpha2Code;alpha3Code;languages"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "<MISS_KEY>",
+                "description": "The parameter is omitted; the API returns full country objects.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Empty or whitespace-only",
+                "description": "Provided but empty or only whitespace, which violates the non-empty requirement.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Unsupported or misspelled fields",
+                "description": "Contains tokens that are not among the supported attributes.",
+                "samples": [
+                    "nam",
+                    "alpha4Code",
+                    "gdp",
+                    "name,populations",
+                    "currency",
+                    "foo;bar"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Spacing around items or delimiters",
+                "description": "Contains spaces around items or delimiters, which is not allowed.",
+                "samples": [
+                    "name, capital",
+                    " alpha2Code",
+                    "capital ",
+                    "name ,alpha3Code",
+                    "languages; currencies",
+                    " name ; capital "
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Improper delimiter usage or empty tokens",
+                "description": "Malformed lists with leading/trailing delimiters or consecutive delimiters resulting in empty tokens.",
+                "samples": [
+                    "name,",
+                    ",name",
+                    "name,alpha2Code,",
+                    ";name",
+                    "name;;capital",
+                    "languages,,currencies"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/alpha/{alphacode}",
+        "type": "string",
+        "param_name": "alphacode",
+        "format": [
+            "^(?:[A-Za-z]{2}|[A-Za-z]{3})$"
+        ],
+        "valid": [
+            {
+                "param_name": "alphacode",
+                "category": "Valid alpha-2 code (uppercase)",
+                "description": "Exactly two English letters A-Z representing ISO 3166-1 alpha-2 codes.",
+                "samples": [
+                    "US",
+                    "GB",
+                    "FR",
+                    "DE",
+                    "JP",
+                    "BR"
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Valid alpha-3 code (uppercase)",
+                "description": "Exactly three English letters A-Z representing ISO 3166-1 alpha-3 codes.",
+                "samples": [
+                    "USA",
+                    "GBR",
+                    "FRA",
+                    "DEU",
+                    "JPN",
+                    "BRA"
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Valid code with non-uppercase letters (case-insensitive allowed)",
+                "description": "Two or three letters where the case varies; still valid if API treats codes case-insensitively.",
+                "samples": [
+                    "us",
+                    "Gb",
+                    "Fr",
+                    "dE",
+                    "Gbr",
+                    "jPn"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "alphacode",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter alphacode is omitted from the URL.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Wrong length (not 2 or 3 letters)",
+                "description": "Values that are alphabetic but have length other than 2 or 3.",
+                "samples": [
+                    "U",
+                    "Q",
+                    "ABCD",
+                    "WXYZ",
+                    "ABCDE",
+                    "ABCDEFG"
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Contains non-alphabetic characters",
+                "description": "Values that include digits, symbols, spaces, or non-ASCII letters.",
+                "samples": [
+                    "U2",
+                    "1A",
+                    "U$",
+                    "U-S",
+                    "U S",
+                    "ÅB"
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Non-string value",
+                "description": "Values that are not strings, such as numbers, booleans, arrays, or objects.",
+                "samples": [
+                    123,
+                    12.34,
+                    true,
+                    false,
+                    [
+                        "US"
+                    ],
+                    {
+                        "code": "US"
+                    }
+                ]
+            },
+            {
+                "param_name": "alphacode",
+                "category": "Empty or whitespace-only string",
+                "description": "Empty or whitespace-only values cannot represent a valid code.",
+                "samples": [
+                    "",
+                    " ",
+                    "  ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/alpha/{alphacode}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^(name|alpha2Code|alpha3Code|region|capital|population|languages|currencies|flag)([,;](name|alpha2Code|alpha3Code|region|capital|population|languages|currencies|flag))*$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single valid field",
+                "description": "A single, correctly spelled property name supported by the API.",
+                "samples": [
+                    "name",
+                    "alpha2Code",
+                    "alpha3Code",
+                    "region",
+                    "capital",
+                    "population"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple valid fields (comma-separated)",
+                "description": "Two or more valid properties separated by commas, without illegal characters.",
+                "samples": [
+                    "name,region",
+                    "name,capital,population",
+                    "alpha2Code,alpha3Code",
+                    "languages,currencies",
+                    "flag,name",
+                    "region,capital,languages"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple valid fields (semicolon-separated)",
+                "description": "Two or more valid properties separated by semicolons, without illegal characters.",
+                "samples": [
+                    "name;region",
+                    "capital;population",
+                    "alpha2Code;flag",
+                    "languages;currencies",
+                    "alpha3Code;name;region",
+                    "region;capital;languages;flag"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "<MISS_KEY>",
+                "description": "The optional query parameter fields is omitted; the API returns the full default set of properties.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Empty or whitespace-only value",
+                "description": "An empty string or whitespace-only input is invalid for the fields parameter.",
+                "samples": [
+                    "",
+                    " ",
+                    "  ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Unknown or misspelled fields",
+                "description": "Values that include properties not recognized by the API or with incorrect casing/spelling.",
+                "samples": [
+                    "names",
+                    "alpha2code",
+                    "Alpha3Code",
+                    "regions",
+                    "capitol",
+                    "populationn"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Illegal delimiters or characters",
+                "description": "Values that include unsupported delimiters, trailing delimiters, or illegal symbols.",
+                "samples": [
+                    "name|region",
+                    "name,region,",
+                    "name;region;",
+                    "name/region",
+                    "name:region",
+                    "name,,region"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Non-string value",
+                "description": "Values that are not strings, such as numbers, booleans, arrays, or objects.",
+                "samples": [
+                    123,
+                    3.14,
+                    true,
+                    false,
+                    [
+                        "name",
+                        "region"
+                    ],
+                    {
+                        "fields": "name"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/alpha",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^(name|alpha2Code|alpha3Code|capital|region|population|languages|currencies|flag)$",
+            "^(?:name|alpha2Code|alpha3Code|capital|region|population|languages|currencies|flag)(?:,(?:name|alpha2Code|alpha3Code|capital|region|population|languages|currencies|flag))+$",
+            "^(?:name|alpha2Code|alpha3Code|capital|region|population|languages|currencies|flag)(?:;(?:name|alpha2Code|alpha3Code|capital|region|population|languages|currencies|flag))+$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single supported attribute",
+                "description": "A single attribute name exactly matching a supported field identifier.",
+                "samples": [
+                    "name",
+                    "alpha2Code",
+                    "alpha3Code",
+                    "capital",
+                    "region",
+                    "population"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple attributes (comma-delimited)",
+                "description": "Two or more supported attribute names separated by commas, no whitespace.",
+                "samples": [
+                    "name,capital",
+                    "region,population",
+                    "languages,currencies",
+                    "alpha2Code,alpha3Code",
+                    "name,flag",
+                    "capital,region,population"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple attributes (semicolon-delimited)",
+                "description": "Two or more supported attribute names separated by semicolons, no whitespace.",
+                "samples": [
+                    "name;capital",
+                    "region;population",
+                    "languages;currencies",
+                    "alpha2Code;alpha3Code",
+                    "name;flag",
+                    "capital;region;population"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "<MISS_KEY>",
+                "description": "The optional parameter fields is omitted; the API should return all default attributes.",
+                "samples": [
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Unsupported or misspelled attribute names",
+                "description": "Tokens that do not exactly match the supported attribute identifiers.",
+                "samples": [
+                    "names",
+                    "Alpha2Code",
+                    "alpha-3-code",
+                    "capitol",
+                    "regions",
+                    "flags"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Mixed delimiters or extraneous whitespace",
+                "description": "Use of both comma and semicolon in one string or presence of spaces around tokens.",
+                "samples": [
+                    "name, capital",
+                    "region;population,capital",
+                    "languages;;currencies",
+                    "alpha2Code;alpha3Code,name",
+                    " name",
+                    "capital ;region"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Empty or separators-only string",
+                "description": "Empty strings, whitespace-only strings, or strings containing only delimiters.",
+                "samples": [
+                    "",
+                    " ",
+                    ",",
+                    ";",
+                    ",,",
+                    ";;"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Non-string input type",
+                "description": "Values that are not of type string for a string-typed query parameter.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    0,
+                    99.9,
+                    [
+                        "name"
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/alpha",
+        "type": "string",
+        "param_name": "codes",
+        "format": [
+            "^[A-Z]{2,3}$",
+            "^[A-Z]{2,3}(?:,[A-Z]{2,3})+$",
+            "^[A-Z]{2,3}(?:;[A-Z]{2,3})+$"
+        ],
+        "valid": [
+            {
+                "param_name": "codes",
+                "category": "Single alpha-2 uppercase code",
+                "description": "Exactly one ISO 3166-1 alpha-2 code (A–Z letters, uppercase).",
+                "samples": [
+                    "US",
+                    "FR",
+                    "DE",
+                    "BR",
+                    "JP",
+                    "IN"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Single alpha-3 uppercase code",
+                "description": "Exactly one ISO 3166-1 alpha-3 code (A–Z letters, uppercase).",
+                "samples": [
+                    "USA",
+                    "FRA",
+                    "DEU",
+                    "BRA",
+                    "JPN",
+                    "IND"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Multiple codes (comma-delimited, uppercase)",
+                "description": "Two or more codes separated by commas, no spaces, each 2 or 3 uppercase letters.",
+                "samples": [
+                    "US,CA",
+                    "FRA,DEU,ITA",
+                    "JP,KR,CN",
+                    "BR,ARG,CHL",
+                    "IN,NPL,BGD",
+                    "AUS,NZL"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Multiple codes (semicolon-delimited, uppercase)",
+                "description": "Two or more codes separated by semicolons, no spaces, each 2 or 3 uppercase letters.",
+                "samples": [
+                    "US;GB",
+                    "USA;MEX;CAN",
+                    "FRA;ESP;PRT",
+                    "DE;AT;CH",
+                    "SE;NO;DK",
+                    "CN;HK;MO"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "codes",
+                "category": "<MISS_KEY>",
+                "description": "The required parameter codes is missing from the request.",
+                "samples": [
+                    null
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Empty or separators-only string",
+                "description": "Empty strings, whitespace-only strings, or strings containing only delimiters.",
+                "samples": [
+                    "",
+                    " ",
+                    ",",
+                    ";",
+                    ",,",
+                    ";;"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Invalid token composition (non-letters or wrong length)",
+                "description": "Tokens contain non-letter characters or lengths other than 2 or 3.",
+                "samples": [
+                    "U",
+                    "USAA",
+                    "FR4",
+                    "DE-",
+                    "C@",
+                    "USA1"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Lowercase or mixed case codes",
+                "description": "Codes not strictly uppercase A–Z letters.",
+                "samples": [
+                    "us",
+                    "usa",
+                    "Us",
+                    "Gb",
+                    "br,ar",
+                    "Deu"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Invalid separators, mixed delimiters, or spaces",
+                "description": "Spaces within tokens, mixed comma/semicolon in one string, trailing or duplicate separators.",
+                "samples": [
+                    "US, CA",
+                    "US;CA,",
+                    "US,,CA",
+                    "USA;MEX,CAN",
+                    "FR;DE;",
+                    " JP,KR"
+                ]
+            },
+            {
+                "param_name": "codes",
+                "category": "Semantically unknown codes",
+                "description": "Syntactically valid but not recognized ISO codes; likely returns no country data.",
+                "samples": [
+                    "ZZ",
+                    "ZZZ",
+                    "QQ",
+                    "AAA",
+                    "QZZ",
+                    "XX"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/currency/{currency}",
+        "type": "string",
+        "param_name": "currency",
+        "format": [
+            "^[A-Za-z]{3}$",
+            "ISO 4217 alpha code (case-insensitive), no digits/whitespace/symbols"
+        ],
+        "valid": [
+            {
+                "param_name": "currency",
+                "category": "Uppercase 3-letter ISO codes",
+                "description": "Exactly three uppercase alphabetic characters representing standard ISO 4217 currency codes.",
+                "samples": [
+                    "USD",
+                    "EUR",
+                    "JPY",
+                    "GBP",
+                    "AUD",
+                    "CAD"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Lowercase 3-letter ISO codes",
+                "description": "Exactly three lowercase alphabetic characters; accepted by services that treat codes case-insensitively.",
+                "samples": [
+                    "usd",
+                    "eur",
+                    "jpy",
+                    "gbp",
+                    "aud",
+                    "cad"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Mixed-case 3-letter codes",
+                "description": "Exactly three alphabetic characters in mixed case; still letter-only and length 3.",
+                "samples": [
+                    "Usd",
+                    "EuR",
+                    "jPy",
+                    "GbP",
+                    "CaD",
+                    "AuD"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Valid ISO 'X' series codes",
+                "description": "ISO 4217 special-purpose or supranational codes that start with 'X'.",
+                "samples": [
+                    "XOF",
+                    "XAF",
+                    "XPF",
+                    "XAG",
+                    "XAU",
+                    "XDR"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "currency",
+                "category": "Length not equal to 3",
+                "description": "Codes that are shorter or longer than three characters, including empty string.",
+                "samples": [
+                    "US",
+                    "EURO",
+                    "J",
+                    "USDT",
+                    "",
+                    "JP"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Contains non-letter characters",
+                "description": "Values with digits, symbols, or punctuation.",
+                "samples": [
+                    "U$D",
+                    "E3R",
+                    "JP1",
+                    "C@D",
+                    "G-B",
+                    "CNY!"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Whitespace present",
+                "description": "Leading, trailing, or embedded whitespace in the code.",
+                "samples": [
+                    " USD",
+                    "USD ",
+                    "U SD",
+                    "US D",
+                    "U  SD",
+                    "U\tSD"
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "Type error (non-string)",
+                "description": "Values that are not strings.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    45.67,
+                    [
+                        "USD"
+                    ],
+                    {
+                        "code": "USD"
+                    }
+                ]
+            },
+            {
+                "param_name": "currency",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'currency' is missing from the request path.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/currency/{currency}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^(?:name|alpha2Code|alpha3Code|region|capital|population|languages|currencies|flag)(?:\\s*,\\s*(?:name|alpha2Code|alpha3Code|region|capital|population|languages|currencies|flag))*$",
+            "Comma-separated list of allowed field names (trim spaces)"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single allowed field",
+                "description": "One supported field name.",
+                "samples": [
+                    "name",
+                    "alpha2Code",
+                    "alpha3Code",
+                    "region",
+                    "capital",
+                    "population"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple fields (no spaces)",
+                "description": "Comma-separated list of allowed field names without spaces.",
+                "samples": [
+                    "name,region",
+                    "capital,population",
+                    "alpha2Code,alpha3Code",
+                    "languages,currencies",
+                    "name,flag",
+                    "region,languages,flag"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple fields with spaces to trim",
+                "description": "Comma-separated list with spaces around items that should be trimmed.",
+                "samples": [
+                    "name, region",
+                    " alpha2Code , alpha3Code",
+                    "region , capital",
+                    "population , languages",
+                    " currencies , flag ",
+                    " name , capital , flag "
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "<MISS_KEY>",
+                "description": "The optional query parameter 'fields' is omitted; API returns default/full attributes.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Unsupported or unrecognized field names",
+                "description": "Contains names not in the allowed set.",
+                "samples": [
+                    "fullname",
+                    "name,iso2",
+                    "alpha4Code",
+                    "country,region",
+                    "names",
+                    "city"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Empty items or extra commas",
+                "description": "Lists with empty elements caused by trailing, leading, or double commas.",
+                "samples": [
+                    "name,",
+                    ",region",
+                    "name,,capital",
+                    ",,",
+                    ",name,capital",
+                    "languages,,flag"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Wildcards or pattern tokens",
+                "description": "Use of '*' or partial wildcards not allowed.",
+                "samples": [
+                    "*",
+                    "name,*",
+                    "*,*",
+                    "na*,reg*",
+                    "*,capital",
+                    " * "
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Type error (non-string)",
+                "description": "Values that are not strings.",
+                "samples": [
+                    42,
+                    true,
+                    false,
+                    [
+                        "name",
+                        "region"
+                    ],
+                    {
+                        "f": "name"
+                    },
+                    3.14
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/name/{name}",
+        "type": "string",
+        "param_name": "name",
+        "format": [
+            "URL-encoded RFC3986 path segment",
+            "^(?!\\s*$)(?:[A-Za-z0-9._~-]|%[0-9A-Fa-f]{2})+$",
+            "No '/' characters; spaces must be encoded as %20"
+        ],
+        "valid": [
+            {
+                "param_name": "name",
+                "category": "Partial name (no spaces)",
+                "description": "Non-empty, URL-encoded path segment representing a partial country name; used when fullText is false or omitted.",
+                "samples": [
+                    "uni",
+                    "mex",
+                    "arab",
+                    "korea",
+                    "guinea",
+                    "saint"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Full country names with spaces encoded",
+                "description": "Exact full country names with spaces and punctuation properly URL-encoded.",
+                "samples": [
+                    "United%20States",
+                    "United%20Kingdom",
+                    "C%C3%B4te%20d%27Ivoire",
+                    "Bosnia%20and%20Herzegovina",
+                    "S%C3%A3o%20Tome%20and%20Principe",
+                    "Papua%20New%20Guinea"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Names with diacritics or hyphens (properly encoded)",
+                "description": "Country names containing diacritics or hyphens; diacritics percent-encoded, hyphens literal.",
+                "samples": [
+                    "%C3%85land%20Islands",
+                    "Cura%C3%A7ao",
+                    "T%C3%BCrkiye",
+                    "R%C3%A9union",
+                    "Guinea-Bissau",
+                    "Timor-Leste"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "name",
+                "category": "<MISS_KEY>",
+                "description": "Missing required path parameter 'name' results in a client error.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Empty or whitespace-only (after decoding)",
+                "description": "Empty string or values that decode to only whitespace are invalid.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "%20",
+                    "%20%20",
+                    "%09"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Contains '/' or unencoded spaces",
+                "description": "Path segments must not include '/', and spaces must be encoded.",
+                "samples": [
+                    "United States",
+                    "New/Zealand",
+                    "/Canada",
+                    "Japan/",
+                    "A/B",
+                    "Spain//"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Malformed percent-encoding",
+                "description": "Percent-encoding must be valid; invalid hex pairs or dangling '%' are rejected.",
+                "samples": [
+                    "C%ZZte",
+                    "%E0%A4",
+                    "K%C3%k%C3%BCr",
+                    "100%25%",
+                    "%",
+                    "%G1"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Non-string types",
+                "description": "Values of incorrect types are invalid for a string path parameter.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    null,
+                    {},
+                    []
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/name/{name}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "Comma-separated list of valid keys",
+            "Allowed: name,capital,region,population,languages,currencies,flags,cca2,cca3",
+            "^[A-Za-z][A-Za-z0-9_]*(?:,[A-Za-z][A-Za-z0-9_]*)*$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single valid field",
+                "description": "A single recognized field key.",
+                "samples": [
+                    "name",
+                    "capital",
+                    "region",
+                    "population",
+                    "languages",
+                    "flags"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple valid fields (no spaces, no duplicates)",
+                "description": "Two or more recognized keys separated by commas without spaces.",
+                "samples": [
+                    "name,capital",
+                    "name,region,flags",
+                    "capital,population,languages",
+                    "languages,currencies",
+                    "flags,name",
+                    "name,capital,region"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Includes ISO code fields",
+                "description": "Combinations that include ISO code-related keys (e.g., cca2, cca3).",
+                "samples": [
+                    "name,cca2",
+                    "cca3,capital",
+                    "cca2,cca3,region",
+                    "flags,cca3",
+                    "cca2,region",
+                    "name,cca2,cca3"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "<MISS_KEY>",
+                "description": "Omitted 'fields' parameter; service returns default/full set of fields.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Empty or whitespace-only",
+                "description": "Empty strings or delimiters without actual keys are invalid.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    ",",
+                    ",name",
+                    "name,"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Contains invalid/misspelled keys",
+                "description": "Keys not recognized by the service.",
+                "samples": [
+                    "nam",
+                    "capitol",
+                    "regoin",
+                    "language",
+                    "currency",
+                    "flagz"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Extraneous spaces around commas or keys",
+                "description": "Spaces around keys or commas are not allowed.",
+                "samples": [
+                    "name, capital",
+                    " languages ,currencies ",
+                    "name ,capital ,region",
+                    " flags",
+                    "population ,languages",
+                    "cca3 ,flags"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Duplicate keys",
+                "description": "Repeated field names are not allowed.",
+                "samples": [
+                    "name,name",
+                    "capital,capital",
+                    "flags,flags",
+                    "name,capital,name",
+                    "languages,languages,flags",
+                    "cca2,cca2,cca3"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Non-string types",
+                "description": "Values of incorrect types are invalid for a string query parameter.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    null,
+                    [],
+                    {}
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/name/{name}",
+        "type": "boolean",
+        "param_name": "fullText",
+        "format": [
+            "boolean true|false"
+        ],
+        "valid": [
+            {
+                "param_name": "fullText",
+                "category": "Explicit true",
+                "description": "Boolean true to enforce exact full-name matching.",
+                "samples": [
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true
+                ]
+            },
+            {
+                "param_name": "fullText",
+                "category": "Explicit false",
+                "description": "Boolean false to allow partial matching.",
+                "samples": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ]
+            },
+            {
+                "param_name": "fullText",
+                "category": "<MISS_KEY>",
+                "description": "Omitted 'fullText' parameter; defaults to false.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fullText",
+                "category": "String booleans",
+                "description": "String representations instead of boolean type.",
+                "samples": [
+                    "true",
+                    "false",
+                    "True",
+                    "FALSE",
+                    "yes",
+                    "no"
+                ]
+            },
+            {
+                "param_name": "fullText",
+                "category": "Numeric or null",
+                "description": "Numbers or null are not accepted when the parameter is provided.",
+                "samples": [
+                    1,
+                    0,
+                    -1,
+                    2,
+                    2.5,
+                    null
+                ]
+            },
+            {
+                "param_name": "fullText",
+                "category": "Arrays or objects",
+                "description": "Array or object types are invalid for a boolean query parameter.",
+                "samples": [
+                    [],
+                    {},
+                    [
+                        true
+                    ],
+                    {
+                        "value": true
+                    },
+                    [
+                        false
+                    ],
+                    {
+                        "fullText": false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/callingcode/{callingcode}",
+        "type": "string",
+        "param_name": "callingcode",
+        "format": [
+            "^[1-9][0-9]{0,2}$"
+        ],
+        "valid": [
+            {
+                "param_name": "callingcode",
+                "category": "Single-digit calling codes",
+                "description": "Valid 1-digit ITU-T E.164 country calling codes without a leading plus sign or zeros.",
+                "samples": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "7"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Two-digit calling codes",
+                "description": "Valid 2-digit ITU-T E.164 country calling codes (digits only, no leading zero).",
+                "samples": [
+                    "20",
+                    "27",
+                    "30",
+                    "44",
+                    "55",
+                    "91"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Three-digit calling codes",
+                "description": "Valid 3-digit ITU-T E.164 country calling codes (digits only, no leading zero).",
+                "samples": [
+                    "212",
+                    "216",
+                    "234",
+                    "358",
+                    "380",
+                    "971"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "callingcode",
+                "category": "Contains non-digit characters",
+                "description": "Calling code includes characters other than digits (e.g., plus sign, spaces, punctuation, letters).",
+                "samples": [
+                    "+1",
+                    "+44",
+                    " 91",
+                    "44 ",
+                    "9-1",
+                    "3.5"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Starts with zero or zero-only",
+                "description": "Leading zero is not allowed; calling codes must start with 1–9.",
+                "samples": [
+                    "0",
+                    "01",
+                    "007",
+                    "000",
+                    "09",
+                    "090"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Too long (more than 3 digits)",
+                "description": "Length exceeds the maximum of 3 digits allowed for the calling code.",
+                "samples": [
+                    "1000",
+                    "1234",
+                    "3587",
+                    "97123",
+                    "4444",
+                    "20000"
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "Type error: non-string input",
+                "description": "Calling code provided with a non-string type.",
+                "samples": [
+                    1,
+                    44,
+                    true,
+                    null,
+                    [],
+                    {}
+                ]
+            },
+            {
+                "param_name": "callingcode",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'callingcode' is missing from the URL, leading to a routing/validation error.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/callingcode/{callingcode}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^(name|alpha2Code|alpha3Code|capital|region|population|languages|currencies|flag)(,(name|alpha2Code|alpha3Code|capital|region|population|languages|currencies|flag))*$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single valid field",
+                "description": "A single token that exactly matches a supported field name.",
+                "samples": [
+                    "name",
+                    "alpha2Code",
+                    "alpha3Code",
+                    "capital",
+                    "region",
+                    "population"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple distinct valid fields",
+                "description": "Comma-separated list of distinct valid field names without spaces.",
+                "samples": [
+                    "name,capital",
+                    "alpha2Code,alpha3Code",
+                    "region,population",
+                    "languages,currencies",
+                    "flag,name",
+                    "capital,languages,currencies"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Duplicate valid fields",
+                "description": "Comma-separated list where valid field names repeat; tokens are still valid.",
+                "samples": [
+                    "name,name",
+                    "alpha2Code,alpha2Code",
+                    "capital,capital,capital",
+                    "population,population",
+                    "languages,languages,flag",
+                    "region,region,population"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "<MISS_KEY>",
+                "description": "The optional 'fields' parameter is omitted; API returns the default/full country payload.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Unknown or unsupported field names",
+                "description": "Tokens that do not match the exact supported field names.",
+                "samples": [
+                    "names",
+                    "alpha2",
+                    "Alpha3Code",
+                    "capitol",
+                    "regions",
+                    "populationCount"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Delimiter or empty-token errors",
+                "description": "Comma usage leads to empty tokens (e.g., consecutive commas or leading/trailing comma).",
+                "samples": [
+                    "name,,capital",
+                    ",name",
+                    "region,",
+                    ",,",
+                    "alpha2Code,,",
+                    ",flag"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Type error: non-string input",
+                "description": "The 'fields' parameter is provided but not as a string.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    [],
+                    {},
+                    5.5
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/capital/{capital}",
+        "type": "string",
+        "param_name": "capital",
+        "format": [
+            "^[^/]+$",
+            "^(?:[A-Za-z0-9._~!$&'()*+,;=:@-]|%[0-9A-Fa-f]{2})+$"
+        ],
+        "valid": [
+            {
+                "param_name": "capital",
+                "category": "Single-word ASCII capital names (no encoding needed, no slashes)",
+                "description": "Non-empty, single-segment path token with letters only; does not require URL-encoding and contains no '/'.",
+                "samples": [
+                    "Paris",
+                    "Tokyo",
+                    "Berlin",
+                    "Madrid",
+                    "Ottawa",
+                    "Cairo"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "URL-encoded multi-word capital names (spaces encoded as %20)",
+                "description": "Capitals with spaces encoded to ensure a single path segment and no raw spaces or slashes.",
+                "samples": [
+                    "Mexico%20City",
+                    "New%20Delhi",
+                    "Abu%20Dhabi",
+                    "Buenos%20Aires",
+                    "Sri%20Jayawardenepura%20Kotte",
+                    "Vatican%20City"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "URL-encoded names with diacritics or punctuation",
+                "description": "Capitals that include diacritics or apostrophes must be percent-encoded to remain a single safe path segment.",
+                "samples": [
+                    "S%C3%A3o%20Paulo",
+                    "Reykjav%C3%ADk",
+                    "N%27Djamena",
+                    "St.%20George%27s",
+                    "Bogot%C3%A1",
+                    "T%C3%B3rshavn"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "capital",
+                "category": "<MISS_KEY>",
+                "description": "Required path parameter is omitted, causing routing or validation failure.",
+                "samples": [
+                    null
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Empty or effectively blank value",
+                "description": "Empty string or value that decodes to only whitespace; violates non-empty requirement.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "%20",
+                    "%20%20",
+                    "%09"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Contains unencoded slash",
+                "description": "Value includes '/' creating multiple path segments, which is not allowed.",
+                "samples": [
+                    "Abu/Dhabi",
+                    "Paris/London",
+                    "/Tokyo",
+                    "Rome/",
+                    "New%20York/USA",
+                    "Los%20Angeles/CA"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Unencoded spaces or special characters",
+                "description": "Spaces or non-ASCII characters are not percent-encoded as required for a path segment.",
+                "samples": [
+                    "Mexico City",
+                    "Ho Chi Minh City",
+                    "St. George's",
+                    "São Paulo",
+                    "Reykjavík",
+                    "Bogotá"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Malformed percent-encoding",
+                "description": "Percent-encoding not following %HH hex pattern or incomplete sequences.",
+                "samples": [
+                    "%",
+                    "%2",
+                    "%GG",
+                    "Paris%2G",
+                    "Abu%20Dh%",
+                    "Reykjav%C3Gk"
+                ]
+            },
+            {
+                "param_name": "capital",
+                "category": "Type errors",
+                "description": "Non-string types supplied for a path parameter.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    null,
+                    [
+                        "Paris"
+                    ],
+                    {
+                        "name": "Paris"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/capital/{capital}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^(name|alpha2Code|alpha3Code|region|capital|population|languages|currencies|flag)(,(name|alpha2Code|alpha3Code|region|capital|population|languages|currencies|flag))*$",
+            "^[A-Za-z0-9]+(,[A-Za-z0-9]+)*$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single valid field key",
+                "description": "A single allowed field identifier.",
+                "samples": [
+                    "name",
+                    "capital",
+                    "region",
+                    "population",
+                    "languages",
+                    "flag"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple valid field keys (comma-separated, no spaces)",
+                "description": "A comma-separated list of valid field identifiers.",
+                "samples": [
+                    "name,capital",
+                    "name,alpha2Code,alpha3Code",
+                    "region,population,languages",
+                    "currencies,flag",
+                    "name,region,population",
+                    "languages,currencies,flag"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Valid keys with duplicates",
+                "description": "List contains valid keys repeated; service may ignore duplicates.",
+                "samples": [
+                    "name,name",
+                    "capital,capital",
+                    "name,region,name",
+                    "alpha2Code,alpha2Code",
+                    "languages,languages",
+                    "flag,flag"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "<MISS_KEY>",
+                "description": "Query parameter omitted; service returns its default field set.",
+                "samples": [
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Unknown or misspelled keys",
+                "description": "Tokens not among the supported field identifiers.",
+                "samples": [
+                    "names",
+                    "alpha4Code",
+                    "country",
+                    "population,timezone",
+                    "language",
+                    "currencies,flags"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Wrong casing of field keys",
+                "description": "Field identifiers must match exact casing.",
+                "samples": [
+                    "Name",
+                    "ALPHA2CODE",
+                    "Region",
+                    "Alpha3code",
+                    "Population",
+                    "Flag"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Formatting errors (spaces, empty tokens, trailing/leading commas)",
+                "description": "Contains spaces around commas, empty tokens, or leading/trailing commas.",
+                "samples": [
+                    "name, capital",
+                    " name",
+                    "capital,",
+                    ",population",
+                    "name,,region",
+                    "languages, ,currencies"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Invalid separators or characters",
+                "description": "Uses characters other than commas to separate keys or includes disallowed characters.",
+                "samples": [
+                    "name;capital",
+                    "name|region",
+                    "name/capital",
+                    "name capital",
+                    "name:region",
+                    "name+capital"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Type errors",
+                "description": "Non-string value provided for the query parameter.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    null,
+                    [
+                        "name",
+                        "capital"
+                    ],
+                    {
+                        "fields": "name,capital"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/region/{region}",
+        "type": "string",
+        "param_name": "region",
+        "format": [
+            "^(Africa|Americas|Asia|Europe|Oceania|Polar)$",
+            "^[^/]+$",
+            "Percent-encoded path segment allowed if it decodes to a valid canonical region"
+        ],
+        "valid": [
+            {
+                "param_name": "region",
+                "category": "Canonical region identifiers (exact match)",
+                "description": "Exact, canonical region names recognized by the service; must be URL-safe and contain no slashes.",
+                "samples": [
+                    "Africa",
+                    "Americas",
+                    "Asia",
+                    "Europe",
+                    "Oceania",
+                    "Polar"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Canonical names with partial percent-encoding",
+                "description": "Percent-encoding used for one or more characters, decoding to an exact canonical region name.",
+                "samples": [
+                    "A%66rica",
+                    "A%6D%65ricas",
+                    "As%69a",
+                    "Eu%72ope",
+                    "Oc%65ania",
+                    "Po%6Car"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Canonical names with leading letter percent-encoded",
+                "description": "First character percent-encoded; segment decodes to a canonical region name.",
+                "samples": [
+                    "%41frica",
+                    "%41mericas",
+                    "%41sia",
+                    "%45urope",
+                    "%4Fceania",
+                    "%50olar"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "region",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter region is missing from the request, causing routing/validation failure.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Empty or whitespace-only (after decoding)",
+                "description": "Empty string or only whitespace; not a valid region identifier.",
+                "samples": [
+                    "",
+                    " ",
+                    "%20",
+                    "%09",
+                    "   ",
+                    "%0A"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Contains slashes or path traversal",
+                "description": "Segments that include raw or encoded slashes or traversal tokens, which are disallowed for a single path segment.",
+                "samples": [
+                    "Asia/China",
+                    "../Europe",
+                    "./Africa",
+                    "%2FAmericas",
+                    "Oceania%2F",
+                    "Polar/.."
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Unknown or misspelled region identifier",
+                "description": "Values that do not match any canonical region recognized by the API.",
+                "samples": [
+                    "Afrika",
+                    "America",
+                    "SouthAmerica",
+                    "LatinAmerica",
+                    "MiddleEast",
+                    "Antarctica"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Case/diacritic mismatch",
+                "description": "Non-canonical casing or diacritics that do not exactly match the expected identifiers.",
+                "samples": [
+                    "africa",
+                    "ASIA",
+                    "eUrOpE",
+                    "oceánia",
+                    "AMERICAS",
+                    "PoLaR"
+                ]
+            },
+            {
+                "param_name": "region",
+                "category": "Not URL-safe or contains disallowed characters",
+                "description": "Unencoded spaces or reserved characters that are not valid for the path segment.",
+                "samples": [
+                    "South America",
+                    "Asia?",
+                    "Europe#",
+                    "Oceania%",
+                    "Polar&",
+                    "Africa@"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/region/{region}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^(name|alpha2Code|alpha3Code|numericCode|capital|region|subregion|population|languages|currencies|flag)(\\s*,\\s*(name|alpha2Code|alpha3Code|numericCode|capital|region|subregion|population|languages|currencies|flag))*$",
+            "Comma-separated list of valid field identifiers; trim spaces; no empty tokens"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single valid field",
+                "description": "Exactly one canonical field identifier.",
+                "samples": [
+                    "name",
+                    "alpha2Code",
+                    "alpha3Code",
+                    "numericCode",
+                    "capital",
+                    "region"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple valid fields (comma-separated, no spaces)",
+                "description": "List of canonical field identifiers separated by commas with no spaces.",
+                "samples": [
+                    "name,capital",
+                    "name,alpha2Code,alpha3Code",
+                    "population,languages",
+                    "alpha3Code,numericCode,flag",
+                    "region,subregion,population",
+                    "name,alpha2Code,alpha3Code,numericCode,capital"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple valid fields with spaces around commas",
+                "description": "Comma-separated canonical identifiers allowing spaces around commas or fields; server trims tokens.",
+                "samples": [
+                    "name, capital",
+                    "region , subregion",
+                    "languages, currencies",
+                    "alpha2Code ,alpha3Code",
+                    "numericCode , population",
+                    "name , alpha2Code , capital"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Duplicate valid fields",
+                "description": "Contains duplicates of canonical fields; server may de-duplicate.",
+                "samples": [
+                    "name,name",
+                    "alpha2Code,alpha2Code,alpha3Code",
+                    "capital,capital,capital",
+                    "languages,languages,currencies",
+                    "region,subregion,region",
+                    "flag,flag"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Ordering variations of valid sets",
+                "description": "Same set of valid fields in different orders.",
+                "samples": [
+                    "name,alpha2Code,alpha3Code,capital",
+                    "capital,name,alpha2Code,alpha3Code",
+                    "alpha2Code,name,alpha3Code,capital",
+                    "alpha3Code,capital,name,alpha2Code",
+                    "alpha3Code,name,capital,alpha2Code",
+                    "capital,alpha3Code,alpha2Code,name"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "<MISS_KEY>",
+                "description": "The optional query parameter fields is omitted, returning the full default payload.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Empty or whitespace-only",
+                "description": "Empty string or strings that only produce empty tokens; not meaningful, should be omitted instead.",
+                "samples": [
+                    "",
+                    " ",
+                    ",",
+                    ",,",
+                    " , ",
+                    " , , "
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Unknown or misspelled field names",
+                "description": "Identifiers that do not match the API’s exact field names.",
+                "samples": [
+                    "names",
+                    "alpha2code",
+                    "alpha4Code",
+                    "populaton",
+                    "lang",
+                    "currency"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Malformed delimiters or separators",
+                "description": "Use of unsupported separators or invalid comma usage leading to empty tokens.",
+                "samples": [
+                    "name|capital",
+                    "name;capital",
+                    "name capital",
+                    "name/capital",
+                    "name,,capital",
+                    "name,,"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Type errors (non-string)",
+                "description": "Values that are not a string type for the fields parameter.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    null,
+                    0,
+                    []
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Mixed valid and invalid fields",
+                "description": "Lists that include at least one invalid identifier alongside valid ones.",
+                "samples": [
+                    "name,unknown",
+                    "alpha2Code,alpha3Code,foo",
+                    "languages,currency",
+                    "flag,badfield",
+                    "region,subregion,unknown_field",
+                    "population,Name"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Unsafe or control characters in query value",
+                "description": "Strings containing unencoded control or reserved characters not expected in the list format.",
+                "samples": [
+                    "name\ncapital",
+                    "name\tcapital",
+                    "name#capital",
+                    "capital?name",
+                    "name=capital",
+                    "\"name\",capital"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/subregion/{subregion}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^(?:[A-Za-z0-9_]+)(?:\\s*,\\s*(?:[A-Za-z0-9_]+))*$",
+            "Comma-separated identifiers from: name, cca2, cca3, capital, region, subregion, population, languages, currencies, flags"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single valid field",
+                "description": "A single, valid field identifier supported by the service.",
+                "samples": [
+                    "name",
+                    "cca2",
+                    "cca3",
+                    "capital",
+                    "region",
+                    "subregion"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple valid fields, no spaces",
+                "description": "Comma-separated list of valid field identifiers without spaces.",
+                "samples": [
+                    "name,cca2,capital",
+                    "region,subregion,population",
+                    "languages,cca3,currencies",
+                    "flags,name,cca3",
+                    "capital,population,flags",
+                    "cca2,cca3,name"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple valid fields with optional spaces and duplicates",
+                "description": "Valid identifiers with spaces around commas and/or repeated fields; service trims spaces and ignores duplicates.",
+                "samples": [
+                    "name, name,cca2",
+                    "capital , population , flags",
+                    "cca3, name ,cca3 ,languages",
+                    "languages, currencies , languages",
+                    "region , subregion , region",
+                    "cca2 , cca3 , name "
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "<MISS_KEY>",
+                "description": "The fields parameter is omitted; the API returns the default set of fields.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Unknown or unsupported field names",
+                "description": "Contains tokens not recognized by the service.",
+                "samples": [
+                    "name,xyz",
+                    "foo,bar",
+                    "currency",
+                    "cca4",
+                    "names",
+                    "capital,timezone"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "CSV format errors",
+                "description": "Malformed comma-separated input such as leading/trailing commas or empty tokens.",
+                "samples": [
+                    ",name",
+                    "name,",
+                    "name,,cca2",
+                    ",,",
+                    " , capital",
+                    "cca2,,"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Non-string type",
+                "description": "The fields parameter is not a string.",
+                "samples": [
+                    0,
+                    1,
+                    true,
+                    false,
+                    3.14,
+                    [
+                        "name"
+                    ]
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Empty or blank value",
+                "description": "Empty or whitespace-only string values.",
+                "samples": [
+                    "",
+                    " ",
+                    "  ",
+                    "\t",
+                    ",",
+                    ", ,"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Illegal characters in tokens",
+                "description": "Tokens include characters outside [A-Za-z0-9_].",
+                "samples": [
+                    "name,cca2,cap!tal",
+                    "reg*ion",
+                    "sub region",
+                    "popul@tion",
+                    "languages,currencies,flags#",
+                    "cca2|cca3"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/subregion/{subregion}",
+        "type": "string",
+        "param_name": "subregion",
+        "format": [
+            "^[A-Za-z0-9_.~\\-]+(?:%20[A-Za-z0-9_.~\\-]+)*$",
+            "URL-encoded subregion label; spaces encoded as %20; no slashes"
+        ],
+        "valid": [
+            {
+                "param_name": "subregion",
+                "category": "Recognized subregions with encoded spaces (Europe/Asia)",
+                "description": "Valid, service-recognized subregion labels with spaces properly encoded using %20.",
+                "samples": [
+                    "Western%20Europe",
+                    "Eastern%20Europe",
+                    "Northern%20Europe",
+                    "Southern%20Europe",
+                    "Western%20Asia",
+                    "Eastern%20Asia"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Recognized African subregions (encoded spaces)",
+                "description": "African subregion labels with spaces encoded.",
+                "samples": [
+                    "Northern%20Africa",
+                    "Western%20Africa",
+                    "Middle%20Africa",
+                    "Eastern%20Africa",
+                    "Southern%20Africa",
+                    "Sub-Saharan%20Africa"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Recognized Americas/Oceania subregions",
+                "description": "Valid subregions from the Americas and Oceania; single-token names need no encoding, multi-word require %20.",
+                "samples": [
+                    "Central%20America",
+                    "Northern%20America",
+                    "Caribbean",
+                    "Australia%20and%20New%20Zealand",
+                    "Polynesia",
+                    "Micronesia"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "subregion",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter subregion is missing from the URL.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Unencoded spaces or bad percent-encoding",
+                "description": "Spaces are not encoded or percent-encoding is malformed.",
+                "samples": [
+                    "Western Europe",
+                    "Eastern Africa",
+                    "South-Eastern Asia",
+                    "Northern Europe ",
+                    " Central America",
+                    "Southern%20Eur%6ope"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Contains slashes",
+                "description": "Value contains '/' or its encoded form, which is not allowed in the path segment.",
+                "samples": [
+                    "Eastern/Africa",
+                    "Western%2FEurope",
+                    "South-Eastern%20Asia/More",
+                    "%2FWestern%20Asia",
+                    "Northern%20America%2F",
+                    "Central%20America//"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Unknown or unrecognized subregion",
+                "description": "Label does not match any subregion supported by the service.",
+                "samples": [
+                    "Atlantis",
+                    "Gondwana",
+                    "Middle%20Earth",
+                    "Westeros",
+                    "Eurasia",
+                    "Northern%20Atlantica"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Case mismatch (if service is case-sensitive)",
+                "description": "Correct labels but with incorrect letter case.",
+                "samples": [
+                    "western%20europe",
+                    "EASTERN%20AFRICA",
+                    "northern%20america",
+                    "central%20asia",
+                    "southern%20europe",
+                    "western%20asia"
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Non-string type",
+                "description": "The subregion parameter is not a string.",
+                "samples": [
+                    42,
+                    true,
+                    false,
+                    3.14,
+                    [],
+                    {}
+                ]
+            },
+            {
+                "param_name": "subregion",
+                "category": "Empty or blank value",
+                "description": "Empty string or effectively blank after decoding.",
+                "samples": [
+                    "",
+                    " ",
+                    "%20",
+                    "%20%20",
+                    "%%",
+                    "%"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/lang/{lang}",
+        "type": "string",
+        "param_name": "lang",
+        "format": [
+            "^[A-Za-z]{2,3}$",
+            "ISO 639-1 or ISO 639-2 language code"
+        ],
+        "valid": [
+            {
+                "param_name": "lang",
+                "category": "Lowercase ISO 639-1 two-letter codes",
+                "description": "Standard two-letter language codes, lowercase alphabetic only, URL-safe.",
+                "samples": [
+                    "en",
+                    "es",
+                    "fr",
+                    "de",
+                    "ar",
+                    "zh"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Lowercase ISO 639-2 three-letter codes",
+                "description": "Standard three-letter ISO 639-2 codes, lowercase alphabetic only, URL-safe.",
+                "samples": [
+                    "eng",
+                    "spa",
+                    "fra",
+                    "deu",
+                    "ara",
+                    "zho"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Uppercase or mixed-case alphabetic codes (2–3 letters)",
+                "description": "Alphabetic-only codes in upper or mixed case; many services treat codes case-insensitively.",
+                "samples": [
+                    "EN",
+                    "ES",
+                    "FR",
+                    "DE",
+                    "ENG",
+                    "SPA"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "lang",
+                "category": "Contains non-alphabetic characters",
+                "description": "Values include digits, hyphens, underscores, slashes, or other non-letter characters.",
+                "samples": [
+                    "en-US",
+                    "en1",
+                    "fr!",
+                    "zh_CN",
+                    "pt-BR",
+                    "en/fr"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Invalid length (not 2 or 3 letters)",
+                "description": "Values that are shorter than 2 or longer than 3 characters.",
+                "samples": [
+                    "e",
+                    "abcd",
+                    "english",
+                    "francais",
+                    "abcde",
+                    "zzzz"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Empty or whitespace-only",
+                "description": "Missing content in the path segment or only whitespace.",
+                "samples": [
+                    "",
+                    " ",
+                    "  ",
+                    "\t",
+                    "\n",
+                    "\r"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "Non-ASCII or diacritics",
+                "description": "Values with non-ASCII letters or diacritics that deviate from A–Z/a–z.",
+                "samples": [
+                    "ñ",
+                    "рус",
+                    "中文",
+                    "日本",
+                    "arب",
+                    "français"
+                ]
+            },
+            {
+                "param_name": "lang",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'lang' is omitted from the request URL.",
+                "samples": [
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/lang/{lang}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "^(name|alpha2Code|alpha3Code|region|capital|population|languages|currencies|flag)(,(name|alpha2Code|alpha3Code|region|capital|population|languages|currencies|flag))*$",
+            "Comma-separated list of supported field names"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single valid field name",
+                "description": "Exactly one attribute name, matching supported properties and case.",
+                "samples": [
+                    "name",
+                    "alpha2Code",
+                    "alpha3Code",
+                    "region",
+                    "capital",
+                    "population"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Two or three valid fields (comma-separated, no spaces)",
+                "description": "Multiple valid property names separated by commas without whitespace.",
+                "samples": [
+                    "name,capital",
+                    "region,capital",
+                    "alpha2Code,alpha3Code",
+                    "languages,currencies",
+                    "name,flag",
+                    "population,region"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Four or more valid fields (comma-separated, no spaces)",
+                "description": "A longer list of valid properties, comma-separated, no extra spaces or illegal characters.",
+                "samples": [
+                    "name,alpha2Code,alpha3Code,region",
+                    "name,capital,population,flag",
+                    "alpha2Code,alpha3Code,region,capital,population",
+                    "name,languages,currencies,flag",
+                    "name,alpha2Code,alpha3Code,region,capital,population,languages",
+                    "name,alpha2Code,alpha3Code,region,capital,population,languages,currencies,flag"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "<MISS_KEY>",
+                "description": "The optional query parameter 'fields' is omitted; service returns default set of fields.",
+                "samples": [
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Unknown or misspelled field names",
+                "description": "Items not in the supported set or with incorrect casing/spelling.",
+                "samples": [
+                    "names",
+                    "alphaCode",
+                    "Alpha2Code",
+                    "countryName",
+                    "populationCount",
+                    "currency"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Illegal delimiters or whitespace",
+                "description": "Use of spaces beyond separators, unsupported delimiters, or empty items between commas.",
+                "samples": [
+                    "name, capital",
+                    " name,alpha2Code",
+                    "name|capital",
+                    "name;capital",
+                    "name,capital ",
+                    "name,,capital"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Empty or blank list",
+                "description": "No fields provided or only separators/whitespace.",
+                "samples": [
+                    "",
+                    " ",
+                    " , ",
+                    ",",
+                    ",,",
+                    "name,"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Non-string input",
+                "description": "Values that are not strings for a query parameter expecting a delimited string.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    0,
+                    [],
+                    {}
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/demonym/{demonym}",
+        "type": "string",
+        "param_name": "demonym",
+        "format": [
+            "UTF-8 string; trimmed; non-empty; not purely numeric; may include spaces and diacritics; URL-encoded in transit",
+            "^(?!\\s)(?!.*\\s$)(?!\\d+$)[\\p{L}][\\p{L}\\s-]{0,99}$"
+        ],
+        "valid": [
+            {
+                "param_name": "demonym",
+                "category": "Single-word alphabetic demonyms (ASCII letters)",
+                "description": "Common single-word demonyms with letters only; trimmed; not numeric.",
+                "samples": [
+                    "American",
+                    "French",
+                    "German",
+                    "Brazilian",
+                    "Canadian",
+                    "Egyptian"
+                ]
+            },
+            {
+                "param_name": "demonym",
+                "category": "Multi-word demonyms with spaces",
+                "description": "Demonyms composed of multiple words separated by single spaces, trimmed.",
+                "samples": [
+                    "New Zealander",
+                    "Saudi Arabian",
+                    "Hong Konger",
+                    "South Korean",
+                    "Costa Rican",
+                    "Papua New Guinean"
+                ]
+            },
+            {
+                "param_name": "demonym",
+                "category": "Demonyms with Unicode letters/diacritics",
+                "description": "UTF-8 demonyms containing accented letters or other Unicode letters; trimmed.",
+                "samples": [
+                    "São Toméan",
+                    "Curaçaoan",
+                    "Burkinabè",
+                    "Réunionese",
+                    "Ålander",
+                    "Íslendingur"
+                ]
+            },
+            {
+                "param_name": "demonym",
+                "category": "URL-encoded demonyms (client-encoded for path)",
+                "description": "Values URL-encoded for transport (decoded server-side), representing valid demonyms.",
+                "samples": [
+                    "New%20Zealander",
+                    "Hong%20Konger",
+                    "Saudi%20Arabian",
+                    "Papua%20New%20Guinean",
+                    "Bosnian%20and%20Herzegovinian",
+                    "Cura%C3%A7aoan"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "demonym",
+                "category": "<MISS_KEY>",
+                "description": "Required path parameter omitted; request cannot be routed or will be rejected.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "demonym",
+                "category": "Empty or whitespace-only string",
+                "description": "Empty or only whitespace, which violates non-empty and trimmed requirements.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "demonym",
+                "category": "Leading or trailing whitespace",
+                "description": "Values with leading or trailing spaces/tabs violate trimming requirement.",
+                "samples": [
+                    " American",
+                    "French ",
+                    "  German",
+                    "Brazilian\t",
+                    "\tCanadian",
+                    "Egyptian "
+                ]
+            },
+            {
+                "param_name": "demonym",
+                "category": "Purely numeric strings",
+                "description": "Strings composed only of digits are not valid demonyms.",
+                "samples": [
+                    "12345",
+                    "000",
+                    "42",
+                    "2024",
+                    "999999",
+                    "0"
+                ]
+            },
+            {
+                "param_name": "demonym",
+                "category": "Type errors (non-string)",
+                "description": "Values that are not strings cannot be parsed as demonyms.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    null,
+                    45.67,
+                    {
+                        "value": "American"
+                    }
+                ]
+            },
+            {
+                "param_name": "demonym",
+                "category": "Illegal characters or symbols",
+                "description": "Contains punctuation, emoji, or reserved URL characters that are not part of a demonym.",
+                "samples": [
+                    "American!",
+                    "French🇫🇷",
+                    "German#",
+                    "Br@zilian",
+                    "Canad%ian",
+                    "Egyptian/Arab"
+                ]
+            },
+            {
+                "param_name": "demonym",
+                "category": "Nonexistent or fictional demonyms",
+                "description": "Semantically invalid demonym strings unlikely to match any real country.",
+                "samples": [
+                    "Westerosi",
+                    "Martian",
+                    "Atlantisan",
+                    "Gothamite",
+                    "Elbonian",
+                    "Testonian"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/demonym/{demonym}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "Comma-separated list of field tokens",
+            "^(?:name|region|capital|population|languages|currencies|flags)(?:\\s*,\\s*(?:name|region|capital|population|languages|currencies|flags))*$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single valid field token",
+                "description": "A single supported field name.",
+                "samples": [
+                    "name",
+                    "region",
+                    "capital",
+                    "population",
+                    "languages",
+                    "currencies"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple valid tokens (comma-separated, no spaces)",
+                "description": "Two or more supported fields separated by commas; no trailing comma.",
+                "samples": [
+                    "name,region",
+                    "name,capital,population",
+                    "name,languages,currencies",
+                    "name,region,capital,population",
+                    "languages,flags",
+                    "name,region,flags"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple valid tokens (optional spaces around commas)",
+                "description": "Supported fields separated by commas with optional spaces; no empty tokens or trailing commas.",
+                "samples": [
+                    "name, region",
+                    "region, capital",
+                    "capital, population, languages",
+                    "flags, name",
+                    "languages, currencies, region",
+                    "population, name, region"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "<MISS_KEY>",
+                "description": "The fields query parameter is omitted; the API returns all default fields.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Empty or whitespace-only string",
+                "description": "Parameter provided but empty or only whitespace.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Trailing/leading commas or empty tokens",
+                "description": "Incorrect comma placement or empty field tokens.",
+                "samples": [
+                    "name,",
+                    ",name",
+                    "name,,region",
+                    ",",
+                    ",,",
+                    "name, ,region"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Unknown or misspelled fields",
+                "description": "Tokens that are not recognized by the service.",
+                "samples": [
+                    "nam",
+                    "regoin",
+                    "capitol",
+                    "populaton",
+                    "lang",
+                    "currency"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Invalid delimiters or characters",
+                "description": "Fields separated by characters other than commas or containing invalid symbols.",
+                "samples": [
+                    "name;region",
+                    "name|region",
+                    "name/region",
+                    "name region",
+                    "name+region",
+                    "name@region"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Type errors (non-string)",
+                "description": "Values that are not strings for a query parameter.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    null,
+                    [],
+                    {
+                        "fields": "name"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/regionalbloc/{regionalbloc}",
+        "type": "string",
+        "param_name": "fields",
+        "format": [
+            "Comma-separated list of supported keys",
+            "^(?:\\s*(name|alpha2Code|alpha3Code|region|subregion|capital|population|languages|currencies|flag)\\s*)(?:,\\s*(name|alpha2Code|alpha3Code|region|subregion|capital|population|languages|currencies|flag)\\s*)*$"
+        ],
+        "valid": [
+            {
+                "param_name": "fields",
+                "category": "Single valid field key",
+                "description": "A single supported country property key.",
+                "samples": [
+                    "name",
+                    "alpha2Code",
+                    "alpha3Code",
+                    "region",
+                    "subregion",
+                    "capital"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple valid fields (comma-separated, no spaces)",
+                "description": "Two or more supported keys separated by commas, no spaces.",
+                "samples": [
+                    "name,alpha2Code",
+                    "alpha3Code,region",
+                    "capital,population",
+                    "languages,currencies",
+                    "name,alpha3Code,flag",
+                    "region,subregion,capital,population"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Multiple valid fields with spaces around commas",
+                "description": "Comma-separated list of supported keys allowing spaces around commas.",
+                "samples": [
+                    "name, alpha2Code",
+                    "region , subregion",
+                    "capital , population",
+                    "languages , currencies , flag",
+                    "alpha3Code , region , subregion",
+                    "name , capital , population , flag"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "<MISS_KEY>",
+                "description": "The optional fields parameter is omitted; API returns default full country details.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "fields",
+                "category": "Empty or whitespace-only",
+                "description": "Empty string or strings that yield no valid entries.",
+                "samples": [
+                    "",
+                    " ",
+                    " , ",
+                    ",",
+                    ",,",
+                    " , , "
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Unknown or misspelled field names",
+                "description": "Keys not recognized by the service or misspelled.",
+                "samples": [
+                    "names",
+                    "alpha4Code",
+                    "regions",
+                    "capitol",
+                    "populations",
+                    "langauges"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Malformed delimiters or empty entries",
+                "description": "Improper separators or empty items mixed with valid keys.",
+                "samples": [
+                    "name,,alpha2Code",
+                    "name;alpha2Code",
+                    "name|alpha3Code",
+                    "alpha2Code, ,alpha3Code",
+                    "name,alpha3Code,",
+                    ",name"
+                ]
+            },
+            {
+                "param_name": "fields",
+                "category": "Type mismatch (non-string)",
+                "description": "The fields parameter is not a string type.",
+                "samples": [
+                    123,
+                    0,
+                    true,
+                    false,
+                    null,
+                    [
+                        "name",
+                        "capital"
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /v2/regionalbloc/{regionalbloc}",
+        "type": "string",
+        "param_name": "regionalbloc",
+        "format": [
+            "^(?i)(EU|EFTA|CARICOM|NAFTA|ASEAN|AU|SAARC)$",
+            "^(European%20Union|European%20Free%20Trade%20Association|Caribbean%20Community|North%20American%20Free%20Trade%20Agreement|Association%20of%20Southeast%20Asian%20Nations|African%20Union|South%20Asian%20Association%20for%20Regional%20Cooperation)$"
+        ],
+        "valid": [
+            {
+                "param_name": "regionalbloc",
+                "category": "Supported acronyms (uppercase)",
+                "description": "Known regional bloc acronyms in uppercase.",
+                "samples": [
+                    "EU",
+                    "EFTA",
+                    "NAFTA",
+                    "ASEAN",
+                    "AU",
+                    "SAARC"
+                ]
+            },
+            {
+                "param_name": "regionalbloc",
+                "category": "Supported acronyms (case-insensitive)",
+                "description": "Known acronyms in lowercase or mixed case.",
+                "samples": [
+                    "eu",
+                    "Efta",
+                    "nafta",
+                    "asean",
+                    "Au",
+                    "saarc"
+                ]
+            },
+            {
+                "param_name": "regionalbloc",
+                "category": "URL-encoded full official names",
+                "description": "Supported blocs provided as URL-encoded full names.",
+                "samples": [
+                    "European%20Union",
+                    "European%20Free%20Trade%20Association",
+                    "Caribbean%20Community",
+                    "North%20American%20Free%20Trade%20Agreement",
+                    "Association%20of%20Southeast%20Asian%20Nations",
+                    "African%20Union"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "regionalbloc",
+                "category": "<MISS_KEY>",
+                "description": "Required path parameter missing; request cannot be routed.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "regionalbloc",
+                "category": "Empty or unencoded spaces",
+                "description": "Empty string or names with spaces not URL-encoded.",
+                "samples": [
+                    "",
+                    "European Union",
+                    "North American Free Trade Agreement",
+                    "EU ",
+                    " ASEAN",
+                    "EFT A"
+                ]
+            },
+            {
+                "param_name": "regionalbloc",
+                "category": "Unknown or unsupported identifiers",
+                "description": "Identifiers that do not match any supported bloc.",
+                "samples": [
+                    "XYZ",
+                    "ABC",
+                    "EUE",
+                    "EUU",
+                    "TEST",
+                    "UNKNOWN"
+                ]
+            },
+            {
+                "param_name": "regionalbloc",
+                "category": "Invalid URL encoding or prohibited characters",
+                "description": "Bad percent-encoding or reserved characters in the path value.",
+                "samples": [
+                    "European%20Union%",
+                    "European%2Union",
+                    "North%20American Free%20Trade%20Agreement",
+                    "European%20Union%ZZ",
+                    "EU/NAFTA",
+                    "African%2Union"
+                ]
+            }
+        ]
+    }
+]
