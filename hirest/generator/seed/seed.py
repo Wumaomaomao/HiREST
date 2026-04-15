@@ -2,7 +2,7 @@ import json
 import os
 from typing import List, Optional
 
-from hirest.generator.seed.seed_strategy import seed_strategy_70percent
+from hirest.generator.seed.seed_strategy import seed_strategy_70percent_valid_intersection
 from hirest.model.misp import MixedSingleSpace
 from hirest.model.seed import SeedModel
 
@@ -21,7 +21,7 @@ class Seed:
         self.mixed_space_data = mixed_space_data
 
     def select_space(self) -> dict:
-        space_selected = seed_strategy_70percent(self.mixed_space_data, self.seed_size)
+        space_selected = seed_strategy_70percent_valid_intersection(self.mixed_space_data, self.seed_size)
 
         return space_selected
     def gen_seed(self) -> List[SeedModel]:

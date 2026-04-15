@@ -1,5 +1,6 @@
 import json
 import logging
+from typing import Callable, Optional, Set
 
 from hirest.generator.partition.misp.llm_gen.prompt_mixed_space_partition_gen import part1, part2, \
     PROMPT_MIXED_SPACE_PARTITION_final
@@ -7,9 +8,26 @@ from hirest.llm.openai import OpenAIChatLLM
 from hirest.utils.retry import retry
 
 logger = logging.getLogger(__name__)
-def mixed_space_partition_gen(multi: dict, single_space_data: list) -> dict:
 
-    results: dict = {}
+
+def _merge_partition_results(dst: dict, src: dict):
+    for a, b in src.items():
+        if a not in dst:
+            dst[a] = b
+        else:
+            dst[a].update(b)
+
+
+def mixed_space_partition_gen(
+    multi: dict,
+    single_space_data: list,
+    completed_api_keys: Optional[Set[str]] = None,
+    existing_results: Optional[dict] = None,
+    on_api_done: Optional[Callable[[str, dict, dict], None]] = None,
+) -> dict:
+
+    results: dict = dict(existing_results or {})
+    completed_api_keys = completed_api_keys or set()
     sum_api = 0
     for path, methods in multi.items():
         for method in methods.items():
@@ -18,6 +36,13 @@ def mixed_space_partition_gen(multi: dict, single_space_data: list) -> dict:
     for path, methods in multi.items():
         for method, content in methods.items():
             method = method.lower()
+            api_key = f"{method} {path}"
+            if api_key in completed_api_keys:
+                print(
+                    f"\n\33[34m[offline][INFO] Skip API (mixed) {now}/{sum_api} (checkpoint hit): {api_key}\33[0m"
+                )
+                now += 1
+                continue
             print(
                 f"\n\33[34m[offline][INFO] Processing API (mixed) {now}/{sum_api}: {method.lower()} {path}\33[0m"
             )
@@ -65,10 +90,8 @@ def mixed_space_partition_gen(multi: dict, single_space_data: list) -> dict:
 
             resp = OpenAIChatLLM(LLM_MODEL).invoke(messages)
             result = retry(resp,1)
-            for a, b in result.items():
-                if a not in results:
-                    results[a] = b
-                else:
-                    results[a].update(b)
+            _merge_partition_results(results, result)
+            if on_api_done:
+                on_api_done(api_key, result, results)
 
     return results

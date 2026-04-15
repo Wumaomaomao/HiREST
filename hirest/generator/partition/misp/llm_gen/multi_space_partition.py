@@ -1,5 +1,5 @@
 import json
-from typing import List
+from typing import Callable, List, Optional, Set
 
 from hirest.generator.partition.misp.llm_gen.prompt_multi_space_partition_gen import  \
     PROMPT_MULTI_SPACE_PARTITION_final
@@ -9,12 +9,33 @@ from hirest.utils.RW_data import load_data
 from hirest.utils.retry import retry
 
 
-def multi_space_partition_gen(dep: dict, op_data_path: str) -> dict:
+def _merge_partition_results(dst: dict, src: dict):
+    for a, b in src.items():
+        if a not in dst:
+            dst[a] = b
+        else:
+            dst[a].update(b)
 
-    results:dict = {}
+
+def multi_space_partition_gen(
+    dep: dict,
+    op_data_path: str,
+    completed_api_keys: Optional[Set[str]] = None,
+    existing_results: Optional[dict] = None,
+    on_api_done: Optional[Callable[[str, dict, dict], None]] = None,
+) -> dict:
+
+    results:dict = dict(existing_results or {})
+    completed_api_keys = completed_api_keys or set()
 
     operation_data: List[Operation] = load_data(op_data_path)
     for idx, item in enumerate(operation_data, start=1):
+        api_key = f"{item['raw_doc_slide']['method'].lower()} {item['raw_doc_slide']['path']}"
+        if api_key in completed_api_keys:
+            print(
+                f"\n\33[34m[offline][INFO] Skip API {idx}/{len(operation_data)} (checkpoint hit): {api_key}\33[0m"
+            )
+            continue
         print(
             f"\n\33[34m[offline][INFO] Processing API {idx}/{len(operation_data)}: {item['raw_doc_slide']['method'].lower()} {item['raw_doc_slide']['path']}\33[0m"
         )
@@ -56,11 +77,9 @@ def multi_space_partition_gen(dep: dict, op_data_path: str) -> dict:
 
         resp = OpenAIChatLLM(LLM_MODEL).invoke(messages)
         result = retry(resp,1)
-        for a, b in result.items():
-            if a not in results:
-                results[a] = b
-            else:
-                results[a].update(b)
+        _merge_partition_results(results, result)
+        if on_api_done:
+            on_api_done(api_key, result, results)
     #
     # print(f"\n[offline][INFO] {results}")
     return results

@@ -2,6 +2,7 @@ import logging, random
 
 from typing import Any
 
+from hirest.fuzzer.input_space_manager import InputSpaceManager
 from hirest.model.testcase import TestCase
 from hirest.model.request import Request
 
@@ -19,14 +20,15 @@ class Renderer:
         self.dynres_pool = ResourcePool()
         self.sample_dynres_prob = sample_dynres_prob
 
-    def render(self, testcase: TestCase) -> tuple[TestCase, Request]:
+    def render(self, testcase: TestCase, input_space_manager: InputSpaceManager) -> tuple[TestCase, Request]:
         """render the test case to a request.
         Args:
             testcase (TestCase): test case to be rendered.
+            input_space_manager (InputSpaceManager): input space manager.
         Returns:
             tuple[TestCase, Request]: test case and request.
         """
-        testcase.generate_param_vals()
+        testcase.generate_param_vals(input_space_manager)
         logger.debug(
             f"generate values for the parameters : {testcase.param_vals}"
         )

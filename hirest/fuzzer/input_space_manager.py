@@ -2,6 +2,7 @@ import logging, json, random
 from typing import Any
 
 from hirest.model.misp import MISP, MISP_SS, MixedSingleSpace, Subspace
+from hirest.model.operation import Operation
 from hirest.model.sisp import SISP, SISP_SS
 from hirest.model.testcase import TestCase
 
@@ -21,6 +22,49 @@ class InputSpaceManager:
         self.sisps: dict[str, dict[str, SISP]] = {}
         self.misps: dict[str, MISP] = {}
 
+        # key: operation
+        # sub_key: parameter
+        # subsub_key: category
+        # value = count
+        self.sisp_ss_failure_count: dict[str, dict[str, dict[str, int]]] = {}  
+
+    def init_sisp_ss_failure_count(self) -> None:
+        for op_name in self.sisps:
+            self.sisp_ss_failure_count[op_name] = {}
+            for param_name in self.sisps[op_name]:
+                self.sisp_ss_failure_count[op_name][param_name] = {}
+                for sisp_ss in self.sisps[op_name][param_name].valid:
+                    self.sisp_ss_failure_count[op_name][param_name][sisp_ss.category] = 0
+
+    def update_sisp_ss_failure_count(self, operation: Operation, sisp_ss_list: list[SISP_SS]) -> None:
+        for sisp_ss in sisp_ss_list:
+            op_name = operation.op_name
+            param_name = sisp_ss.param_name
+            category = sisp_ss.category
+            if op_name in self.sisp_ss_failure_count and param_name in self.sisp_ss_failure_count[op_name] and category in self.sisp_ss_failure_count[op_name][param_name]:
+                self.sisp_ss_failure_count[op_name][param_name][category] += 1
+                logger.debug(f"Updated failure count for SISP SS (op: {op_name}, param: {param_name}, category: {category}) to {self.sisp_ss_failure_count[op_name][param_name][category]}")
+            else:
+                logger.warning(f"Attempted to update failure count for non-existing SISP SS (op: {op_name}, param: {param_name}, category: {category}). No update performed.")
+    def get_sisp_ss_failure_count(self, operation_name: str, sisp_ss: SISP_SS) -> int:
+        op_name = operation_name
+        param_name = sisp_ss.param_name
+        category = sisp_ss.category
+        if op_name in self.sisp_ss_failure_count and param_name in self.sisp_ss_failure_count[op_name] and category in self.sisp_ss_failure_count[op_name][param_name]:
+            return self.sisp_ss_failure_count[op_name][param_name][category]
+        else:
+            logger.warning(f"Attempted to get failure count for non-existing SISP SS (op: {op_name}, param: {param_name}, category: {category}). Returning 0.")
+            return 0
+        
+    def set_sisp_ss_failure_count(self, operation_name: str, sisp_ss: SISP_SS, count: int) -> None:
+        op_name = operation_name
+        param_name = sisp_ss.param_name
+        category = sisp_ss.category
+        if op_name in self.sisp_ss_failure_count and param_name in self.sisp_ss_failure_count[op_name] and category in self.sisp_ss_failure_count[op_name][param_name]:
+            self.sisp_ss_failure_count[op_name][param_name][category] = count
+            logger.debug(f"Set failure count for SISP SS (op: {op_name}, param: {param_name}, category: {category}) to {count}")
+        else:
+            logger.warning(f"Attempted to set failure count for non-existing SISP SS (op: {op_name}, param: {param_name}, category: {category}). No update performed.")
     def load_sisps(self, data: list[dict[str, Any]]) -> None:
         """convert the SISP input file data to SISP object.
         Args:
@@ -244,7 +288,7 @@ class InputSpaceManager:
                 mss_list_set.append(mss_list)
         
         if len(mss_list_set) == 0:
-            logger.warning(
+            logger.debug(
                 f"No effective SISP SS found for parameter '{parameter}' because no matched subspace contains the parameter."
             )
             return []
@@ -279,7 +323,7 @@ class InputSpaceManager:
         """
         effective_sisp_ss = self._resolve_effective_sisp_ss(testcase, parameter)
         if not effective_sisp_ss or len(effective_sisp_ss) == 0:
-            logger.warning(
+            logger.debug(
                 f"No effective SISP SS found for parameter '{parameter}' after subspace update."
             )
             return None

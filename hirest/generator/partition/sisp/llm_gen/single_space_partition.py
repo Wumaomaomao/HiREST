@@ -1,5 +1,5 @@
 import json
-from typing import List
+from typing import Callable, List, Optional, Set
 
 from hirest.generator.partition.sisp.llm_gen.prompt_fix_sisp import PROMPT_FIX
 from hirest.generator.partition.sisp.llm_gen.prompt_single_space_partition_gen import \
@@ -78,13 +78,26 @@ def fix_sisp(data: list, op_data: List[Operation]) -> list:
 
         return data + fix_result
 
-def single_space_partition_gen_every(operation_data_path: str, llm_und_data: list) -> list:
-    result = []
+def single_space_partition_gen_every(
+    operation_data_path: str,
+    llm_und_data: list,
+    completed_api_keys: Optional[Set[str]] = None,
+    existing_results: Optional[list] = None,
+    on_api_done: Optional[Callable[[str, list, list], None]] = None,
+) -> list:
+    result = list(existing_results or [])
+    completed_api_keys = completed_api_keys or set()
     operation_data: List[Operation] = load_data(operation_data_path)
     for idx, item in enumerate(operation_data, start=1):
+        api_key = f"{item['raw_doc_slide']['method'].lower()} {item['raw_doc_slide']['path']}"
+        if api_key in completed_api_keys:
+            print(
+                f"\n\33[34m[offline][INFO] Skip API {idx}/{len(operation_data)} (checkpoint hit): {api_key}\33[0m"
+            )
+            continue
         print(f"\n\33[34m[offline][INFO] Processing API {idx}/{len(operation_data)}: {item['raw_doc_slide']['method'].lower()} {item['raw_doc_slide']['path']}\33[0m")
         param_data = json.dumps(item["param_list"])
-        target_api_name = f"{item['raw_doc_slide']['method'].lower()} {item['raw_doc_slide']['path']}"
+        target_api_name = api_key
         matched = next(
             (
                 api_item
@@ -124,5 +137,7 @@ def single_space_partition_gen_every(operation_data_path: str, llm_und_data: lis
         resp = OpenAIChatLLM(LLM_MODEL).invoke(messages)
         result1 = retry(resp, 0)
         result.extend(result1)
+        if on_api_done:
+            on_api_done(api_key, result1, result)
 
     return result

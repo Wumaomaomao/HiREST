@@ -12,10 +12,11 @@ logger = logging.getLogger(__name__)
 class RespChecker:
     """RespChecker class: process the response and check the status code and content."""
 
-    def __init__(self):
+    def __init__(self, summary_only: bool = False):
         error_bucket: dict[str, Any]
         self.status_code_bucket: dict[str, dict[str, int | str]] = {}
         content_bucket: dict[str, Any]
+        self.summary_only = summary_only
 
     def init_status_code_bucket(self, operations: list[Operation]) -> None:
         """Initialize the status code bucket."""
@@ -69,6 +70,9 @@ class RespChecker:
         bucket = self.status_code_bucket[op_name][f"{status_code_first_digit}xx"]
 
         bucket["count"] += 1
+        if self.summary_only:
+            return
+
         text = resp["text"]
         if text not in [item[1] for item in bucket["case"]]:
             bucket["case"].append((
@@ -80,8 +84,8 @@ class RespChecker:
                 text
             ))
         
-    def output_result(self) -> None:
-        """Output the results of the response checker."""
+    def output_result(self) -> dict[str, Any]:
+        """Output the results of the response checker and return summary."""
 
         # generate summary of operations results
         for op_name, bucket in self.status_code_bucket.items():
@@ -94,4 +98,9 @@ class RespChecker:
                 self.status_code_bucket["summary"]["failed operations"].append(op_name)
         
         # output the results
+        if self.summary_only:
+            logger.info(json.dumps(self.status_code_bucket["summary"], indent=4))
+            return self.status_code_bucket["summary"]
+
         logger.info(json.dumps(self.status_code_bucket, indent=4))
+        return self.status_code_bucket["summary"]

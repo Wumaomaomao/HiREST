@@ -1,6 +1,7 @@
 import json
 import random
 import re
+from typing import Any
 
 
 # TODO: 4.2 ：
@@ -198,6 +199,7 @@ def seed_strategy_70percent(data: dict, times: int) -> dict:
                             "single-parameter-spaces", {})
                         if param not in single_param_spaces:
                             continue  # 如果不存在则跳过
+
                         current_choice["selected-parameters-list"][param] = random.choice([
                             item for item in
                             method_data["space1"]["subspace1"]["single-parameter-spaces"][param]
@@ -235,6 +237,272 @@ def seed_strategy_70percent(data: dict, times: int) -> dict:
                     current_choice["selected-spaces"].append(f"{space_selected}-{subspace_selected}")
                 method_seed["seeds"].append(current_choice)
             results[path][method] = method_seed
+    return results
+
+
+def _valid_subspace_names(space_content: dict[str, Any]) -> list[str]:
+    return [
+        name
+        for name, subspace in space_content.items()
+        if name.startswith("subspace") and isinstance(subspace, dict)
+    ]
+
+
+def _valid_single_param_spaces(subspace_data: dict[str, Any], param: str) -> list[dict[str, Any]]:
+    candidates = subspace_data.get("single-parameter-spaces", {}).get(param, [])
+    return [item for item in candidates if isinstance(item, dict) and item.get("tag") == "valid"]
+
+
+def _intersect_param_spaces(
+    selected_parameters: dict[str, dict[str, dict[str, Any]]],
+    subspace_data: dict[str, Any],
+) -> bool:
+    """Intersect mixed single spaces by input_space_category for each parameter.
+
+    Returns False if any parameter intersection is empty.
+    """
+    sps = subspace_data.get("single-parameter-spaces", {})
+    if not isinstance(sps, dict):
+        return True
+
+    for param, _ in sps.items():
+        valid_candidates = _valid_single_param_spaces(subspace_data, param)
+        if not valid_candidates:
+            continue
+
+        candidate_map = {
+            item["input_space_category"]: item
+            for item in valid_candidates
+            if "input_space_category" in item
+        }
+        if not candidate_map:
+            continue
+
+        if param not in selected_parameters:
+            selected_parameters[param] = dict(candidate_map)
+            continue
+
+        old_map = selected_parameters[param]
+        common_categories = set(old_map.keys()) & set(candidate_map.keys())
+        if not common_categories:
+            return False
+
+        selected_parameters[param] = {cat: old_map[cat] for cat in common_categories}
+
+    return True
+
+
+def _build_one_seed_with_retry(method_data: dict[str, Any], max_retries: int = 50) -> dict[str, Any]:
+    """Build one seed by trying to include each space in order.
+
+    If category intersection becomes empty, restart seed construction.
+    """
+    if not isinstance(method_data, dict) or not method_data:
+        return {
+            "tag": "normal",
+            "selected-spaces": [],
+            "selected-parameters-list": {},
+            "parameter-parameter": [],
+        }
+
+    space_names = [
+        name for name in method_data.keys() if isinstance(method_data.get(name), dict) and name.startswith("space")
+    ]
+    space_names.sort(key=lambda x: (int(re.findall(r"\d+", x)[0]) if re.findall(r"\d+", x) else 10**9, x))
+
+    for _ in range(max_retries):
+        selected_spaces: list[str] = []
+        selected_parameters: dict[str, dict[str, dict[str, Any]]] = {}
+        parameter_parameter: list[str] = []
+        conflict = False
+
+        for space_name in space_names:
+            space_content = method_data[space_name]
+            subspace_names = _valid_subspace_names(space_content)
+            if not subspace_names:
+                continue
+
+            subspace_names.sort(key=lambda x: (int(re.findall(r"\d+", x)[0]) if re.findall(r"\d+", x) else 10**9, x))
+            selected_subspace_name = None
+            selected_subspace_data = None
+
+            # Random feasible selection: sample one among all subspaces that keep intersections non-empty.
+            feasible_subspaces: list[tuple[str, dict[str, Any], dict[str, dict[str, dict[str, Any]]]]] = []
+            for subspace_name in subspace_names:
+                subspace_data = space_content[subspace_name]
+                trial_parameters = {
+                    param: dict(by_category) for param, by_category in selected_parameters.items()
+                }
+                ok = _intersect_param_spaces(trial_parameters, subspace_data)
+                if ok:
+                    feasible_subspaces.append((subspace_name, subspace_data, trial_parameters))
+
+            if feasible_subspaces:
+                selected_subspace_name, selected_subspace_data, selected_parameters = random.choice(feasible_subspaces)
+
+            if selected_subspace_name is None or selected_subspace_data is None:
+                conflict = True
+                break
+
+            selected_spaces.append(f"{space_name}-{selected_subspace_name}")
+            pp = selected_subspace_data.get("parameter-parameter", [])
+            if isinstance(pp, list):
+                parameter_parameter.extend(pp)
+
+        if conflict:
+            continue
+
+        selected_parameters_final: dict[str, dict[str, Any]] = {}
+        for param, by_category in selected_parameters.items():
+            if not by_category:
+                continue
+            selected_parameters_final[param] = random.choice(list(by_category.values()))
+
+        return {
+            "tag": "normal",
+            "selected-spaces": selected_spaces,
+            "selected-parameters-list": selected_parameters_final,
+            "parameter-parameter": parameter_parameter,
+        }
+
+    # Final fallback: return an empty-but-valid seed structure if all retries conflict.
+    return {
+        "tag": "normal",
+        "selected-spaces": [],
+        "selected-parameters-list": {},
+        "parameter-parameter": [],
+    }
+
+
+def seed_strategy_ordered_valid_intersection(data: dict, times: int) -> dict:
+    """Generate seeds by traversing spaces in order with valid subspace selection.
+
+    Strategy:
+    1. Try to include one valid subspace from each space in order.
+    2. For each parameter, intersect candidate spaces by input_space_category.
+    3. If any intersection is empty, restart (reseed).
+    """
+    results: dict[str, Any] = {}
+
+    for path, methods in data.items():
+        results[path] = {}
+        for method, method_data in methods.items():
+            method_seed = {"seeds": []}
+            for _ in range(times):
+                method_seed["seeds"].append(_build_one_seed_with_retry(method_data))
+            results[path][method] = method_seed
+
+    return results
+
+
+def _build_one_seed_70percent_with_intersection(
+    method_data: dict[str, Any],
+    include_prob: float = 0.7,
+    max_retries: int = 50,
+) -> dict[str, Any]:
+    """Build one seed with 70% space-inclusion probability and category intersection checks."""
+    if not isinstance(method_data, dict) or not method_data:
+        return {
+            "tag": "normal",
+            "selected-spaces": [],
+            "selected-parameters-list": {},
+            "parameter-parameter": [],
+        }
+
+    space_names = [
+        name for name in method_data.keys() if isinstance(method_data.get(name), dict) and name.startswith("space")
+    ]
+    space_names.sort(key=lambda x: (int(re.findall(r"\d+", x)[0]) if re.findall(r"\d+", x) else 10**9, x))
+
+    if not space_names:
+        return {
+            "tag": "normal",
+            "selected-spaces": [],
+            "selected-parameters-list": {},
+            "parameter-parameter": [],
+        }
+
+    include_prob = max(0.0, min(1.0, include_prob))
+
+    for _ in range(max_retries):
+        selected_spaces: list[str] = []
+        selected_parameters: dict[str, dict[str, dict[str, Any]]] = {}
+        parameter_parameter: list[str] = []
+
+        for idx, space_name in enumerate(space_names):
+            # Keep the first space mandatory to avoid empty/too-weak seeds.
+            if idx > 0 and random.random() >= include_prob:
+                continue
+
+            space_content = method_data[space_name]
+            subspace_names = _valid_subspace_names(space_content)
+            if not subspace_names:
+                continue
+
+            subspace_names.sort(key=lambda x: (int(re.findall(r"\d+", x)[0]) if re.findall(r"\d+", x) else 10**9, x))
+
+            feasible_subspaces: list[tuple[str, dict[str, Any], dict[str, dict[str, dict[str, Any]]]]] = []
+            for subspace_name in subspace_names:
+                subspace_data = space_content[subspace_name]
+                trial_parameters = {
+                    param: dict(by_category) for param, by_category in selected_parameters.items()
+                }
+                if _intersect_param_spaces(trial_parameters, subspace_data):
+                    feasible_subspaces.append((subspace_name, subspace_data, trial_parameters))
+
+            if not feasible_subspaces:
+                continue
+
+            selected_subspace_name, selected_subspace_data, selected_parameters = random.choice(feasible_subspaces)
+            selected_spaces.append(f"{space_name}-{selected_subspace_name}")
+
+            pp = selected_subspace_data.get("parameter-parameter", [])
+            if isinstance(pp, list):
+                parameter_parameter.extend(pp)
+
+        if not selected_spaces:
+            continue
+
+        selected_parameters_final: dict[str, dict[str, Any]] = {}
+        for param, by_category in selected_parameters.items():
+            if not by_category:
+                continue
+            selected_parameters_final[param] = random.choice(list(by_category.values()))
+
+        return {
+            "tag": "normal",
+            "selected-spaces": selected_spaces,
+            "selected-parameters-list": selected_parameters_final,
+            "parameter-parameter": parameter_parameter,
+        }
+
+    return {
+        "tag": "normal",
+        "selected-spaces": [],
+        "selected-parameters-list": {},
+        "parameter-parameter": [],
+    }
+
+
+def seed_strategy_70percent_valid_intersection(data: dict, times: int) -> dict:
+    """Generate seeds with 70% space selection and category-based intersection.
+
+    Strategy:
+    1. Keep the first space mandatory.
+    2. For each remaining space, include it with probability 70%.
+    3. When selecting a subspace, keep only choices that maintain non-empty
+       intersection on input_space_category for each parameter.
+    """
+    results: dict[str, Any] = {}
+
+    for path, methods in data.items():
+        results[path] = {}
+        for method, method_data in methods.items():
+            method_seed = {"seeds": []}
+            for _ in range(times):
+                method_seed["seeds"].append(_build_one_seed_70percent_with_intersection(method_data))
+            results[path][method] = method_seed
+
     return results
 
 

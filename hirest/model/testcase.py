@@ -1,13 +1,19 @@
 from enum import Enum
 import logging
 
+import random
 from typing import List, Any, Optional
+
+from hirest.fuzzer.renderer.value_sampler import sample_more_values
+
 from pydantic import BaseModel, Field
 
 from hirest.model.operation import Operation
 from hirest.model.misp import MISP_SS, MixedSingleSpace, Subspace
 from hirest.model.sisp import SISP_SS
 from hirest.model.request import Request
+
+
 
 logger = logging.getLogger(__name__)
 
@@ -95,9 +101,10 @@ class TestCase(BaseModel):
         """Create a new test case based on the operation template with empty request content."""
         return cls(
             operation=testcase.operation,
-            matched_MISP=testcase.matched_MISP.copy() if testcase.matched_MISP else None,
-            matched_Subspace=testcase.matched_Subspace.copy() if testcase.matched_Subspace else None,
-            matched_SISP=testcase.matched_SISP.copy() if testcase.matched_SISP else None,
+            matched_MISP=testcase.matched_MISP.copy() if testcase.matched_MISP else [],
+            matched_Subspace=testcase.matched_Subspace.copy() if testcase.matched_Subspace else {},
+            matched_SISP=testcase.matched_SISP.copy() if testcase.matched_SISP else [],
+
         )
     
     @classmethod
@@ -105,10 +112,10 @@ class TestCase(BaseModel):
         """Create a backup of the test case, this is used for mutation, because the mutation may fail, we need to backup the original test case."""
         return cls(
             operation=testcase.operation,
-            matched_MISP=testcase.matched_MISP.copy() if testcase.matched_MISP else None,
-            matched_Subspace=testcase.matched_Subspace.copy() if testcase.matched_Subspace else None,
-            matched_SISP=testcase.matched_SISP.copy() if testcase.matched_SISP else None,
-            param_vals=testcase.param_vals.copy() if testcase.param_vals else None,
+            matched_MISP=testcase.matched_MISP.copy() if testcase.matched_MISP else [],
+            matched_Subspace=testcase.matched_Subspace.copy() if testcase.matched_Subspace else {},
+            matched_SISP=testcase.matched_SISP.copy() if testcase.matched_SISP else [],
+            param_vals=testcase.param_vals.copy() if testcase.param_vals else {},
             request=testcase.request.copy() if testcase.request else None,
             response=testcase.response.copy() if testcase.response else None,
             mutation_type=testcase.mutation_type,
@@ -117,18 +124,32 @@ class TestCase(BaseModel):
     def restore(self, backup: "TestCase") -> None:
         """Restore the test case from the backup, this is used for mutation, because the mutation may fail, we need to restore the original test case."""
         self.operation = backup.operation
-        self.matched_MISP = backup.matched_MISP.copy() if backup.matched_MISP else None
-        self.matched_Subspace = backup.matched_Subspace.copy() if backup.matched_Subspace else None
-        self.matched_SISP = backup.matched_SISP.copy() if backup.matched_SISP else None
-        self.param_vals = backup.param_vals.copy() if backup.param_vals else None
+        self.matched_MISP = backup.matched_MISP.copy() if backup.matched_MISP else {}
+        self.matched_Subspace = backup.matched_Subspace.copy() if backup.matched_Subspace else []
+        self.matched_SISP = backup.matched_SISP.copy() if backup.matched_SISP else []
+        self.param_vals = backup.param_vals.copy() if backup.param_vals else {}
         self.request = backup.request.copy() if backup.request else None
         self.response = backup.response.copy() if backup.response else None
         self.mutation_type = backup.mutation_type if backup.mutation_type else None
 
-    def generate_param_vals(self) -> None:
+    def generate_param_vals(self, input_space_manager) -> None:
         """Generate parameter values for the test case based on the matched SISP spaces."""
+        from hirest.fuzzer.input_space_manager import InputSpaceManager
         try:
             for sisp_ss in self.matched_SISP:
+            #     failure_count = input_space_manager.get_sisp_ss_failure_count(self.operation.op_name, sisp_ss)
+            #     if failure_count > 10:
+            #         logger.debug(f"Sample more values for SISP SS {sisp_ss.category} of parameter {sisp_ss.param_name} of operation {self.operation.op_name} because the failure count is {failure_count}.")
+            #         format = input_space_manager.sisps[self.operation.op_name][sisp_ss.param_name].format
+            #         new_values =  sample_more_values(sisp_ss, format, 3)
+            #         logger.debug(f"Sampled more values for SISP SS {sisp_ss.category} of parameter {sisp_ss.param_name} of operation {self.operation.op_name}: {new_values}")
+            #         if not new_values or len(new_values) == 0:
+            #             logger.debug(f"No new values sampled for SISP SS {sisp_ss.category} of parameter {sisp_ss.param_name} of operation {self.operation.op_name}, use the original value to generate the test case.")
+            #             val = sisp_ss.generate_val()
+            #         else:
+            #             val = random.choice(new_values)
+            #         input_space_manager.set_sisp_ss_failure_count(self.operation.op_name, sisp_ss, 0)
+            #     else:
                 val = sisp_ss.generate_val()
                 self._set_param_val(sisp_ss.param_name, val)
         except Exception as e:

@@ -1,3 +1,4 @@
+import json
 import logging, re
 
 from enum import Enum
@@ -277,7 +278,18 @@ class Request(BaseModel):
         #TODO: default generate the array body with len 1, need to support multiple items in the future
         body = []
         array_prefix = f"{prefix}[]"
+        direct_array_key = prefix if prefix else "[]"
         logger.debug(f"building array body for {array_prefix}, type: {SchemaType.parse_schema_type(items)}")
+
+        # Prefer direct array payload, e.g. transcriptIds: ["ENST..."]
+        if direct_array_key in self.body_params:
+            direct_value = self.body_params[direct_array_key]
+            if isinstance(direct_value, list):
+                if SchemaType.parse_schema_type(items) in [SchemaType.OBJECT, SchemaType.ARRAY]:
+                    return direct_value
+                return [str(v) for v in direct_value]
+            logger.debug(f"array parameter {direct_array_key} is not a list, fallback to legacy key {array_prefix}")
+
         match SchemaType.parse_schema_type(items):
             case SchemaType.OBJECT:
                 body.append(self._object_body_builder(array_prefix, items["properties"]))
@@ -287,7 +299,23 @@ class Request(BaseModel):
                 full_param_name = array_prefix
                 if full_param_name in self.body_params:
                     param_value = self.body_params[full_param_name]
-                    body.append(str(param_value))
+                    if isinstance(param_value, list):
+                        body.extend([str(v) for v in param_value])
+                    elif isinstance(param_value, str):
+                        parsed = None
+                        try:
+                            parsed = json.loads(param_value)
+                        except Exception:
+                            parsed = None
+
+                        if isinstance(parsed, list):
+                            body.extend([str(v) for v in parsed])
+                        elif "," in param_value:
+                            body.extend([v.strip() for v in param_value.split(",") if v.strip() != ""])
+                        else:
+                            body.append(str(param_value))
+                    else:
+                        body.append(str(param_value))
                 else:
                     logger.debug(f"skip the parameter {full_param_name} in the request body")
         

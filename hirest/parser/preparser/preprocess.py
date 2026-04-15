@@ -104,7 +104,19 @@ class Preprocess:
         elif schema_type == "array":
             items_schema = schema.get("items", {})
             array_prefix = f"{prefix}[]" if prefix else "[]"
-            fields.extend(self.extract_schema_fields(items_schema, prefix=array_prefix))
+            item_type = items_schema.get("type", "string")
+
+            # Primitive arrays keep primitive-typed variables only (e.g., transcriptIds[]: string).
+            if item_type in ["string", "integer", "number", "boolean"]:
+                fields.append({
+                    "name": array_prefix,
+                    "type": item_type,
+                    "description": schema.get("description", "") or items_schema.get("description", ""),
+                    "required": prefix.split(".")[-1] in required_fields if prefix else False
+                })
+            else:
+                # Complex arrays keep nested flatten behavior for downstream object construction.
+                fields.extend(self.extract_schema_fields(items_schema, prefix=array_prefix))
         else:
             fields.append({
                 "name": prefix,

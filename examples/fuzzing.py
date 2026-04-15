@@ -36,7 +36,53 @@ class SimpleJsonFormatter(logging.Formatter):
         log_record = record.getMessage()
         return json.dumps(log_record, indent=4)
 
-def config_logging(service_name: str, exec_log_only: bool = False):
+
+def keep_only_summary_in_result(result_filepath: str) -> None:
+    result_path = Path(result_filepath)
+    fallback_summary = {
+        "status": "no_summary_generated",
+        "reason": "No summary was generated during fuzzing; placeholder summary written by no-log mode.",
+        "generated_at": datetime.now().isoformat(timespec="seconds"),
+    }
+
+    if not result_path.exists():
+        summary_payload = fallback_summary
+    else:
+        raw = result_path.read_text(encoding="utf-8").strip()
+        if not raw:
+            summary_payload = fallback_summary
+        else:
+            try:
+                payload = json.loads(raw)
+            except json.JSONDecodeError:
+                summary_payload = fallback_summary
+            else:
+                if isinstance(payload, dict):
+                    summary_payload = payload.get("summary", payload)
+                else:
+                    summary_payload = payload
+
+                if summary_payload in (None, "", [], {}):
+                    summary_payload = fallback_summary
+
+    result_path.write_text(
+        json.dumps(summary_payload, indent=4) + "\n",
+        encoding="utf-8",
+    )
+
+
+def write_summary_result(result_filepath: str, summary: dict) -> None:
+    result_path = Path(result_filepath)
+    result_path.write_text(
+        json.dumps(summary, indent=4) + "\n",
+        encoding="utf-8",
+    )
+
+def config_logging(
+    service_name: str,
+    exec_log_only: bool = False,
+    no_log: bool = False,
+):
     service_name = service_name.lower()
     date = datetime.now().strftime("%Y-%m-%d")
     time = datetime.now().strftime("%H%M%S")
@@ -54,8 +100,13 @@ def config_logging(service_name: str, exec_log_only: bool = False):
     result_filepath = result_dir / f"{service_name}_result_{date}_{time}.json"
 
     hirest_handlers = ["console", "file"]
+    executor_handlers = ["exec_file"]
     if exec_log_only:
         hirest_handlers = []
+    if no_log:
+        # no_log: keep only result_file output, disable normal log and exec_log.
+        hirest_handlers = []
+        executor_handlers = []
 
     LOGGING_CONFIG = {
         "version": 1,
@@ -104,7 +155,7 @@ def config_logging(service_name: str, exec_log_only: bool = False):
             },
             "hirest.fuzzer.executor": {
                 "level": "DEBUG",
-                "handlers": ["exec_file"],
+                "handlers": executor_handlers,
                 "propagate": False,
             },
             "hirest.fuzzer.resp_checker": {
@@ -116,11 +167,17 @@ def config_logging(service_name: str, exec_log_only: bool = False):
     }
 
     logging.config.dictConfig(LOGGING_CONFIG)
+    return {
+        "log_filepath": str(log_filepath),
+        "exec_log_filepath": str(exec_log_filepath),
+        "result_filepath": str(result_filepath),
+    }
 
 
 SERVICE = {
     "languagetool": {
         "base_url": "http://localhost:49981/v2/"
+        # "base_url": "http://localhost:50101/v2/"
     },
     "ncs": {
         "base_url": "http://localhost:50102/"
@@ -139,7 +196,16 @@ SERVICE = {
     },
     "youtube":{
         "base_url": "http://localhost:9009/api/"
-    }
+    },
+    "user" : {
+        "base_url": "http://localhost:50115/"
+    },
+    "genome" : {
+        "base_url": "http://localhost:50110/"
+    },
+    "project" : {
+        "base_url": "http://localhost:50118/"
+    },
 }
 
 base_path = "/root/HiREST"
@@ -151,11 +217,21 @@ if __name__ == "__main__":
     parser.add_argument('--time_limit', type=int, default=3600, help='Time limit for fuzzing (seconds)')
     parser.add_argument('--requests', type=int, default=1000, help='Maximum number of requests')
     parser.add_argument('--exec-log-only', action='store_true', help='Disable normal logs and only keep exec_log output')
+    parser.add_argument('--no-log', action='store_true', help='Disable normal log and exec_log, only keep result output')
     args = parser.parse_args()
 
-    def fuzzing_service(service_name: str, max_requests: int, time_limit: int, exec_log_only: bool = False):
+    if args.exec_log_only and args.no_log:
+        parser.error('--exec-log-only and --no-log cannot be used together')
+
+    def fuzzing_service(
+        service_name: str,
+        max_requests: int,
+        time_limit: int,
+        exec_log_only: bool = False,
+        no_log: bool = False,
+    ):
         base_url = SERVICE[service_name]["base_url"]
-        config_logging(service_name, exec_log_only=exec_log_only)
+        logging_paths = config_logging(service_name, exec_log_only=exec_log_only, no_log=no_log)
         logger = logging.getLogger(__name__)
 
         input_space_manager = InputSpaceManager()
@@ -163,6 +239,7 @@ if __name__ == "__main__":
         input_space_manager.load_misps(misp_data)
         sisp_data = load_file(f"{base_path}/apis/{service_name}/partition/sisp.json")
         input_space_manager.load_sisps(sisp_data)
+        input_space_manager.init_sisp_ss_failure_count()
 
         case_manager = CaseManager(input_space_manager)
         op_data = load_file(f"{base_path}/apis/{service_name}/op_slide/operation_template.json")
@@ -179,7 +256,7 @@ if __name__ == "__main__":
         )
         renderer = Renderer(base_url=base_url)
         executor = Executor()
-        response_checker = RespChecker()
+        response_checker = RespChecker(summary_only=no_log)
 
         fuzzer = Fuzzer(
             input_space_manager=input_space_manager,
@@ -193,6 +270,20 @@ if __name__ == "__main__":
         )
 
         fuzzer.start()
+        summary = response_checker.status_code_bucket.get("summary", {})
+        if no_log:
+            write_summary_result(logging_paths["result_filepath"], summary)
+            print(f"[HiREST][RESULT] Summary-only result is saved in: {logging_paths['result_filepath']}")
+            print("[HiREST][RESULT] Summary key path in JSON: $")
+        else:
+            print(f"[HiREST][RESULT] Summary result is saved in: {logging_paths['result_filepath']}")
+            print("[HiREST][RESULT] Summary key path in JSON: summary")
 
-    fuzzing_service(args.service, args.requests, args.time_limit, args.exec_log_only)
+    fuzzing_service(
+        args.service,
+        args.requests,
+        args.time_limit,
+        args.exec_log_only,
+        args.no_log,
+    )
 

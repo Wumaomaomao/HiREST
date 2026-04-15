@@ -110,7 +110,7 @@ class Fuzzer:
             testcase = self.mutation_controller.mutate(testcase)
             logger.info(f"Mutated testcase: {testcase}")
 
-            testcase, request = self.renderer.render(testcase)
+            testcase, request = self.renderer.render(testcase, self.input_space_manager)
             logger.info(f"Rendered request: {request}")
             testcase.request = request
 
@@ -137,8 +137,8 @@ class Fuzzer:
             testcase=testcase,
             response=response,
         )
-
-        self.renderer.dynres_pool.extract_dynres(response=response)
+        
+        self.renderer.dynres_pool.extract_dynres(request=request,response=response)
 
         
         

@@ -10,10 +10,13 @@ import signal
 from unittest import result
 import logging
 import logging.config
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Set
 
 from hirest.generator.partition.misp.misp_gen import MISPGenerator
+from hirest.generator.partition.misp.llm_gen.mixed_space_partition import mixed_space_partition_gen
+from hirest.generator.partition.misp.llm_gen.multi_space_partition import multi_space_partition_gen
 from hirest.generator.partition.sisp.sisp_gen import SISPGenerator
+from hirest.generator.partition.sisp.llm_gen.single_space_partition import single_space_partition_gen_every
 from hirest.generator.seed.seed import Seed
 from hirest.parser.openapi import OpenAPIParser
 from hirest.parser.preparser.check import Check
@@ -131,6 +134,57 @@ def is_stage_completed(
     if required_files:
         return all(os.path.exists(path) for path in required_files)
     return True
+
+
+def api_key_of(method: str, path: str) -> str:
+    return f"{method.lower()} {path}"
+
+
+def get_stage_completed_apis(checkpoint: Dict[str, Any], stage_name: str) -> Set[str]:
+    stage = checkpoint.get("stages", {}).get(stage_name, {})
+    completed = stage.get("completed_apis", [])
+    return set(completed if isinstance(completed, list) else [])
+
+
+def mark_stage_api_completed(
+    checkpoint_path: str,
+    checkpoint: Dict[str, Any],
+    stage_name: str,
+    api_key: str,
+    extra: Optional[Dict[str, Any]] = None,
+):
+    stage = checkpoint.setdefault("stages", {}).setdefault(stage_name, {})
+    stage["status"] = "in_progress"
+    completed_apis = set(stage.get("completed_apis", []))
+    completed_apis.add(api_key)
+    stage["completed_apis"] = sorted(completed_apis)
+    stage["updated_at"] = datetime.now().isoformat()
+    if extra:
+        stage.update(extra)
+    checkpoint["updated_at"] = datetime.now().isoformat()
+    save_json(checkpoint_path, checkpoint)
+
+
+def extract_sisp_api_keys(sisp_pre_data: list) -> Set[str]:
+    keys: Set[str] = set()
+    for item in sisp_pre_data:
+        method = item.get("http_verb")
+        path = item.get("url_path")
+        if method and path:
+            keys.add(api_key_of(method, path))
+    return keys
+
+
+def extract_partition_api_keys(partition_data: dict) -> Set[str]:
+    keys: Set[str] = set()
+    if not isinstance(partition_data, dict):
+        return keys
+    for path, methods in partition_data.items():
+        if not isinstance(methods, dict):
+            continue
+        for method in methods.keys():
+            keys.add(api_key_of(method, path))
+    return keys
 
 
 def build_sisp_pre_data_from_saved_sisp(saved_sisp: list) -> list:
@@ -320,6 +374,7 @@ if __name__ == '__main__':
     checkpoint_path = args.checkpoint_path or str(result_dir / "offline_checkpoint.json")
     parse_llm_und_path = str(result_dir / "parse_llm_und.json")
     parse_dep_path = str(result_dir / "parse_dep.json")
+    misp_multi_partial_path = str(result_dir / "misp_multi_partial.json")
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
     Path(SISP_output_path).parent.mkdir(parents=True, exist_ok=True)
     Path(MISP_output_path).parent.mkdir(parents=True, exist_ok=True)
@@ -495,19 +550,46 @@ if __name__ == '__main__':
             time.sleep(1)
 
         stop_event = log_time("Generating and saving SISP")
-        SISP_generator = SISPGenerator(
+        checkpoint_sisp_done = get_stage_completed_apis(checkpoint, "sisp_api")
+        saved_sisp = load_json_if_exists(SISP_output_path) or []
+        saved_sisp_pre_data = build_sisp_pre_data_from_saved_sisp(saved_sisp)
+        checkpoint_sisp_done |= extract_sisp_api_keys(saved_sisp_pre_data)
+
+        sisp_saver = SISPGenerator(
             operation_data_path=output_path,
-            llm_und_data=llm_und_data,
+            llm_und_data=llm_und_data or [],
         )
-        SISP_generator.generate_sisp_from_constraints()
-        SISP_generator.save_list_SISP(SISP_output_path)
-        sisp_pre_data = SISP_generator.sisp_pre_data
+
+        def on_sisp_api_done(api_key: str, _new_api_result: list, all_results: list):
+            sisp_saver.sisp_pre_data = all_results
+            sisp_saver.save_list_SISP(SISP_output_path)
+            mark_stage_api_completed(
+                checkpoint_path,
+                checkpoint,
+                "sisp_api",
+                api_key,
+                {
+                    "sisp_output_path": SISP_output_path,
+                },
+            )
+
+        sisp_pre_data = single_space_partition_gen_every(
+            operation_data_path=output_path,
+            llm_und_data=llm_und_data or [],
+            completed_api_keys=checkpoint_sisp_done,
+            existing_results=saved_sisp_pre_data,
+            on_api_done=on_sisp_api_done,
+        )
+
+        sisp_saver.sisp_pre_data = sisp_pre_data
+        sisp_saver.save_list_SISP(SISP_output_path)
         mark_stage_completed(
             checkpoint_path,
             checkpoint,
             "sisp",
             {
                 "sisp_output_path": SISP_output_path,
+                "api_count": len(extract_sisp_api_keys(sisp_pre_data)),
             },
         )
         stop_event.set()
@@ -531,21 +613,75 @@ if __name__ == '__main__':
             dep_data = build_dep_from_op_slides(op_slides)
 
         stop_event = log_time("Generating and saving MISP")
-        MISP_generator = MISPGenerator(
+        checkpoint_misp_multi_done = get_stage_completed_apis(checkpoint, "misp_multi_api")
+        checkpoint_misp_mixed_done = get_stage_completed_apis(checkpoint, "misp_mixed_api")
+
+        existing_multi_space_data = load_json_if_exists(misp_multi_partial_path)
+        if not isinstance(existing_multi_space_data, dict):
+            existing_multi_space_data = {}
+
+        existing_mixed_space_data = {}
+        if os.path.exists(MISP_output_path):
+            existing_mixed_space_data = load_mixed_space_data(MISP_output_path)
+            checkpoint_misp_mixed_done |= extract_partition_api_keys(existing_mixed_space_data)
+
+        def on_misp_multi_api_done(api_key: str, _new_api_result: dict, all_results: dict):
+            save_json(misp_multi_partial_path, all_results)
+            mark_stage_api_completed(
+                checkpoint_path,
+                checkpoint,
+                "misp_multi_api",
+                api_key,
+                {
+                    "misp_multi_partial_path": misp_multi_partial_path,
+                },
+            )
+
+        multi_space_data = multi_space_partition_gen(
+            dep=dep_data,
+            op_data_path=output_path,
+            completed_api_keys=checkpoint_misp_multi_done,
+            existing_results=existing_multi_space_data,
+            on_api_done=on_misp_multi_api_done,
+        )
+        save_json(misp_multi_partial_path, multi_space_data)
+
+        misp_saver = MISPGenerator(
             swagger_llm_extract_dep=dep_data,
             operation_data_path=output_path,
             single_space_data=sisp_pre_data,
         )
-        MISP_generator.generate_multi_space_partition()
-        MISP_generator.generate_mixed_space_partition()
-        MISP_generator.save_List_MISP(MISP_output_path)
-        mixed_space_data = MISP_generator.mixed_space_partition_data
+
+        def on_misp_mixed_api_done(api_key: str, _new_api_result: dict, all_results: dict):
+            misp_saver.mixed_space_partition_data = all_results
+            misp_saver.save_List_MISP(MISP_output_path)
+            mark_stage_api_completed(
+                checkpoint_path,
+                checkpoint,
+                "misp_mixed_api",
+                api_key,
+                {
+                    "misp_output_path": MISP_output_path,
+                },
+            )
+
+        mixed_space_data = mixed_space_partition_gen(
+            multi=multi_space_data,
+            single_space_data=sisp_pre_data,
+            completed_api_keys=checkpoint_misp_mixed_done,
+            existing_results=existing_mixed_space_data,
+            on_api_done=on_misp_mixed_api_done,
+        )
+        misp_saver.mixed_space_partition_data = mixed_space_data
+        misp_saver.save_List_MISP(MISP_output_path)
         mark_stage_completed(
             checkpoint_path,
             checkpoint,
             "misp",
             {
                 "misp_output_path": MISP_output_path,
+                "misp_multi_partial_path": misp_multi_partial_path,
+                "api_count": len(extract_partition_api_keys(mixed_space_data)),
             },
         )
         stop_event.set()

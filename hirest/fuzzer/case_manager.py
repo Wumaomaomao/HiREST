@@ -42,7 +42,7 @@ class CaseManager:
         max_sequence_length: int = 5,
         max_extend_try=3,
         max_candidate_seq=5,
-        destory_ratio=0.5,
+        destory_ratio=0.2,
     ):
         """initialize the case manager with the test case pool and the sequence."""
         self.max_sequence_length = max_sequence_length
@@ -93,7 +93,7 @@ class CaseManager:
         """initialize the test case pools for each operation."""
         for op_name in self.operations:
             self.case_pools[op_name] = TestCasePool(
-                operation=self.operations[op_name], max_size=100
+                operation=self.operations[op_name], max_size=1000
             )
             logger.debug(f"Init case pool: {self.case_pools[op_name]}")
 
@@ -303,5 +303,7 @@ class CaseManager:
                     )
 
                 self._extend_seq(testcase)
+            else: 
+                self.input_space_manager.update_sisp_ss_failure_count(testcase.operation, testcase.matched_SISP)
     
 
