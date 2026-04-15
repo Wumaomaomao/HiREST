@@ -11,7 +11,7 @@ services = [
     # "petstore",
     # "youtube",
     # "person",
-     # "user"
+      "user"
      # "genome"
     # "project"
 ]

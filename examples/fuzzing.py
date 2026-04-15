@@ -9,7 +9,11 @@ from hirest.fuzzer.fuzzer import Fuzzer
 from hirest.fuzzer.mutator.operator.SISPmutator import SISPMutator
 from hirest.fuzzer.mutator.operator.MISPSSmutator import MISPSSMutator
 from hirest.fuzzer.mutator.operator.MISPmutator import MISPMutator
+from hirest.fuzzer.mutator.operator.perturbation_mutator import PerturbationMutator
+from hirest.fuzzer.mutator.operator.wrongtype_mutator import WrongTypeMutator
+from hirest.fuzzer.mutator.operator.missingrequired_mutator import MissingRequiredMutator
 from hirest.fuzzer.mutator.controller.hierarchical_controller import HierarchicalMutationController
+from hirest.fuzzer.mutator.controller.primitive_controller import PrimitiveMutationController
 from hirest.fuzzer.renderer.renderer import Renderer
 from hirest.fuzzer.executor.executor import Executor
 from hirest.fuzzer.resp_checker.resp_checker import RespChecker
@@ -218,6 +222,7 @@ if __name__ == "__main__":
     parser.add_argument('--requests', type=int, default=1000, help='Maximum number of requests')
     parser.add_argument('--exec-log-only', action='store_true', help='Disable normal logs and only keep exec_log output')
     parser.add_argument('--no-log', action='store_true', help='Disable normal log and exec_log, only keep result output')
+    parser.add_argument('--BM', action='store_true', help='Enable BM mode: use primitive mutation operators instead of hierarchical space mutation')
     args = parser.parse_args()
 
     if args.exec_log_only and args.no_log:
@@ -229,6 +234,7 @@ if __name__ == "__main__":
         time_limit: int,
         exec_log_only: bool = False,
         no_log: bool = False,
+        bm_mode: bool = False,
     ):
         base_url = SERVICE[service_name]["base_url"]
         logging_paths = config_logging(service_name, exec_log_only=exec_log_only, no_log=no_log)
@@ -247,14 +253,28 @@ if __name__ == "__main__":
         seed_data = load_file(f"{base_path}/apis/{service_name}/seed/seed.json")
         case_manager.load_seeds(seed_data)
 
-        sisp_mutator = SISPMutator()
-        mispss_mutator = MISPSSMutator()
-        misp_mutator = MISPMutator()
-        mutation_controller = HierarchicalMutationController(
-            input_space_manager=input_space_manager,
-            mutators=[sisp_mutator, mispss_mutator, misp_mutator],
-        )
-        renderer = Renderer(base_url=base_url)
+        if bm_mode:
+            perturbation_mutator = PerturbationMutator()
+            wrong_type_mutator = WrongTypeMutator()
+            missing_required_mutator = MissingRequiredMutator()
+            mutation_controller = PrimitiveMutationController(
+                input_space_manager=input_space_manager,
+                mutators=[
+                    perturbation_mutator,
+                    wrong_type_mutator,
+                    missing_required_mutator,
+                ],
+            )
+            logger.info("BM mode enabled: using PrimitiveMutationController with 3 primitive operators")
+        else:
+            sisp_mutator = SISPMutator()
+            mispss_mutator = MISPSSMutator()
+            misp_mutator = MISPMutator()
+            mutation_controller = HierarchicalMutationController(
+                input_space_manager=input_space_manager,
+                mutators=[sisp_mutator, mispss_mutator, misp_mutator],
+            )
+        renderer = Renderer(base_url=base_url, bm_mode=bm_mode)
         executor = Executor()
         response_checker = RespChecker(summary_only=no_log)
 
@@ -285,5 +305,6 @@ if __name__ == "__main__":
         args.time_limit,
         args.exec_log_only,
         args.no_log,
+        args.BM,
     )
 
