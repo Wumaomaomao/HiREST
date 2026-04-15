@@ -1,0 +1,1448 @@
+{
+  "/login": {
+    "post": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "loginRequestDTO"
+        ],
+        "subspace1": {
+          "parameter": [
+            "loginRequestDTO"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space2": {
+        "satisfied-dependencies": "In loginRequestDTO, username and password must be provided together (if one is present, the other is required);",
+        "involved-parameters": [
+          "username",
+          "password"
+        ],
+        "subspace1": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [
+            "username",
+            "password"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [
+              "username"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space2": {
+            "parameter": [
+              "password"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          }
+        }
+      }
+    }
+  },
+  "/users": {
+    "get": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [],
+        "subspace1": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      }
+    },
+    "post": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "createOrUpdateUserDTO"
+        ],
+        "subspace1": {
+          "parameter": [
+            "createOrUpdateUserDTO"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space2": {
+        "satisfied-dependencies": "In createOrUpdateUserDTO, username and password must be provided together (if one is present, the other is required);",
+        "involved-parameters": [
+          "username",
+          "password"
+        ],
+        "subspace1": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [
+            "username",
+            "password"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [
+              "username"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space2": {
+            "parameter": [
+              "password"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          }
+        }
+      },
+      "space3": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'address'.",
+        "involved-parameters": [
+          "address"
+        ],
+        "subspace1": {
+          "parameter": [
+            "address"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space4": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'address2'.",
+        "involved-parameters": [
+          "address2"
+        ],
+        "subspace1": {
+          "parameter": [
+            "address2"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space5": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'birthDate'.",
+        "involved-parameters": [
+          "birthDate"
+        ],
+        "subspace1": {
+          "parameter": [
+            "birthDate"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space6": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'city'.",
+        "involved-parameters": [
+          "city"
+        ],
+        "subspace1": {
+          "parameter": [
+            "city"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space7": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'contactNote'.",
+        "involved-parameters": [
+          "contactNote"
+        ],
+        "subspace1": {
+          "parameter": [
+            "contactNote"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space8": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'country'.",
+        "involved-parameters": [
+          "country"
+        ],
+        "subspace1": {
+          "parameter": [
+            "country"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space9": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'email'.",
+        "involved-parameters": [
+          "email"
+        ],
+        "subspace1": {
+          "parameter": [
+            "email"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space10": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'enabled'.",
+        "involved-parameters": [
+          "enabled"
+        ],
+        "subspace1": {
+          "parameter": [
+            "enabled"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space11": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'facebook'.",
+        "involved-parameters": [
+          "facebook"
+        ],
+        "subspace1": {
+          "parameter": [
+            "facebook"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space12": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'gender'.",
+        "involved-parameters": [
+          "gender"
+        ],
+        "subspace1": {
+          "parameter": [
+            "gender"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space13": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'linkedin'.",
+        "involved-parameters": [
+          "linkedin"
+        ],
+        "subspace1": {
+          "parameter": [
+            "linkedin"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space14": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'mobile'.",
+        "involved-parameters": [
+          "mobile"
+        ],
+        "subspace1": {
+          "parameter": [
+            "mobile"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space15": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'name'.",
+        "involved-parameters": [
+          "name"
+        ],
+        "subspace1": {
+          "parameter": [
+            "name"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space16": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'note'.",
+        "involved-parameters": [
+          "note"
+        ],
+        "subspace1": {
+          "parameter": [
+            "note"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space17": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'secured'.",
+        "involved-parameters": [
+          "secured"
+        ],
+        "subspace1": {
+          "parameter": [
+            "secured"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space18": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'skype'.",
+        "involved-parameters": [
+          "skype"
+        ],
+        "subspace1": {
+          "parameter": [
+            "skype"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space19": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'surname'.",
+        "involved-parameters": [
+          "surname"
+        ],
+        "subspace1": {
+          "parameter": [
+            "surname"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space20": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'website'.",
+        "involved-parameters": [
+          "website"
+        ],
+        "subspace1": {
+          "parameter": [
+            "website"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space21": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'zipCode'.",
+        "involved-parameters": [
+          "zipCode"
+        ],
+        "subspace1": {
+          "parameter": [
+            "zipCode"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      }
+    }
+  },
+  "/users/rbac/permissions": {
+    "get": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [],
+        "subspace1": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      }
+    }
+  },
+  "/users/rbac/roles": {
+    "get": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [],
+        "subspace1": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      }
+    },
+    "post": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "role"
+        ],
+        "subspace1": {
+          "parameter": [
+            "role"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space2": {
+        "satisfied-dependencies": "The request body role (string) is required;",
+        "involved-parameters": [
+          "role"
+        ],
+        "subspace1": {
+          "parameter": [
+            "role"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [],
+            "parameter-value": [],
+            "parameter-parameter": []
+          }
+        }
+      }
+    }
+  },
+  "/users/rbac/roles/{roleId}": {
+    "get": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "roleId"
+        ],
+        "subspace1": {
+          "parameter": [
+            "roleId"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      }
+    },
+    "delete": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "roleId"
+        ],
+        "subspace1": {
+          "parameter": [
+            "roleId"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      }
+    }
+  },
+  "/users/rbac/roles/{roleId}/permissions/{permissionKey}": {
+    "post": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "permissionKey",
+          "roleId"
+        ],
+        "subspace1": {
+          "parameter": [
+            "permissionKey",
+            "roleId"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space2": {
+        "satisfied-dependencies": "Both path parameters roleId and permissionKey must be provided together;",
+        "involved-parameters": [
+          "roleId",
+          "permissionKey"
+        ],
+        "subspace1": {
+          "parameter": [
+            "roleId",
+            "permissionKey"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [
+              "roleId"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space2": {
+            "parameter": [
+              "permissionKey"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space3": {
+            "parameter": [],
+            "parameter-value": [],
+            "parameter-parameter": []
+          }
+        }
+      },
+      "space3": {
+        "satisfied-dependencies": "For addPermissionOnRole, the pair (roleId, permissionKey) must not already be associated on the role;",
+        "involved-parameters": [
+          "roleId",
+          "permissionKey"
+        ],
+        "subspace1": {
+          "parameter": [
+            "roleId",
+            "permissionKey"
+          ],
+          "parameter-value": [
+            "the pair (roleId, permissionKey) is not already associated on the role"
+          ],
+          "parameter-parameter": []
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [
+              "roleId",
+              "permissionKey"
+            ],
+            "parameter-value": [
+              "the pair (roleId, permissionKey) is already associated on the role"
+            ],
+            "parameter-parameter": []
+          }
+        }
+      }
+    },
+    "delete": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "permissionKey",
+          "roleId"
+        ],
+        "subspace1": {
+          "parameter": [
+            "permissionKey",
+            "roleId"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space2": {
+        "satisfied-dependencies": "Both path parameters roleId and permissionKey must be provided together;",
+        "involved-parameters": [
+          "roleId",
+          "permissionKey"
+        ],
+        "subspace1": {
+          "parameter": [
+            "roleId",
+            "permissionKey"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [
+              "roleId"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space2": {
+            "parameter": [
+              "permissionKey"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          }
+        }
+      },
+      "space3": {
+        "satisfied-dependencies": "For removePermissionOnRole, the pair (roleId, permissionKey) must already be associated on the role;",
+        "involved-parameters": [
+          "roleId",
+          "permissionKey"
+        ],
+        "subspace1": {
+          "parameter": [
+            "roleId",
+            "permissionKey"
+          ],
+          "parameter-value": [
+            "The pair (roleId, permissionKey) already exists as an association on the specified role."
+          ],
+          "parameter-parameter": []
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [
+              "roleId",
+              "permissionKey"
+            ],
+            "parameter-value": [
+              "The pair (roleId, permissionKey) is not associated on the specified role."
+            ],
+            "parameter-parameter": []
+          }
+        }
+      }
+    }
+  },
+  "/users/register": {
+    "post": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [],
+        "subspace1": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space2": {
+        "satisfied-dependencies": "In registerUserAccountDTO, username, password, and email must all be provided together (if any one is present, the others are required).",
+        "involved-parameters": [
+          "username",
+          "password",
+          "email"
+        ],
+        "subspace1": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [
+            "username",
+            "password",
+            "email"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [
+              "username"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space2": {
+            "parameter": [
+              "password"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space3": {
+            "parameter": [
+              "email"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space4": {
+            "parameter": [
+              "username",
+              "password"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space5": {
+            "parameter": [
+              "username",
+              "email"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space6": {
+            "parameter": [
+              "password",
+              "email"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          }
+        }
+      },
+      "space3": {
+        "satisfied-dependencies": "The request body registerUserAccountDTO is required.",
+        "involved-parameters": [
+          "email",
+          "gender",
+          "name",
+          "password",
+          "surname",
+          "username"
+        ],
+        "subspace1": {
+          "parameter": [
+            "at least one of: email, gender, name, password, surname, username"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [],
+            "parameter-value": [],
+            "parameter-parameter": []
+          }
+        }
+      }
+    }
+  },
+  "/users/{id}": {
+    "get": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "id"
+        ],
+        "subspace1": {
+          "parameter": [
+            "id"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      }
+    },
+    "put": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "id"
+        ],
+        "subspace1": {
+          "parameter": [
+            "id"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space2": {
+        "satisfied-dependencies": "Both the path parameter id and the request body updateUserDTO must be provided together;",
+        "involved-parameters": [
+          "id",
+          "updateUserDTO"
+        ],
+        "subspace1": {
+          "parameter": [
+            "id",
+            "updateUserDTO"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [
+              "id"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space2": {
+            "parameter": [
+              "updateUserDTO"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space3": {
+            "parameter": [],
+            "parameter-value": [],
+            "parameter-parameter": []
+          }
+        }
+      },
+      "space3": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'address'.",
+        "involved-parameters": [
+          "address"
+        ],
+        "subspace1": {
+          "parameter": [
+            "address"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space4": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'address2'.",
+        "involved-parameters": [
+          "address2"
+        ],
+        "subspace1": {
+          "parameter": [
+            "address2"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space5": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'birthDate'.",
+        "involved-parameters": [
+          "birthDate"
+        ],
+        "subspace1": {
+          "parameter": [
+            "birthDate"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space6": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'city'.",
+        "involved-parameters": [
+          "city"
+        ],
+        "subspace1": {
+          "parameter": [
+            "city"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space7": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'contactNote'.",
+        "involved-parameters": [
+          "contactNote"
+        ],
+        "subspace1": {
+          "parameter": [
+            "contactNote"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space8": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'country'.",
+        "involved-parameters": [
+          "country"
+        ],
+        "subspace1": {
+          "parameter": [
+            "country"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space9": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'email'.",
+        "involved-parameters": [
+          "email"
+        ],
+        "subspace1": {
+          "parameter": [
+            "email"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space10": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'enabled'.",
+        "involved-parameters": [
+          "enabled"
+        ],
+        "subspace1": {
+          "parameter": [
+            "enabled"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space11": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'facebook'.",
+        "involved-parameters": [
+          "facebook"
+        ],
+        "subspace1": {
+          "parameter": [
+            "facebook"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space12": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'gender'.",
+        "involved-parameters": [
+          "gender"
+        ],
+        "subspace1": {
+          "parameter": [
+            "gender"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space13": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'linkedin'.",
+        "involved-parameters": [
+          "linkedin"
+        ],
+        "subspace1": {
+          "parameter": [
+            "linkedin"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space14": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'mobile'.",
+        "involved-parameters": [
+          "mobile"
+        ],
+        "subspace1": {
+          "parameter": [
+            "mobile"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space15": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'name'.",
+        "involved-parameters": [
+          "name"
+        ],
+        "subspace1": {
+          "parameter": [
+            "name"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space16": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'note'.",
+        "involved-parameters": [
+          "note"
+        ],
+        "subspace1": {
+          "parameter": [
+            "note"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space17": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'password'.",
+        "involved-parameters": [
+          "password"
+        ],
+        "subspace1": {
+          "parameter": [
+            "password"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space18": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'secured'.",
+        "involved-parameters": [
+          "secured"
+        ],
+        "subspace1": {
+          "parameter": [
+            "secured"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space19": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'skype'.",
+        "involved-parameters": [
+          "skype"
+        ],
+        "subspace1": {
+          "parameter": [
+            "skype"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space20": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'surname'.",
+        "involved-parameters": [
+          "surname"
+        ],
+        "subspace1": {
+          "parameter": [
+            "surname"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space21": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'username'.",
+        "involved-parameters": [
+          "username"
+        ],
+        "subspace1": {
+          "parameter": [
+            "username"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space22": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'website'.",
+        "involved-parameters": [
+          "website"
+        ],
+        "subspace1": {
+          "parameter": [
+            "website"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space23": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'zipCode'.",
+        "involved-parameters": [
+          "zipCode"
+        ],
+        "subspace1": {
+          "parameter": [
+            "zipCode"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      }
+    },
+    "delete": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "id"
+        ],
+        "subspace1": {
+          "parameter": [
+            "id"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      }
+    }
+  },
+  "/users/{id}/roles/{roleId}": {
+    "post": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "id",
+          "roleId"
+        ],
+        "subspace1": {
+          "parameter": [
+            "id",
+            "roleId"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space2": {
+        "satisfied-dependencies": "Both path parameters id and roleId must be provided together;",
+        "involved-parameters": [
+          "id",
+          "roleId"
+        ],
+        "subspace1": {
+          "parameter": [
+            "id",
+            "roleId"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [
+              "id"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space2": {
+            "parameter": [
+              "roleId"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          }
+        }
+      },
+      "space3": {
+        "satisfied-dependencies": "For addRole, the pair (id, roleId) must not already be associated for the user;",
+        "involved-parameters": [
+          "id",
+          "roleId"
+        ],
+        "subspace1": {
+          "parameter": [
+            "id",
+            "roleId"
+          ],
+          "parameter-value": [
+            "The (id, roleId) pair is not already associated for this user"
+          ],
+          "parameter-parameter": []
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [
+              "id",
+              "roleId"
+            ],
+            "parameter-value": [
+              "The (id, roleId) pair is already associated for this user"
+            ],
+            "parameter-parameter": []
+          }
+        }
+      }
+    },
+    "delete": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "id",
+          "roleId"
+        ],
+        "subspace1": {
+          "parameter": [
+            "id",
+            "roleId"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space2": {
+        "satisfied-dependencies": "Both path parameters id and roleId must be provided together;",
+        "involved-parameters": [
+          "id",
+          "roleId"
+        ],
+        "subspace1": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [
+            "id",
+            "roleId"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [
+              "id"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space2": {
+            "parameter": [
+              "roleId"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          }
+        }
+      },
+      "space3": {
+        "satisfied-dependencies": "For removeRole, the pair (id, roleId) must already be associated for the user;",
+        "involved-parameters": [
+          "id",
+          "roleId"
+        ],
+        "subspace1": {
+          "parameter": [
+            "id",
+            "roleId"
+          ],
+          "parameter-value": [
+            "The user identified by id already has role roleId."
+          ],
+          "parameter-parameter": [
+            "id and roleId together form an existing association for the user."
+          ]
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [
+              "id",
+              "roleId"
+            ],
+            "parameter-value": [
+              "The user identified by id does not have role roleId."
+            ],
+            "parameter-parameter": [
+              "id and roleId do not form an existing association for the user."
+            ]
+          }
+        }
+      }
+    }
+  }
+}

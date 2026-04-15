@@ -176,7 +176,7 @@ cython_debug/
 # HiREST testing logs
 apis/*/log
 apis/*/exec_log
-apis/*/result
+apis/*/result/*/
 apis/demo/
 apis_old/
 

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "service_name": "ncs",
+  "input_fingerprint": {
+    "path": "/root/HiREST/apis/ncs/spec/ncs.yaml",
+    "size": 6139,
+    "mtime": 1775632661.0982423
+  },
+  "created_at": "2026-04-13T15:29:51.499985",
+  "updated_at": "2026-04-14T14:26:38.087505",
+  "stages": {
+    "verify": {
+      "status": "completed",
+      "completed_at": "2026-04-14T14:26:38.075895"
+    },
+    "seed": {
+      "status": "completed",
+      "completed_at": "2026-04-14T14:26:38.087495",
+      "seed_size": 10,
+      "seed_output_path": "./apis/ncs/seed/seed.json",
+      "partition_path": "./apis/ncs/partition/misp.json"
+    }
+  }
+}

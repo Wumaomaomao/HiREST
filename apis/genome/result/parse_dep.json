@@ -1,0 +1,136 @@
+{
+  "/annotation": {
+    "post": {
+      "all-dependencies": [
+        "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+      ]
+    }
+  },
+  "/annotation/dbsnp/": {
+    "post": {
+      "all-dependencies": [
+        "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+      ]
+    }
+  },
+  "/annotation/dbsnp/{variantId}": {
+    "get": {
+      "all-dependencies": [
+        "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+      ]
+    }
+  },
+  "/annotation/genomic": {
+    "post": {
+      "all-dependencies": [
+        "For each genomic location item in the request body, the properties chromosome, start, end, referenceAllele, and variantAllele must all be provided together (all-or-none);",
+        "Within each genomic location item, start must be less than or equal to end;",
+        "Within each genomic location item, referenceAllele and variantAllele must both be provided and must not be identical;",
+        "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+      ]
+    }
+  },
+  "/annotation/genomic/{genomicLocation}": {
+    "get": {
+      "all-dependencies": [
+        "The genomicLocation path value must provide exactly five comma-separated components in the order: chromosome,start,end,referenceAllele,variantAllele; start must be less than or equal to end;",
+        "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+      ]
+    }
+  },
+  "/annotation/{variant}": {
+    "get": {
+      "all-dependencies": [
+        "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+      ]
+    }
+  },
+  "/ensembl/transcript": {
+    "get": {
+      "all-dependencies": [
+        "The geneId, proteinId, and hugoSymbol query parameters are independent optional filters; if none are provided, all transcripts are returned;"
+      ]
+    },
+    "post": {
+      "all-dependencies": [
+        "In the request body ensemblFilter, exactly one of the arrays transcriptIds, hugoSymbols, proteinIds, or geneIds should be provided and non-empty (Only One);",
+        "At least one of transcriptIds, hugoSymbols, proteinIds, or geneIds must be provided in the request body; if more than one are supplied simultaneously, the request should be treated as invalid or ambiguous;"
+      ]
+    }
+  },
+  "/ptm/experimental": {
+    "post": {
+      "all-dependencies": [
+        "The request body ptmFilter must include the transcriptIds array, and it must contain at least one Ensembl transcript ID;"
+      ]
+    },
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/ensembl/canonical-gene/entrez": {
+    "post": {
+      "all-dependencies": []
+    }
+  },
+  "/ensembl/canonical-gene/entrez/{entrezGeneId}": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/ensembl/canonical-gene/hgnc": {
+    "post": {
+      "all-dependencies": []
+    }
+  },
+  "/ensembl/canonical-gene/hgnc/{hugoSymbol}": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/ensembl/canonical-transcript/hgnc": {
+    "post": {
+      "all-dependencies": []
+    }
+  },
+  "/ensembl/canonical-transcript/hgnc/{hugoSymbol}": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/ensembl/transcript/{transcriptId}": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/ensembl/xrefs": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/pdb/header": {
+    "post": {
+      "all-dependencies": []
+    }
+  },
+  "/pdb/header/{pdbId}": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/pfam/domain": {
+    "post": {
+      "all-dependencies": []
+    }
+  },
+  "/pfam/domain/{pfamAccession}": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/version": {
+    "get": {
+      "all-dependencies": []
+    }
+  }
+}

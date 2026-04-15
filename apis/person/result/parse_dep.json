@@ -1,0 +1,66 @@
+{
+  "/api/person": {
+    "put": {
+      "all-dependencies": [
+        "The request body parameter person must be provided;"
+      ]
+    },
+    "post": {
+      "all-dependencies": [
+        "The request body parameter person must be provided;"
+      ]
+    }
+  },
+  "/api/person/{id}": {
+    "get": {
+      "all-dependencies": [
+        "The path parameter id is required;"
+      ]
+    },
+    "delete": {
+      "all-dependencies": [
+        "The path parameter id is required;"
+      ]
+    }
+  },
+  "/api/persons": {
+    "get": {
+      "all-dependencies": []
+    },
+    "put": {
+      "all-dependencies": [
+        "The request body parameter persons (an array of PersonReq objects) must be provided;"
+      ]
+    },
+    "post": {
+      "all-dependencies": [
+        "The request body parameter persons (an array of PersonReq objects) must be provided;"
+      ]
+    },
+    "delete": {
+      "all-dependencies": []
+    }
+  },
+  "/api/persons/averageAge": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/api/persons/count": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/api/persons/{ids}": {
+    "get": {
+      "all-dependencies": [
+        "The path parameter ids is required;"
+      ]
+    },
+    "delete": {
+      "all-dependencies": [
+        "The path parameter ids is required;"
+      ]
+    }
+  }
+}

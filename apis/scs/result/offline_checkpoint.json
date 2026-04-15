@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "service_name": "scs",
+  "input_fingerprint": {
+    "path": "/root/HiREST/apis/scs/spec/scs.yaml",
+    "size": 9835,
+    "mtime": 1775630285.0212655
+  },
+  "created_at": "2026-04-13T15:27:37.193463",
+  "updated_at": "2026-04-14T14:26:27.579571",
+  "stages": {
+    "verify": {
+      "status": "completed",
+      "completed_at": "2026-04-14T14:26:27.567247"
+    },
+    "seed": {
+      "status": "completed",
+      "completed_at": "2026-04-14T14:26:27.579560",
+      "seed_size": 10,
+      "seed_output_path": "./apis/scs/seed/seed.json",
+      "partition_path": "./apis/scs/partition/misp.json"
+    }
+  }
+}

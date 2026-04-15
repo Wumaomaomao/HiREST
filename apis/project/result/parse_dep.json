@@ -1,0 +1,337 @@
+{
+  "/app/api/assignments": {
+    "put": {
+      "all-dependencies": [
+        "In the Assignment request body, the fields employeeId, projectId, and commitDate must be provided together to uniquely identify an Assignment; if one is present, the other two are required.",
+        "If the nested employee object is provided, employee.employeeId must equal the top-level employeeId.",
+        "If the nested project object is provided, project.projectId must equal the top-level projectId."
+      ]
+    },
+    "post": {
+      "all-dependencies": [
+        "In the Assignment request body, the fields employeeId, projectId, and commitDate must be provided together to uniquely identify an Assignment; if one is present, the other two are required.",
+        "If the nested employee object is provided, employee.employeeId must equal the top-level employeeId.",
+        "If the nested project object is provided, project.projectId must equal the top-level projectId."
+      ]
+    },
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/assignments/data/project-commit/{employeeId}/{projectId}": {
+    "get": {
+      "all-dependencies": [
+        "Path parameters employeeId and projectId are jointly required; if one is present, the other must also be present."
+      ]
+    }
+  },
+  "/app/api/assignments/data/project-commit/{employeeId}/{projectId}/{commitDate}": {
+    "get": {
+      "all-dependencies": [
+        "Path parameters employeeId, projectId, and commitDate are jointly required and act as a composite identifier; if any one is present, the other two must also be present, and all three must refer to the same assignment."
+      ]
+    }
+  },
+  "/app/api/assignments/delete/{employeeId}/{projectId}/{commitDate}": {
+    "delete": {
+      "all-dependencies": [
+        "Path parameters employeeId, projectId, and commitDate are jointly required and act as a composite identifier; if any one is present, the other two must also be present, and all three must refer to the same assignment."
+      ]
+    }
+  },
+  "/app/api/assignments/save": {
+    "post": {
+      "all-dependencies": [
+        "In the Assignment request body, the fields employeeId, projectId, and commitDate must be provided together to uniquely identify an Assignment; if one is present, the other two are required.",
+        "If the nested employee object is provided, employee.employeeId must equal the top-level employeeId.",
+        "If the nested project object is provided, project.projectId must equal the top-level projectId."
+      ]
+    }
+  },
+  "/app/api/assignments/update": {
+    "put": {
+      "all-dependencies": [
+        "In the Assignment request body, the fields employeeId, projectId, and commitDate must be provided together to uniquely identify an Assignment; if one is present, the other two are required.",
+        "If the nested employee object is provided, employee.employeeId must equal the top-level employeeId.",
+        "If the nested project object is provided, project.projectId must equal the top-level projectId."
+      ]
+    }
+  },
+  "/app/api/assignments/{employeeId}/{projectId}": {
+    "get": {
+      "all-dependencies": [
+        "Path parameters employeeId and projectId are jointly required; if one is present, the other must also be present."
+      ]
+    }
+  },
+  "/app/api/assignments/{employeeId}/{projectId}/{commitDate}": {
+    "get": {
+      "all-dependencies": [
+        "Path parameters employeeId, projectId, and commitDate are jointly required and act as a composite identifier; if any one is present, the other two must also be present, and all three must refer to the same assignment."
+      ]
+    },
+    "delete": {
+      "all-dependencies": [
+        "Path parameters employeeId, projectId, and commitDate are jointly required and act as a composite identifier; if any one is present, the other two must also be present, and all three must refer to the same assignment."
+      ]
+    }
+  },
+  "/app/api/authenticate": {
+    "post": {
+      "all-dependencies": [
+        "In the AuthenticationRequest body, username and password must be provided together; if one is present, the other is required."
+      ]
+    }
+  },
+  "/app/api/authenticate/": {
+    "post": {
+      "all-dependencies": [
+        "In the AuthenticationRequest body, username and password must be provided together; if one is present, the other is required."
+      ]
+    }
+  },
+  "/app/api/projects": {
+    "put": {
+      "all-dependencies": [
+        "In the Project request body, if both startDate and endDate are provided, startDate must be on or before endDate."
+      ]
+    },
+    "post": {
+      "all-dependencies": [
+        "In the Project request body, if both startDate and endDate are provided, startDate must be on or before endDate."
+      ]
+    },
+    "get": {
+      "all-dependencies": []
+    },
+    "delete": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/projects/save": {
+    "post": {
+      "all-dependencies": [
+        "In the Project request body, if both startDate and endDate are provided, startDate must be on or before endDate."
+      ]
+    }
+  },
+  "/app/api/projects/update": {
+    "put": {
+      "all-dependencies": [
+        "In the Project request body, if both startDate and endDate are provided, startDate must be on or before endDate."
+      ]
+    }
+  },
+  "/app/api/assignments/": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/assignments/data/project-commit/{projectId}": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/credentials": {
+    "get": {
+      "all-dependencies": []
+    },
+    "put": {
+      "all-dependencies": []
+    },
+    "post": {
+      "all-dependencies": []
+    },
+    "delete": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/credentials/": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/credentials/delete": {
+    "delete": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/credentials/save": {
+    "post": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/credentials/update": {
+    "put": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/credentials/username/{username}": {
+    "get": {
+      "all-dependencies": []
+    },
+    "delete": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/credentials/{id}": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/departments": {
+    "get": {
+      "all-dependencies": []
+    },
+    "put": {
+      "all-dependencies": []
+    },
+    "post": {
+      "all-dependencies": []
+    },
+    "delete": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/departments/": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/departments/delete": {
+    "delete": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/departments/save": {
+    "post": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/departments/update": {
+    "put": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/departments/{id}": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/employees": {
+    "get": {
+      "all-dependencies": []
+    },
+    "put": {
+      "all-dependencies": []
+    },
+    "post": {
+      "all-dependencies": []
+    },
+    "delete": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/employees/": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/employees/data/department/{departmentId}": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/employees/data/employee-project-data/{employeeId}": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/employees/data/manager-project-data/{employeeId}": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/employees/delete": {
+    "delete": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/employees/save": {
+    "post": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/employees/update": {
+    "put": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/employees/username/{username}": {
+    "get": {
+      "all-dependencies": []
+    },
+    "delete": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/employees/{id}": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/locations": {
+    "get": {
+      "all-dependencies": []
+    },
+    "put": {
+      "all-dependencies": []
+    },
+    "post": {
+      "all-dependencies": []
+    },
+    "delete": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/locations/": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/locations/delete": {
+    "delete": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/locations/save": {
+    "post": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/locations/update": {
+    "put": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/locations/{id}": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/projects/": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/projects/delete": {
+    "delete": {
+      "all-dependencies": []
+    }
+  },
+  "/app/api/projects/{id}": {
+    "get": {
+      "all-dependencies": []
+    }
+  }
+}

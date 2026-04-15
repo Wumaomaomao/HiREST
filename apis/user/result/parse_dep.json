@@ -1,0 +1,93 @@
+{
+  "/login": {
+    "post": {
+      "all-dependencies": [
+        "The request body loginRequestDTO is required;",
+        "In loginRequestDTO, username and password must be provided together (if one is present, the other is required);"
+      ]
+    }
+  },
+  "/users": {
+    "get": {
+      "all-dependencies": []
+    },
+    "post": {
+      "all-dependencies": [
+        "The request body createOrUpdateUserDTO is required;",
+        "In createOrUpdateUserDTO, username and password must be provided together (if one is present, the other is required);"
+      ]
+    }
+  },
+  "/users/rbac/permissions": {
+    "get": {
+      "all-dependencies": []
+    }
+  },
+  "/users/rbac/roles": {
+    "get": {
+      "all-dependencies": []
+    },
+    "post": {
+      "all-dependencies": [
+        "The request body role (string) is required;"
+      ]
+    }
+  },
+  "/users/rbac/roles/{roleId}": {
+    "get": {
+      "all-dependencies": []
+    },
+    "delete": {
+      "all-dependencies": []
+    }
+  },
+  "/users/rbac/roles/{roleId}/permissions/{permissionKey}": {
+    "post": {
+      "all-dependencies": [
+        "Both path parameters roleId and permissionKey must be provided together;",
+        "For addPermissionOnRole, the pair (roleId, permissionKey) must not already be associated on the role;"
+      ]
+    },
+    "delete": {
+      "all-dependencies": [
+        "Both path parameters roleId and permissionKey must be provided together;",
+        "For removePermissionOnRole, the pair (roleId, permissionKey) must already be associated on the role;"
+      ]
+    }
+  },
+  "/users/register": {
+    "post": {
+      "all-dependencies": [
+        "The request body registerUserAccountDTO is required;",
+        "In registerUserAccountDTO, username, password, and email must all be provided together (if any one is present, the others are required);"
+      ]
+    }
+  },
+  "/users/{id}": {
+    "get": {
+      "all-dependencies": []
+    },
+    "put": {
+      "all-dependencies": [
+        "Both the path parameter id and the request body updateUserDTO must be provided together;"
+      ]
+    },
+    "delete": {
+      "all-dependencies": []
+    }
+  },
+  "/users/{id}/roles/{roleId}": {
+    "post": {
+      "all-dependencies": [
+        "Both path parameters id and roleId must be provided together;",
+        "For addRole, the pair (id, roleId) must not already be associated for the user;"
+      ]
+    },
+    "delete": {
+      "all-dependencies": [
+        "Both path parameters id and roleId must be provided together;",
+        "For removeRole, the pair (id, roleId) must already be associated for the user;"
+      ]
+    }
+  }
+}

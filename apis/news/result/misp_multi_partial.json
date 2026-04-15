@@ -1,0 +1,370 @@
+{
+  "/countries": {
+    "get": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [],
+        "subspace1": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      }
+    }
+  },
+  "/news": {
+    "get": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [],
+        "subspace1": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space2": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'authorId'.",
+        "involved-parameters": [
+          "authorId"
+        ],
+        "subspace1": {
+          "parameter": [
+            "authorId"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space3": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'country'.",
+        "involved-parameters": [
+          "country"
+        ],
+        "subspace1": {
+          "parameter": [
+            "country"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      }
+    },
+    "post": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [],
+        "subspace1": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space2": {
+        "satisfied-dependencies": "When creating a news, the request body must include authorId, country, and text; none of these three may be omitted.",
+        "involved-parameters": [
+          "authorId",
+          "country",
+          "text"
+        ],
+        "subspace1": {
+          "parameter": [
+            "authorId",
+            "country",
+            "text"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [
+              "country",
+              "text"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space2": {
+            "parameter": [
+              "authorId",
+              "text"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space3": {
+            "parameter": [
+              "authorId",
+              "country"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space4": {
+            "parameter": [
+              "text"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space5": {
+            "parameter": [
+              "country"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space6": {
+            "parameter": [
+              "authorId"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space7": {
+            "parameter": [],
+            "parameter-value": [],
+            "parameter-parameter": []
+          }
+        }
+      },
+      "space3": {
+        "satisfied-dependencies": "When creating a news, the request body must not include newsId or creationTime; these are assigned by the server.",
+        "involved-parameters": [
+          "newsId",
+          "creationTime"
+        ],
+        "subspace1": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [
+              "newsId"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space2": {
+            "parameter": [
+              "creationTime"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          },
+          "error_space3": {
+            "parameter": [
+              "newsId",
+              "creationTime"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": []
+          }
+        }
+      }
+    }
+  },
+  "/news/{id}": {
+    "get": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "id"
+        ],
+        "subspace1": {
+          "parameter": [
+            "id"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      }
+    },
+    "put": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "id"
+        ],
+        "subspace1": {
+          "parameter": [
+            "id"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space2": {
+        "satisfied-dependencies": "In an update request, if the request body contains newsId, it must equal the path parameter id; the id of a news cannot be changed.",
+        "involved-parameters": [
+          "newsId",
+          "id"
+        ],
+        "subspace1": {
+          "parameter": [
+            "id"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [
+            "newsId",
+            "id"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": [
+            "newsId = id"
+          ]
+        },
+        "error_space": {
+          "error_space1": {
+            "parameter": [
+              "newsId",
+              "id"
+            ],
+            "parameter-value": [],
+            "parameter-parameter": [
+              "newsId != id"
+            ]
+          }
+        }
+      },
+      "space3": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'authorId'.",
+        "involved-parameters": [
+          "authorId"
+        ],
+        "subspace1": {
+          "parameter": [
+            "authorId"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space4": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'country'.",
+        "involved-parameters": [
+          "country"
+        ],
+        "subspace1": {
+          "parameter": [
+            "country"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space5": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'creationTime'.",
+        "involved-parameters": [
+          "creationTime"
+        ],
+        "subspace1": {
+          "parameter": [
+            "creationTime"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space6": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named 'text'.",
+        "involved-parameters": [
+          "text"
+        ],
+        "subspace1": {
+          "parameter": [
+            "text"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      }
+    },
+    "delete": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "id"
+        ],
+        "subspace1": {
+          "parameter": [
+            "id"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      }
+    }
+  },
+  "/news/{id}/text": {
+    "put": {
+      "space1": {
+        "satisfied-dependencies": "Minimum input space.",
+        "involved-parameters": [
+          "id"
+        ],
+        "subspace1": {
+          "parameter": [
+            "id"
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      },
+      "space2": {
+        "satisfied-dependencies": "Scalable space for the optional parameter named ''.",
+        "involved-parameters": [
+          ""
+        ],
+        "subspace1": {
+          "parameter": [
+            ""
+          ],
+          "parameter-value": [],
+          "parameter-parameter": []
+        },
+        "subspace2": {
+          "parameter": [],
+          "parameter-value": [],
+          "parameter-parameter": []
+        }
+      }
+    }
+  }
+}

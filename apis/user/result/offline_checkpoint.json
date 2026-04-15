@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "service_name": "user",
+  "input_fingerprint": {
+    "path": "/root/HiREST/apis/user/spec/user.yaml",
+    "size": 19917,
+    "mtime": 1775753116.5389729
+  },
+  "created_at": "2026-04-10T13:11:14.332376",
+  "updated_at": "2026-04-13T18:19:36.436758",
+  "stages": {
+    "verify": {
+      "status": "completed",
+      "completed_at": "2026-04-13T18:19:36.418871"
+    },
+    "parse": {
+      "status": "completed",
+      "completed_at": "2026-04-10T13:17:21.459010",
+      "operation_output_path": "./apis/user/op_slide/operation_template.json",
+      "parse_llm_und_path": "apis/user/result/parse_llm_und.json",
+      "parse_dep_path": "apis/user/result/parse_dep.json"
+    },
+    "sisp_api": {
+      "status": "in_progress",
+      "completed_apis": [
+        "get /users",
+        "get /users/rbac/roles"
+      ],
+      "updated_at": "2026-04-10T13:17:39.491916",
+      "sisp_output_path": "./apis/user/partition/sisp.json"
+    },
+    "sisp": {
+      "status": "completed",
+      "completed_at": "2026-04-10T13:17:39.498069",
+      "sisp_output_path": "./apis/user/partition/sisp.json",
+      "api_count": 14
+    },
+    "misp_multi_api": {
+      "status": "in_progress",
+      "completed_apis": [
+        "delete /users/rbac/roles/{roleId}",
+        "delete /users/rbac/roles/{roleId}/permissions/{permissionKey}",
+        "delete /users/{id}",
+        "delete /users/{id}/roles/{roleId}",
+        "get /users",
+        "get /users/rbac/permissions",
+        "get /users/rbac/roles",
+        "get /users/rbac/roles/{roleId}",
+        "get /users/{id}",
+        "post /login",
+        "post /users",
+        "post /users/rbac/roles",
+        "post /users/rbac/roles/{roleId}/permissions/{permissionKey}",
+        "post /users/register",
+        "post /users/{id}/roles/{roleId}",
+        "put /users/{id}"
+      ],
+      "updated_at": "2026-04-10T13:26:13.357306",
+      "misp_multi_partial_path": "apis/user/result/misp_multi_partial.json"
+    },
+    "misp_mixed_api": {
+      "status": "in_progress",
+      "completed_apis": [
+        "delete /users/rbac/roles/{roleId}",
+        "delete /users/rbac/roles/{roleId}/permissions/{permissionKey}",
+        "delete /users/{id}",
+        "delete /users/{id}/roles/{roleId}",
+        "get /users",
+        "get /users/rbac/permissions",
+        "get /users/rbac/roles",
+        "get /users/rbac/roles/{roleId}",
+        "get /users/{id}",
+        "post /login",
+        "post /users",
+        "post /users/rbac/roles",
+        "post /users/rbac/roles/{roleId}/permissions/{permissionKey}",
+        "post /users/register",
+        "post /users/{id}/roles/{roleId}",
+        "put /users/{id}"
+      ],
+      "updated_at": "2026-04-10T13:46:33.604650",
+      "misp_output_path": "./apis/user/partition/misp.json"
+    },
+    "misp": {
+      "status": "completed",
+      "completed_at": "2026-04-10T13:46:33.613830",
+      "misp_output_path": "./apis/user/partition/misp.json",
+      "misp_multi_partial_path": "apis/user/result/misp_multi_partial.json",
+      "api_count": 16
+    },
+    "seed": {
+      "status": "completed",
+      "completed_at": "2026-04-13T18:19:36.436750",
+      "seed_size": 10,
+      "seed_output_path": "./apis/user/seed/seed.json",
+      "partition_path": "./apis/user/partition/misp.json"
+    }
+  }
+}
