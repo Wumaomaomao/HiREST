@@ -20,6 +20,7 @@ def _merge_partition_results(dst: dict, src: dict):
 def multi_space_partition_gen(
     dep: dict,
     op_data_path: str,
+    use_raw_doc_input: bool = False,
     completed_api_keys: Optional[Set[str]] = None,
     existing_results: Optional[dict] = None,
     on_api_done: Optional[Callable[[str, dict, dict], None]] = None,
@@ -40,14 +41,16 @@ def multi_space_partition_gen(
             f"\n\33[34m[offline][INFO] Processing API {idx}/{len(operation_data)}: {item['raw_doc_slide']['method'].lower()} {item['raw_doc_slide']['path']}\33[0m"
         )
         param_data = json.dumps(item["param_list"])
-        dep_info = dep.get(item['url'], {}).get(item['method'].lower(), {})
-        all_dependencies = dep_info.get("all-dependencies", [])
-
-        single_llm_dep = {
-            item['url']: {
-                item['method'].lower(): all_dependencies
+        if use_raw_doc_input:
+            single_input1 = item.get("raw_doc_slide", {})
+        else:
+            dep_info = dep.get(item['url'], {}).get(item['method'].lower(), {})
+            all_dependencies = dep_info.get("all-dependencies", [])
+            single_input1 = {
+                item['url']: {
+                    item['method'].lower(): all_dependencies
+                }
             }
-        }
 
         single_task_prompt = f"""
     
@@ -55,7 +58,7 @@ def multi_space_partition_gen(
     
         ***INPUT1:***
     
-        {single_llm_dep}
+        {single_input1}
     
         ***INPUT2:***
     

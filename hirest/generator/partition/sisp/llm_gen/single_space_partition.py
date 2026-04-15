@@ -81,6 +81,7 @@ def fix_sisp(data: list, op_data: List[Operation]) -> list:
 def single_space_partition_gen_every(
     operation_data_path: str,
     llm_und_data: list,
+    use_raw_doc_input: bool = False,
     completed_api_keys: Optional[Set[str]] = None,
     existing_results: Optional[list] = None,
     on_api_done: Optional[Callable[[str, list, list], None]] = None,
@@ -97,17 +98,31 @@ def single_space_partition_gen_every(
             continue
         print(f"\n\33[34m[offline][INFO] Processing API {idx}/{len(operation_data)}: {item['raw_doc_slide']['method'].lower()} {item['raw_doc_slide']['path']}\33[0m")
         param_data = json.dumps(item["param_list"])
-        target_api_name = api_key
-        matched = next(
-            (
-                api_item
-                for api_item in (llm_und_data or [])
-                if isinstance(api_item, dict)
-                and (api_item.get("api_name") or api_item.get("api_name:")) == target_api_name
-            ),
-            None,
-        )
-        llm_und = json.dumps(matched)
+        if use_raw_doc_input:
+            raw_doc = item.get("raw_doc_slide", {})
+            method = raw_doc.get("method", "").lower()
+            path = raw_doc.get("path", "")
+            summary = raw_doc.get("summary") or ""
+            description = raw_doc.get("description") or ""
+
+            llm_und_payload = {
+                "api_name": f"{method} {path}".strip(),
+                "api_function": "\n".join(part for part in [summary, description] if part),
+                "raw_doc_slide": raw_doc,
+            }
+            llm_und = json.dumps(llm_und_payload)
+        else:
+            target_api_name = api_key
+            matched = next(
+                (
+                    api_item
+                    for api_item in (llm_und_data or [])
+                    if isinstance(api_item, dict)
+                    and (api_item.get("api_name") or api_item.get("api_name:")) == target_api_name
+                ),
+                None,
+            )
+            llm_und = json.dumps(matched)
         single_task_prompt = f"""
 
         **Input:**

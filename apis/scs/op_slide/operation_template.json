@@ -92,12 +92,7 @@
             },
             "operationId": "calcUsingGET"
         },
-        "dependencies": [
-            "If the parameter op denotes a division-like operation (e.g., divide, '/', mod, '%'), then arg2 must not be 0;",
-            "If the parameter op denotes an integer-only operation (e.g., mod, gcd), then both arg1 and arg2 must be integers (no fractional part);",
-            "If the parameter op denotes a logarithm with base arg2 (e.g., log), then arg1 must be greater than 0, and arg2 must be greater than 0 and not equal to 1;",
-            "If the parameter op denotes an exponent/root where a negative base with a non-integer exponent is invalid in the real domain, then when arg1 is negative, arg2 must be an integer;"
-        ]
+        "dependencies": []
     },
     {
         "method": "get",
@@ -267,9 +262,7 @@
             },
             "operationId": "costfunsUsingGET"
         },
-        "dependencies": [
-            "The allowed values or format of s depend on i (i selects a specific cost function or mode that constrains which s values are valid);"
-        ]
+        "dependencies": []
     },
     {
         "method": "get",
@@ -345,9 +338,7 @@
             },
             "operationId": "dateParseUsingGET"
         },
-        "dependencies": [
-            "The language/locale of dayname and monthname must be consistent (if dayname is provided in a given language, monthname must be in the same language);"
-        ]
+        "dependencies": []
     },
     {
         "method": "get",
@@ -423,10 +414,7 @@
             },
             "operationId": "fileSuffixUsingGET"
         },
-        "dependencies": [
-            "The file path specified by file must reside under the directory specified by directory; otherwise the suffix cannot be computed;",
-            "directory and file must be combined without duplicate or missing path separators (avoid directory ending with a separator together with file starting with a separator, and avoid neither providing a separator);"
-        ]
+        "dependencies": []
     },
     {
         "method": "get",
@@ -503,9 +491,7 @@
             },
             "operationId": "notyPevarUsingGET"
         },
-        "dependencies": [
-            "The allowed values or format of s depend on i (i selects a variant that constrains which s values are valid);"
-        ]
+        "dependencies": []
     },
     {
         "method": "get",
@@ -615,9 +601,7 @@
             },
             "operationId": "ordered4UsingGET"
         },
-        "dependencies": [
-            "The four parameters are expected to satisfy a predefined ordering constraint; specifically, their values should be in nondecreasing lexicographic order w <= x <= y <= z;"
-        ]
+        "dependencies": []
     },
     {
         "method": "get",
@@ -752,9 +736,7 @@
             },
             "operationId": "patUsingGET"
         },
-        "dependencies": [
-            "If pat is provided, it must be a syntactically valid regular expression that can be applied to txt; invalid patterns in pat make the (txt, pat) combination invalid;"
-        ]
+        "dependencies": []
     },
     {
         "method": "get",
@@ -847,10 +829,7 @@
             },
             "operationId": "text2txtUsingGET"
         },
-        "dependencies": [
-            "If the operation replaces word1 with word2 within word3, then for a meaningful change word1 should occur within word3; otherwise the (word1, word3) combination yields no modification;",
-            "If word1 equals word2, the substitution is a no-op and the (word1, word2) combination produces no change to word3;"
-        ]
+        "dependencies": []
     },
     {
         "method": "get",
@@ -926,9 +905,6 @@
             },
             "operationId": "titleUsingGET"
         },
-        "dependencies": [
-            "The allowed values of title depend on sex (e.g., if sex is male then titles like 'Mr' are allowed while female-specific titles are not; if sex is female then titles like 'Ms/Mrs/Miss' are allowed while male-specific titles are not);",
-            "If title is gender-neutral (e.g., 'Mx'), it may be used with any value of sex;"
-        ]
+        "dependencies": []
     }
 ]

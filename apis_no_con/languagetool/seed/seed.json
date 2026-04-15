@@ -1,0 +1,1360 @@
+[
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space3-subspace1",
+            "space4-subspace1",
+            "space6-subspace1",
+            "space7-subspace1",
+            "space8-subspace2",
+            "space9-subspace1"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2,3}(-[A-Z]{2})?$|^auto$",
+                "input_space_category": "Automatic language detection",
+                "description": "Use 'auto' to let the server detect the language.",
+                "representative_samples": [
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto"
+                ]
+            },
+            "preferredVariants": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z]{2,3}-[A-Z]{2}(,[A-Za-z]{2,3}-[A-Z]{2})*$",
+                "input_space_category": "Comma-separated variants (used with language=auto)",
+                "description": "Multiple preferred variants.",
+                "representative_samples": [
+                    "en-GB,de-AT",
+                    "en-US,pt-BR",
+                    "de-DE,pt-PT",
+                    "en-GB,de-DE",
+                    "pt-BR,en-US",
+                    "de-CH,en-GB"
+                ]
+            },
+            "altLanguages": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z]{2,3}(-[A-Z]{2})?(,[A-Za-z]{2,3}(-[A-Z]{2})?)*$",
+                "input_space_category": "Comma-separated alternative language codes",
+                "description": "Multiple language codes separated by commas.",
+                "representative_samples": [
+                    "fr,de-DE",
+                    "es,pt-BR",
+                    "it,fr",
+                    "nl,sv",
+                    "pl,cs",
+                    "en-GB,fr"
+                ]
+            },
+            "enabledRules": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9._-]+(,[A-Za-z0-9._-]+)*$",
+                "input_space_category": "Single rule ID",
+                "description": "A single rule identifier.",
+                "representative_samples": [
+                    "UPPERCASE_RULE",
+                    "WHITESPACE_RULE",
+                    "EN_QUOTES",
+                    "OXFORD_COMMA",
+                    "COMMA_PARENTHESIS_WHITESPACE",
+                    "MORFOLOGIK_RULE_EN_US"
+                ]
+            },
+            "disabledRules": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9._-]+(,[A-Za-z0-9._-]+)*$",
+                "input_space_category": "Single rule ID",
+                "description": "A single rule identifier to disable.",
+                "representative_samples": [
+                    "UPPERCASE_RULE",
+                    "WHITESPACE_RULE",
+                    "EN_QUOTES",
+                    "OXFORD_COMMA",
+                    "COMMA_PARENTHESIS_WHITESPACE",
+                    "MORFOLOGIK_RULE_EN_US"
+                ]
+            },
+            "enabledCategories": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "enabledCategories omitted; categories follow default behavior.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "disabledCategories": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9._-]+(,[A-Za-z0-9._-]+)*$",
+                "input_space_category": "Comma-separated category IDs",
+                "description": "Multiple category IDs separated by commas.",
+                "representative_samples": [
+                    "GRAMMAR,STYLE",
+                    "PUNCTUATION,TYPOS",
+                    "CASING,CONFUSED_WORDS",
+                    "STYLE,PUNCTUATION",
+                    "GRAMMAR,TYPOS",
+                    "CONFUSED_WORDS,GRAMMAR"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space3-subspace1",
+            "space4-subspace1",
+            "space6-subspace2",
+            "space7-subspace1",
+            "space8-subspace1",
+            "space9-subspace1"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2,3}(-[A-Z]{2})?$|^auto$",
+                "input_space_category": "Automatic language detection",
+                "description": "Use 'auto' to let the server detect the language.",
+                "representative_samples": [
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "text omitted; when 'data' is provided this is normal.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "data": {
+                "tag": "valid",
+                "type": "string",
+                "format": "JSON string: {\"annotation\":[{\"text\":\"...\"}|{\"markup\":\"...\"}(, ...)]}",
+                "input_space_category": "Minimal text-only annotation JSON",
+                "description": "JSON with 'annotation' array and text items only.",
+                "representative_samples": [
+                    "{\"annotation\":[{\"text\":\"Hi\"}]}",
+                    "{\"annotation\":[{\"text\":\"Hello\"}]}",
+                    "{\"annotation\":[{\"text\":\"Test\"}]}",
+                    "{\"annotation\":[{\"text\":\"A\"}]}",
+                    "{\"annotation\":[{\"text\":\"OK\"}]}",
+                    "{\"annotation\":[{\"text\":\"Yes\"}]}"
+                ]
+            },
+            "preferredVariants": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z]{2,3}-[A-Z]{2}(,[A-Za-z]{2,3}-[A-Z]{2})*$",
+                "input_space_category": "Single variant (used with language=auto)",
+                "description": "A single preferred variant.",
+                "representative_samples": [
+                    "en-GB",
+                    "en-US",
+                    "de-DE",
+                    "de-AT",
+                    "pt-BR",
+                    "pt-PT"
+                ]
+            },
+            "altLanguages": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z]{2,3}(-[A-Z]{2})?(,[A-Za-z]{2,3}(-[A-Z]{2})?)*$",
+                "input_space_category": "Single alternative language code",
+                "description": "A single language code as an alternative.",
+                "representative_samples": [
+                    "fr",
+                    "de-DE",
+                    "es",
+                    "pt-BR",
+                    "nl",
+                    "it"
+                ]
+            },
+            "enabledRules": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "enabledRules omitted; default rule set applies.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "disabledRules": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9._-]+(,[A-Za-z0-9._-]+)*$",
+                "input_space_category": "Single rule ID",
+                "description": "A single rule identifier to disable.",
+                "representative_samples": [
+                    "UPPERCASE_RULE",
+                    "WHITESPACE_RULE",
+                    "EN_QUOTES",
+                    "OXFORD_COMMA",
+                    "COMMA_PARENTHESIS_WHITESPACE",
+                    "MORFOLOGIK_RULE_EN_US"
+                ]
+            },
+            "enabledCategories": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9._-]+(,[A-Za-z0-9._-]+)*$",
+                "input_space_category": "Comma-separated category IDs",
+                "description": "Multiple category IDs separated by commas.",
+                "representative_samples": [
+                    "GRAMMAR,STYLE",
+                    "PUNCTUATION,TYPOS",
+                    "CASING,CONFUSED_WORDS",
+                    "STYLE,PUNCTUATION",
+                    "GRAMMAR,TYPOS",
+                    "CONFUSED_WORDS,GRAMMAR"
+                ]
+            },
+            "disabledCategories": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9._-]+(,[A-Za-z0-9._-]+)*$",
+                "input_space_category": "Comma-separated category IDs",
+                "description": "Multiple category IDs separated by commas.",
+                "representative_samples": [
+                    "GRAMMAR,STYLE",
+                    "PUNCTUATION,TYPOS",
+                    "CASING,CONFUSED_WORDS",
+                    "STYLE,PUNCTUATION",
+                    "GRAMMAR,TYPOS",
+                    "CONFUSED_WORDS,GRAMMAR"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space4-subspace2",
+            "space5-subspace1",
+            "space6-subspace2",
+            "space8-subspace2",
+            "space10-subspace2"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2,3}(-[A-Z]{2})?$|^auto$",
+                "input_space_category": "Language codes with variants",
+                "description": "Languages that require variant specification for spell checking (e.g., English, German, Portuguese).",
+                "representative_samples": [
+                    "en-GB",
+                    "en-US",
+                    "de-DE",
+                    "de-AT",
+                    "pt-BR",
+                    "pt-PT"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "text omitted; when 'data' is provided this is normal.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "data": {
+                "tag": "valid",
+                "type": "string",
+                "format": "JSON string: {\"annotation\":[{\"text\":\"...\"}|{\"markup\":\"...\"}(, ...)]}",
+                "input_space_category": "Mixed text and markup annotation JSON",
+                "description": "JSON mixing markup and text; markup will be ignored for checking.",
+                "representative_samples": [
+                    "{\"annotation\":[{\"markup\":\"<b>\"},{\"text\":\"A\"},{\"markup\":\"</b>\"}]}",
+                    "{\"annotation\":[{\"markup\":\"<i>\"},{\"text\":\"x\"},{\"markup\":\"</i>\"}]}",
+                    "{\"annotation\":[{\"markup\":\"<p>\"},{\"text\":\"T\"}]}",
+                    "{\"annotation\":[{\"text\":\"a\"},{\"markup\":\"<br>\"},{\"text\":\"b\"}]}",
+                    "{\"annotation\":[{\"markup\":\"<u>\"},{\"text\":\"U\"}]}",
+                    "{\"annotation\":[{\"markup\":\"<em>\"},{\"text\":\"e\"},{\"markup\":\"</em>\"}]}"
+                ]
+            },
+            "altLanguages": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "altLanguages omitted; default behavior without alternatives.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "motherTongue": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z]{2,3}(-[A-Z]{2})?$",
+                "input_space_category": "Generic language code",
+                "description": "Two or three-letter language codes.",
+                "representative_samples": [
+                    "fr",
+                    "de",
+                    "es",
+                    "it",
+                    "nl",
+                    "pl"
+                ]
+            },
+            "enabledRules": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "enabledRules omitted; default rule set applies.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "enabledCategories": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "enabledCategories omitted; categories follow default behavior.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "enabledOnly": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "enabledOnly omitted; defaults to false if not set.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space3-subspace1",
+            "space4-subspace1",
+            "space5-subspace1",
+            "space7-subspace2",
+            "space8-subspace1",
+            "space10-subspace2"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2,3}(-[A-Z]{2})?$|^auto$",
+                "input_space_category": "Automatic language detection",
+                "description": "Use 'auto' to let the server detect the language.",
+                "representative_samples": [
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto"
+                ]
+            },
+            "preferredVariants": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z]{2,3}-[A-Z]{2}(,[A-Za-z]{2,3}-[A-Z]{2})*$",
+                "input_space_category": "Comma-separated variants (used with language=auto)",
+                "description": "Multiple preferred variants.",
+                "representative_samples": [
+                    "en-GB,de-AT",
+                    "en-US,pt-BR",
+                    "de-DE,pt-PT",
+                    "en-GB,de-DE",
+                    "pt-BR,en-US",
+                    "de-CH,en-GB"
+                ]
+            },
+            "altLanguages": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z]{2,3}(-[A-Z]{2})?(,[A-Za-z]{2,3}(-[A-Z]{2})?)*$",
+                "input_space_category": "Single alternative language code",
+                "description": "A single language code as an alternative.",
+                "representative_samples": [
+                    "fr",
+                    "de-DE",
+                    "es",
+                    "pt-BR",
+                    "nl",
+                    "it"
+                ]
+            },
+            "motherTongue": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z]{2,3}(-[A-Z]{2})?$",
+                "input_space_category": "Language code with region",
+                "description": "Language codes including regional variant.",
+                "representative_samples": [
+                    "de-DE",
+                    "en-US",
+                    "pt-BR",
+                    "fr-FR",
+                    "es-ES",
+                    "ru-RU"
+                ]
+            },
+            "disabledRules": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "disabledRules omitted; no rules are explicitly disabled.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "enabledCategories": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9._-]+(,[A-Za-z0-9._-]+)*$",
+                "input_space_category": "Comma-separated category IDs",
+                "description": "Multiple category IDs separated by commas.",
+                "representative_samples": [
+                    "GRAMMAR,STYLE",
+                    "PUNCTUATION,TYPOS",
+                    "CASING,CONFUSED_WORDS",
+                    "STYLE,PUNCTUATION",
+                    "GRAMMAR,TYPOS",
+                    "CONFUSED_WORDS,GRAMMAR"
+                ]
+            },
+            "enabledOnly": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "enabledOnly omitted; defaults to false if not set.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space3-subspace1",
+            "space5-subspace1",
+            "space6-subspace2",
+            "space7-subspace2",
+            "space8-subspace2",
+            "space10-subspace1"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2,3}(-[A-Z]{2})?$|^auto$",
+                "input_space_category": "Automatic language detection",
+                "description": "Use 'auto' to let the server detect the language.",
+                "representative_samples": [
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto"
+                ]
+            },
+            "preferredVariants": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z]{2,3}-[A-Z]{2}(,[A-Za-z]{2,3}-[A-Z]{2})*$",
+                "input_space_category": "Comma-separated variants (used with language=auto)",
+                "description": "Multiple preferred variants.",
+                "representative_samples": [
+                    "en-GB,de-AT",
+                    "en-US,pt-BR",
+                    "de-DE,pt-PT",
+                    "en-GB,de-DE",
+                    "pt-BR,en-US",
+                    "de-CH,en-GB"
+                ]
+            },
+            "motherTongue": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z]{2,3}(-[A-Z]{2})?$",
+                "input_space_category": "Language code with region",
+                "description": "Language codes including regional variant.",
+                "representative_samples": [
+                    "de-DE",
+                    "en-US",
+                    "pt-BR",
+                    "fr-FR",
+                    "es-ES",
+                    "ru-RU"
+                ]
+            },
+            "enabledRules": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "enabledRules omitted; default rule set applies.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "disabledRules": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "disabledRules omitted; no rules are explicitly disabled.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "enabledCategories": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "enabledCategories omitted; categories follow default behavior.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "enabledOnly": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean false",
+                "description": "Use defaults plus any enabled/disabled lists.",
+                "representative_samples": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space3-subspace1",
+            "space5-subspace2",
+            "space8-subspace2",
+            "space9-subspace1",
+            "space10-subspace1"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2,3}(-[A-Z]{2})?$|^auto$",
+                "input_space_category": "Automatic language detection",
+                "description": "Use 'auto' to let the server detect the language.",
+                "representative_samples": [
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto"
+                ]
+            },
+            "preferredVariants": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z]{2,3}-[A-Z]{2}(,[A-Za-z]{2,3}-[A-Z]{2})*$",
+                "input_space_category": "Single variant (used with language=auto)",
+                "description": "A single preferred variant.",
+                "representative_samples": [
+                    "en-GB",
+                    "en-US",
+                    "de-DE",
+                    "de-AT",
+                    "pt-BR",
+                    "pt-PT"
+                ]
+            },
+            "motherTongue": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "motherTongue omitted; false friends checks may be reduced.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "enabledCategories": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "enabledCategories omitted; categories follow default behavior.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "disabledCategories": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9._-]+(,[A-Za-z0-9._-]+)*$",
+                "input_space_category": "Comma-separated category IDs",
+                "description": "Multiple category IDs separated by commas.",
+                "representative_samples": [
+                    "GRAMMAR,STYLE",
+                    "PUNCTUATION,TYPOS",
+                    "CASING,CONFUSED_WORDS",
+                    "STYLE,PUNCTUATION",
+                    "GRAMMAR,TYPOS",
+                    "CONFUSED_WORDS,GRAMMAR"
+                ]
+            },
+            "enabledOnly": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean true",
+                "description": "Enable only specified rules/categories.",
+                "representative_samples": [
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space3-subspace1",
+            "space4-subspace2",
+            "space8-subspace1"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2,3}(-[A-Z]{2})?$|^auto$",
+                "input_space_category": "Automatic language detection",
+                "description": "Use 'auto' to let the server detect the language.",
+                "representative_samples": [
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "text omitted; when 'data' is provided this is normal.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "data": {
+                "tag": "valid",
+                "type": "string",
+                "format": "JSON string: {\"annotation\":[{\"text\":\"...\"}|{\"markup\":\"...\"}(, ...)]}",
+                "input_space_category": "Mixed text and markup annotation JSON",
+                "description": "JSON mixing markup and text; markup will be ignored for checking.",
+                "representative_samples": [
+                    "{\"annotation\":[{\"markup\":\"<b>\"},{\"text\":\"A\"},{\"markup\":\"</b>\"}]}",
+                    "{\"annotation\":[{\"markup\":\"<i>\"},{\"text\":\"x\"},{\"markup\":\"</i>\"}]}",
+                    "{\"annotation\":[{\"markup\":\"<p>\"},{\"text\":\"T\"}]}",
+                    "{\"annotation\":[{\"text\":\"a\"},{\"markup\":\"<br>\"},{\"text\":\"b\"}]}",
+                    "{\"annotation\":[{\"markup\":\"<u>\"},{\"text\":\"U\"}]}",
+                    "{\"annotation\":[{\"markup\":\"<em>\"},{\"text\":\"e\"},{\"markup\":\"</em>\"}]}"
+                ]
+            },
+            "preferredVariants": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z]{2,3}-[A-Z]{2}(,[A-Za-z]{2,3}-[A-Z]{2})*$",
+                "input_space_category": "Comma-separated variants (used with language=auto)",
+                "description": "Multiple preferred variants.",
+                "representative_samples": [
+                    "en-GB,de-AT",
+                    "en-US,pt-BR",
+                    "de-DE,pt-PT",
+                    "en-GB,de-DE",
+                    "pt-BR,en-US",
+                    "de-CH,en-GB"
+                ]
+            },
+            "altLanguages": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "altLanguages omitted; default behavior without alternatives.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "enabledCategories": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9._-]+(,[A-Za-z0-9._-]+)*$",
+                "input_space_category": "Single category ID",
+                "description": "A single category identifier to enable.",
+                "representative_samples": [
+                    "TYPOS",
+                    "GRAMMAR",
+                    "PUNCTUATION",
+                    "STYLE",
+                    "CASING",
+                    "CONFUSED_WORDS"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1",
+            "space4-subspace2",
+            "space5-subspace1",
+            "space6-subspace2",
+            "space8-subspace2",
+            "space9-subspace2"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2,3}(-[A-Z]{2})?$|^auto$",
+                "input_space_category": "Automatic language detection",
+                "description": "Use 'auto' to let the server detect the language.",
+                "representative_samples": [
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Plain text sentences",
+                "description": "Simple human-readable sentences without special formatting.",
+                "representative_samples": [
+                    "Hello world.",
+                    "This is a test.",
+                    "Please check this text.",
+                    "We are testing the checker.",
+                    "I have a pen.",
+                    "The weather is nice today."
+                ]
+            },
+            "data": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "data omitted; when 'text' is provided this is normal.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "preferredVariants": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z]{2,3}-[A-Z]{2}(,[A-Za-z]{2,3}-[A-Z]{2})*$",
+                "input_space_category": "Comma-separated variants (used with language=auto)",
+                "description": "Multiple preferred variants.",
+                "representative_samples": [
+                    "en-GB,de-AT",
+                    "en-US,pt-BR",
+                    "de-DE,pt-PT",
+                    "en-GB,de-DE",
+                    "pt-BR,en-US",
+                    "de-CH,en-GB"
+                ]
+            },
+            "altLanguages": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "altLanguages omitted; default behavior without alternatives.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "motherTongue": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z]{2,3}(-[A-Z]{2})?$",
+                "input_space_category": "Generic language code",
+                "description": "Two or three-letter language codes.",
+                "representative_samples": [
+                    "fr",
+                    "de",
+                    "es",
+                    "it",
+                    "nl",
+                    "pl"
+                ]
+            },
+            "enabledRules": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "enabledRules omitted; default rule set applies.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "enabledCategories": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "enabledCategories omitted; categories follow default behavior.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "disabledCategories": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "disabledCategories omitted; categories follow default behavior.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space4-subspace2",
+            "space5-subspace2",
+            "space6-subspace1",
+            "space9-subspace1",
+            "space10-subspace1"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2,3}(-[A-Z]{2})?$|^auto$",
+                "input_space_category": "Language codes with variants",
+                "description": "Languages that require variant specification for spell checking (e.g., English, German, Portuguese).",
+                "representative_samples": [
+                    "en-GB",
+                    "en-US",
+                    "de-DE",
+                    "de-AT",
+                    "pt-BR",
+                    "pt-PT"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Plain text sentences",
+                "description": "Simple human-readable sentences without special formatting.",
+                "representative_samples": [
+                    "Hello world.",
+                    "This is a test.",
+                    "Please check this text.",
+                    "We are testing the checker.",
+                    "I have a pen.",
+                    "The weather is nice today."
+                ]
+            },
+            "data": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "data omitted; when 'text' is provided this is normal.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "altLanguages": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "altLanguages omitted; default behavior without alternatives.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "motherTongue": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "motherTongue omitted; false friends checks may be reduced.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "enabledRules": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9._-]+(,[A-Za-z0-9._-]+)*$",
+                "input_space_category": "Comma-separated rule IDs",
+                "description": "Multiple rule IDs separated by commas.",
+                "representative_samples": [
+                    "UPPERCASE_RULE,WHITESPACE_RULE",
+                    "EN_QUOTES,OXFORD_COMMA",
+                    "MORFOLOGIK_RULE_EN_US,EN_QUOTES",
+                    "PASSIVE_VOICE,DOUBLE_PUNCTUATION",
+                    "UPPERCASE_SENTENCE_START,ENGLISH_WORD_REPEAT_BEGINNING_RULE",
+                    "WHITESPACE_RULE,WORD_CONTAINS_UNDERSCORE"
+                ]
+            },
+            "disabledCategories": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9._-]+(,[A-Za-z0-9._-]+)*$",
+                "input_space_category": "Comma-separated category IDs",
+                "description": "Multiple category IDs separated by commas.",
+                "representative_samples": [
+                    "GRAMMAR,STYLE",
+                    "PUNCTUATION,TYPOS",
+                    "CASING,CONFUSED_WORDS",
+                    "STYLE,PUNCTUATION",
+                    "GRAMMAR,TYPOS",
+                    "CONFUSED_WORDS,GRAMMAR"
+                ]
+            },
+            "enabledOnly": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean false",
+                "description": "Use defaults plus any enabled/disabled lists.",
+                "representative_samples": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /check",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space3-subspace1",
+            "space5-subspace2",
+            "space6-subspace2",
+            "space10-subspace2"
+        ],
+        "selected_parameters_list": {
+            "language": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[a-z]{2,3}(-[A-Z]{2})?$|^auto$",
+                "input_space_category": "Automatic language detection",
+                "description": "Use 'auto' to let the server detect the language.",
+                "representative_samples": [
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto",
+                    "auto"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "text omitted; when 'data' is provided this is normal.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "data": {
+                "tag": "valid",
+                "type": "string",
+                "format": "JSON string: {\"annotation\":[{\"text\":\"...\"}|{\"markup\":\"...\"}(, ...)]}",
+                "input_space_category": "Minimal text-only annotation JSON",
+                "description": "JSON with 'annotation' array and text items only.",
+                "representative_samples": [
+                    "{\"annotation\":[{\"text\":\"Hi\"}]}",
+                    "{\"annotation\":[{\"text\":\"Hello\"}]}",
+                    "{\"annotation\":[{\"text\":\"Test\"}]}",
+                    "{\"annotation\":[{\"text\":\"A\"}]}",
+                    "{\"annotation\":[{\"text\":\"OK\"}]}",
+                    "{\"annotation\":[{\"text\":\"Yes\"}]}"
+                ]
+            },
+            "preferredVariants": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z]{2,3}-[A-Z]{2}(,[A-Za-z]{2,3}-[A-Z]{2})*$",
+                "input_space_category": "Single variant (used with language=auto)",
+                "description": "A single preferred variant.",
+                "representative_samples": [
+                    "en-GB",
+                    "en-US",
+                    "de-DE",
+                    "de-AT",
+                    "pt-BR",
+                    "pt-PT"
+                ]
+            },
+            "motherTongue": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "motherTongue omitted; false friends checks may be reduced.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "enabledRules": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "enabledRules omitted; default rule set applies.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "enabledOnly": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "enabledOnly omitted; defaults to false if not set.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /languages",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    }
+]

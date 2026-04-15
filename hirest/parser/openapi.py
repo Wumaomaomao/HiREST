@@ -110,7 +110,12 @@ class OpenAPIParser:
                         (op for op in slides if op["path"] == path and op["method"].lower() == method.lower()),
                         None
                     ),
-                    dependencies = self.llm_dependencies[path][method.lower()]["all-dependencies"]
+                    dependencies = (
+                        (self.llm_dependencies or {})
+                        .get(path, {})
+                        .get(method.lower(), {})
+                        .get("all-dependencies", [])
+                    )
                 )
                 operation_model_results.append(operation)
 

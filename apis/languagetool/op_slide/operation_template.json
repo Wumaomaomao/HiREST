@@ -162,14 +162,7 @@
             },
             "operationId": "check"
         },
-        "dependencies": [
-            "The parameter 'text' or 'data' is required;",
-            "If the parameter preferredVariants is provided, the parameter language must be equal to auto;",
-            "If the parameter enabledOnly is true and neither enabledRules nor enabledCategories is provided, then no rules or categories will be enabled;",
-            "The same rule ID should not appear in both enabledRules and disabledRules simultaneously to avoid conflicts;",
-            "The same category ID should not appear in both enabledCategories and disabledCategories simultaneously to avoid conflicts;",
-            "If the parameter altLanguages is provided, the parameter language must also be provided;"
-        ]
+        "dependencies": []
     },
     {
         "method": "get",

@@ -1,0 +1,2983 @@
+[
+    {
+        "op_name": "get /api/calc/{op}/{arg1}/{arg2}",
+        "type": "number",
+        "param_name": "arg1",
+        "format": [
+            "double",
+            "^-?\\d+(\\.\\d+)?$",
+            "^-?\\d+(\\.\\d+)?([eE][+-]?\\d+)?$"
+        ],
+        "valid": [
+            {
+                "param_name": "arg1",
+                "category": "Integer values",
+                "description": "Whole numbers that can be parsed as doubles.",
+                "samples": [
+                    0,
+                    1,
+                    -1,
+                    42,
+                    -100,
+                    999999
+                ]
+            },
+            {
+                "param_name": "arg1",
+                "category": "Decimal (fractional) values",
+                "description": "Fractional numbers with a decimal point.",
+                "samples": [
+                    3.14,
+                    -2.5,
+                    0.001,
+                    1000.5,
+                    -0.75,
+                    123456.789
+                ]
+            },
+            {
+                "param_name": "arg1",
+                "category": "Scientific notation values",
+                "description": "Numbers represented using exponent notation.",
+                "samples": [
+                    1000.0,
+                    -0.025,
+                    300000000.0,
+                    6.022e+23,
+                    -1e-10,
+                    0.000999
+                ]
+            },
+            {
+                "param_name": "arg1",
+                "category": "Large magnitude finite doubles",
+                "description": "Finite double-precision boundary-like values.",
+                "samples": [
+                    1.7976931348623157e+308,
+                    -1.7976931348623157e+308,
+                    1e+308,
+                    -1e+308,
+                    1e-300,
+                    -1e-300
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "arg1",
+                "category": "Non-numeric strings",
+                "description": "Values that cannot be parsed as numbers.",
+                "samples": [
+                    "abc",
+                    "NaN",
+                    "Infinity",
+                    "one",
+                    "12.3.4",
+                    "3,14"
+                ]
+            },
+            {
+                "param_name": "arg1",
+                "category": "Type errors",
+                "description": "Values of incorrect JSON types for a numeric path parameter.",
+                "samples": [
+                    true,
+                    false,
+                    null,
+                    [],
+                    {},
+                    [
+                        "12"
+                    ]
+                ]
+            },
+            {
+                "param_name": "arg1",
+                "category": "Malformed numeric format or overflow",
+                "description": "Numeric-looking strings that are invalid or overflow double range.",
+                "samples": [
+                    " 42",
+                    "42 ",
+                    "+5",
+                    "–5",
+                    "1e309",
+                    "-1e400"
+                ]
+            },
+            {
+                "param_name": "arg1",
+                "category": "Semantic error for modulus operation (non-integer when op=mod)",
+                "description": "When op=mod, arg1 must be an integer; fractional values are invalid.",
+                "samples": [
+                    2.5,
+                    -3.1,
+                    0.75,
+                    0.001,
+                    -2.75,
+                    3.3333333
+                ]
+            },
+            {
+                "param_name": "arg1",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter arg1 is missing from the request, causing route resolution or validation failure.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/calc/{op}/{arg1}/{arg2}",
+        "type": "number",
+        "param_name": "arg2",
+        "format": [
+            "double",
+            "^-?\\d+(\\.\\d+)?$",
+            "^-?\\d+(\\.\\d+)?([eE][+-]?\\d+)?$"
+        ],
+        "valid": [
+            {
+                "param_name": "arg2",
+                "category": "Integer values",
+                "description": "Whole numbers that can be parsed as doubles.",
+                "samples": [
+                    0,
+                    1,
+                    -1,
+                    256,
+                    -4096,
+                    123456
+                ]
+            },
+            {
+                "param_name": "arg2",
+                "category": "Decimal (fractional) values",
+                "description": "Fractional numbers with a decimal point.",
+                "samples": [
+                    2.75,
+                    -0.5,
+                    0.125,
+                    999.999,
+                    -123.456,
+                    0.01
+                ]
+            },
+            {
+                "param_name": "arg2",
+                "category": "Scientific notation values",
+                "description": "Numbers represented using exponent notation.",
+                "samples": [
+                    5000.0,
+                    -0.07,
+                    2500000.0,
+                    9.81,
+                    -4.2e-05,
+                    120.0
+                ]
+            },
+            {
+                "param_name": "arg2",
+                "category": "Non-zero values valid as divisors for op=div",
+                "description": "Any non-zero number is valid when dividing.",
+                "samples": [
+                    1,
+                    -1,
+                    0.5,
+                    -2,
+                    3.14,
+                    -0.25
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "arg2",
+                "category": "Division by zero when op=div",
+                "description": "Zero values are invalid when op=div due to divide-by-zero.",
+                "samples": [
+                    0,
+                    0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    -0.0
+                ]
+            },
+            {
+                "param_name": "arg2",
+                "category": "Non-numeric strings",
+                "description": "Values that cannot be parsed as numbers.",
+                "samples": [
+                    "xyz",
+                    "NaN",
+                    "Infinity",
+                    "zero",
+                    "1,000",
+                    "7..2"
+                ]
+            },
+            {
+                "param_name": "arg2",
+                "category": "Type errors",
+                "description": "Values of incorrect JSON types for a numeric path parameter.",
+                "samples": [
+                    true,
+                    false,
+                    null,
+                    [],
+                    {},
+                    [
+                        5
+                    ]
+                ]
+            },
+            {
+                "param_name": "arg2",
+                "category": "Malformed numeric format or overflow",
+                "description": "Numeric-looking strings that are invalid or overflow double range.",
+                "samples": [
+                    " 3.5",
+                    "3.5 ",
+                    "+0",
+                    "–12",
+                    "1e309",
+                    "-9e400"
+                ]
+            },
+            {
+                "param_name": "arg2",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter arg2 is missing from the request, causing route resolution or validation failure.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/calc/{op}/{arg1}/{arg2}",
+        "type": "string",
+        "param_name": "op",
+        "format": [
+            "^(add|sub|mul|div|mod|pow)$",
+            "^[A-Za-z]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "op",
+                "category": "Supported operations (lowercase)",
+                "description": "Canonical operation tokens likely supported by a calc endpoint.",
+                "samples": [
+                    "add",
+                    "sub",
+                    "mul",
+                    "div",
+                    "mod",
+                    "pow"
+                ]
+            },
+            {
+                "param_name": "op",
+                "category": "Supported operations (uppercase)",
+                "description": "Uppercase variants of the operation tokens.",
+                "samples": [
+                    "ADD",
+                    "SUB",
+                    "MUL",
+                    "DIV",
+                    "MOD",
+                    "POW"
+                ]
+            },
+            {
+                "param_name": "op",
+                "category": "Synonym keywords for basic operations",
+                "description": "Common synonyms that some calc services accept.",
+                "samples": [
+                    "plus",
+                    "minus",
+                    "times",
+                    "divide",
+                    "product",
+                    "quotient"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "op",
+                "category": "Unknown operation token",
+                "description": "Strings that are valid format but not recognized operations.",
+                "samples": [
+                    "avg",
+                    "sqrt",
+                    "abs",
+                    "ln",
+                    "log10",
+                    "foo"
+                ]
+            },
+            {
+                "param_name": "op",
+                "category": "Contains non-alphabetic or path-unsafe characters",
+                "description": "Tokens containing characters that are not simple letters or may be unsafe in path segments.",
+                "samples": [
+                    "a/b",
+                    "add?",
+                    "mul#",
+                    "div%",
+                    "sub&",
+                    "pow*"
+                ]
+            },
+            {
+                "param_name": "op",
+                "category": "Empty or whitespace",
+                "description": "Empty string or whitespace-only tokens are invalid.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "op",
+                "category": "Non-string types",
+                "description": "Values that are not strings.",
+                "samples": [
+                    1,
+                    0.5,
+                    true,
+                    false,
+                    null,
+                    {}
+                ]
+            },
+            {
+                "param_name": "op",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter op is missing from the request, causing route resolution or validation failure.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/cookie/{name}/{val}/{site}",
+        "type": "string",
+        "param_name": "name",
+        "format": [
+            "^[A-Za-z0-9._-]{1,64}$"
+        ],
+        "valid": [
+            {
+                "param_name": "name",
+                "category": "Alphanumeric cookie names",
+                "description": "Cookie names using only letters and digits, length 1-64, suitable for path segment usage.",
+                "samples": [
+                    "session",
+                    "userId",
+                    "token123",
+                    "sid",
+                    "cartID",
+                    "lang"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Names with allowed punctuation (._-)",
+                "description": "Cookie names containing underscores, hyphens or dots; no spaces or separators.",
+                "samples": [
+                    "session_id",
+                    "auth-token",
+                    "v1.2",
+                    "pref.lang",
+                    "cache-bust_1",
+                    "XSRF-TOKEN"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Edge-length-safe names (1-64 chars)",
+                "description": "Shortest and longer names within 1-64 characters, using only allowed characters.",
+                "samples": [
+                    "a",
+                    "Z",
+                    "n_1",
+                    "cookie_name_1234567890",
+                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ12",
+                    "name.with-dots-and-hyphens"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "name",
+                "category": "Contains illegal characters",
+                "description": "Spaces, separators or reserved characters not allowed in cookie names or path segments.",
+                "samples": [
+                    "session id",
+                    "name;id",
+                    "user,name",
+                    "token=1",
+                    "name\"test",
+                    "path/seg"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Empty or control whitespace",
+                "description": "Empty or control-only strings which are invalid for a cookie name.",
+                "samples": [
+                    "",
+                    " ",
+                    "\t",
+                    "\n",
+                    "\r\n",
+                    "\u0000"
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "Type mismatch (non-string)",
+                "description": "Values that are not strings cannot be used as a path string parameter.",
+                "samples": [
+                    123,
+                    45.6,
+                    true,
+                    false,
+                    null,
+                    {
+                        "k": "v"
+                    }
+                ]
+            },
+            {
+                "param_name": "name",
+                "category": "<MISS_KEY>",
+                "description": "The required parameter 'name' is missing from the path.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/cookie/{name}/{val}/{site}",
+        "type": "string",
+        "param_name": "site",
+        "format": [
+            "^(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)(?:\\.(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?))*$",
+            "^localhost$",
+            "^(?:\\d{1,3}\\.){3}\\d{1,3}$"
+        ],
+        "valid": [
+            {
+                "param_name": "site",
+                "category": "Valid domain names",
+                "description": "Standard domain or subdomain names without protocol or port.",
+                "samples": [
+                    "example.com",
+                    "sub.example.org",
+                    "api.test.co",
+                    "my-site.io",
+                    "foo.bar",
+                    "a.co"
+                ]
+            },
+            {
+                "param_name": "site",
+                "category": "Environment or site keys",
+                "description": "Alphanumeric/- identifiers commonly used to indicate the target site or environment.",
+                "samples": [
+                    "prod",
+                    "staging",
+                    "us-east-1",
+                    "eu-west",
+                    "shop-1",
+                    "mobile"
+                ]
+            },
+            {
+                "param_name": "site",
+                "category": "Local/IPv4/Punycode host identifiers",
+                "description": "Local hosts, IPv4 literals, and internationalized domains represented via Punycode.",
+                "samples": [
+                    "localhost",
+                    "127.0.0.1",
+                    "192.168.0.10",
+                    "xn--d1acpjx3f.xn--p1ai",
+                    "xn--bcher-kva.de",
+                    "xn--fiqs8s.cn"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "site",
+                "category": "Contains protocol, path, query, or fragment",
+                "description": "The site must be a host/key only; protocol, paths, queries, and fragments are not allowed.",
+                "samples": [
+                    "http://example.com",
+                    "https://site",
+                    "example.com/path",
+                    "example.com?x=1",
+                    "example.com#frag",
+                    "ftp://host"
+                ]
+            },
+            {
+                "param_name": "site",
+                "category": "Invalid domain format or characters",
+                "description": "Violations such as leading/trailing dots or hyphens, repeated dots, spaces, or raw non-ASCII.",
+                "samples": [
+                    "-abc.com",
+                    "abc-.com",
+                    ".example.com",
+                    "example..com",
+                    "exa mple.com",
+                    "exämple.com"
+                ]
+            },
+            {
+                "param_name": "site",
+                "category": "Type mismatch or empty",
+                "description": "Empty strings or non-string types are invalid for a path string parameter.",
+                "samples": [
+                    "",
+                    " ",
+                    null,
+                    123,
+                    true,
+                    []
+                ]
+            },
+            {
+                "param_name": "site",
+                "category": "<MISS_KEY>",
+                "description": "The required parameter 'site' is missing from the path.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/cookie/{name}/{val}/{site}",
+        "type": "string",
+        "param_name": "val",
+        "format": [
+            "^(?:%[0-9A-Fa-f]{2}|[A-Za-z0-9._~-]){1,256}$"
+        ],
+        "valid": [
+            {
+                "param_name": "val",
+                "category": "Simple token values",
+                "description": "URL-safe token values for cookies using unreserved characters only.",
+                "samples": [
+                    "abc123",
+                    "value_1",
+                    "token-XYZ",
+                    "v1.2.3",
+                    "A_b-c.d",
+                    "SESSION12345"
+                ]
+            },
+            {
+                "param_name": "val",
+                "category": "Token-like identifiers (UUID/hex/base64url)",
+                "description": "Commonly used token formats that are path-safe.",
+                "samples": [
+                    "eyJ1c2VyIjoiam9obiJ9",
+                    "dG9rZW4tZGF0YQ",
+                    "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "deadbeefcafebabe",
+                    "QWxhZGRpbjpvcGVuIHNlc2FtZQ",
+                    "YWJjMTIzX3Rlc3Q"
+                ]
+            },
+            {
+                "param_name": "val",
+                "category": "Percent-encoded values",
+                "description": "Values containing percent-encoded octets for characters that might otherwise be unsafe in path segments.",
+                "samples": [
+                    "hello%20world",
+                    "a%3Db",
+                    "email%40example.com",
+                    "a%2Bb",
+                    "colon%3Asep",
+                    "json%7B%7D"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "val",
+                "category": "Contains path separators or reserved chars",
+                "description": "Characters that break routing or introduce ambiguity in path parsing.",
+                "samples": [
+                    "a/b",
+                    "a\\b",
+                    "value?x=1",
+                    "hash#tag",
+                    "../secret",
+                    "%2Fhidden"
+                ]
+            },
+            {
+                "param_name": "val",
+                "category": "Control characters or delimiters",
+                "description": "Control characters or separators that are unsafe for cookie values and/or path segments.",
+                "samples": [
+                    "semi;colon",
+                    "line\nbreak",
+                    "tab\tchar",
+                    "control\u0000char",
+                    "comma,value",
+                    "bell\u0007char"
+                ]
+            },
+            {
+                "param_name": "val",
+                "category": "Type mismatch or empty",
+                "description": "Empty strings or non-string types are invalid for a path string parameter.",
+                "samples": [
+                    "",
+                    " ",
+                    null,
+                    123,
+                    true,
+                    {}
+                ]
+            },
+            {
+                "param_name": "val",
+                "category": "<MISS_KEY>",
+                "description": "The required parameter 'val' is missing from the path.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/costfuns/{i}/{s}",
+        "type": "integer",
+        "param_name": "i",
+        "format": [
+            "int32",
+            "^-?\\d+$"
+        ],
+        "valid": [
+            {
+                "param_name": "i",
+                "category": "Positive int32 values",
+                "description": "Typical positive integers within 32-bit signed range.",
+                "samples": [
+                    1,
+                    2,
+                    10,
+                    123,
+                    9999,
+                    500000
+                ]
+            },
+            {
+                "param_name": "i",
+                "category": "Negative int32 values",
+                "description": "Negative integers within 32-bit signed range.",
+                "samples": [
+                    -1,
+                    -5,
+                    -42,
+                    -999,
+                    -214,
+                    -10000
+                ]
+            },
+            {
+                "param_name": "i",
+                "category": "Edge int32 boundaries",
+                "description": "Values near the minimum and maximum of 32-bit signed integer range.",
+                "samples": [
+                    2147483647,
+                    2147483646,
+                    2147483000,
+                    -2147483648,
+                    -2147483647,
+                    -2147483000
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "i",
+                "category": "Non-integer numeric formats",
+                "description": "Numbers or numeric strings with decimals or exponents that are not valid integers.",
+                "samples": [
+                    3.14,
+                    -0.5,
+                    "1e3",
+                    2.718,
+                    "007.0",
+                    "NaN"
+                ]
+            },
+            {
+                "param_name": "i",
+                "category": "Non-numeric strings",
+                "description": "Strings that are not pure digits with optional leading minus.",
+                "samples": [
+                    "abc",
+                    "12a",
+                    "one",
+                    " ",
+                    "123,456",
+                    "--5"
+                ]
+            },
+            {
+                "param_name": "i",
+                "category": "Out-of-range for int32",
+                "description": "Values outside the 32-bit signed integer range.",
+                "samples": [
+                    2147483648,
+                    -2147483649,
+                    9999999999,
+                    -99999999999,
+                    "9223372036854775807",
+                    "-9223372036854775808"
+                ]
+            },
+            {
+                "param_name": "i",
+                "category": "Wrong type",
+                "description": "Values that are not integers, such as booleans, arrays, or objects.",
+                "samples": [
+                    true,
+                    false,
+                    null,
+                    [],
+                    {},
+                    {
+                        "n": 1
+                    }
+                ]
+            },
+            {
+                "param_name": "i",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'i' is missing from the request URL.",
+                "samples": [
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/costfuns/{i}/{s}",
+        "type": "string",
+        "param_name": "s",
+        "format": [
+            "^[^/\\\\\\s?#]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "s",
+                "category": "Alphanumeric with underscores or hyphens",
+                "description": "Non-empty path segment without slashes or spaces.",
+                "samples": [
+                    "abc",
+                    "XYZ",
+                    "user_01",
+                    "file-name",
+                    "CostFun",
+                    "v2beta"
+                ]
+            },
+            {
+                "param_name": "s",
+                "category": "Numeric-only segments",
+                "description": "Digits-only path segment.",
+                "samples": [
+                    "0",
+                    "123",
+                    "2024",
+                    "007",
+                    "42",
+                    "99999"
+                ]
+            },
+            {
+                "param_name": "s",
+                "category": "Dotted identifiers",
+                "description": "Segments including dots, typical for filenames or versioned tokens.",
+                "samples": [
+                    "config.json",
+                    "v1.2.3",
+                    "node.module",
+                    "readme.md",
+                    "data.csv",
+                    "lib-1.0.0"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "s",
+                "category": "Contains slashes",
+                "description": "Values that contain '/' or backslashes, which break a single path segment.",
+                "samples": [
+                    "bad/value",
+                    "a/b/c",
+                    "/start",
+                    "trailing/",
+                    "a\\b",
+                    "///"
+                ]
+            },
+            {
+                "param_name": "s",
+                "category": "Empty or whitespace-only",
+                "description": "Empty string or strings made only of whitespace characters.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "s",
+                "category": "Unencoded reserved characters",
+                "description": "Segments containing characters that should be percent-encoded in URLs.",
+                "samples": [
+                    "name with space",
+                    "a?b",
+                    "x#y",
+                    "a&b",
+                    "a+b",
+                    "a%b"
+                ]
+            },
+            {
+                "param_name": "s",
+                "category": "Wrong type",
+                "description": "Non-string values for a path segment.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    {},
+                    [],
+                    3.14
+                ]
+            },
+            {
+                "param_name": "s",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 's' is missing from the request URL.",
+                "samples": [
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/dateparse/{dayname}/{monthname}",
+        "type": "string",
+        "param_name": "dayname",
+        "format": [
+            "^(Mon|Tue|Wed|Thu|Fri|Sat|Sun)$",
+            "^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)$",
+            "^(mon|tue|wed|thu|fri|sat|sun)$",
+            "^(monday|tuesday|wednesday|thursday|friday|saturday|sunday)$",
+            "^(MON|TUE|WED|THU|FRI|SAT|SUN)$",
+            "^(MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY|SATURDAY|SUNDAY)$"
+        ],
+        "valid": [
+            {
+                "param_name": "dayname",
+                "category": "Full English weekday name (Title Case)",
+                "description": "Accept full weekday names in English, case-sensitive Title Case.",
+                "samples": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday"
+                ]
+            },
+            {
+                "param_name": "dayname",
+                "category": "3-letter weekday abbreviation (Title Case)",
+                "description": "Accept standard 3-letter English weekday abbreviations.",
+                "samples": [
+                    "Mon",
+                    "Tue",
+                    "Wed",
+                    "Thu",
+                    "Fri",
+                    "Sat",
+                    "Sun"
+                ]
+            },
+            {
+                "param_name": "dayname",
+                "category": "Full English weekday name (lowercase)",
+                "description": "Accept lowercase full weekday names for case-insensitive handling.",
+                "samples": [
+                    "monday",
+                    "tuesday",
+                    "wednesday",
+                    "thursday",
+                    "friday",
+                    "saturday",
+                    "sunday"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "dayname",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter dayname is omitted from the request.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "dayname",
+                "category": "Non-string type for dayname",
+                "description": "Values that are not strings.",
+                "samples": [
+                    1,
+                    0,
+                    3.14,
+                    true,
+                    [
+                        "Mon"
+                    ],
+                    {
+                        "day": "Mon"
+                    }
+                ]
+            },
+            {
+                "param_name": "dayname",
+                "category": "Format error: invalid characters, digits, or spaces",
+                "description": "Strings containing non-letter characters, digits, or surrounding spaces.",
+                "samples": [
+                    "Mon!",
+                    "Mon-day",
+                    "Mon3",
+                    " Monday",
+                    "Sunday ",
+                    "Mon/"
+                ]
+            },
+            {
+                "param_name": "dayname",
+                "category": "Semantic invalid or misspelling",
+                "description": "Strings that look like days but are not valid weekday names.",
+                "samples": [
+                    "Funday",
+                    "Moonday",
+                    "Thurs",
+                    "Wednes",
+                    "Mnday",
+                    "Sundae"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/dateparse/{dayname}/{monthname}",
+        "type": "string",
+        "param_name": "monthname",
+        "format": [
+            "^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)$",
+            "^(January|February|March|April|May|June|July|August|September|October|November|December)$",
+            "^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)$",
+            "^(january|february|march|april|may|june|july|august|september|october|november|december)$",
+            "^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)$",
+            "^(JANUARY|FEBRUARY|MARCH|APRIL|MAY|JUNE|JULY|AUGUST|SEPTEMBER|OCTOBER|NOVEMBER|DECEMBER)$"
+        ],
+        "valid": [
+            {
+                "param_name": "monthname",
+                "category": "Full English month name (Title Case)",
+                "description": "Accept full month names in English, case-sensitive Title Case.",
+                "samples": [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ]
+            },
+            {
+                "param_name": "monthname",
+                "category": "3-letter month abbreviation (Title Case)",
+                "description": "Accept standard 3-letter English month abbreviations.",
+                "samples": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dec"
+                ]
+            },
+            {
+                "param_name": "monthname",
+                "category": "Full English month name (lowercase)",
+                "description": "Accept lowercase full month names for case-insensitive handling.",
+                "samples": [
+                    "january",
+                    "february",
+                    "march",
+                    "april",
+                    "may",
+                    "june",
+                    "july",
+                    "august",
+                    "september",
+                    "october",
+                    "november",
+                    "december"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "monthname",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter monthname is omitted from the request.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "monthname",
+                "category": "Non-string type for monthname",
+                "description": "Values that are not strings.",
+                "samples": [
+                    0,
+                    7,
+                    10.5,
+                    true,
+                    [
+                        "Jan"
+                    ],
+                    {
+                        "month": "Jan"
+                    }
+                ]
+            },
+            {
+                "param_name": "monthname",
+                "category": "Format error: invalid characters, punctuation, or spaces",
+                "description": "Strings containing symbols, punctuation, or spaces.",
+                "samples": [
+                    "Jan!",
+                    "Feb#",
+                    "Mar-2021",
+                    "Apr/",
+                    "May June",
+                    "Oct.Dec"
+                ]
+            },
+            {
+                "param_name": "monthname",
+                "category": "Semantic invalid or misspelling",
+                "description": "Strings that look like months but are not valid month names.",
+                "samples": [
+                    "Jenuary",
+                    "Febuary",
+                    "Agust",
+                    "Septembar",
+                    "Octembre",
+                    "Smarch"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/filesuffix/{directory}/{file}",
+        "type": "string",
+        "param_name": "directory",
+        "format": [
+            "^[A-Za-z0-9._-]+$",
+            "^(?:%[0-9A-Fa-f]{2}|[A-Za-z0-9._-])+$"
+        ],
+        "valid": [
+            {
+                "param_name": "directory",
+                "category": "Alphanumeric, underscore, and hyphen segment",
+                "description": "Single path segment using letters, digits, underscores, or hyphens. No slashes.",
+                "samples": [
+                    "docs",
+                    "images",
+                    "user_123",
+                    "backup-2024",
+                    "temp",
+                    "data1"
+                ]
+            },
+            {
+                "param_name": "directory",
+                "category": "Segment containing dots",
+                "description": "Directory-like segment including dots commonly used for versions or hidden names.",
+                "samples": [
+                    "v1.0",
+                    "release.2023",
+                    ".cache",
+                    "my.folder",
+                    "config.d",
+                    "build.v2"
+                ]
+            },
+            {
+                "param_name": "directory",
+                "category": "Percent-encoded characters in segment",
+                "description": "Path segment with special characters represented via percent-encoding.",
+                "samples": [
+                    "user%20files",
+                    "na%C3%AFve",
+                    "c%23sharp",
+                    "a%2Bb",
+                    "sales%26marketing",
+                    "proj%40work"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "directory",
+                "category": "Empty or whitespace-only segment",
+                "description": "Segment is empty or consists only of whitespace characters.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "directory",
+                "category": "Contains slash or backslash",
+                "description": "Value includes '/' or '\\', which would split or escape the path segment.",
+                "samples": [
+                    "foo/bar",
+                    "dir/sub",
+                    "/root",
+                    "trailing/",
+                    "a\\b",
+                    "../up"
+                ]
+            },
+            {
+                "param_name": "directory",
+                "category": "Non-string type",
+                "description": "Value is not a string type, invalid for a path parameter.",
+                "samples": [
+                    123,
+                    0,
+                    -1,
+                    true,
+                    false,
+                    3.14
+                ]
+            },
+            {
+                "param_name": "directory",
+                "category": "Missing key",
+                "description": "The required path parameter 'directory' is omitted, causing routing or binding failure.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/filesuffix/{directory}/{file}",
+        "type": "string",
+        "param_name": "file",
+        "format": [
+            "^[^/\\\\]+$",
+            "^(?:%[0-9A-Fa-f]{2}|[^/\\\\])+$"
+        ],
+        "valid": [
+            {
+                "param_name": "file",
+                "category": "Filename with single extension",
+                "description": "Common filename pattern with a single dot extension.",
+                "samples": [
+                    "report.pdf",
+                    "image.jpg",
+                    "data.csv",
+                    "notes.txt",
+                    "script.js",
+                    "archive.zip"
+                ]
+            },
+            {
+                "param_name": "file",
+                "category": "Filename with multiple dots",
+                "description": "Filenames containing multiple dots or compound extensions.",
+                "samples": [
+                    "backup.tar.gz",
+                    "app.min.js",
+                    "db.dump.sql",
+                    "my.config.json",
+                    "photo.edit.v2.jpg",
+                    "package.lock.json"
+                ]
+            },
+            {
+                "param_name": "file",
+                "category": "Filename without extension",
+                "description": "Valid filename that lacks a dot extension.",
+                "samples": [
+                    "README",
+                    "LICENSE",
+                    "Makefile",
+                    "Dockerfile",
+                    "NOTICE",
+                    "CHANGELOG"
+                ]
+            },
+            {
+                "param_name": "file",
+                "category": "Percent-encoded/URL-safe filename",
+                "description": "Filename including spaces or special characters via percent-encoding.",
+                "samples": [
+                    "my%20file.txt",
+                    "budget%202024.xlsx",
+                    "r%C3%A9sum%C3%A9.pdf",
+                    "data%2Btest.csv",
+                    "report%40HQ.docx",
+                    "sales%26ops.pptx"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "file",
+                "category": "Empty or whitespace-only filename",
+                "description": "Filename is empty or contains only whitespace characters.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "file",
+                "category": "Contains slash or backslash",
+                "description": "Filename includes '/' or '\\', which implies another path segment or escape.",
+                "samples": [
+                    "dir/file.txt",
+                    "/etc/passwd",
+                    "file.txt/",
+                    "a\\b.txt",
+                    "../secret.txt",
+                    "./note.txt"
+                ]
+            },
+            {
+                "param_name": "file",
+                "category": "Non-string type",
+                "description": "Filename provided as a non-string type is invalid for path parameters.",
+                "samples": [
+                    42,
+                    0,
+                    -7,
+                    true,
+                    false,
+                    3.1415
+                ]
+            },
+            {
+                "param_name": "file",
+                "category": "Missing key",
+                "description": "The required path parameter 'file' is omitted, causing routing or binding failure.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/notypevar/{i}/{s}",
+        "type": "integer",
+        "param_name": "i",
+        "format": [
+            "int32"
+        ],
+        "valid": [
+            {
+                "param_name": "i",
+                "category": "Small non-negative int32",
+                "description": "Integer values within 0 to a small positive range that fit in 32-bit signed integer.",
+                "samples": [
+                    0,
+                    1,
+                    2,
+                    7,
+                    42,
+                    1024
+                ]
+            },
+            {
+                "param_name": "i",
+                "category": "Negative int32",
+                "description": "Negative integers within 32-bit signed integer range.",
+                "samples": [
+                    -1,
+                    -2,
+                    -7,
+                    -42,
+                    -1024,
+                    -999999
+                ]
+            },
+            {
+                "param_name": "i",
+                "category": "Boundary int32 values",
+                "description": "Edge values near the limits of 32-bit signed integers.",
+                "samples": [
+                    -2147483648,
+                    -2147483647,
+                    -2147483640,
+                    2147483647,
+                    2147483640,
+                    2147483000
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "i",
+                "category": "Non-integer strings",
+                "description": "Values that are strings and cannot be parsed as integers.",
+                "samples": [
+                    "abc",
+                    "12a",
+                    "one",
+                    "1 2",
+                    "--5",
+                    "ten"
+                ]
+            },
+            {
+                "param_name": "i",
+                "category": "Floating-point representations",
+                "description": "Values that represent decimals or scientific notation, not acceptable for integer parsing.",
+                "samples": [
+                    "3.14",
+                    "-0.5",
+                    "2.0",
+                    "1e3",
+                    "6.022e23",
+                    "0.0001"
+                ]
+            },
+            {
+                "param_name": "i",
+                "category": "Out-of-range int32 numbers",
+                "description": "Numeric values that overflow 32-bit signed integer bounds.",
+                "samples": [
+                    2147483648,
+                    9999999999,
+                    -2147483649,
+                    -9999999999,
+                    4294967296,
+                    -4294967297
+                ]
+            },
+            {
+                "param_name": "i",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter i is omitted from the URL, leading to routing or validation failure.",
+                "samples": [
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/notypevar/{i}/{s}",
+        "type": "string",
+        "param_name": "s",
+        "format": [
+            "^[^/]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "s",
+                "category": "Lowercase alphabetic tokens",
+                "description": "Simple lowercase alphabetic path segments without slashes.",
+                "samples": [
+                    "abc",
+                    "test",
+                    "hello",
+                    "world",
+                    "node",
+                    "sample"
+                ]
+            },
+            {
+                "param_name": "s",
+                "category": "Alphanumeric mixed case",
+                "description": "Mixed letters and digits appropriate for identifiers in a single path segment.",
+                "samples": [
+                    "Abc123",
+                    "user42",
+                    "XyZ789",
+                    "a1b2c3",
+                    "Id9Xy",
+                    "Test1"
+                ]
+            },
+            {
+                "param_name": "s",
+                "category": "URL-safe tokens with hyphen/underscore/dot",
+                "description": "Path-safe strings containing hyphen, underscore, or dot characters (no slashes).",
+                "samples": [
+                    "file-name",
+                    "user_name",
+                    "v1.2.3",
+                    "data-set_01",
+                    "alpha.beta",
+                    "dash_and.dot"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "s",
+                "category": "Contains path separator",
+                "description": "Strings that include '/' or backslashes which split or alter the path segments.",
+                "samples": [
+                    "a/b",
+                    "x/y/z",
+                    "/leading",
+                    "trailing/",
+                    "a//b",
+                    "a\\b"
+                ]
+            },
+            {
+                "param_name": "s",
+                "category": "Empty or whitespace-only",
+                "description": "Empty or whitespace-only strings that cannot represent a valid path segment.",
+                "samples": [
+                    "",
+                    " ",
+                    "    ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "s",
+                "category": "Non-string types for path segment",
+                "description": "Values that are not strings and thus cannot form a valid path segment.",
+                "samples": [
+                    123,
+                    -5,
+                    0,
+                    true,
+                    false,
+                    {}
+                ]
+            },
+            {
+                "param_name": "s",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter s is omitted from the URL, causing routing mismatch or validation error.",
+                "samples": [
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/ordered4/{w}/{x}/{z}/{y}",
+        "type": "string",
+        "param_name": "w",
+        "format": [
+            "^[A-Za-z0-9._~-]{1,64}$",
+            "^(?:[A-Za-z0-9._~-]|%[0-9A-Fa-f]{2}){1,64}$",
+            "^[0-9]{1,18}$"
+        ],
+        "valid": [
+            {
+                "param_name": "w",
+                "category": "Lowercase alphanumeric segment",
+                "description": "A non-empty path segment containing only lowercase letters and digits.",
+                "samples": [
+                    "abc",
+                    "w123",
+                    "id42",
+                    "foo",
+                    "bar99",
+                    "token7"
+                ]
+            },
+            {
+                "param_name": "w",
+                "category": "Mixed-case with separators",
+                "description": "A path segment with letters/digits and allowed separators: hyphen, underscore, and dot.",
+                "samples": [
+                    "User_Name",
+                    "File-Name",
+                    "Alpha-Beta",
+                    "v1.2.3",
+                    "Service_V2",
+                    "Data-Set_01"
+                ]
+            },
+            {
+                "param_name": "w",
+                "category": "Numeric ID as string",
+                "description": "A path segment consisting of digits only (1 to 18 digits).",
+                "samples": [
+                    "1",
+                    "42",
+                    "2024",
+                    "000123",
+                    "987654321",
+                    "123456789012345678"
+                ]
+            },
+            {
+                "param_name": "w",
+                "category": "Percent-encoded values",
+                "description": "A path segment that includes valid percent-encoded octets for reserved characters or UTF-8 bytes.",
+                "samples": [
+                    "hello%20world",
+                    "name%2Btag",
+                    "%5Fhidden",
+                    "Caf%C3%A9",
+                    "a%2Fb",
+                    "%7Etilde"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "w",
+                "category": "<MISS_KEY>",
+                "description": "Required path parameter w omitted from the URL, resulting in an incomplete path.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "w",
+                "category": "Contains slash or backslash",
+                "description": "Value contains path separators that would split the segment.",
+                "samples": [
+                    "a/b",
+                    "foo/bar",
+                    "/start",
+                    "end/",
+                    "x\\y",
+                    "abc/def/ghi"
+                ]
+            },
+            {
+                "param_name": "w",
+                "category": "Invalid characters or bad percent-encoding",
+                "description": "Value contains spaces or reserved characters (#, ?, etc.) or malformed percent-encoding.",
+                "samples": [
+                    "has space",
+                    "name#1",
+                    "query?param",
+                    "percent%",
+                    "bad%2",
+                    "emoji😊"
+                ]
+            },
+            {
+                "param_name": "w",
+                "category": "Empty or whitespace-only",
+                "description": "Empty or whitespace-only strings are invalid for a path segment.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/ordered4/{w}/{x}/{z}/{y}",
+        "type": "string",
+        "param_name": "x",
+        "format": [
+            "^[A-Za-z0-9._~-]{1,64}$",
+            "^(?:[A-Za-z0-9._~-]|%[0-9A-Fa-f]{2}){1,64}$",
+            "^[0-9]{1,18}$"
+        ],
+        "valid": [
+            {
+                "param_name": "x",
+                "category": "Lowercase alphanumeric segment",
+                "description": "A non-empty path segment containing only lowercase letters and digits.",
+                "samples": [
+                    "xyz",
+                    "code99",
+                    "test1",
+                    "alpha",
+                    "beta2",
+                    "gamma3"
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Mixed-case with separators",
+                "description": "A path segment with letters/digits and allowed separators: hyphen, underscore, and dot.",
+                "samples": [
+                    "My_File",
+                    "Project-123",
+                    "HTTP-Header",
+                    "Build_V2",
+                    "Release-Notes",
+                    "Config_File"
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Numeric ID as string",
+                "description": "A path segment consisting of digits only (1 to 18 digits).",
+                "samples": [
+                    "7",
+                    "88",
+                    "3000",
+                    "0042",
+                    "555555",
+                    "999999999999999999"
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Percent-encoded values",
+                "description": "A path segment that includes valid percent-encoded octets for reserved characters or UTF-8 bytes.",
+                "samples": [
+                    "space%20ok",
+                    "plus%2Bsign",
+                    "%7Bbrace%7D",
+                    "M%C3%BCnchen",
+                    "dots%2Ehere",
+                    "tilde%7Eok"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "x",
+                "category": "<MISS_KEY>",
+                "description": "Required path parameter x omitted from the URL, resulting in an incomplete path.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Contains slash or backslash",
+                "description": "Value contains path separators that would split the segment.",
+                "samples": [
+                    "one/two",
+                    "a\\b",
+                    "/root",
+                    "tail/",
+                    "path/with/slash",
+                    "seg\\ment"
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Invalid characters or bad percent-encoding",
+                "description": "Value contains spaces or reserved characters (#, ?, etc.) or malformed percent-encoding.",
+                "samples": [
+                    "bad char",
+                    "hash#tag",
+                    "what?",
+                    "%",
+                    "%G1",
+                    "%3"
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Empty or whitespace-only",
+                "description": "Empty or whitespace-only strings are invalid for a path segment.",
+                "samples": [
+                    "",
+                    "",
+                    "  ",
+                    "\t",
+                    "\n",
+                    " \t "
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/ordered4/{w}/{x}/{z}/{y}",
+        "type": "string",
+        "param_name": "y",
+        "format": [
+            "^[A-Za-z0-9._~-]{1,64}$",
+            "^(?:[A-Za-z0-9._~-]|%[0-9A-Fa-f]{2}){1,64}$",
+            "^[0-9]{1,18}$"
+        ],
+        "valid": [
+            {
+                "param_name": "y",
+                "category": "Lowercase alphanumeric segment",
+                "description": "A non-empty path segment containing only lowercase letters and digits.",
+                "samples": [
+                    "abc123",
+                    "node1",
+                    "queue5",
+                    "delta",
+                    "omega9",
+                    "index0"
+                ]
+            },
+            {
+                "param_name": "y",
+                "category": "Mixed-case with separators",
+                "description": "A path segment with letters/digits and allowed separators: hyphen, underscore, and dot.",
+                "samples": [
+                    "User-Group",
+                    "Env_VAR",
+                    "Path.Name",
+                    "Model-X",
+                    "Cache_V1",
+                    "Plugin-Alpha"
+                ]
+            },
+            {
+                "param_name": "y",
+                "category": "Numeric ID as string",
+                "description": "A path segment consisting of digits only (1 to 18 digits).",
+                "samples": [
+                    "10",
+                    "256",
+                    "4096",
+                    "0007",
+                    "12345",
+                    "86400000"
+                ]
+            },
+            {
+                "param_name": "y",
+                "category": "Percent-encoded values",
+                "description": "A path segment that includes valid percent-encoded octets for reserved characters or UTF-8 bytes.",
+                "samples": [
+                    "jack%26jill",
+                    "email%40host",
+                    "%2Astar",
+                    "Ni%C3%B1o",
+                    "para%25cent",
+                    "eq%3Dsign"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "y",
+                "category": "<MISS_KEY>",
+                "description": "Required path parameter y omitted from the URL, resulting in an incomplete path.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "y",
+                "category": "Contains slash or backslash",
+                "description": "Value contains path separators that would split the segment.",
+                "samples": [
+                    "part/ial",
+                    "\\start",
+                    "root/dir",
+                    "dir/",
+                    "a/b/c",
+                    "back\\slash"
+                ]
+            },
+            {
+                "param_name": "y",
+                "category": "Invalid characters or bad percent-encoding",
+                "description": "Value contains spaces or reserved characters (#, ?, etc.) or malformed percent-encoding.",
+                "samples": [
+                    "contains space",
+                    "pipe|name",
+                    "semi;colon",
+                    "quote\"here",
+                    "tab\there",
+                    "incomplete%"
+                ]
+            },
+            {
+                "param_name": "y",
+                "category": "Empty or whitespace-only",
+                "description": "Empty or whitespace-only strings are invalid for a path segment.",
+                "samples": [
+                    "",
+                    "",
+                    " ",
+                    "   ",
+                    "\r",
+                    "\n\t"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/ordered4/{w}/{x}/{z}/{y}",
+        "type": "string",
+        "param_name": "z",
+        "format": [
+            "^[A-Za-z0-9._~-]{1,64}$",
+            "^(?:[A-Za-z0-9._~-]|%[0-9A-Fa-f]{2}){1,64}$",
+            "^[0-9]{1,18}$"
+        ],
+        "valid": [
+            {
+                "param_name": "z",
+                "category": "Lowercase alphanumeric segment",
+                "description": "A non-empty path segment containing only lowercase letters and digits.",
+                "samples": [
+                    "z",
+                    "zz9",
+                    "item42",
+                    "prod7",
+                    "user0",
+                    "cache1"
+                ]
+            },
+            {
+                "param_name": "z",
+                "category": "Mixed-case with separators",
+                "description": "A path segment with letters/digits and allowed separators: hyphen, underscore, and dot.",
+                "samples": [
+                    "API-Key",
+                    "Client_ID",
+                    "ver.1.0",
+                    "Batch-Run",
+                    "Node_Name",
+                    "Data-Set"
+                ]
+            },
+            {
+                "param_name": "z",
+                "category": "Numeric ID as string",
+                "description": "A path segment consisting of digits only (1 to 18 digits).",
+                "samples": [
+                    "2",
+                    "99",
+                    "100000",
+                    "074",
+                    "321654987",
+                    "200000000000000000"
+                ]
+            },
+            {
+                "param_name": "z",
+                "category": "Percent-encoded values",
+                "description": "A path segment that includes valid percent-encoded octets for reserved characters or UTF-8 bytes.",
+                "samples": [
+                    "%21bang",
+                    "colon%3Aok",
+                    "paren%28%29",
+                    "a%20b",
+                    "%2E",
+                    "UTF8%C2%A9"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "z",
+                "category": "<MISS_KEY>",
+                "description": "Required path parameter z omitted from the URL, resulting in an incomplete path.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "z",
+                "category": "Contains slash or backslash",
+                "description": "Value contains path separators that would split the segment.",
+                "samples": [
+                    "split/seg",
+                    "end/",
+                    "/begin",
+                    "two/parts",
+                    "slash/inside",
+                    "b\\c"
+                ]
+            },
+            {
+                "param_name": "z",
+                "category": "Invalid characters or bad percent-encoding",
+                "description": "Value contains spaces or reserved characters (#, ?, etc.) or malformed percent-encoding.",
+                "samples": [
+                    "angle<bracket>",
+                    "comma,name",
+                    "amp&ersand",
+                    "back`tick",
+                    "nonasciiŁ",
+                    "bad%ZZ"
+                ]
+            },
+            {
+                "param_name": "z",
+                "category": "Empty or whitespace-only",
+                "description": "Empty or whitespace-only strings are invalid for a path segment.",
+                "samples": [
+                    "",
+                    "",
+                    " ",
+                    "\t",
+                    "\n",
+                    "\u0000"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/pat/{txt}",
+        "type": "string",
+        "param_name": "txt",
+        "format": [
+            "^[A-Za-z]+$",
+            "^[A-Za-z0-9_-]+$",
+            "^(?:%[0-9A-Fa-f]{2}|[A-Za-z0-9._~-])+$",
+            "^[^/]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "txt",
+                "category": "Letters only (simple token)",
+                "description": "A path-safe token made of letters only, commonly used for simple identifiers.",
+                "samples": [
+                    "abc",
+                    "hello",
+                    "regex",
+                    "sample",
+                    "text",
+                    "pattern"
+                ]
+            },
+            {
+                "param_name": "txt",
+                "category": "Alphanumeric with hyphen/underscore",
+                "description": "Common slug/identifier style strings that allow letters, digits, hyphens, and underscores without slashes.",
+                "samples": [
+                    "user_name",
+                    "file-01",
+                    "dev-test",
+                    "alpha_beta",
+                    "id-12345",
+                    "my-file_name"
+                ]
+            },
+            {
+                "param_name": "txt",
+                "category": "URL-encoded characters",
+                "description": "Values containing percent-encoded reserved characters so the segment remains slash-free (RFC3986).",
+                "samples": [
+                    "hello%20world",
+                    "a%2Fb",
+                    "C%23sharp",
+                    "100%25",
+                    "email%40example",
+                    "plus%2Bsign"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "txt",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter txt is omitted from the request URL, causing routing or validation failure.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "txt",
+                "category": "Empty or whitespace-only",
+                "description": "Empty or whitespace-only values are not valid path segments and typically fail routing or validation.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "txt",
+                "category": "Contains unencoded reserved characters or slashes",
+                "description": "Unencoded '/' or other reserved delimiters break the single-segment path parameter.",
+                "samples": [
+                    "a/b",
+                    "foo/bar",
+                    "../etc",
+                    "/root",
+                    "trailing/",
+                    "a?b"
+                ]
+            },
+            {
+                "param_name": "txt",
+                "category": "Non-string types",
+                "description": "Values that are not strings cannot be bound to a path segment without conversion.",
+                "samples": [
+                    42,
+                    0,
+                    true,
+                    false,
+                    3.14,
+                    {}
+                ]
+            },
+            {
+                "param_name": "txt",
+                "category": "Malformed percent-encoding",
+                "description": "Invalid percent-encoding sequences that violate URL encoding rules.",
+                "samples": [
+                    "%",
+                    "abc%",
+                    "%2",
+                    "%ZZ",
+                    "name%4G",
+                    "end%"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/pat/{txt}/{pat}",
+        "type": "string",
+        "param_name": "pat",
+        "format": [
+            "^[^/\\\\]{1,100}$",
+            "UTF-8 string; percent-encoding allowed"
+        ],
+        "valid": [
+            {
+                "param_name": "pat",
+                "category": "Alphanumeric literal pattern",
+                "description": "Plain alphanumeric pattern without spaces or slashes, safe for a single path segment.",
+                "samples": [
+                    "abc",
+                    "test123",
+                    "PATTERN",
+                    "abcXYZ",
+                    "p2024",
+                    "k9m3"
+                ]
+            },
+            {
+                "param_name": "pat",
+                "category": "URL-encoded special characters",
+                "description": "Pattern containing special characters represented via percent-encoding to remain a valid path segment.",
+                "samples": [
+                    "hello%20world",
+                    "a%2Bb",
+                    "%5Estart",
+                    "end%24",
+                    "%5Babc%5D",
+                    "%28test%29"
+                ]
+            },
+            {
+                "param_name": "pat",
+                "category": "Unicode literal pattern",
+                "description": "UTF-8 characters that form a single, slash-free segment.",
+                "samples": [
+                    "模式",
+                    "тест",
+                    "テスト",
+                    "اختبار",
+                    "prueba",
+                    "δοκιμή"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "pat",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'pat' is omitted from the request path.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "pat",
+                "category": "Contains slash or backslash",
+                "description": "Values that include path delimiters would split the segment.",
+                "samples": [
+                    "ab/c",
+                    "/start",
+                    "end/",
+                    "a\\b",
+                    "one\\two",
+                    "dir/name"
+                ]
+            },
+            {
+                "param_name": "pat",
+                "category": "Empty or whitespace-only",
+                "description": "Empty or only-whitespace values are not valid path segments.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "pat",
+                "category": "Unencoded reserved characters",
+                "description": "Reserved characters that should be percent-encoded or break URL structure.",
+                "samples": [
+                    "a b",
+                    "name#tag",
+                    "query?x",
+                    "%",
+                    "abc%zz",
+                    "100%"
+                ]
+            },
+            {
+                "param_name": "pat",
+                "category": "Type mismatch (non-string)",
+                "description": "Non-string types are invalid for a path parameter.",
+                "samples": [
+                    123,
+                    0,
+                    true,
+                    false,
+                    null,
+                    45.67
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/pat/{txt}/{pat}",
+        "type": "string",
+        "param_name": "txt",
+        "format": [
+            "^[^/\\\\]{1,100}$",
+            "UTF-8 string; percent-encoding allowed"
+        ],
+        "valid": [
+            {
+                "param_name": "txt",
+                "category": "ASCII text (segment-safe)",
+                "description": "Alphanumeric with underscores, hyphens, or dots, without spaces or slashes.",
+                "samples": [
+                    "lorem",
+                    "text123",
+                    "FILE_name",
+                    "user-data",
+                    "version.1",
+                    "notes"
+                ]
+            },
+            {
+                "param_name": "txt",
+                "category": "URL-encoded text",
+                "description": "Includes spaces and punctuation encoded to remain a single path segment.",
+                "samples": [
+                    "hello%20world",
+                    "a%2Bb",
+                    "C%23",
+                    "A%26B",
+                    "%40home",
+                    "100%25"
+                ]
+            },
+            {
+                "param_name": "txt",
+                "category": "Unicode text",
+                "description": "UTF-8 words without slashes.",
+                "samples": [
+                    "こんにちは",
+                    "mañana",
+                    "über",
+                    "день",
+                    "مساء",
+                    "résumé"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "txt",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'txt' is omitted from the request path.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "txt",
+                "category": "Contains slash or backslash",
+                "description": "Values that include path delimiters would split the segment.",
+                "samples": [
+                    "a/b",
+                    "/root",
+                    "end/",
+                    "a\\b",
+                    "one\\two",
+                    "2024/05"
+                ]
+            },
+            {
+                "param_name": "txt",
+                "category": "Empty or whitespace-only",
+                "description": "Empty or only-whitespace values are not valid path segments.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "txt",
+                "category": "Unencoded reserved characters",
+                "description": "Reserved characters that should be percent-encoded or break URL structure.",
+                "samples": [
+                    "hello world",
+                    "tag#1",
+                    "q?x=1",
+                    "%",
+                    "abc%zz",
+                    "50%"
+                ]
+            },
+            {
+                "param_name": "txt",
+                "category": "Type mismatch (non-string)",
+                "description": "Non-string types are invalid for a path parameter.",
+                "samples": [
+                    789,
+                    0,
+                    true,
+                    false,
+                    null,
+                    3.14
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/text2txt/{word1}/{word2}/{word3}",
+        "type": "string",
+        "param_name": "word1",
+        "format": [
+            "^[A-Za-z0-9._-]{1,64}$"
+        ],
+        "valid": [
+            {
+                "param_name": "word1",
+                "category": "Lowercase alphabetic word",
+                "description": "Non-empty lowercase letters only without slashes, suitable for a simple path word segment.",
+                "samples": [
+                    "abc",
+                    "hello",
+                    "world",
+                    "text",
+                    "sample",
+                    "delta"
+                ]
+            },
+            {
+                "param_name": "word1",
+                "category": "Alphanumeric word",
+                "description": "Letters and digits without reserved URL delimiters, forming a compact token.",
+                "samples": [
+                    "a1",
+                    "b2c3",
+                    "id42",
+                    "user7",
+                    "x9y8",
+                    "n12345"
+                ]
+            },
+            {
+                "param_name": "word1",
+                "category": "Word with underscores, hyphens, or dots",
+                "description": "Common path-safe punctuation mixed with letters/digits and no slashes.",
+                "samples": [
+                    "foo_bar",
+                    "alpha-beta",
+                    "v1.2",
+                    "data_set-01",
+                    "config.file",
+                    "A_B-1"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "word1",
+                "category": "<MISS_KEY>",
+                "description": "Required path parameter is omitted from the URL, resulting in a route mismatch or 404.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "word1",
+                "category": "Contains slash or path traversal",
+                "description": "Values that include '/' or traversal tokens break the single-segment path parameter.",
+                "samples": [
+                    "a/b",
+                    "foo/bar",
+                    "../etc",
+                    "./config",
+                    "path//double",
+                    "slash/"
+                ]
+            },
+            {
+                "param_name": "word1",
+                "category": "Empty or whitespace-only",
+                "description": "Empty or only whitespace strings are invalid path segments.",
+                "samples": [
+                    "",
+                    " ",
+                    "  ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "word1",
+                "category": "Type mismatch (non-string)",
+                "description": "Values that are not strings for a path parameter.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    null,
+                    [],
+                    {
+                        "x": "y"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/text2txt/{word1}/{word2}/{word3}",
+        "type": "string",
+        "param_name": "word2",
+        "format": [
+            "^[A-Za-z0-9._-]{1,64}$"
+        ],
+        "valid": [
+            {
+                "param_name": "word2",
+                "category": "Lowercase alphabetic word",
+                "description": "Non-empty lowercase letters only without slashes, suitable for a simple path word segment.",
+                "samples": [
+                    "beta",
+                    "gamma",
+                    "omega",
+                    "kappa",
+                    "theta",
+                    "lambda"
+                ]
+            },
+            {
+                "param_name": "word2",
+                "category": "Alphanumeric word",
+                "description": "Letters and digits without reserved URL delimiters, forming a compact token.",
+                "samples": [
+                    "t9",
+                    "code2024",
+                    "val123",
+                    "x1y2z3",
+                    "num007",
+                    "r2d2"
+                ]
+            },
+            {
+                "param_name": "word2",
+                "category": "Word with underscores, hyphens, or dots",
+                "description": "Common path-safe punctuation mixed with letters/digits and no slashes.",
+                "samples": [
+                    "test_case",
+                    "pre-release",
+                    "build.12",
+                    "item_01-OK",
+                    "config.yaml",
+                    "UPPER_lower-2"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "word2",
+                "category": "<MISS_KEY>",
+                "description": "Required path parameter is omitted from the URL, resulting in a route mismatch or 404.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "word2",
+                "category": "Contains slash or path traversal",
+                "description": "Values that include '/' or traversal tokens break the single-segment path parameter.",
+                "samples": [
+                    "dir/file",
+                    "foo/..",
+                    "../up",
+                    "./here",
+                    "a//b",
+                    "/leading"
+                ]
+            },
+            {
+                "param_name": "word2",
+                "category": "Empty or whitespace-only",
+                "description": "Empty or only whitespace strings are invalid path segments.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "word2",
+                "category": "Type mismatch (non-string)",
+                "description": "Values that are not strings for a path parameter.",
+                "samples": [
+                    0,
+                    999,
+                    false,
+                    true,
+                    [],
+                    {
+                        "k": "v"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/text2txt/{word1}/{word2}/{word3}",
+        "type": "string",
+        "param_name": "word3",
+        "format": [
+            "^[A-Za-z0-9._-]{1,64}$"
+        ],
+        "valid": [
+            {
+                "param_name": "word3",
+                "category": "Lowercase alphabetic word",
+                "description": "Non-empty lowercase letters only without slashes, suitable for a simple path word segment.",
+                "samples": [
+                    "zeta",
+                    "alpha",
+                    "sigma",
+                    "tau",
+                    "rho",
+                    "eta"
+                ]
+            },
+            {
+                "param_name": "word3",
+                "category": "Alphanumeric word",
+                "description": "Letters and digits without reserved URL delimiters, forming a compact token.",
+                "samples": [
+                    "n1",
+                    "m2n3",
+                    "key99",
+                    "ver3",
+                    "data8",
+                    "token77"
+                ]
+            },
+            {
+                "param_name": "word3",
+                "category": "Word with underscores, hyphens, or dots",
+                "description": "Common path-safe punctuation mixed with letters/digits and no slashes.",
+                "samples": [
+                    "end_point",
+                    "final-stage",
+                    "v2.0",
+                    "result_ok-3",
+                    "file.name",
+                    "Prod_DEV-5"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "word3",
+                "category": "<MISS_KEY>",
+                "description": "Required path parameter is omitted from the URL, resulting in a route mismatch or 404.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "word3",
+                "category": "Contains slash or path traversal",
+                "description": "Values that include '/' or traversal tokens break the single-segment path parameter.",
+                "samples": [
+                    "a/b/c",
+                    "../secrets",
+                    "./.",
+                    "folder/",
+                    "/root",
+                    "one//two"
+                ]
+            },
+            {
+                "param_name": "word3",
+                "category": "Empty or whitespace-only",
+                "description": "Empty or only whitespace strings are invalid path segments.",
+                "samples": [
+                    "",
+                    " ",
+                    "  ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "word3",
+                "category": "Type mismatch (non-string)",
+                "description": "Values that are not strings for a path parameter.",
+                "samples": [
+                    42,
+                    -1,
+                    true,
+                    false,
+                    [],
+                    {
+                        "p": 3
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/title/{sex}/{title}",
+        "type": "string",
+        "param_name": "sex",
+        "format": [
+            "^[A-Za-z]{1,20}$"
+        ],
+        "valid": [
+            {
+                "param_name": "sex",
+                "category": "Common full words (lowercase letters only)",
+                "description": "Recognizable sex values composed only of letters, 1-20 chars, lowercase.",
+                "samples": [
+                    "male",
+                    "female",
+                    "other",
+                    "unknown",
+                    "nonbinary",
+                    "intersex"
+                ]
+            },
+            {
+                "param_name": "sex",
+                "category": "Common full words (Title Case letters only)",
+                "description": "Recognizable sex values with initial capital letter, 1-20 chars, letters only.",
+                "samples": [
+                    "Male",
+                    "Female",
+                    "Other",
+                    "Unknown",
+                    "Nonbinary",
+                    "Intersex"
+                ]
+            },
+            {
+                "param_name": "sex",
+                "category": "Short codes (letters only)",
+                "description": "Abbreviations consisting of letters only, 1-20 chars.",
+                "samples": [
+                    "M",
+                    "F",
+                    "O",
+                    "U",
+                    "X",
+                    "NB"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "sex",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'sex' is omitted from the request URL segment.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "sex",
+                "category": "Empty or whitespace-only",
+                "description": "Missing effective value due to empty or whitespace-only path segment.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    " \t "
+                ]
+            },
+            {
+                "param_name": "sex",
+                "category": "Contains non-letter characters",
+                "description": "Values include digits, symbols, or separators, violating letters-only rule.",
+                "samples": [
+                    "male1",
+                    "fem@le",
+                    "non-binary",
+                    "M/F",
+                    "F.",
+                    "x_x"
+                ]
+            },
+            {
+                "param_name": "sex",
+                "category": "Exceeds maximum length (over 20 letters)",
+                "description": "Alphabetic strings longer than 20 characters are not allowed.",
+                "samples": [
+                    "thisisaveryverylongword",
+                    "extremelylengthyvaluexx",
+                    "nonbinarydesignationxx",
+                    "uncharacteristicallylong",
+                    "disproportionatelylarge",
+                    "incomprehensibilities"
+                ]
+            },
+            {
+                "param_name": "sex",
+                "category": "Type mismatch (non-string)",
+                "description": "Provided value is not a string.",
+                "samples": [
+                    123,
+                    0,
+                    45.6,
+                    true,
+                    false,
+                    []
+                ]
+            },
+            {
+                "param_name": "sex",
+                "category": "Reserved/path characters in segment",
+                "description": "Segment includes characters that break path semantics or require encoding.",
+                "samples": [
+                    "../",
+                    "male/",
+                    "male?query",
+                    "male#frag",
+                    "male%2Ffemale",
+                    "male%00"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/title/{sex}/{title}",
+        "type": "string",
+        "param_name": "title",
+        "format": [
+            "^(Mr|Mrs|Ms|Miss|Mx|Dr|Prof|Sir|Madam|Dame)\\.?$"
+        ],
+        "valid": [
+            {
+                "param_name": "title",
+                "category": "Standard titles (no period)",
+                "description": "Accepted honorifics without trailing period, exact case.",
+                "samples": [
+                    "Mr",
+                    "Mrs",
+                    "Ms",
+                    "Miss",
+                    "Dr",
+                    "Prof"
+                ]
+            },
+            {
+                "param_name": "title",
+                "category": "Standard titles (with period)",
+                "description": "Accepted honorifics with optional trailing period, exact case.",
+                "samples": [
+                    "Mr.",
+                    "Mrs.",
+                    "Ms.",
+                    "Dr.",
+                    "Prof.",
+                    "Mx."
+                ]
+            },
+            {
+                "param_name": "title",
+                "category": "Honorifics and gender-neutral titles",
+                "description": "Additional accepted titles in the allowed set, no period.",
+                "samples": [
+                    "Sir",
+                    "Madam",
+                    "Dame",
+                    "Mx",
+                    "Miss",
+                    "Prof"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "title",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'title' is omitted from the request URL segment.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "title",
+                "category": "Empty or whitespace-only",
+                "description": "Missing effective value due to empty or whitespace-only path segment.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    " \t "
+                ]
+            },
+            {
+                "param_name": "title",
+                "category": "Wrong case or casing variations",
+                "description": "Titles provided in lowercase or incorrect casing not matching the allowed set.",
+                "samples": [
+                    "mr",
+                    "mrs",
+                    "ms",
+                    "dr",
+                    "prof",
+                    "sir"
+                ]
+            },
+            {
+                "param_name": "title",
+                "category": "Not in allowed title set",
+                "description": "Titles outside the recognized set.",
+                "samples": [
+                    "Lord",
+                    "Lady",
+                    "Captain",
+                    "Engineer",
+                    "Rev",
+                    "Madame"
+                ]
+            },
+            {
+                "param_name": "title",
+                "category": "Contains extra characters or symbols",
+                "description": "Includes digits, hyphens, slashes, or punctuation beyond optional trailing period.",
+                "samples": [
+                    "Dr-Phil",
+                    "Mr2",
+                    "Ms!",
+                    "Prof#",
+                    "Mr/Mrs",
+                    "Dr@"
+                ]
+            },
+            {
+                "param_name": "title",
+                "category": "Type mismatch (non-string)",
+                "description": "Provided value is not a string.",
+                "samples": [
+                    123,
+                    3.14,
+                    true,
+                    false,
+                    [],
+                    {}
+                ]
+            }
+        ]
+    }
+]

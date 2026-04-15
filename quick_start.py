@@ -3,17 +3,17 @@ import os
 import datetime
 
 services = [
-    #  "scs",
+    # "scs",
     # "restcountries",
-    # "languagetool",
+    #  "languagetool",
     # "ncs",
     # "news",
     # "petstore",
     # "youtube",
     # "person",
-    # "user"
-    # "genome"
-    "project"
+     # "user"
+     # "genome"
+    # "project"
 ]
 
 time_limit = 3600

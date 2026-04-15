@@ -1,0 +1,1872 @@
+[
+    {
+        "op_name": "get /news",
+        "type": "string",
+        "param_name": "authorId",
+        "format": [
+            "^[0-9]+$",
+            "^[A-Za-z0-9_-]{3,32}$",
+            "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+        ],
+        "valid": [
+            {
+                "param_name": "authorId",
+                "category": "Numeric ID string",
+                "description": "A string of digits representing an author ID.",
+                "samples": [
+                    "1",
+                    "42",
+                    "100",
+                    "999999",
+                    "000123",
+                    "8080"
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "UUID string",
+                "description": "A UUID-formatted string used as an author identifier.",
+                "samples": [
+                    "123e4567-e89b-12d3-a456-426614174000",
+                    "550e8400-e29b-41d4-a716-446655440000",
+                    "9f1c2d3e-4b5a-6c7d-8e9f-0a1b2c3d4e5f",
+                    "00000000-0000-0000-0000-000000000001",
+                    "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+                    "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "Slug/username ID",
+                "description": "An alphanumeric slug or username with optional underscores or dashes.",
+                "samples": [
+                    "alice",
+                    "bob_smith",
+                    "john-doe-2",
+                    "writer123",
+                    "news_bot",
+                    "Author-XYZ"
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "<MISS_KEY>",
+                "description": "The authorId filter is omitted; API returns news unfiltered by author.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "authorId",
+                "category": "Empty or whitespace",
+                "description": "Empty or whitespace-only values are not allowed for a provided query parameter.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "Type mismatch (non-string)",
+                "description": "Values that are not strings when the parameter is supplied.",
+                "samples": [
+                    123,
+                    0,
+                    true,
+                    false,
+                    null,
+                    []
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "Disallowed characters",
+                "description": "Strings containing spaces or special characters not permitted by typical ID formats.",
+                "samples": [
+                    "john doe",
+                    "id#123",
+                    "@author",
+                    "user/name",
+                    "id:456",
+                    "user🙂"
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "Excessive length",
+                "description": "Unusually long identifiers exceeding typical ID length constraints.",
+                "samples": [
+                    "this_id_is_way_too_long_for_an_author_identifier_12345",
+                    "author_identifier_exceeding_max_length_limit_abcdefghijklmnopqrstuvwxyz",
+                    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa_id",
+                    "verylongauthoridname_that_should_fail_because_it_is_unrealistically_long",
+                    "user_with_name_length_far_beyond_supported_range_1234567890",
+                    "supercalifragilisticexpialidocious_author_identifier_overlimit"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /news",
+        "type": "string",
+        "param_name": "country",
+        "format": [
+            "^[A-Za-z][A-Za-z .'-]{1,48}$",
+            "^[A-Z]{2}$",
+            "^[A-Z]{3}$"
+        ],
+        "valid": [
+            {
+                "param_name": "country",
+                "category": "Full country name",
+                "description": "A standard country name in English.",
+                "samples": [
+                    "Norway",
+                    "United States",
+                    "United Kingdom",
+                    "Germany",
+                    "Brazil",
+                    "South Africa"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "ISO 3166-1 alpha-2 code",
+                "description": "Two-letter uppercase country code.",
+                "samples": [
+                    "NO",
+                    "US",
+                    "GB",
+                    "DE",
+                    "BR",
+                    "ZA"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "ISO 3166-1 alpha-3 code",
+                "description": "Three-letter uppercase country code.",
+                "samples": [
+                    "NOR",
+                    "USA",
+                    "GBR",
+                    "DEU",
+                    "BRA",
+                    "ZAF"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "Common abbreviations or alt names",
+                "description": "Commonly used abbreviations or country name variants.",
+                "samples": [
+                    "UK",
+                    "U.S.",
+                    "South Korea",
+                    "Czech Republic",
+                    "Ivory Coast",
+                    "UAE"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "<MISS_KEY>",
+                "description": "The country filter is omitted; API returns news unfiltered by country.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "country",
+                "category": "Empty or whitespace",
+                "description": "Empty or whitespace-only values are not allowed for a provided query parameter.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "Type mismatch (non-string)",
+                "description": "Values that are not strings when the parameter is supplied.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    [],
+                    {},
+                    45.6
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "Contains digits or symbols",
+                "description": "Country names or codes with digits or special symbols not typically accepted.",
+                "samples": [
+                    "USA1",
+                    "United$States",
+                    "CN!",
+                    "Germany#1",
+                    "UK@",
+                    "Fr@nce"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "Unsupported or wrong case code",
+                "description": "Codes with incorrect length or case that do not match ISO standards.",
+                "samples": [
+                    "us",
+                    "de",
+                    "br",
+                    "u",
+                    "zzzz",
+                    "zzz"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "Excessive length name",
+                "description": "Unusually long country-like strings beyond typical length constraints.",
+                "samples": [
+                    "The United States of America and Its Outlying Territories",
+                    "The Sovereign Military Order of Malta and Other Lands",
+                    "A Country Name That Is Far Too Long To Be Considered Valid",
+                    "Republic of the People Who Love Extremely Lengthy Titles",
+                    "Federation of States With Unnecessarily Prolonged Nomenclature",
+                    "Commonwealth of Nations With Excessively Extended Identifier"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "post /news",
+        "type": "string",
+        "param_name": "authorId",
+        "format": [
+            "^[0-9]+$",
+            "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$",
+            "^[A-Za-z0-9_-]{1,64}$"
+        ],
+        "valid": [
+            {
+                "param_name": "authorId",
+                "category": "Numeric ID string",
+                "description": "Author identifier represented as digits only.",
+                "samples": [
+                    "1",
+                    "42",
+                    "12345",
+                    "987654321",
+                    "100200300",
+                    "9999999999"
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "UUID string",
+                "description": "Author identifier represented as a UUID.",
+                "samples": [
+                    "550e8400-e29b-41d4-a716-446655440000",
+                    "123e4567-e89b-12d3-a456-426614174000",
+                    "9f8c1d2e-3b4a-4c5d-8e6f-7a8b9c0d1e2f",
+                    "e7d1c2b3-a4f5-4e6d-b7c8-9d0e1f2a3b4c",
+                    "0f1e2d3c-4b5a-6c7d-8e9f-0a1b2c3d4e5f",
+                    "aabbccdd-eeff-4a00-8800-112233445566"
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "Alphanumeric slug",
+                "description": "Alphanumeric id with underscores or hyphens, up to 64 chars.",
+                "samples": [
+                    "auth_001",
+                    "AUTH-2024-XYZ",
+                    "userA12",
+                    "author_joe",
+                    "writer99",
+                    "auth-abc_123"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "authorId",
+                "category": "Empty or whitespace",
+                "description": "Empty string or only whitespace is not a valid id.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    " \n"
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "Contains spaces or special characters",
+                "description": "Ids containing spaces or special characters are rejected.",
+                "samples": [
+                    "id with space",
+                    "id$",
+                    "id#123",
+                    "auth@123",
+                    "id/\\",
+                    "id,.:"
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "Wrong type",
+                "description": "Non-string types for authorId.",
+                "samples": [
+                    123,
+                    0,
+                    true,
+                    false,
+                    null,
+                    45.67
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "Non-existent author",
+                "description": "Ids that are well-formed but do not correspond to an existing author.",
+                "samples": [
+                    "00000000",
+                    "99999999",
+                    "no_such_author",
+                    "deadbeef-dead-beef-dead-beefdeadbeef",
+                    "notfound123",
+                    "000"
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "<MISS_KEY>",
+                "description": "authorId omitted from request body; server may reject for missing author context.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "post /news",
+        "type": "string",
+        "param_name": "country",
+        "format": [
+            "^[A-Z]{2}$",
+            "^[A-Z]{3}$",
+            "^[A-Za-z][A-Za-z\\s\\-]{1,98}$"
+        ],
+        "valid": [
+            {
+                "param_name": "country",
+                "category": "ISO 3166-1 alpha-2 code",
+                "description": "Two-letter uppercase country code.",
+                "samples": [
+                    "US",
+                    "NO",
+                    "GB",
+                    "FR",
+                    "DE",
+                    "IN"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "ISO 3166-1 alpha-3 code",
+                "description": "Three-letter uppercase country code.",
+                "samples": [
+                    "USA",
+                    "NOR",
+                    "GBR",
+                    "FRA",
+                    "DEU",
+                    "IND"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "Full country name",
+                "description": "Standard country names.",
+                "samples": [
+                    "United States",
+                    "Norway",
+                    "United Kingdom",
+                    "France",
+                    "Germany",
+                    "India"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "country",
+                "category": "Lowercase or incorrect case",
+                "description": "Country codes must be uppercase if using code format.",
+                "samples": [
+                    "us",
+                    "no",
+                    "gb",
+                    "fr",
+                    "de",
+                    "in"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "Contains digits or special characters",
+                "description": "Country values with digits or symbols are invalid.",
+                "samples": [
+                    "U2",
+                    "N0",
+                    "GB1",
+                    "F@",
+                    "DE-1",
+                    "123"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "Empty or whitespace",
+                "description": "Empty or whitespace-only strings are invalid.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "US "
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "Wrong type",
+                "description": "Non-string types for country.",
+                "samples": [
+                    123,
+                    true,
+                    null,
+                    [
+                        "US"
+                    ],
+                    {},
+                    45.6
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "<MISS_KEY>",
+                "description": "country omitted from request body; server may default or infer context.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "post /news",
+        "type": "string",
+        "param_name": "creationTime",
+        "format": [
+            "RFC3339 date-time",
+            "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:Z|[+\\-]\\d{2}:\\d{2})$"
+        ],
+        "valid": [
+            {
+                "param_name": "creationTime",
+                "category": "<MISS_KEY>",
+                "description": "creationTime omitted; server will set the creation timestamp.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "creationTime",
+                "category": "<MISS_KEY> (vendor media type)",
+                "description": "Omitted when using application/vnd.tsdes.news+json;charset=UTF-8;version=2.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "creationTime",
+                "category": "<MISS_KEY> (minimal payload)",
+                "description": "Omitted in minimal body containing only authorId, country, and text.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "creationTime",
+                "category": "Provided even if correctly formatted",
+                "description": "Any client-provided creationTime will be rejected as it should be server-assigned.",
+                "samples": [
+                    "2024-01-02T15:04:05Z",
+                    "2023-12-31T23:59:59+02:00",
+                    "2025-07-20T08:30:00-05:00",
+                    "2020-02-29T12:00:00Z",
+                    "2019-06-15T00:00:00+00:00",
+                    "2026-04-01T10:10:10Z"
+                ]
+            },
+            {
+                "param_name": "creationTime",
+                "category": "Invalid date-time format",
+                "description": "Values not matching RFC3339 date-time.",
+                "samples": [
+                    "20240102",
+                    "02/01/2024 15:04",
+                    "2024-13-01T00:00:00Z",
+                    "2024-00-10T10:00:00Z",
+                    "2024-01-01 10:00:00",
+                    "Mon, 02 Jan 2006 15:04:05 GMT"
+                ]
+            },
+            {
+                "param_name": "creationTime",
+                "category": "Wrong type",
+                "description": "Non-string types for creationTime.",
+                "samples": [
+                    1704196800,
+                    true,
+                    null,
+                    {},
+                    [],
+                    45.67
+                ]
+            },
+            {
+                "param_name": "creationTime",
+                "category": "Empty or whitespace",
+                "description": "Empty or whitespace-only creationTime values.",
+                "samples": [
+                    "",
+                    " ",
+                    "\t",
+                    "\n",
+                    "T",
+                    "Z"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "post /news",
+        "type": "string",
+        "param_name": "newsId",
+        "format": [],
+        "valid": [
+            {
+                "param_name": "newsId",
+                "category": "<MISS_KEY>",
+                "description": "newsId omitted; server generates the id on creation.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "newsId",
+                "category": "<MISS_KEY> (vendor media type)",
+                "description": "Omitted when using application/vnd.tsdes.news+json;charset=UTF-8;version=2.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "newsId",
+                "category": "<MISS_KEY> (minimal payload)",
+                "description": "Omitted in minimal body containing only authorId, country, and text.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "newsId",
+                "category": "Provided numeric id",
+                "description": "Client-specified numeric ids are not allowed on create.",
+                "samples": [
+                    "1",
+                    "42",
+                    "1001",
+                    "999",
+                    "0001",
+                    "1234567890"
+                ]
+            },
+            {
+                "param_name": "newsId",
+                "category": "Provided UUID id",
+                "description": "Client-specified UUID ids are not allowed on create.",
+                "samples": [
+                    "550e8400-e29b-41d4-a716-446655440000",
+                    "123e4567-e89b-12d3-a456-426614174000",
+                    "9f8c1d2e-3b4a-4c5d-8e6f-7a8b9c0d1e2f",
+                    "e7d1c2b3-a4f5-4e6d-b7c8-9d0e1f2a3b4c",
+                    "0f1e2d3c-4b5a-6c7d-8e9f-0a1b2c3d4e5f",
+                    "aabbccdd-eeff-4a00-8800-112233445566"
+                ]
+            },
+            {
+                "param_name": "newsId",
+                "category": "Wrong type",
+                "description": "Non-string types for newsId.",
+                "samples": [
+                    1,
+                    true,
+                    null,
+                    {},
+                    [],
+                    45.6
+                ]
+            },
+            {
+                "param_name": "newsId",
+                "category": "Contains spaces or special characters",
+                "description": "Client-specified ids with spaces or special chars are rejected.",
+                "samples": [
+                    "news id",
+                    "id$%",
+                    "news/1",
+                    "id#001",
+                    "id\n1",
+                    "id\t"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "post /news",
+        "type": "string",
+        "param_name": "text",
+        "format": [
+            "^[\\s\\S]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "text",
+                "category": "Short headline",
+                "description": "Concise news headline or brief text.",
+                "samples": [
+                    "Breaking news update",
+                    "Local sports team wins",
+                    "Weather alert issued",
+                    "Market hits new high",
+                    "New museum opens downtown",
+                    "Festival dates announced"
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "Paragraph (single sentence)",
+                "description": "A sentence-length news text under 100 characters.",
+                "samples": [
+                    "The city council approved a new park project near the river on Tuesday evening.",
+                    "Scientists report a promising vaccine milestone after successful phase II trials.",
+                    "Firefighters contained a warehouse blaze, preventing damage to nearby homes.",
+                    "Local schools will shift to staggered schedules to reduce morning traffic jams.",
+                    "A major airline announced new routes, connecting smaller towns to big hubs.",
+                    "Farmers welcomed steady rain after months of drought across the central region."
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "Multilingual or emoji",
+                "description": "News text containing Unicode characters and emojis.",
+                "samples": [
+                    "Noticias de última hora",
+                    "最新のニュース速報",
+                    "Dernières nouvelles",
+                    "Últimas notícias 🇧🇷",
+                    "خبر عاجل",
+                    "Nachrichten-Update"
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "With newlines",
+                "description": "Text containing newlines and punctuation.",
+                "samples": [
+                    "Breaking:\nMayor resigns",
+                    "Update:\nRoad closed on I-5",
+                    "Weather:\nHeavy rain expected",
+                    "Sports:\nHome team wins 2-1",
+                    "Finance:\nStocks rally today",
+                    "Tech:\nNew phone released"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "text",
+                "category": "Empty or whitespace-only",
+                "description": "Text must not be empty or only whitespace.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    " \t \n"
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "Wrong type",
+                "description": "Non-string types for text.",
+                "samples": [
+                    0,
+                    123,
+                    true,
+                    null,
+                    {},
+                    []
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "Disallowed markup or injection patterns",
+                "description": "Inputs containing potentially malicious markup may be rejected.",
+                "samples": [
+                    "<script>alert('x')</script>",
+                    "<img src=x onerror=alert(1)>",
+                    "<svg onload=alert(1)>",
+                    "<?xml version=\"1.0\"?><a>&x;</a>",
+                    "DROP TABLE news;",
+                    "${jndi:ldap://example.com/a}"
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "<MISS_KEY>",
+                "description": "text omitted from request body; server may reject creation due to missing content.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /news/{id}",
+        "type": "string",
+        "param_name": "id",
+        "format": [
+            "^[0-9]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "id",
+                "category": "Positive integer ID (no leading zeros)",
+                "description": "A numeric string of digits representing a positive news ID with no leading zeros.",
+                "samples": [
+                    "1",
+                    "2",
+                    "9",
+                    "10",
+                    "42",
+                    "999"
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Positive integer ID with leading zeros",
+                "description": "A numeric string that contains only digits and may start with one or more zeros.",
+                "samples": [
+                    "001",
+                    "00042",
+                    "0000005",
+                    "010",
+                    "000123",
+                    "0000000009"
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Large positive numeric ID within typical 64-bit range",
+                "description": "A larger numeric ID composed of digits only, still within common 64-bit signed integer limits.",
+                "samples": [
+                    "2147483647",
+                    "2147483646",
+                    "4294967295",
+                    "9999999999",
+                    "1234567890123",
+                    "9223372036854775806"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "id",
+                "category": "Non-numeric or mixed-character strings",
+                "description": "Values that contain letters or other non-digit characters and cannot be parsed as a numeric ID.",
+                "samples": [
+                    "abc",
+                    "12a",
+                    "id-123",
+                    "123abc456",
+                    "0012x",
+                    "A_123"
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Negative, signed, or non-integer numeric formats",
+                "description": "Values that include a sign, decimal point, exponent, or grouping separators, violating integer-only numeric ID expectations.",
+                "samples": [
+                    "-1",
+                    "-0003",
+                    "+5",
+                    "3.14",
+                    "1,234",
+                    "2e10"
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Empty or whitespace-only",
+                "description": "Empty or whitespace-only strings are not valid path IDs.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Type mismatch (non-string types)",
+                "description": "Values that are not strings in the request model.",
+                "samples": [
+                    123,
+                    0,
+                    -99,
+                    12.3,
+                    true,
+                    null
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Overflow-length numeric strings",
+                "description": "Extremely long sequences of digits likely to overflow or exceed backend limits for IDs.",
+                "samples": [
+                    "1234567890123456789012345678901234567890",
+                    "9999999999999999999999999999999999999999999",
+                    "1844674407370955161600000000000000000000000000",
+                    "10000000000000000000000000000000000000000000000000",
+                    "31415926535897932384626433832795028841971693993751",
+                    "999999999999999999999999999999999999999999999999999999"
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter id is missing from the request path.",
+                "samples": [
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "put /news/{id}",
+        "type": "string",
+        "param_name": "id",
+        "format": [
+            "^[0-9]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "id",
+                "category": "Positive integer id (no leading zeros)",
+                "description": "Path id as a numeric string representing a positive integer without leading zeros.",
+                "samples": [
+                    "1",
+                    "7",
+                    "42",
+                    "99",
+                    "1234",
+                    "98765"
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Numeric string with leading zeros",
+                "description": "Path id provided as a numeric string that includes leading zeros.",
+                "samples": [
+                    "01",
+                    "0005",
+                    "000123",
+                    "020",
+                    "0000001",
+                    "00100"
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Large numeric id values",
+                "description": "Path id as a large numeric string often used as database identifiers.",
+                "samples": [
+                    "2147483647",
+                    "4294967295",
+                    "9223372036854775807",
+                    "9007199254740991",
+                    "18446744073709551615",
+                    "281474976710655"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "id",
+                "category": "Non-numeric strings",
+                "description": "Values that contain non-digit characters, violating the numeric id rule.",
+                "samples": [
+                    "abc",
+                    "id123",
+                    "12a34",
+                    "#45",
+                    "three",
+                    "3 4"
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Negative or non-integer numeric formats",
+                "description": "Values that represent negative numbers, decimals, hex, or scientific notation.",
+                "samples": [
+                    "-1",
+                    "+5",
+                    "3.14",
+                    "0xFF",
+                    "1e10",
+                    "-0002"
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Empty, whitespace, or wrong type",
+                "description": "Values that are empty, whitespace, or not strings.",
+                "samples": [
+                    "",
+                    " ",
+                    "\t",
+                    null,
+                    123,
+                    true
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter id is missing from the URL.",
+                "samples": [
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "put /news/{id}",
+        "type": "string",
+        "param_name": "authorId",
+        "format": [
+            "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$",
+            "^[A-Za-z0-9_-]{1,64}$",
+            "^[0-9]{1,20}$"
+        ],
+        "valid": [
+            {
+                "param_name": "authorId",
+                "category": "UUID-formatted author id",
+                "description": "Author id as a standard UUID string.",
+                "samples": [
+                    "550e8400-e29b-41d4-a716-446655440000",
+                    "123e4567-e89b-12d3-a456-426614174000",
+                    "9f8c7b6a-5d4e-3c2b-8a7f-1e0d9c8b7a6f",
+                    "00112233-4455-6677-8899-aabbccddeeff",
+                    "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+                    "0a1b2c3d-4e5f-6789-8abc-def012345678"
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "Alphanumeric/underscore/hyphen identifiers",
+                "description": "Author id using allowed characters for service-local identifiers.",
+                "samples": [
+                    "alice01",
+                    "bob_smith",
+                    "user-123",
+                    "Author_2023",
+                    "news-writer",
+                    "johnDoe_99"
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "Numeric string identifiers",
+                "description": "Author id as a purely numeric string.",
+                "samples": [
+                    "1",
+                    "42",
+                    "1001",
+                    "987654",
+                    "0005",
+                    "20240510"
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "<MISS_KEY>",
+                "description": "Optional authorId omitted from the body.",
+                "samples": [
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "authorId",
+                "category": "Empty or whitespace strings",
+                "description": "Author id should not be empty or only whitespace when provided.",
+                "samples": [
+                    "",
+                    " ",
+                    "\n",
+                    "\t",
+                    "   ",
+                    "\r"
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "Contains spaces or disallowed punctuation",
+                "description": "Values with spaces or invalid punctuation for an identifier.",
+                "samples": [
+                    "john doe",
+                    "bob@work",
+                    "id#123",
+                    "name/with/slash",
+                    "back\\slash",
+                    "id:123"
+                ]
+            },
+            {
+                "param_name": "authorId",
+                "category": "Wrong type",
+                "description": "Values that are not strings.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    null,
+                    [],
+                    {}
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "put /news/{id}",
+        "type": "string",
+        "param_name": "country",
+        "format": [
+            "^[A-Z]{2}$",
+            "^[A-Z]{3}$",
+            "^[A-Za-z .'-]{2,}$"
+        ],
+        "valid": [
+            {
+                "param_name": "country",
+                "category": "ISO 3166-1 alpha-2 code",
+                "description": "Two-letter uppercase country codes.",
+                "samples": [
+                    "US",
+                    "NO",
+                    "CN",
+                    "IN",
+                    "GB",
+                    "BR"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "ISO 3166-1 alpha-3 code",
+                "description": "Three-letter uppercase country codes.",
+                "samples": [
+                    "USA",
+                    "NOR",
+                    "CHN",
+                    "IND",
+                    "GBR",
+                    "BRA"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "Country names",
+                "description": "Full country names in English.",
+                "samples": [
+                    "United States",
+                    "Norway",
+                    "Brazil",
+                    "China",
+                    "United Kingdom",
+                    "India"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "<MISS_KEY>",
+                "description": "Optional country omitted from the body.",
+                "samples": [
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "country",
+                "category": "Invalid country codes",
+                "description": "Codes that are not valid ISO alpha-2/alpha-3.",
+                "samples": [
+                    "U",
+                    "USA1",
+                    "U1",
+                    "ZZZ",
+                    "XX",
+                    "AAA1"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "Lowercase or mixed-case codes",
+                "description": "Country codes not in required uppercase.",
+                "samples": [
+                    "us",
+                    "gBr",
+                    "br",
+                    "Chn",
+                    "in",
+                    "cn"
+                ]
+            },
+            {
+                "param_name": "country",
+                "category": "Wrong type or empty",
+                "description": "Values that are empty or not strings.",
+                "samples": [
+                    "",
+                    " ",
+                    123,
+                    true,
+                    null,
+                    []
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "put /news/{id}",
+        "type": "string",
+        "param_name": "creationTime",
+        "format": [
+            "YYYY-MM-DDTHH:MM:SSZ",
+            "YYYY-MM-DDTHH:MM:SS.sssZ",
+            "YYYY-MM-DDTHH:MM:SS±HH:MM"
+        ],
+        "valid": [
+            {
+                "param_name": "creationTime",
+                "category": "ISO 8601 UTC (Z)",
+                "description": "Date-time strings in UTC with Z suffix.",
+                "samples": [
+                    "2023-05-10T14:30:00Z",
+                    "2020-02-29T23:59:59Z",
+                    "1999-12-31T23:59:59Z",
+                    "2024-01-01T00:00:00Z",
+                    "2015-06-30T23:59:59Z",
+                    "2030-12-15T08:05:01Z"
+                ]
+            },
+            {
+                "param_name": "creationTime",
+                "category": "ISO 8601 with timezone offset",
+                "description": "Date-time strings with explicit positive or negative timezone offset.",
+                "samples": [
+                    "2023-05-10T14:30:00+02:00",
+                    "2023-05-10T08:30:00-04:00",
+                    "2021-11-07T01:30:00-05:00",
+                    "2019-03-31T02:30:00+01:00",
+                    "2022-09-15T00:00:00+00:00",
+                    "2024-10-05T16:45:30+05:30"
+                ]
+            },
+            {
+                "param_name": "creationTime",
+                "category": "ISO 8601 with milliseconds",
+                "description": "Date-time strings including fractional seconds component.",
+                "samples": [
+                    "2023-05-10T14:30:00.123Z",
+                    "2023-05-10T14:30:00.000Z",
+                    "2023-05-10T14:30:00.999+02:00",
+                    "2020-02-29T00:00:00.456Z",
+                    "2021-12-31T23:59:59.001-03:00",
+                    "2018-07-01T12:00:00.010+00:00"
+                ]
+            },
+            {
+                "param_name": "creationTime",
+                "category": "<MISS_KEY>",
+                "description": "Optional creationTime omitted from the body.",
+                "samples": [
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "creationTime",
+                "category": "Date-only or time-only values",
+                "description": "Missing either the date or time component or wrong separators.",
+                "samples": [
+                    "2023-05-10",
+                    "14:30:00",
+                    "2023/05/10",
+                    "2023-05-10 14:30:00",
+                    "May 10, 2023",
+                    "2023-05"
+                ]
+            },
+            {
+                "param_name": "creationTime",
+                "category": "Invalid date/time values",
+                "description": "Out-of-range fields or impossible dates/times.",
+                "samples": [
+                    "2023-13-01T00:00:00Z",
+                    "2023-02-30T10:00:00Z",
+                    "2023-05-10T24:00:01Z",
+                    "2023-05-10T14:60:00Z",
+                    "2023-05-10T14:30:61Z",
+                    "2023-00-10T00:00:00Z"
+                ]
+            },
+            {
+                "param_name": "creationTime",
+                "category": "Wrong type or empty",
+                "description": "Values that are empty or not strings.",
+                "samples": [
+                    "",
+                    " ",
+                    1234567890,
+                    true,
+                    null,
+                    {}
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "put /news/{id}",
+        "type": "string",
+        "param_name": "newsId",
+        "format": [
+            "^[0-9]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "newsId",
+                "category": "<MISS_KEY>",
+                "description": "Optional newsId omitted, allowing the server to keep the existing id.",
+                "samples": [
+                    null
+                ]
+            },
+            {
+                "param_name": "newsId",
+                "category": "Equal to path id (numeric) - small",
+                "description": "newsId equals the path id exactly for smaller values.",
+                "samples": [
+                    "1",
+                    "7",
+                    "42",
+                    "99",
+                    "100",
+                    "500"
+                ]
+            },
+            {
+                "param_name": "newsId",
+                "category": "Equal to path id (numeric) - large and boundary",
+                "description": "newsId equals the path id exactly for large identifier values.",
+                "samples": [
+                    "2147483647",
+                    "4294967295",
+                    "9223372036854775807",
+                    "9007199254740991",
+                    "18446744073709551615",
+                    "281474976710655"
+                ]
+            },
+            {
+                "param_name": "newsId",
+                "category": "Equal with leading zeros (exact string match)",
+                "description": "newsId equals the path id including leading zeros (string equality).",
+                "samples": [
+                    "0001",
+                    "0005",
+                    "00100",
+                    "0000001",
+                    "000020",
+                    "000123"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "newsId",
+                "category": "Mismatch with path id",
+                "description": "newsId provided but does not exactly equal the path id, violating immutability.",
+                "samples": [
+                    "2",
+                    "123",
+                    "99999",
+                    "555",
+                    "0007",
+                    "12346"
+                ]
+            },
+            {
+                "param_name": "newsId",
+                "category": "Non-numeric strings",
+                "description": "newsId contains non-digit characters.",
+                "samples": [
+                    "abc",
+                    "id123",
+                    "12a34",
+                    "#45",
+                    "3 4",
+                    "news-1"
+                ]
+            },
+            {
+                "param_name": "newsId",
+                "category": "Wrong type or empty",
+                "description": "Values that are empty or not strings.",
+                "samples": [
+                    "",
+                    " ",
+                    null,
+                    123,
+                    true,
+                    []
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "put /news/{id}",
+        "type": "string",
+        "param_name": "text",
+        "format": [
+            "^[\\s\\S]*$"
+        ],
+        "valid": [
+            {
+                "param_name": "text",
+                "category": "Short headline",
+                "description": "Concise headline-style news text.",
+                "samples": [
+                    "Storm hits coast",
+                    "Market closes higher",
+                    "Team wins championship",
+                    "Elections announced",
+                    "New policy unveiled",
+                    "Tech stocks rally"
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "Paragraph-like text",
+                "description": "One to two sentences describing the news.",
+                "samples": [
+                    "The city council approved the new plan after a lengthy debate.",
+                    "Scientists report a breakthrough in battery technology.",
+                    "Residents are urged to conserve water during the dry season.",
+                    "The company posted record profits in the second quarter.",
+                    "Officials launched an inquiry into the data breach.",
+                    "Tourists flocked to the festival despite the rain."
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "Unicode and punctuation",
+                "description": "Text including unicode symbols, accents, and punctuation.",
+                "samples": [
+                    "Café reopens — crowds cheer!",
+                    "Prices rise 2.5% in Q2 📈",
+                    "Niño brings heavy rains",
+                    "“Green Day” concert postponed",
+                    "Startup raises $10M seed round",
+                    "Résumé tips trending online"
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "<MISS_KEY>",
+                "description": "Optional text omitted from the body.",
+                "samples": [
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "text",
+                "category": "Empty or whitespace-only strings",
+                "description": "Text provided but contains no meaningful characters.",
+                "samples": [
+                    "",
+                    " ",
+                    "\n",
+                    "\t",
+                    "   ",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "Non-string types",
+                "description": "Values that are not strings.",
+                "samples": [
+                    123,
+                    true,
+                    false,
+                    null,
+                    {},
+                    []
+                ]
+            },
+            {
+                "param_name": "text",
+                "category": "Potentially dangerous HTML/JS content",
+                "description": "Inputs that may be rejected due to security filtering.",
+                "samples": [
+                    "<script>alert(1)</script>",
+                    "<img src=x onerror=alert(1)>",
+                    "<svg onload=alert(1)>",
+                    "<a href='javascript:alert(1)'>x</a>",
+                    "<iframe src='javascript:alert(1)'></iframe>",
+                    "<div onclick='alert(1)'>click</div>"
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "type": "string",
+        "param_name": "id",
+        "format": [
+            "^[0-9]+$"
+        ],
+        "valid": [
+            {
+                "param_name": "id",
+                "category": "Canonical positive integer IDs (digits only, no leading zeros)",
+                "description": "Common positive numeric IDs represented as digit-only strings without leading zeros.",
+                "samples": [
+                    "1",
+                    "2",
+                    "10",
+                    "42",
+                    "345",
+                    "6789"
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Large positive IDs (digits only)",
+                "description": "Large numeric IDs still represented as digit-only strings, typical for production systems.",
+                "samples": [
+                    "100000",
+                    "2147483647",
+                    "999999999",
+                    "4294967295",
+                    "5000000000",
+                    "9223372036854775807"
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Digits-only IDs with leading zeros",
+                "description": "IDs provided as digit-only strings that include leading zeros but still represent a numeric identifier.",
+                "samples": [
+                    "001",
+                    "000123",
+                    "010",
+                    "0000007",
+                    "042",
+                    "000999"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "id",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'id' is omitted from the request path.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Non-numeric characters in ID",
+                "description": "ID contains letters, symbols, or spaces and is not strictly digits.",
+                "samples": [
+                    "abc",
+                    "123a",
+                    "a123",
+                    "12-34",
+                    "12_34",
+                    "123 456"
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Signed, decimal, or scientific notation",
+                "description": "ID includes a plus/minus sign, decimal point, or scientific notation which violates the digits-only rule.",
+                "samples": [
+                    "-1",
+                    "+5",
+                    "3.14",
+                    "-0",
+                    "+0001",
+                    "1e6"
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Empty or whitespace",
+                "description": "ID is empty or consists only of whitespace characters.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r\n"
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Non-string type",
+                "description": "ID is provided as a non-string type (number, boolean, array, etc.).",
+                "samples": [
+                    123,
+                    0,
+                    3.14,
+                    true,
+                    false,
+                    []
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "type": "integer",
+        "param_name": "id",
+        "format": [
+            "int64"
+        ],
+        "valid": [
+            {
+                "param_name": "id",
+                "category": "Minimal positive IDs",
+                "description": "Smallest allowed positive integer IDs for existing news items (>= 1).",
+                "samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    10
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Typical existing news IDs",
+                "description": "Commonly used positive integer IDs expected to map to existing news.",
+                "samples": [
+                    101,
+                    123,
+                    456,
+                    789,
+                    1000,
+                    98765
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "High-range positive IDs (within int64)",
+                "description": "Larger positive integer IDs still within 64-bit range.",
+                "samples": [
+                    2147483648,
+                    4294967296,
+                    5000000000,
+                    7500000000,
+                    9000000000,
+                    12000000000
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "id",
+                "category": "<MISS_KEY>",
+                "description": "Path parameter id is omitted from the request URL, causing routing/validation failure.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Non-integer types",
+                "description": "Values that are not integers are invalid for the numeric path id.",
+                "samples": [
+                    "123",
+                    "abc",
+                    true,
+                    12.5,
+                    [
+                        1
+                    ],
+                    {
+                        "value": 123
+                    }
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Zero or negative IDs",
+                "description": "IDs that are zero or negative violate the expectation of a positive ID.",
+                "samples": [
+                    0,
+                    -1,
+                    -10,
+                    -999,
+                    -2147483648,
+                    -1000000000
+                ]
+            },
+            {
+                "param_name": "id",
+                "category": "Non-existing IDs (valid format but not found)",
+                "description": "IDs that are correctly formatted integers but do not correspond to any existing news, likely yielding 404.",
+                "samples": [
+                    999999999,
+                    888888888,
+                    777777777,
+                    1234567890,
+                    424242424,
+                    600000000
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "type": "string",
+        "param_name": "",
+        "format": [
+            "text/plain; charset=UTF-8",
+            "^[\\s\\S]*$"
+        ],
+        "valid": [
+            {
+                "param_name": "",
+                "category": "Short non-empty text",
+                "description": "Plain text content intended to replace the existing news text.",
+                "samples": [
+                    "Update",
+                    "Breaking news updated",
+                    "New details added",
+                    "Corrected typo",
+                    "Revised summary",
+                    "Edited content"
+                ]
+            },
+            {
+                "param_name": "",
+                "category": "Multiline text",
+                "description": "Text containing newline characters, still valid as text/plain.",
+                "samples": [
+                    "First line\nSecond line",
+                    "Title\nBody content",
+                    "Intro\nDetails\nEnd",
+                    "Line A\nLine B",
+                    "Paragraph 1\nParagraph 2",
+                    "Header\n- item 1\n- item 2"
+                ]
+            },
+            {
+                "param_name": "",
+                "category": "Text with punctuation and unicode",
+                "description": "Text including punctuation and Unicode characters.",
+                "samples": [
+                    "Café update",
+                    "News 📰 update",
+                    "Quote “test” — ok",
+                    "El Niño impacts",
+                    "Naïve approach fixed",
+                    "Pokémon release date"
+                ]
+            },
+            {
+                "param_name": "",
+                "category": "<MISS_KEY>",
+                "description": "Request body omitted; server processes the request without a body as allowed by the API.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "",
+                "category": "Non-string body types",
+                "description": "Body provided but not as a plain text string.",
+                "samples": [
+                    0,
+                    1,
+                    true,
+                    3.14,
+                    {
+                        "text": "hello"
+                    },
+                    [
+                        "text"
+                    ]
+                ]
+            },
+            {
+                "param_name": "",
+                "category": "Empty or whitespace-only content",
+                "description": "Body is empty or contains only whitespace/control whitespace which may be rejected as no meaningful content.",
+                "samples": [
+                    "",
+                    " ",
+                    "   ",
+                    "\n",
+                    "\r\n",
+                    "\t"
+                ]
+            },
+            {
+                "param_name": "",
+                "category": "Control-character-heavy content",
+                "description": "Text containing control characters that may be rejected by validation or storage layers.",
+                "samples": [
+                    "\u0000",
+                    "text\u0000end",
+                    "\u001b[31mred\u001b[0m",
+                    "\u0007",
+                    "\u0001\u0002",
+                    "\u0000\u0000"
+                ]
+            }
+        ]
+    }
+]

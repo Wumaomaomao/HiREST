@@ -1,0 +1,1594 @@
+[
+    {
+        "op_name": "get /api/bessj/{n}/{x}",
+        "type": "integer",
+        "param_name": "n",
+        "format": [
+            "int32"
+        ],
+        "valid": [
+            {
+                "param_name": "n",
+                "category": "Small non-negative orders",
+                "description": "Typical small integer orders for Bessel Jn where n >= 0.",
+                "samples": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            {
+                "param_name": "n",
+                "category": "Negative orders (integer)",
+                "description": "Integer negative orders which are mathematically defined for Jn.",
+                "samples": [
+                    -1,
+                    -2,
+                    -3,
+                    -10,
+                    -50,
+                    -999
+                ]
+            },
+            {
+                "param_name": "n",
+                "category": "Large orders within 32-bit signed range",
+                "description": "High but valid int32 values for order n.",
+                "samples": [
+                    1000,
+                    10000,
+                    50000,
+                    2147483647,
+                    999999,
+                    123456789
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "n",
+                "category": "Non-integer type",
+                "description": "Values that are not integers for path parameter n.",
+                "samples": [
+                    "3",
+                    3.14,
+                    true,
+                    false,
+                    "abc",
+                    null
+                ]
+            },
+            {
+                "param_name": "n",
+                "category": "Out of int32 range",
+                "description": "Integer values outside the 32-bit signed integer bounds.",
+                "samples": [
+                    2147483648,
+                    -2147483649,
+                    9999999999,
+                    -9999999999,
+                    9223372036854775807,
+                    -9223372036854775808
+                ]
+            },
+            {
+                "param_name": "n",
+                "category": "Invalid numeric format strings in path",
+                "description": "String values that do not represent valid integers in a path segment.",
+                "samples": [
+                    " 5",
+                    "5 ",
+                    "1e3",
+                    "0x10",
+                    "05a",
+                    "+-2"
+                ]
+            },
+            {
+                "param_name": "n",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter n is missing from the URL.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/bessj/{n}/{x}",
+        "type": "number",
+        "param_name": "x",
+        "format": [
+            "double"
+        ],
+        "valid": [
+            {
+                "param_name": "x",
+                "category": "Zero and near-zero values",
+                "description": "Values around zero, common for evaluating Bessel behavior near origin.",
+                "samples": [
+                    0.0,
+                    1e-06,
+                    -1e-06,
+                    0.0001,
+                    -0.0001,
+                    0.001
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Moderate real values",
+                "description": "Typical finite real inputs for x.",
+                "samples": [
+                    -3.14,
+                    2.71828,
+                    1.0,
+                    -8.5,
+                    6.283185,
+                    10.0
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Large magnitude finite doubles",
+                "description": "Large but finite double-precision values for x.",
+                "samples": [
+                    1000000.0,
+                    -1000000.0,
+                    1e+20,
+                    -1e+20,
+                    1e+308,
+                    -1e+308
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "x",
+                "category": "Non-numeric type",
+                "description": "Values that are not numbers for path parameter x.",
+                "samples": [
+                    "abc",
+                    true,
+                    false,
+                    null,
+                    [],
+                    {}
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Overflow beyond double range",
+                "description": "Values whose magnitude exceeds the maximum finite IEEE-754 double.",
+                "samples": [
+                    Infinity,
+                    -Infinity,
+                    Infinity,
+                    -Infinity,
+                    Infinity,
+                    -Infinity
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Invalid numeric format strings in path",
+                "description": "Strings that cannot be parsed as valid real numbers in a path segment.",
+                "samples": [
+                    " 3.14",
+                    "3.14 ",
+                    "1,234.56",
+                    "--2.5",
+                    "+-1.0",
+                    "2..3"
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter x is missing from the URL.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/expint/{n}/{x}",
+        "type": "integer",
+        "param_name": "n",
+        "format": [
+            "int32"
+        ],
+        "valid": [
+            {
+                "param_name": "n",
+                "category": "Small positive order (1-9)",
+                "description": "Common positive integer orders for E_n(x) within a small range.",
+                "samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            },
+            {
+                "param_name": "n",
+                "category": "Medium positive order (10-100)",
+                "description": "Moderate positive integer orders that are typical for computations.",
+                "samples": [
+                    10,
+                    12,
+                    25,
+                    50,
+                    75,
+                    100
+                ]
+            },
+            {
+                "param_name": "n",
+                "category": "Large positive order within int32 range",
+                "description": "Large but valid positive integer orders within 32-bit signed integer limits.",
+                "samples": [
+                    101,
+                    1000,
+                    5000,
+                    10000,
+                    50000,
+                    2147483647
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "n",
+                "category": "Zero or negative order",
+                "description": "Values of n that are zero or negative; E_n(x) expects positive integer orders.",
+                "samples": [
+                    0,
+                    -1,
+                    -2,
+                    -10,
+                    -100,
+                    -2147483648
+                ]
+            },
+            {
+                "param_name": "n",
+                "category": "Non-integer types",
+                "description": "Values that are not integers, violating the integer type requirement.",
+                "samples": [
+                    1.5,
+                    3.14,
+                    "7",
+                    "one",
+                    true,
+                    null
+                ]
+            },
+            {
+                "param_name": "n",
+                "category": "Out-of-range for int32",
+                "description": "Integer values outside the 32-bit signed integer range.",
+                "samples": [
+                    2147483648,
+                    -2147483649,
+                    9223372036854775807,
+                    -9223372036854775808,
+                    9999999999,
+                    -9999999999
+                ]
+            },
+            {
+                "param_name": "n",
+                "category": "<MISS_KEY>",
+                "description": "The path parameter n is missing from the request path.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/expint/{n}/{x}",
+        "type": "number",
+        "param_name": "x",
+        "format": [
+            "double"
+        ],
+        "valid": [
+            {
+                "param_name": "x",
+                "category": "Small positive x close to zero",
+                "description": "Positive real values very close to zero; common for asymptotic evaluations.",
+                "samples": [
+                    1e-12,
+                    1e-09,
+                    1e-06,
+                    0.001,
+                    0.01,
+                    0.1
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Moderate positive x",
+                "description": "Typical positive real inputs used in standard computations.",
+                "samples": [
+                    0.5,
+                    1.0,
+                    2.5,
+                    5.0,
+                    10.0,
+                    20.0
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Large positive x",
+                "description": "Large positive real values within a practical double range.",
+                "samples": [
+                    50.0,
+                    100.0,
+                    1000.0,
+                    10000.0,
+                    100000.0,
+                    1000000.0
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "x",
+                "category": "Negative x values",
+                "description": "Negative real inputs where the integral definition diverges.",
+                "samples": [
+                    -1e-12,
+                    -1e-06,
+                    -0.1,
+                    -1.0,
+                    -10.0,
+                    -100.0
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Non-number types",
+                "description": "Values not parseable as a double for a path parameter.",
+                "samples": [
+                    "abc",
+                    "1,23",
+                    true,
+                    false,
+                    null,
+                    "NaN"
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Out-of-range double (overflow)",
+                "description": "Magnitudes that overflow IEEE-754 double precision.",
+                "samples": [
+                    Infinity,
+                    -Infinity,
+                    Infinity,
+                    -Infinity,
+                    Infinity,
+                    -Infinity
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "<MISS_KEY>",
+                "description": "The path parameter x is missing from the request path.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "type": "integer",
+        "param_name": "m",
+        "format": [
+            "int32",
+            "^[1-9]\\d*$"
+        ],
+        "valid": [
+            {
+                "param_name": "m",
+                "category": "Small degrees of freedom (1-10)",
+                "description": "Positive integer degrees of freedom in a small range suitable for many Fisher F computations.",
+                "samples": [
+                    1,
+                    2,
+                    3,
+                    5,
+                    7,
+                    10
+                ]
+            },
+            {
+                "param_name": "m",
+                "category": "Moderate degrees of freedom (11-1000)",
+                "description": "Typical positive integer inputs for degrees of freedom.",
+                "samples": [
+                    11,
+                    12,
+                    50,
+                    100,
+                    256,
+                    999
+                ]
+            },
+            {
+                "param_name": "m",
+                "category": "Large degrees of freedom within int32",
+                "description": "Large but valid positive integers up to 32-bit signed integer max.",
+                "samples": [
+                    1000,
+                    5000,
+                    10000,
+                    100000,
+                    1000000,
+                    2147483647
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "m",
+                "category": "Non-positive integer (<= 0)",
+                "description": "Zero or negative values are invalid for degrees of freedom.",
+                "samples": [
+                    0,
+                    -1,
+                    -2,
+                    -10,
+                    -999,
+                    -2147483648
+                ]
+            },
+            {
+                "param_name": "m",
+                "category": "Out of int32 range",
+                "description": "Values beyond 32-bit signed integer range cause overflow or validation errors.",
+                "samples": [
+                    2147483648,
+                    3000000000,
+                    9223372036854775807,
+                    -2147483649,
+                    -3000000000,
+                    -9223372036854775808
+                ]
+            },
+            {
+                "param_name": "m",
+                "category": "Type/format error (non-integer or malformed)",
+                "description": "Input is not a plain integer in path: decimals, non-numeric strings, or malformed numeric strings.",
+                "samples": [
+                    "3.14",
+                    2.5,
+                    "ten",
+                    true,
+                    "",
+                    "1,000"
+                ]
+            },
+            {
+                "param_name": "m",
+                "category": "<MISS_KEY>",
+                "description": "Missing required path parameter m results in routing/validation failure.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "type": "integer",
+        "param_name": "n",
+        "format": [
+            "int32",
+            "^[1-9]\\d*$"
+        ],
+        "valid": [
+            {
+                "param_name": "n",
+                "category": "Small degrees of freedom (1-10)",
+                "description": "Positive integer degrees of freedom at the low end for Fisher F.",
+                "samples": [
+                    1,
+                    4,
+                    6,
+                    8,
+                    9,
+                    10
+                ]
+            },
+            {
+                "param_name": "n",
+                "category": "Moderate degrees of freedom (11-1000)",
+                "description": "Common, valid positive integer inputs for degrees of freedom.",
+                "samples": [
+                    20,
+                    33,
+                    64,
+                    128,
+                    512,
+                    1000
+                ]
+            },
+            {
+                "param_name": "n",
+                "category": "Large degrees of freedom within int32",
+                "description": "Larger positive integers still within 32-bit signed maximum.",
+                "samples": [
+                    1500,
+                    10000,
+                    50000,
+                    250000,
+                    1000000,
+                    2147483647
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "n",
+                "category": "Non-positive integer (<= 0)",
+                "description": "Zero or negative values are invalid for degrees of freedom.",
+                "samples": [
+                    0,
+                    -1,
+                    -3,
+                    -7,
+                    -100,
+                    -2147483648
+                ]
+            },
+            {
+                "param_name": "n",
+                "category": "Out of int32 range",
+                "description": "Values outside the 32-bit signed integer bounds are invalid.",
+                "samples": [
+                    2147483648,
+                    4294967296,
+                    9999999999,
+                    -2147483649,
+                    -5000000000,
+                    -9999999999
+                ]
+            },
+            {
+                "param_name": "n",
+                "category": "Type/format error (non-integer or malformed)",
+                "description": "Decimals, non-numeric strings, booleans, or malformed numbers in the path.",
+                "samples": [
+                    "4.5",
+                    3.14159,
+                    "one",
+                    false,
+                    " ",
+                    "1_000"
+                ]
+            },
+            {
+                "param_name": "n",
+                "category": "<MISS_KEY>",
+                "description": "Missing required path parameter n results in routing/validation failure.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "type": "number",
+        "param_name": "x",
+        "format": [
+            "double",
+            "^(?:\\d+\\.\\d+|\\d+)(?:[eE][+-]?\\d+)?$"
+        ],
+        "valid": [
+            {
+                "param_name": "x",
+                "category": "Zero and near-zero nonnegative",
+                "description": "F-statistic values at 0 or very close to 0, allowed for Fisher F CDF/PDF.",
+                "samples": [
+                    0,
+                    1e-12,
+                    1e-09,
+                    1e-06,
+                    0.0001,
+                    0.01
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Typical F-statistic range",
+                "description": "Common nonnegative values encountered in practice.",
+                "samples": [
+                    0.1,
+                    0.5,
+                    1,
+                    2.75,
+                    3.14,
+                    5
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Large nonnegative values",
+                "description": "Large but nonnegative inputs within floating-point representable range.",
+                "samples": [
+                    10,
+                    100,
+                    1000,
+                    10000,
+                    1000000,
+                    1000000000
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "x",
+                "category": "Negative values",
+                "description": "Negative F-statistic values are not valid.",
+                "samples": [
+                    -1e-12,
+                    -0.001,
+                    -0.1,
+                    -1,
+                    -2.5,
+                    -100
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Non-finite or overflow values",
+                "description": "Numbers that overflow double precision or represent infinity.",
+                "samples": [
+                    Infinity,
+                    Infinity,
+                    Infinity,
+                    -Infinity,
+                    -Infinity,
+                    -Infinity
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Type/format error (non-number or malformed)",
+                "description": "Provided value is not a valid numeric literal.",
+                "samples": [
+                    "-1.2.3",
+                    "abc",
+                    true,
+                    false,
+                    "",
+                    "Infinity"
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "<MISS_KEY>",
+                "description": "Missing required path parameter x results in routing/validation failure.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/gammq/{a}/{x}",
+        "type": "number",
+        "param_name": "a",
+        "format": [
+            "double",
+            "^[+-]?\\d+(\\.\\d+)?([eE][+-]?\\d+)?$"
+        ],
+        "valid": [
+            {
+                "param_name": "a",
+                "category": "Near-zero positive a (0 < a < 0.1)",
+                "description": "For gammq, a must be positive; tiny positive values exercise numerical stability near the lower bound.",
+                "samples": [
+                    1e-12,
+                    1e-08,
+                    1e-05,
+                    0.0001,
+                    0.001,
+                    0.01
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Moderate positive a (1 ≤ a ≤ 25)",
+                "description": "Common practical values for the shape parameter a within a moderate range.",
+                "samples": [
+                    1,
+                    2.5,
+                    3,
+                    5.75,
+                    10,
+                    25
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Large positive a (a > 100)",
+                "description": "Stress large-parameter regime that may affect asymptotic approximations and stability.",
+                "samples": [
+                    100,
+                    256.5,
+                    500,
+                    1000,
+                    10000,
+                    500000
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "a",
+                "category": "Non-positive a (a ≤ 0)",
+                "description": "Domain violation for gammq: a must be strictly positive.",
+                "samples": [
+                    0,
+                    -1e-12,
+                    -0.0001,
+                    -1,
+                    -10,
+                    -1000000
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Non-numeric type",
+                "description": "Values that cannot be parsed as double numbers in a path parameter.",
+                "samples": [
+                    "abc",
+                    "3.14a",
+                    true,
+                    false,
+                    [],
+                    {}
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Malformed numeric string",
+                "description": "String tokens that look numeric but are not valid doubles for parsing.",
+                "samples": [
+                    " 1.23",
+                    "1,234.56",
+                    "NaN",
+                    "Infinity",
+                    "--2.5",
+                    "0x10"
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Overflow magnitude",
+                "description": "Numeric literals exceeding IEEE-754 double range causing overflow.",
+                "samples": [
+                    Infinity,
+                    -Infinity,
+                    Infinity,
+                    -Infinity,
+                    Infinity,
+                    -Infinity
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "<MISS_KEY>",
+                "description": "Missing required path parameter a.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/gammq/{a}/{x}",
+        "type": "number",
+        "param_name": "x",
+        "format": [
+            "double",
+            "^[+-]?\\d+(\\.\\d+)?([eE][+-]?\\d+)?$"
+        ],
+        "valid": [
+            {
+                "param_name": "x",
+                "category": "Zero and tiny non-negative x (x ≥ 0, small)",
+                "description": "gammq typically allows x ≥ 0; includes exact zero and very small positives.",
+                "samples": [
+                    0,
+                    1e-12,
+                    1e-08,
+                    1e-05,
+                    0.0001,
+                    0.001
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Moderate positive x",
+                "description": "Common evaluation range for the argument x.",
+                "samples": [
+                    0.5,
+                    1,
+                    2.5,
+                    5,
+                    10,
+                    25
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Large positive x",
+                "description": "Large x values to test tail behavior and underflow/overflow handling.",
+                "samples": [
+                    100,
+                    500,
+                    1000,
+                    10000,
+                    500000,
+                    100000000
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "x",
+                "category": "Negative x (x < 0)",
+                "description": "Domain violation for gammq: x must be non-negative.",
+                "samples": [
+                    -1e-12,
+                    -0.0001,
+                    -1,
+                    -10,
+                    -100,
+                    -1000000
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Non-numeric type",
+                "description": "Values that cannot be parsed as double numbers in a path parameter.",
+                "samples": [
+                    "abc",
+                    "3.14a",
+                    true,
+                    false,
+                    [],
+                    {}
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Malformed numeric string",
+                "description": "String tokens that look numeric but are not valid doubles for parsing.",
+                "samples": [
+                    " 2.34",
+                    "1,000",
+                    "NaN",
+                    "Infinity",
+                    "--3.5",
+                    "0x20"
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "Overflow magnitude",
+                "description": "Numeric literals exceeding IEEE-754 double range causing overflow.",
+                "samples": [
+                    Infinity,
+                    -Infinity,
+                    Infinity,
+                    -Infinity,
+                    Infinity,
+                    -Infinity
+                ]
+            },
+            {
+                "param_name": "x",
+                "category": "<MISS_KEY>",
+                "description": "Missing required path parameter x.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/remainder/{a}/{b}",
+        "type": "integer",
+        "param_name": "a",
+        "format": [
+            "int32",
+            "^-?\\d+$"
+        ],
+        "valid": [
+            {
+                "param_name": "a",
+                "category": "Non-negative small integers (0–1000)",
+                "description": "Dividend values that are integers within int32 and commonly used small numbers, including zero.",
+                "samples": [
+                    0,
+                    1,
+                    7,
+                    42,
+                    256,
+                    1000
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Negative integers within int32 range",
+                "description": "Dividend values that are negative integers and within the 32-bit signed range.",
+                "samples": [
+                    -1,
+                    -7,
+                    -42,
+                    -256,
+                    -1000,
+                    -999999
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Boundary and near-boundary int32 values",
+                "description": "Dividend values at the edges of 32-bit signed integer limits or near them.",
+                "samples": [
+                    -2147483648,
+                    -2147483647,
+                    -2147483000,
+                    2147483000,
+                    2147483646,
+                    2147483647
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "a",
+                "category": "<MISS_KEY>",
+                "description": "Path parameter a is omitted from the URL path segment.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Out of int32 range",
+                "description": "Values that overflow or underflow 32-bit signed integer range.",
+                "samples": [
+                    2147483648,
+                    -2147483649,
+                    9999999999,
+                    -9999999999,
+                    9223372036854775807,
+                    -9223372036854775808
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Non-integer numeric formats",
+                "description": "Numbers that are numeric but not integers (decimals or exponent notation).",
+                "samples": [
+                    1.5,
+                    -2.0,
+                    3.14159,
+                    1000.0,
+                    -100.0,
+                    5.0
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Wrong type or non-numeric string",
+                "description": "Inputs that are not integers, including strings and non-scalar types.",
+                "samples": [
+                    "123",
+                    "abc",
+                    "12.3",
+                    true,
+                    [],
+                    {}
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/remainder/{a}/{b}",
+        "type": "integer",
+        "param_name": "b",
+        "format": [
+            "int32",
+            "^-?\\d+$"
+        ],
+        "valid": [
+            {
+                "param_name": "b",
+                "category": "Positive nonzero int32 values",
+                "description": "Divisor values that are positive integers within 32-bit signed range (must not be zero).",
+                "samples": [
+                    1,
+                    2,
+                    3,
+                    7,
+                    42,
+                    1000
+                ]
+            },
+            {
+                "param_name": "b",
+                "category": "Negative nonzero int32 values",
+                "description": "Divisor values that are negative integers within 32-bit signed range (must not be zero).",
+                "samples": [
+                    -1,
+                    -2,
+                    -3,
+                    -7,
+                    -42,
+                    -1000
+                ]
+            },
+            {
+                "param_name": "b",
+                "category": "Boundary nonzero int32 values",
+                "description": "Divisor values at or near the 32-bit signed integer boundaries, excluding zero.",
+                "samples": [
+                    -2147483648,
+                    -2147483647,
+                    -2147483000,
+                    2147483000,
+                    2147483646,
+                    2147483647
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "b",
+                "category": "<MISS_KEY>",
+                "description": "Path parameter b is omitted from the URL path segment.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "param_name": "b",
+                "category": "Zero value (divisor invalid)",
+                "description": "Any representation that evaluates to zero is invalid for divisor b to avoid division-by-zero.",
+                "samples": [
+                    0,
+                    0,
+                    0.0,
+                    -0.0,
+                    0.0,
+                    "0"
+                ]
+            },
+            {
+                "param_name": "b",
+                "category": "Out of int32 range",
+                "description": "Values that overflow or underflow 32-bit signed integer range.",
+                "samples": [
+                    2147483648,
+                    -2147483649,
+                    9999999999,
+                    -9999999999,
+                    9223372036854775807,
+                    -9223372036854775808
+                ]
+            },
+            {
+                "param_name": "b",
+                "category": "Non-integer or wrong type",
+                "description": "Inputs that are not integers, including decimals, strings, and non-scalar types.",
+                "samples": [
+                    1.5,
+                    "abc",
+                    "12.3",
+                    true,
+                    [],
+                    {}
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/triangle/{a}/{b}/{c}",
+        "type": "integer",
+        "param_name": "a",
+        "format": [
+            "int32"
+        ],
+        "valid": [
+            {
+                "param_name": "a",
+                "category": "Small positive edge length (1-10)",
+                "description": "Positive small integer edge lengths commonly used for triangles.",
+                "samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Typical medium edge length (11-1000)",
+                "description": "Medium-sized positive integer edge lengths within a normal range.",
+                "samples": [
+                    12,
+                    25,
+                    64,
+                    128,
+                    512,
+                    999
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Large positive int32 edge length",
+                "description": "Large but valid positive integers within int32 range.",
+                "samples": [
+                    100000,
+                    2500000,
+                    123456789,
+                    1500000000,
+                    2000000000,
+                    2147483646
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "a",
+                "category": "Negative integers",
+                "description": "Negative values violate the triangle edge length requirement of being positive.",
+                "samples": [
+                    -1,
+                    -2,
+                    -10,
+                    -123,
+                    -99999,
+                    -2147483648
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Zero edge length",
+                "description": "Zero is not a valid edge length for a triangle.",
+                "samples": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Floating-point numbers",
+                "description": "Non-integer numeric inputs are invalid for an integer path parameter.",
+                "samples": [
+                    3.14,
+                    -2.5,
+                    0.1,
+                    7.5,
+                    10.0,
+                    1000000.25
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Non-numeric strings",
+                "description": "Strings that cannot be parsed as integers.",
+                "samples": [
+                    "abc",
+                    "12a",
+                    "seven",
+                    "1_000",
+                    "NaN",
+                    "∞"
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Out of int32 range",
+                "description": "Numbers that exceed the 32-bit signed integer range.",
+                "samples": [
+                    2147483648,
+                    9999999999,
+                    9223372036854775807,
+                    -2147483649,
+                    -9999999999,
+                    -9223372036854775808
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "Malformed numeric strings",
+                "description": "Strings with formatting that should not be accepted for an integer path parameter.",
+                "samples": [
+                    " 42",
+                    "42 ",
+                    "+7",
+                    "1e3",
+                    "--5",
+                    "7-1"
+                ]
+            },
+            {
+                "param_name": "a",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'a' is omitted from the request URL.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/triangle/{a}/{b}/{c}",
+        "type": "integer",
+        "param_name": "b",
+        "format": [
+            "int32"
+        ],
+        "valid": [
+            {
+                "param_name": "b",
+                "category": "Small positive edge length (1-10)",
+                "description": "Positive small integer edge lengths commonly used for triangles.",
+                "samples": [
+                    1,
+                    3,
+                    4,
+                    7,
+                    8,
+                    9
+                ]
+            },
+            {
+                "param_name": "b",
+                "category": "Typical medium edge length (11-1000)",
+                "description": "Medium-sized positive integer edge lengths within a normal range.",
+                "samples": [
+                    11,
+                    20,
+                    33,
+                    90,
+                    400,
+                    750
+                ]
+            },
+            {
+                "param_name": "b",
+                "category": "Large positive int32 edge length",
+                "description": "Large but valid positive integers within int32 range.",
+                "samples": [
+                    100001,
+                    2000000,
+                    987654321,
+                    1600000000,
+                    1999999999,
+                    2147483646
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "b",
+                "category": "Negative integers",
+                "description": "Negative values violate the triangle edge length requirement of being positive.",
+                "samples": [
+                    -3,
+                    -4,
+                    -50,
+                    -777,
+                    -100000,
+                    -2147483648
+                ]
+            },
+            {
+                "param_name": "b",
+                "category": "Zero edge length",
+                "description": "Zero is not a valid edge length for a triangle.",
+                "samples": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            {
+                "param_name": "b",
+                "category": "Floating-point numbers",
+                "description": "Non-integer numeric inputs are invalid for an integer path parameter.",
+                "samples": [
+                    2.2,
+                    -3.3,
+                    0.0,
+                    6.28,
+                    42.42,
+                    999.99
+                ]
+            },
+            {
+                "param_name": "b",
+                "category": "Non-numeric strings",
+                "description": "Strings that cannot be parsed as integers.",
+                "samples": [
+                    "",
+                    " ",
+                    "abc123",
+                    "++2",
+                    "five",
+                    "0x10"
+                ]
+            },
+            {
+                "param_name": "b",
+                "category": "Out of int32 range",
+                "description": "Numbers that exceed the 32-bit signed integer range.",
+                "samples": [
+                    2147483648,
+                    5000000000,
+                    8888888888,
+                    -2147483649,
+                    -5000000000,
+                    -8888888888
+                ]
+            },
+            {
+                "param_name": "b",
+                "category": "Malformed numeric strings",
+                "description": "Strings with formatting that should not be accepted for an integer path parameter.",
+                "samples": [
+                    " 9",
+                    "9 ",
+                    "+12",
+                    "1e6",
+                    "--2",
+                    "3,000"
+                ]
+            },
+            {
+                "param_name": "b",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'b' is omitted from the request URL.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /api/triangle/{a}/{b}/{c}",
+        "type": "integer",
+        "param_name": "c",
+        "format": [
+            "int32"
+        ],
+        "valid": [
+            {
+                "param_name": "c",
+                "category": "Small positive edge length (1-10)",
+                "description": "Positive small integer edge lengths commonly used for triangles.",
+                "samples": [
+                    2,
+                    3,
+                    5,
+                    6,
+                    7,
+                    10
+                ]
+            },
+            {
+                "param_name": "c",
+                "category": "Typical medium edge length (11-1000)",
+                "description": "Medium-sized positive integer edge lengths within a normal range.",
+                "samples": [
+                    14,
+                    30,
+                    60,
+                    120,
+                    300,
+                    900
+                ]
+            },
+            {
+                "param_name": "c",
+                "category": "Large positive int32 edge length",
+                "description": "Large but valid positive integers within int32 range.",
+                "samples": [
+                    500000,
+                    10000000,
+                    123000000,
+                    147483647,
+                    1900000000,
+                    2147483646
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "c",
+                "category": "Negative integers",
+                "description": "Negative values violate the triangle edge length requirement of being positive.",
+                "samples": [
+                    -1,
+                    -6,
+                    -1000,
+                    -500000,
+                    -2147483648,
+                    -2
+                ]
+            },
+            {
+                "param_name": "c",
+                "category": "Zero edge length",
+                "description": "Zero is not a valid edge length for a triangle.",
+                "samples": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            },
+            {
+                "param_name": "c",
+                "category": "Floating-point numbers",
+                "description": "Non-integer numeric inputs are invalid for an integer path parameter.",
+                "samples": [
+                    1.5,
+                    -0.75,
+                    2.0,
+                    100.5,
+                    2500.01,
+                    3.333
+                ]
+            },
+            {
+                "param_name": "c",
+                "category": "Non-numeric strings",
+                "description": "Strings that cannot be parsed as integers.",
+                "samples": [
+                    "null",
+                    "NaN",
+                    "ten",
+                    "1 2",
+                    "3-4",
+                    "abc"
+                ]
+            },
+            {
+                "param_name": "c",
+                "category": "Out of int32 range",
+                "description": "Numbers that exceed the 32-bit signed integer range.",
+                "samples": [
+                    2147483648,
+                    4294967296,
+                    10000000000,
+                    -2147483649,
+                    -4294967296,
+                    -10000000000
+                ]
+            },
+            {
+                "param_name": "c",
+                "category": "Malformed numeric strings",
+                "description": "Strings with formatting that should not be accepted for an integer path parameter.",
+                "samples": [
+                    "\t5",
+                    "\n6",
+                    "7 ",
+                    " 8",
+                    "+0",
+                    "01a"
+                ]
+            },
+            {
+                "param_name": "c",
+                "category": "<MISS_KEY>",
+                "description": "The required path parameter 'c' is omitted from the request URL.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    }
+]

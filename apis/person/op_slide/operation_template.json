@@ -221,9 +221,7 @@
             },
             "operationId": "putPersonUsingPUT"
         },
-        "dependencies": [
-            "The request body parameter person must be provided;"
-        ]
+        "dependencies": []
     },
     {
         "method": "post",
@@ -443,9 +441,7 @@
             },
             "operationId": "postPersonUsingPOST"
         },
-        "dependencies": [
-            "The request body parameter person must be provided;"
-        ]
+        "dependencies": []
     },
     {
         "method": "get",
@@ -504,9 +500,7 @@
             },
             "operationId": "getPersonUsingGET"
         },
-        "dependencies": [
-            "The path parameter id is required;"
-        ]
+        "dependencies": []
     },
     {
         "method": "delete",
@@ -566,9 +560,7 @@
             },
             "operationId": "deletePersonUsingDELETE"
         },
-        "dependencies": [
-            "The path parameter id is required;"
-        ]
+        "dependencies": []
     },
     {
         "method": "get",
@@ -839,9 +831,7 @@
             },
             "operationId": "putPersonUsingPUT_1"
         },
-        "dependencies": [
-            "The request body parameter persons (an array of PersonReq objects) must be provided;"
-        ]
+        "dependencies": []
     },
     {
         "method": "post",
@@ -1067,9 +1057,7 @@
             },
             "operationId": "postPersonsUsingPOST"
         },
-        "dependencies": [
-            "The request body parameter persons (an array of PersonReq objects) must be provided;"
-        ]
+        "dependencies": []
     },
     {
         "method": "delete",
@@ -1254,9 +1242,7 @@
             },
             "operationId": "getPersonsUsingGET_1"
         },
-        "dependencies": [
-            "The path parameter ids is required;"
-        ]
+        "dependencies": []
     },
     {
         "method": "delete",
@@ -1316,8 +1302,6 @@
             },
             "operationId": "deletePersonsUsingDELETE_1"
         },
-        "dependencies": [
-            "The path parameter ids is required;"
-        ]
+        "dependencies": []
     }
 ]

@@ -1,0 +1,2543 @@
+[
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /countries",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Z]{2}$",
+                "input_space_category": "ISO 3166-1 alpha-2 code",
+                "description": "Two-letter uppercase country code.",
+                "representative_samples": [
+                    "NO",
+                    "US",
+                    "GB",
+                    "DE",
+                    "BR",
+                    "ZA"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "The authorId filter is omitted; API returns news unfiltered by author.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Z]{3}$",
+                "input_space_category": "ISO 3166-1 alpha-3 code",
+                "description": "Three-letter uppercase country code.",
+                "representative_samples": [
+                    "NOR",
+                    "USA",
+                    "GBR",
+                    "DEU",
+                    "BRA",
+                    "ZAF"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+                "input_space_category": "UUID string",
+                "description": "A UUID-formatted string used as an author identifier.",
+                "representative_samples": [
+                    "123e4567-e89b-12d3-a456-426614174000",
+                    "550e8400-e29b-41d4-a716-446655440000",
+                    "9f1c2d3e-4b5a-6c7d-8e9f-0a1b2c3d4e5f",
+                    "00000000-0000-0000-0000-000000000001",
+                    "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+                    "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "The authorId filter is omitted; API returns news unfiltered by author.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Common abbreviations or alt names",
+                "description": "Commonly used abbreviations or country name variants.",
+                "representative_samples": [
+                    "UK",
+                    "U.S.",
+                    "South Korea",
+                    "Czech Republic",
+                    "Ivory Coast",
+                    "UAE"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Common abbreviations or alt names",
+                "description": "Commonly used abbreviations or country name variants.",
+                "representative_samples": [
+                    "UK",
+                    "U.S.",
+                    "South Korea",
+                    "Czech Republic",
+                    "Ivory Coast",
+                    "UAE"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space3-subspace2"
+        ],
+        "selected_parameters_list": {
+            "country": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "The country filter is omitted; API returns news unfiltered by country.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{3,32}$",
+                "input_space_category": "Slug/username ID",
+                "description": "An alphanumeric slug or username with optional underscores or dashes.",
+                "representative_samples": [
+                    "alice",
+                    "bob_smith",
+                    "john-doe-2",
+                    "writer123",
+                    "news_bot",
+                    "Author-XYZ"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Common abbreviations or alt names",
+                "description": "Commonly used abbreviations or country name variants.",
+                "representative_samples": [
+                    "UK",
+                    "U.S.",
+                    "South Korea",
+                    "Czech Republic",
+                    "Ivory Coast",
+                    "UAE"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space3-subspace2"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "The authorId filter is omitted; API returns news unfiltered by author.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "The country filter is omitted; API returns news unfiltered by country.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$",
+                "input_space_category": "UUID string",
+                "description": "Author identifier represented as a UUID.",
+                "representative_samples": [
+                    "550e8400-e29b-41d4-a716-446655440000",
+                    "123e4567-e89b-12d3-a456-426614174000",
+                    "9f8c1d2e-3b4a-4c5d-8e6f-7a8b9c0d1e2f",
+                    "e7d1c2b3-a4f5-4e6d-b7c8-9d0e1f2a3b4c",
+                    "0f1e2d3c-4b5a-6c7d-8e9f-0a1b2c3d4e5f",
+                    "aabbccdd-eeff-4a00-8800-112233445566"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Z]{2}$",
+                "input_space_category": "ISO 3166-1 alpha-2 code",
+                "description": "Two-letter uppercase country code.",
+                "representative_samples": [
+                    "US",
+                    "NO",
+                    "GB",
+                    "FR",
+                    "DE",
+                    "IN"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "Paragraph (single sentence)",
+                "description": "A sentence-length news text under 100 characters.",
+                "representative_samples": [
+                    "The city council approved a new park project near the river on Tuesday evening.",
+                    "Scientists report a promising vaccine milestone after successful phase II trials.",
+                    "Firefighters contained a warehouse blaze, preventing damage to nearby homes.",
+                    "Local schools will shift to staggered schedules to reduce morning traffic jams.",
+                    "A major airline announced new routes, connecting smaller towns to big hubs.",
+                    "Farmers welcomed steady rain after months of drought across the central region."
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$",
+                "input_space_category": "UUID string",
+                "description": "Author identifier represented as a UUID.",
+                "representative_samples": [
+                    "550e8400-e29b-41d4-a716-446655440000",
+                    "123e4567-e89b-12d3-a456-426614174000",
+                    "9f8c1d2e-3b4a-4c5d-8e6f-7a8b9c0d1e2f",
+                    "e7d1c2b3-a4f5-4e6d-b7c8-9d0e1f2a3b4c",
+                    "0f1e2d3c-4b5a-6c7d-8e9f-0a1b2c3d4e5f",
+                    "aabbccdd-eeff-4a00-8800-112233445566"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Z]{3}$",
+                "input_space_category": "ISO 3166-1 alpha-3 code",
+                "description": "Three-letter uppercase country code.",
+                "representative_samples": [
+                    "USA",
+                    "NOR",
+                    "GBR",
+                    "FRA",
+                    "DEU",
+                    "IND"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "Short headline",
+                "description": "Concise news headline or brief text.",
+                "representative_samples": [
+                    "Breaking news update",
+                    "Local sports team wins",
+                    "Weather alert issued",
+                    "Market hits new high",
+                    "New museum opens downtown",
+                    "Festival dates announced"
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "newsId omitted; server generates the id on creation.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "creationTime omitted; server will set the creation timestamp.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric ID string",
+                "description": "Author identifier represented as digits only.",
+                "representative_samples": [
+                    "1",
+                    "42",
+                    "12345",
+                    "987654321",
+                    "100200300",
+                    "9999999999"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z][A-Za-z\\s\\-]{1,98}$",
+                "input_space_category": "Full country name",
+                "description": "Standard country names.",
+                "representative_samples": [
+                    "United States",
+                    "Norway",
+                    "United Kingdom",
+                    "France",
+                    "Germany",
+                    "India"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "With newlines",
+                "description": "Text containing newlines and punctuation.",
+                "representative_samples": [
+                    "Breaking:\nMayor resigns",
+                    "Update:\nRoad closed on I-5",
+                    "Weather:\nHeavy rain expected",
+                    "Sports:\nHome team wins 2-1",
+                    "Finance:\nStocks rally today",
+                    "Tech:\nNew phone released"
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "newsId omitted; server generates the id on creation.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "creationTime omitted; server will set the creation timestamp.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric ID string",
+                "description": "Author identifier represented as digits only.",
+                "representative_samples": [
+                    "1",
+                    "42",
+                    "12345",
+                    "987654321",
+                    "100200300",
+                    "9999999999"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Z]{3}$",
+                "input_space_category": "ISO 3166-1 alpha-3 code",
+                "description": "Three-letter uppercase country code.",
+                "representative_samples": [
+                    "USA",
+                    "NOR",
+                    "GBR",
+                    "FRA",
+                    "DEU",
+                    "IND"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "With newlines",
+                "description": "Text containing newlines and punctuation.",
+                "representative_samples": [
+                    "Breaking:\nMayor resigns",
+                    "Update:\nRoad closed on I-5",
+                    "Weather:\nHeavy rain expected",
+                    "Sports:\nHome team wins 2-1",
+                    "Finance:\nStocks rally today",
+                    "Tech:\nNew phone released"
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "newsId omitted; server generates the id on creation.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "creationTime omitted; server will set the creation timestamp.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{1,64}$",
+                "input_space_category": "Alphanumeric slug",
+                "description": "Alphanumeric id with underscores or hyphens, up to 64 chars.",
+                "representative_samples": [
+                    "auth_001",
+                    "AUTH-2024-XYZ",
+                    "userA12",
+                    "author_joe",
+                    "writer99",
+                    "auth-abc_123"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Z]{3}$",
+                "input_space_category": "ISO 3166-1 alpha-3 code",
+                "description": "Three-letter uppercase country code.",
+                "representative_samples": [
+                    "USA",
+                    "NOR",
+                    "GBR",
+                    "FRA",
+                    "DEU",
+                    "IND"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "Multilingual or emoji",
+                "description": "News text containing Unicode characters and emojis.",
+                "representative_samples": [
+                    "Noticias de última hora",
+                    "最新のニュース速報",
+                    "Dernières nouvelles",
+                    "Últimas notícias 🇧🇷",
+                    "خبر عاجل",
+                    "Nachrichten-Update"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric ID string",
+                "description": "Author identifier represented as digits only.",
+                "representative_samples": [
+                    "1",
+                    "42",
+                    "12345",
+                    "987654321",
+                    "100200300",
+                    "9999999999"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Z]{2}$",
+                "input_space_category": "ISO 3166-1 alpha-2 code",
+                "description": "Two-letter uppercase country code.",
+                "representative_samples": [
+                    "US",
+                    "NO",
+                    "GB",
+                    "FR",
+                    "DE",
+                    "IN"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "Multilingual or emoji",
+                "description": "News text containing Unicode characters and emojis.",
+                "representative_samples": [
+                    "Noticias de última hora",
+                    "最新のニュース速報",
+                    "Dernières nouvelles",
+                    "Últimas notícias 🇧🇷",
+                    "خبر عاجل",
+                    "Nachrichten-Update"
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "newsId omitted; server generates the id on creation.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "creationTime omitted; server will set the creation timestamp.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{1,64}$",
+                "input_space_category": "Alphanumeric slug",
+                "description": "Alphanumeric id with underscores or hyphens, up to 64 chars.",
+                "representative_samples": [
+                    "auth_001",
+                    "AUTH-2024-XYZ",
+                    "userA12",
+                    "author_joe",
+                    "writer99",
+                    "auth-abc_123"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Z]{2}$",
+                "input_space_category": "ISO 3166-1 alpha-2 code",
+                "description": "Two-letter uppercase country code.",
+                "representative_samples": [
+                    "US",
+                    "NO",
+                    "GB",
+                    "FR",
+                    "DE",
+                    "IN"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "Paragraph (single sentence)",
+                "description": "A sentence-length news text under 100 characters.",
+                "representative_samples": [
+                    "The city council approved a new park project near the river on Tuesday evening.",
+                    "Scientists report a promising vaccine milestone after successful phase II trials.",
+                    "Firefighters contained a warehouse blaze, preventing damage to nearby homes.",
+                    "Local schools will shift to staggered schedules to reduce morning traffic jams.",
+                    "A major airline announced new routes, connecting smaller towns to big hubs.",
+                    "Farmers welcomed steady rain after months of drought across the central region."
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "newsId omitted; server generates the id on creation.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "creationTime omitted; server will set the creation timestamp.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{1,64}$",
+                "input_space_category": "Alphanumeric slug",
+                "description": "Alphanumeric id with underscores or hyphens, up to 64 chars.",
+                "representative_samples": [
+                    "auth_001",
+                    "AUTH-2024-XYZ",
+                    "userA12",
+                    "author_joe",
+                    "writer99",
+                    "auth-abc_123"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Z]{2}$",
+                "input_space_category": "ISO 3166-1 alpha-2 code",
+                "description": "Two-letter uppercase country code.",
+                "representative_samples": [
+                    "US",
+                    "NO",
+                    "GB",
+                    "FR",
+                    "DE",
+                    "IN"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "With newlines",
+                "description": "Text containing newlines and punctuation.",
+                "representative_samples": [
+                    "Breaking:\nMayor resigns",
+                    "Update:\nRoad closed on I-5",
+                    "Weather:\nHeavy rain expected",
+                    "Sports:\nHome team wins 2-1",
+                    "Finance:\nStocks rally today",
+                    "Tech:\nNew phone released"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric ID string",
+                "description": "Author identifier represented as digits only.",
+                "representative_samples": [
+                    "1",
+                    "42",
+                    "12345",
+                    "987654321",
+                    "100200300",
+                    "9999999999"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Z]{2}$",
+                "input_space_category": "ISO 3166-1 alpha-2 code",
+                "description": "Two-letter uppercase country code.",
+                "representative_samples": [
+                    "US",
+                    "NO",
+                    "GB",
+                    "FR",
+                    "DE",
+                    "IN"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "With newlines",
+                "description": "Text containing newlines and punctuation.",
+                "representative_samples": [
+                    "Breaking:\nMayor resigns",
+                    "Update:\nRoad closed on I-5",
+                    "Weather:\nHeavy rain expected",
+                    "Sports:\nHome team wins 2-1",
+                    "Finance:\nStocks rally today",
+                    "Tech:\nNew phone released"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "post /news",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$",
+                "input_space_category": "UUID string",
+                "description": "Author identifier represented as a UUID.",
+                "representative_samples": [
+                    "550e8400-e29b-41d4-a716-446655440000",
+                    "123e4567-e89b-12d3-a456-426614174000",
+                    "9f8c1d2e-3b4a-4c5d-8e6f-7a8b9c0d1e2f",
+                    "e7d1c2b3-a4f5-4e6d-b7c8-9d0e1f2a3b4c",
+                    "0f1e2d3c-4b5a-6c7d-8e9f-0a1b2c3d4e5f",
+                    "aabbccdd-eeff-4a00-8800-112233445566"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z][A-Za-z\\s\\-]{1,98}$",
+                "input_space_category": "Full country name",
+                "description": "Standard country names.",
+                "representative_samples": [
+                    "United States",
+                    "Norway",
+                    "United Kingdom",
+                    "France",
+                    "Germany",
+                    "India"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]+$",
+                "input_space_category": "Short headline",
+                "description": "Concise news headline or brief text.",
+                "representative_samples": [
+                    "Breaking news update",
+                    "Local sports team wins",
+                    "Weather alert issued",
+                    "Market hits new high",
+                    "New museum opens downtown",
+                    "Festival dates announced"
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "newsId omitted; server generates the id on creation.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "creationTime omitted; server will set the creation timestamp.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Positive integer ID with leading zeros",
+                "description": "A numeric string that contains only digits and may start with one or more zeros.",
+                "representative_samples": [
+                    "001",
+                    "00042",
+                    "0000005",
+                    "010",
+                    "000123",
+                    "0000000009"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Positive integer ID with leading zeros",
+                "description": "A numeric string that contains only digits and may start with one or more zeros.",
+                "representative_samples": [
+                    "001",
+                    "00042",
+                    "0000005",
+                    "010",
+                    "000123",
+                    "0000000009"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Positive integer ID with leading zeros",
+                "description": "A numeric string that contains only digits and may start with one or more zeros.",
+                "representative_samples": [
+                    "001",
+                    "00042",
+                    "0000005",
+                    "010",
+                    "000123",
+                    "0000000009"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Positive integer ID (no leading zeros)",
+                "description": "A numeric string of digits representing a positive news ID with no leading zeros.",
+                "representative_samples": [
+                    "1",
+                    "2",
+                    "9",
+                    "10",
+                    "42",
+                    "999"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Large positive numeric ID within typical 64-bit range",
+                "description": "A larger numeric ID composed of digits only, still within common 64-bit signed integer limits.",
+                "representative_samples": [
+                    "2147483647",
+                    "2147483646",
+                    "4294967295",
+                    "9999999999",
+                    "1234567890123",
+                    "9223372036854775806"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Positive integer ID with leading zeros",
+                "description": "A numeric string that contains only digits and may start with one or more zeros.",
+                "representative_samples": [
+                    "001",
+                    "00042",
+                    "0000005",
+                    "010",
+                    "000123",
+                    "0000000009"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Positive integer ID with leading zeros",
+                "description": "A numeric string that contains only digits and may start with one or more zeros.",
+                "representative_samples": [
+                    "001",
+                    "00042",
+                    "0000005",
+                    "010",
+                    "000123",
+                    "0000000009"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Positive integer ID with leading zeros",
+                "description": "A numeric string that contains only digits and may start with one or more zeros.",
+                "representative_samples": [
+                    "001",
+                    "00042",
+                    "0000005",
+                    "010",
+                    "000123",
+                    "0000000009"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Positive integer ID (no leading zeros)",
+                "description": "A numeric string of digits representing a positive news ID with no leading zeros.",
+                "representative_samples": [
+                    "1",
+                    "2",
+                    "9",
+                    "10",
+                    "42",
+                    "999"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Positive integer ID (no leading zeros)",
+                "description": "A numeric string of digits representing a positive news ID with no leading zeros.",
+                "representative_samples": [
+                    "1",
+                    "2",
+                    "9",
+                    "10",
+                    "42",
+                    "999"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace2",
+            "space4-subspace1",
+            "space6-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Large numeric id values",
+                "description": "Path id as a large numeric string often used as database identifiers.",
+                "representative_samples": [
+                    "2147483647",
+                    "4294967295",
+                    "9223372036854775807",
+                    "9007199254740991",
+                    "18446744073709551615",
+                    "281474976710655"
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional newsId omitted, allowing the server to keep the existing id.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "authorId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional authorId omitted from the body.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Z]{2}$",
+                "input_space_category": "ISO 3166-1 alpha-2 code",
+                "description": "Two-letter uppercase country codes.",
+                "representative_samples": [
+                    "US",
+                    "NO",
+                    "CN",
+                    "IN",
+                    "GB",
+                    "BR"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]*$",
+                "input_space_category": "Unicode and punctuation",
+                "description": "Text including unicode symbols, accents, and punctuation.",
+                "representative_samples": [
+                    "Café reopens — crowds cheer!",
+                    "Prices rise 2.5% in Q2 📈",
+                    "Niño brings heavy rains",
+                    "“Green Day” concert postponed",
+                    "Startup raises $10M seed round",
+                    "Résumé tips trending online"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1",
+            "space5-subspace2"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Large numeric id values",
+                "description": "Path id as a large numeric string often used as database identifiers.",
+                "representative_samples": [
+                    "2147483647",
+                    "4294967295",
+                    "9223372036854775807",
+                    "9007199254740991",
+                    "18446744073709551615",
+                    "281474976710655"
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional newsId omitted, allowing the server to keep the existing id.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]{1,20}$",
+                "input_space_category": "Numeric string identifiers",
+                "description": "Author id as a purely numeric string.",
+                "representative_samples": [
+                    "1",
+                    "42",
+                    "1001",
+                    "987654",
+                    "0005",
+                    "20240510"
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional creationTime omitted from the body.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space3-subspace2",
+            "space5-subspace2",
+            "space6-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric string with leading zeros",
+                "description": "Path id provided as a numeric string that includes leading zeros.",
+                "representative_samples": [
+                    "01",
+                    "0005",
+                    "000123",
+                    "020",
+                    "0000001",
+                    "00100"
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Equal with leading zeros (exact string match)",
+                "description": "newsId equals the path id including leading zeros (string equality).",
+                "representative_samples": [
+                    "0001",
+                    "0005",
+                    "00100",
+                    "0000001",
+                    "000020",
+                    "000123"
+                ]
+            },
+            "authorId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional authorId omitted from the body.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional creationTime omitted from the body.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]*$",
+                "input_space_category": "Short headline",
+                "description": "Concise headline-style news text.",
+                "representative_samples": [
+                    "Storm hits coast",
+                    "Market closes higher",
+                    "Team wins championship",
+                    "Elections announced",
+                    "New policy unveiled",
+                    "Tech stocks rally"
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "newsId = id"
+        ]
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace2",
+            "space4-subspace2",
+            "space6-subspace2"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Positive integer id (no leading zeros)",
+                "description": "Path id as a numeric string representing a positive integer without leading zeros.",
+                "representative_samples": [
+                    "1",
+                    "7",
+                    "42",
+                    "99",
+                    "1234",
+                    "98765"
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional newsId omitted, allowing the server to keep the existing id.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "authorId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional authorId omitted from the body.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional country omitted from the body.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional text omitted from the body.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Positive integer id (no leading zeros)",
+                "description": "Path id as a numeric string representing a positive integer without leading zeros.",
+                "representative_samples": [
+                    "1",
+                    "7",
+                    "42",
+                    "99",
+                    "1234",
+                    "98765"
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional newsId omitted, allowing the server to keep the existing id.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]{1,20}$",
+                "input_space_category": "Numeric string identifiers",
+                "description": "Author id as a purely numeric string.",
+                "representative_samples": [
+                    "1",
+                    "42",
+                    "1001",
+                    "987654",
+                    "0005",
+                    "20240510"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space4-subspace2",
+            "space5-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric string with leading zeros",
+                "description": "Path id provided as a numeric string that includes leading zeros.",
+                "representative_samples": [
+                    "01",
+                    "0005",
+                    "000123",
+                    "020",
+                    "0000001",
+                    "00100"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional country omitted from the body.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": "string",
+                "format": "YYYY-MM-DDTHH:MM:SSZ",
+                "input_space_category": "ISO 8601 UTC (Z)",
+                "description": "Date-time strings in UTC with Z suffix.",
+                "representative_samples": [
+                    "2023-05-10T14:30:00Z",
+                    "2020-02-29T23:59:59Z",
+                    "1999-12-31T23:59:59Z",
+                    "2024-01-01T00:00:00Z",
+                    "2015-06-30T23:59:59Z",
+                    "2030-12-15T08:05:01Z"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space3-subspace2",
+            "space4-subspace1",
+            "space5-subspace2"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric string with leading zeros",
+                "description": "Path id provided as a numeric string that includes leading zeros.",
+                "representative_samples": [
+                    "01",
+                    "0005",
+                    "000123",
+                    "020",
+                    "0000001",
+                    "00100"
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Equal to path id (numeric) - small",
+                "description": "newsId equals the path id exactly for smaller values.",
+                "representative_samples": [
+                    "1",
+                    "7",
+                    "42",
+                    "99",
+                    "100",
+                    "500"
+                ]
+            },
+            "authorId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional authorId omitted from the body.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Z]{2}$",
+                "input_space_category": "ISO 3166-1 alpha-2 code",
+                "description": "Two-letter uppercase country codes.",
+                "representative_samples": [
+                    "US",
+                    "NO",
+                    "CN",
+                    "IN",
+                    "GB",
+                    "BR"
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional creationTime omitted from the body.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "newsId = id"
+        ]
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space3-subspace1",
+            "space6-subspace2"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric string with leading zeros",
+                "description": "Path id provided as a numeric string that includes leading zeros.",
+                "representative_samples": [
+                    "01",
+                    "0005",
+                    "000123",
+                    "020",
+                    "0000001",
+                    "00100"
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Equal to path id (numeric) - large and boundary",
+                "description": "newsId equals the path id exactly for large identifier values.",
+                "representative_samples": [
+                    "2147483647",
+                    "4294967295",
+                    "9223372036854775807",
+                    "9007199254740991",
+                    "18446744073709551615",
+                    "281474976710655"
+                ]
+            },
+            "authorId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$",
+                "input_space_category": "UUID-formatted author id",
+                "description": "Author id as a standard UUID string.",
+                "representative_samples": [
+                    "550e8400-e29b-41d4-a716-446655440000",
+                    "123e4567-e89b-12d3-a456-426614174000",
+                    "9f8c7b6a-5d4e-3c2b-8a7f-1e0d9c8b7a6f",
+                    "00112233-4455-6677-8899-aabbccddeeff",
+                    "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+                    "0a1b2c3d-4e5f-6789-8abc-def012345678"
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional text omitted from the body.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "newsId = id"
+        ]
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space4-subspace1",
+            "space5-subspace2"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Positive integer id (no leading zeros)",
+                "description": "Path id as a numeric string representing a positive integer without leading zeros.",
+                "representative_samples": [
+                    "1",
+                    "7",
+                    "42",
+                    "99",
+                    "1234",
+                    "98765"
+                ]
+            },
+            "newsId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Equal with leading zeros (exact string match)",
+                "description": "newsId equals the path id including leading zeros (string equality).",
+                "representative_samples": [
+                    "0001",
+                    "0005",
+                    "00100",
+                    "0000001",
+                    "000020",
+                    "000123"
+                ]
+            },
+            "country": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z .'-]{2,}$",
+                "input_space_category": "Country names",
+                "description": "Full country names in English.",
+                "representative_samples": [
+                    "United States",
+                    "Norway",
+                    "Brazil",
+                    "China",
+                    "United Kingdom",
+                    "India"
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional creationTime omitted from the body.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "newsId = id"
+        ]
+    },
+    {
+        "op_name": "put /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space3-subspace2",
+            "space5-subspace2",
+            "space6-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Numeric string with leading zeros",
+                "description": "Path id provided as a numeric string that includes leading zeros.",
+                "representative_samples": [
+                    "01",
+                    "0005",
+                    "000123",
+                    "020",
+                    "0000001",
+                    "00100"
+                ]
+            },
+            "authorId": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional authorId omitted from the body.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "creationTime": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Optional creationTime omitted from the body.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "text": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]*$",
+                "input_space_category": "Unicode and punctuation",
+                "description": "Text including unicode symbols, accents, and punctuation.",
+                "representative_samples": [
+                    "Café reopens — crowds cheer!",
+                    "Prices rise 2.5% in Q2 📈",
+                    "Niño brings heavy rains",
+                    "“Green Day” concert postponed",
+                    "Startup raises $10M seed round",
+                    "Résumé tips trending online"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Large positive IDs (digits only)",
+                "description": "Large numeric IDs still represented as digit-only strings, typical for production systems.",
+                "representative_samples": [
+                    "100000",
+                    "2147483647",
+                    "999999999",
+                    "4294967295",
+                    "5000000000",
+                    "9223372036854775807"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Digits-only IDs with leading zeros",
+                "description": "IDs provided as digit-only strings that include leading zeros but still represent a numeric identifier.",
+                "representative_samples": [
+                    "001",
+                    "000123",
+                    "010",
+                    "0000007",
+                    "042",
+                    "000999"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Digits-only IDs with leading zeros",
+                "description": "IDs provided as digit-only strings that include leading zeros but still represent a numeric identifier.",
+                "representative_samples": [
+                    "001",
+                    "000123",
+                    "010",
+                    "0000007",
+                    "042",
+                    "000999"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Large positive IDs (digits only)",
+                "description": "Large numeric IDs still represented as digit-only strings, typical for production systems.",
+                "representative_samples": [
+                    "100000",
+                    "2147483647",
+                    "999999999",
+                    "4294967295",
+                    "5000000000",
+                    "9223372036854775807"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Canonical positive integer IDs (digits only, no leading zeros)",
+                "description": "Common positive numeric IDs represented as digit-only strings without leading zeros.",
+                "representative_samples": [
+                    "1",
+                    "2",
+                    "10",
+                    "42",
+                    "345",
+                    "6789"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Large positive IDs (digits only)",
+                "description": "Large numeric IDs still represented as digit-only strings, typical for production systems.",
+                "representative_samples": [
+                    "100000",
+                    "2147483647",
+                    "999999999",
+                    "4294967295",
+                    "5000000000",
+                    "9223372036854775807"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Large positive IDs (digits only)",
+                "description": "Large numeric IDs still represented as digit-only strings, typical for production systems.",
+                "representative_samples": [
+                    "100000",
+                    "2147483647",
+                    "999999999",
+                    "4294967295",
+                    "5000000000",
+                    "9223372036854775807"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Large positive IDs (digits only)",
+                "description": "Large numeric IDs still represented as digit-only strings, typical for production systems.",
+                "representative_samples": [
+                    "100000",
+                    "2147483647",
+                    "999999999",
+                    "4294967295",
+                    "5000000000",
+                    "9223372036854775807"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Large positive IDs (digits only)",
+                "description": "Large numeric IDs still represented as digit-only strings, typical for production systems.",
+                "representative_samples": [
+                    "100000",
+                    "2147483647",
+                    "999999999",
+                    "4294967295",
+                    "5000000000",
+                    "9223372036854775807"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "delete /news/{id}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Large positive IDs (digits only)",
+                "description": "Large numeric IDs still represented as digit-only strings, typical for production systems.",
+                "representative_samples": [
+                    "100000",
+                    "2147483647",
+                    "999999999",
+                    "4294967295",
+                    "5000000000",
+                    "9223372036854775807"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "Minimal positive IDs",
+                "description": "Smallest allowed positive integer IDs for existing news items (>= 1).",
+                "representative_samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    10
+                ]
+            },
+            "": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]*$",
+                "input_space_category": "Short non-empty text",
+                "description": "Plain text content intended to replace the existing news text.",
+                "representative_samples": [
+                    "Update",
+                    "Breaking news updated",
+                    "New details added",
+                    "Corrected typo",
+                    "Revised summary",
+                    "Edited content"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "Typical existing news IDs",
+                "description": "Commonly used positive integer IDs expected to map to existing news.",
+                "representative_samples": [
+                    101,
+                    123,
+                    456,
+                    789,
+                    1000,
+                    98765
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "Typical existing news IDs",
+                "description": "Commonly used positive integer IDs expected to map to existing news.",
+                "representative_samples": [
+                    101,
+                    123,
+                    456,
+                    789,
+                    1000,
+                    98765
+                ]
+            },
+            "": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Request body omitted; server processes the request without a body as allowed by the API.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "Typical existing news IDs",
+                "description": "Commonly used positive integer IDs expected to map to existing news.",
+                "representative_samples": [
+                    101,
+                    123,
+                    456,
+                    789,
+                    1000,
+                    98765
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "High-range positive IDs (within int64)",
+                "description": "Larger positive integer IDs still within 64-bit range.",
+                "representative_samples": [
+                    2147483648,
+                    4294967296,
+                    5000000000,
+                    7500000000,
+                    9000000000,
+                    12000000000
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "Minimal positive IDs",
+                "description": "Smallest allowed positive integer IDs for existing news items (>= 1).",
+                "representative_samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    10
+                ]
+            },
+            "": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]*$",
+                "input_space_category": "Text with punctuation and unicode",
+                "description": "Text including punctuation and Unicode characters.",
+                "representative_samples": [
+                    "Café update",
+                    "News 📰 update",
+                    "Quote “test” — ok",
+                    "El Niño impacts",
+                    "Naïve approach fixed",
+                    "Pokémon release date"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "Typical existing news IDs",
+                "description": "Commonly used positive integer IDs expected to map to existing news.",
+                "representative_samples": [
+                    101,
+                    123,
+                    456,
+                    789,
+                    1000,
+                    98765
+                ]
+            },
+            "": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[\\s\\S]*$",
+                "input_space_category": "Multiline text",
+                "description": "Text containing newline characters, still valid as text/plain.",
+                "representative_samples": [
+                    "First line\nSecond line",
+                    "Title\nBody content",
+                    "Intro\nDetails\nEnd",
+                    "Line A\nLine B",
+                    "Paragraph 1\nParagraph 2",
+                    "Header\n- item 1\n- item 2"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "High-range positive IDs (within int64)",
+                "description": "Larger positive integer IDs still within 64-bit range.",
+                "representative_samples": [
+                    2147483648,
+                    4294967296,
+                    5000000000,
+                    7500000000,
+                    9000000000,
+                    12000000000
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "High-range positive IDs (within int64)",
+                "description": "Larger positive integer IDs still within 64-bit range.",
+                "representative_samples": [
+                    2147483648,
+                    4294967296,
+                    5000000000,
+                    7500000000,
+                    9000000000,
+                    12000000000
+                ]
+            },
+            "": {
+                "tag": "valid",
+                "type": null,
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Request body omitted; server processes the request without a body as allowed by the API.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "put /news/{id}/text",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1"
+        ],
+        "selected_parameters_list": {
+            "id": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "int64",
+                "input_space_category": "High-range positive IDs (within int64)",
+                "description": "Larger positive integer IDs still within 64-bit range.",
+                "representative_samples": [
+                    2147483648,
+                    4294967296,
+                    5000000000,
+                    7500000000,
+                    9000000000,
+                    12000000000
+                ]
+            }
+        },
+        "parameter_parameter": []
+    }
+]

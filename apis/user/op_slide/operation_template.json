@@ -75,10 +75,7 @@
             },
             "operationId": "loginUsingPOST"
         },
-        "dependencies": [
-            "The request body loginRequestDTO is required;",
-            "In loginRequestDTO, username and password must be provided together (if one is present, the other is required);"
-        ]
+        "dependencies": []
     },
     {
         "method": "get",
@@ -387,10 +384,7 @@
             },
             "operationId": "createUserUsingPOST"
         },
-        "dependencies": [
-            "The request body createOrUpdateUserDTO is required;",
-            "In createOrUpdateUserDTO, username and password must be provided together (if one is present, the other is required);"
-        ]
+        "dependencies": []
     },
     {
         "method": "get",
@@ -538,9 +532,7 @@
             },
             "operationId": "createRoleUsingPOST"
         },
-        "dependencies": [
-            "The request body role (string) is required;"
-        ]
+        "dependencies": []
     },
     {
         "method": "get",
@@ -737,10 +729,7 @@
             },
             "operationId": "addPermissionOnRoleUsingPOST"
         },
-        "dependencies": [
-            "Both path parameters roleId and permissionKey must be provided together;",
-            "For addPermissionOnRole, the pair (roleId, permissionKey) must not already be associated on the role;"
-        ]
+        "dependencies": []
     },
     {
         "method": "delete",
@@ -815,10 +804,7 @@
             },
             "operationId": "removePermissionOnRoleUsingDELETE"
         },
-        "dependencies": [
-            "Both path parameters roleId and permissionKey must be provided together;",
-            "For removePermissionOnRole, the pair (roleId, permissionKey) must already be associated on the role;"
-        ]
+        "dependencies": []
     },
     {
         "method": "post",
@@ -936,10 +922,7 @@
             },
             "operationId": "registerNewUserAccountUsingPOST"
         },
-        "dependencies": [
-            "The request body registerUserAccountDTO is required;",
-            "In registerUserAccountDTO, username, password, and email must all be provided together (if any one is present, the others are required);"
-        ]
+        "dependencies": []
     },
     {
         "method": "get",
@@ -1285,9 +1268,7 @@
             },
             "operationId": "updateUserUsingPUT"
         },
-        "dependencies": [
-            "Both the path parameter id and the request body updateUserDTO must be provided together;"
-        ]
+        "dependencies": []
     },
     {
         "method": "delete",
@@ -1426,10 +1407,7 @@
             },
             "operationId": "addRoleUsingPOST"
         },
-        "dependencies": [
-            "Both path parameters id and roleId must be provided together;",
-            "For addRole, the pair (id, roleId) must not already be associated for the user;"
-        ]
+        "dependencies": []
     },
     {
         "method": "delete",
@@ -1505,9 +1483,6 @@
             },
             "operationId": "removeRoleUsingDELETE"
         },
-        "dependencies": [
-            "Both path parameters id and roleId must be provided together;",
-            "For removeRole, the pair (id, roleId) must already be associated for the user;"
-        ]
+        "dependencies": []
     }
 ]
