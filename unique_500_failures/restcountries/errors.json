@@ -1,0 +1,7 @@
+[
+[{"rendered_url": "http://localhost:50106/rest/v2/alpha?codes=,,&fields=name;capital", "header": {"Content-Type": "*/*"}, "body": {}}, {"status_code": 500, "text": "{\"status\":500,\"message\":\"Internal Server Error\"}", "headers": {"Content-Type": "application/json;charset=utf-8", "Content-Length": "48", "Date": "Tue, 21 Apr 2026 06:11:36 GMT", "Connection": "close"}}]
+,
+[{"rendered_url": "http://localhost:50106/rest/v2/alpha?fields=cca2,region&codes=,,", "header": {"Content-Type": "*/*"}, "body": {}}, {"status_code": 500, "text": "{\"status\":500,\"message\":\"Internal Server Error\"}", "headers": {"Content-Type": "application/json;charset=utf-8", "Content-Length": "48", "Date": "Tue, 21 Apr 2026 06:13:07 GMT", "Connection": "close"}}]
+,
+[{"rendered_url": "http://localhost:50106/rest/v2/alpha?codes=,,&fields=name;capital", "header": {"Content-Type": "*/*"}, "body": {}}, {"status_code": 500, "text": "{\"status\":500,\"message\":\"Internal Server Error\"}", "headers": {"Content-Type": "application/json;charset=utf-8", "Content-Length": "48", "Date": "Tue, 21 Apr 2026 06:30:25 GMT", "Connection": "close"}}]
+]
