@@ -179,5 +179,8 @@ apis/*/exec_log
 apis/*/result/*/
 apis/demo/
 apis_old/
+*/*/log
+*/*/exec_log
+*/*/result
 
 scripts/
