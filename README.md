@@ -8,7 +8,7 @@ This replication package contains:
 2. **Subject Services Setup**: how to start reset the REST services used in our experiments with JaCoCo instrumentation.
 3. **Supplementary Data**: additional experimental results, failure-triggering cases, and other supporting materials.
 
-# QuickStart
+# **QuickStart**
 ## Environment Setup
 ### HiREST Repository
 You need download this repo and navigate to its root directory:
@@ -57,7 +57,8 @@ HiREST
 
 
 ### Testing Phase
-After confirming initialization results exist, and the REST services of [REST_Go](https://github.com/codingsoo/REST_Go/blob/master/setup.sh) and [YouTube](https://github.com/codingsoo/LlamaRestTest/blob/main/setup.sh) have been running.
+After confirming initialization results exist, and the REST services have been running.
+(refer [Subject Services Setup](#subject-services-setup)).
 
 ```bash
 python examples/fuzzing.py --service <service_name> --requests <max_requests> --time_limit <max_time_limit_in_seconds>
@@ -79,6 +80,7 @@ python examples/offline/offline.py --input_path ./apis/demo/spec/scs.yaml
 # Setup a new target SUT
 If you further setup a new target sut for hirest, you need pay attention to:
 
+
 ## Intialization phase
 1. Prerequisite: Target service must have an OpenAPI specification (v3.0+).
 2. Place the specification (JSON/YAML) in ./apis/{your_service_name}/spec/.
@@ -87,3 +89,17 @@ If you further setup a new target sut for hirest, you need pay attention to:
 ## Testing phase
 1. After successful initialization, configure the `service_name` and `base_url` in `./examples/fuzzing.py`.
 2. Start testing using the `fuzzing.py`.
+
+# **Subject Services Setup**
+
+See document [Subject Services Setup](benchmark/service_setup.md).
+
+# **Supplementary Data**
+
+## Coverage trend data for rq3
+
+See directory [coverage_trend_data](coverage_trend_data).
+
+## Unique 500 status code failure cases
+
+See directory [unique_500_failures](unique_500_failures) and document [faliures_report](unique_500_failures/bugs_report.md).
