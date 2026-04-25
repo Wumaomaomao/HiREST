@@ -18,11 +18,11 @@ cd /path/to/HiREST
 ### Python Environment
 **Requirement**: Use Python 3.10.16. We strongly recommend using a **virtual environment**.
 
-#### Setup with `uv` virtual environment (recommended)
+#### Option 1: Setup with `uv` virtual environment (recommended)
 ```bash
 $ uv sync --frozen
 ```
-Option 2: Setup with pip
+#### Option 2: Setup with pip
 ```bash
 $ python -m venv .venv
 $ source .venv/bin/activate
