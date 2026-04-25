@@ -6,6 +6,8 @@ from datetime import datetime
 
 autoresttest_path = "/root/autoresttest"
 Languagetool_path = "/root/languagetool"
+javaagent_path = os.path.join(os.path.dirname(__file__), "org.jacoco.agent-0.8.7-runtime.jar")
+
 
 
 jdk8_1_service_path = f"{autoresttest_path}/aratrl-service/jdk8_1"
@@ -13,7 +15,7 @@ jdk8_2_service_path = f"{autoresttest_path}/aratrl-service/jdk8_2"
 jdk11_service_path = f"{autoresttest_path}/aratrl-service/jdk11"
 youtube_path = f"{autoresttest_path}/services/youtube"
 
-javaagent_path = "/root/HiREST/scripts/org.jacoco.agent-0.8.7-runtime.jar"
+
 service_log_path = os.path.join(os.path.dirname(__file__), "service_logs/")
 languagetool_path = f"{Languagetool_path}/languagetool-standalone/target/LanguageTool-6.8-SNAPSHOT/LanguageTool-6.8-SNAPSHOT"
 
