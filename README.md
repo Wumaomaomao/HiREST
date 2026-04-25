@@ -3,6 +3,11 @@
 Replication Package for the paper: **Hierarchical Input Space Partition guided
 Fuzzing for REST APIs**
 
+This replication package contains:
+1. **Quick Start**: how to set up the Python environment and run HiREST.
+2. **Subject Services Setup**: how to start reset the REST services used in our experiments with JaCoCo instrumentation.
+3. **Supplementary Data**: additional experimental results, failure-triggering cases, and other supporting materials.
+
 # QuickStart
 ## Environment Setup
 ### HiREST Repository
@@ -12,12 +17,20 @@ cd /path/to/HiREST
 ```
 ### Python Environment
 **Requirement**: Use Python 3.10.16. We strongly recommend using a **virtual environment**.
-Install the project in editable mode:
+
+#### Setup with `uv` virtual environment (recommended)
 ```bash
-pip install -e .
+$ uv sync --frozen
 ```
+Option 2: Setup with pip
+```bash
+$ python -m venv .venv
+$ source .venv/bin/activate
+$ pip install -r requirements.txt
+```
+
 ### Configure Environment Variables
-Create a `.env` file in the project root with the following content:
+If you use `gpt-5`, create a `.env` file in the project root with the following content:
 ```
 OPENAI_API_KEY=<openai_api_key>
 OPENAI_BASE_URL=<openai_base_url>
