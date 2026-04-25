@@ -184,3 +184,6 @@ apis_old/
 */*/result
 draw/
 scripts/
+quick_start.py
+quick_start_1000hits.py
+coverage_comparison.png
