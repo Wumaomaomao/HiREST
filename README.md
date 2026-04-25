@@ -20,13 +20,13 @@ cd /path/to/HiREST
 
 #### Option 1: Setup with `uv` virtual environment (recommended)
 ```bash
-$ uv sync --frozen
+ uv sync --frozen
 ```
 #### Option 2: Setup with pip
 ```bash
-$ python -m venv .venv
-$ source .venv/bin/activate
-$ pip install -r requirements.txt
+ python -m venv .venv
+ source .venv/bin/activate
+ pip install -r requirements.txt
 ```
 
 ### Configure Environment Variables
