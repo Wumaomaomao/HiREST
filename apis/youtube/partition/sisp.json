@@ -4,39 +4,39 @@
         "type": "string",
         "param_name": "channelId",
         "format": [
-            "^(UC)[A-Za-z0-9_-]{22}$"
+            "^UC[0-9A-Za-z_-]{22}$"
         ],
         "valid": [
             {
                 "param_name": "channelId",
-                "category": "Standard YouTube channel ID (UC prefix)",
-                "description": "A 24-character channel ID starting with UC followed by 22 base64url characters.",
+                "category": "Standard YouTube channel ID (UC-prefixed, 24 chars)",
+                "description": "Valid channel IDs start with 'UC' followed by 22 URL-safe base64 characters.",
                 "samples": [
-                    "UC_x5XG1OV2P6uZZ5FSM9Ttw",
-                    "UCBR8-60-B28hp2BmDPdntcQ",
-                    "UC295-Dw_tDNtZXFeAPAW6Aw",
-                    "UC-lHJZR3Gqxm24_Vd_AJ5Yw",
-                    "UCS5Oz6CHmeoF7vSad0qqXfw",
-                    "UC4R8DWoMoI7CAwX8_LjQHig"
+                    "UCaaaaaaaaaaaaaaaaaaaaaa",
+                    "UCbbbbbbbbbbbbbbbbbbbbbb",
+                    "UCcccccccccccccccccccccc",
+                    "UCdddddddddddddddddddddd",
+                    "UCeeeeeeeeeeeeeeeeeeeeee",
+                    "UCffffffffffffffffffffff"
                 ]
             },
             {
                 "param_name": "channelId",
-                "category": "Channel ID with underscores or hyphens",
-                "description": "Valid UC-prefixed channel IDs that include hyphens or underscores.",
+                "category": "Channel ID with mix of letters, digits, underscores, hyphens",
+                "description": "Valid channel IDs may include letters, numbers, underscores, and hyphens after the UC prefix.",
                 "samples": [
-                    "UCq-Fj5jknLsUf-MWSy4_brA",
-                    "UC-9-kyTW8ZkZNDHQJ6FgpwQ",
-                    "UCYfdidRxbB8Qhf0Nx7ioOYw",
-                    "UC0v-tlzsn0QZwJnkiaUSJVQ",
-                    "UCt7fwAhXDy3oNFTAzF2o8Pw",
-                    "UC2C_jShtL725hvbm1arSV9w"
+                    "UCa1b2c3d4e5f6g7h8i9jklm",
+                    "UCZ_Z_Z_Z_Z_Z_Z_Z_Z_Z_Z_",
+                    "UChyphens------and__unders",
+                    "UC0123456789ABCDEFGHJKLM",
+                    "UCPQRS_tuvwxYZ01234_abcd",
+                    "UCxYz_-01234ABCDE_fghijk"
                 ]
             },
             {
                 "param_name": "channelId",
                 "category": "<MISS_KEY>",
-                "description": "Omitted channelId means do not restrict by creator channel.",
+                "description": "Omitted channelId means no restriction by channel and returns results from all channels.",
                 "samples": [
                     null,
                     null,
@@ -51,39 +51,39 @@
             {
                 "param_name": "channelId",
                 "category": "Wrong prefix or length",
-                "description": "Values that are not 24 chars with UC prefix.",
+                "description": "Channel IDs not starting with UC or not exactly 24 characters long.",
                 "samples": [
-                    "UC12345",
-                    "U1234567890123456789012",
-                    "PL1234567890abcdefghi",
-                    "ABCDEF1234567890123456",
-                    "UC123456789012345678901234",
-                    "CH12345678901234567890"
+                    "UCapproxwronglength",
+                    "CHaaaaaaaaaaaaaaaaaaaaaa",
+                    "UCshortid",
+                    "UClongidtoolongmorecharsxx",
+                    "U-aaaaaaaaaaaaaaaaaaaaaaa",
+                    "UCaaaaaaaaaaaaaaaaaaaaa"
                 ]
             },
             {
                 "param_name": "channelId",
-                "category": "Empty or whitespace string",
-                "description": "Empty or only whitespace strings are invalid.",
+                "category": "Invalid characters or whitespace",
+                "description": "Channel IDs containing spaces or characters outside [A-Za-z0-9_-].",
+                "samples": [
+                    "UCaaaaaaaaaaaaaaa aaaaaaa",
+                    "UC!invalidcharact3rs!!!!!!",
+                    "UCaaa#aa#aa#aa#aa#aa#aaaa",
+                    "UCaaaaa\tbbbbbbbbbbbbbbbb",
+                    "UC🙂aaaaaaaaaaaaaaaaaaaaa",
+                    "UCaaaa\nbbbbbbbbbbbbbbbbb"
+                ]
+            },
+            {
+                "param_name": "channelId",
+                "category": "Type errors",
+                "description": "Non-string or empty values for a string parameter.",
                 "samples": [
                     "",
-                    " ",
-                    "   ",
-                    "\t",
-                    "\n",
-                    "\r\n"
-                ]
-            },
-            {
-                "param_name": "channelId",
-                "category": "Non-string type",
-                "description": "Values that are not strings.",
-                "samples": [
                     12345,
                     true,
                     false,
                     null,
-                    [],
                     {}
                 ]
             }
@@ -99,8 +99,8 @@
         "valid": [
             {
                 "param_name": "channelType",
-                "category": "Value any",
-                "description": "Search not restricted to a specific channel type.",
+                "category": "any",
+                "description": "Search across all channel types.",
                 "samples": [
                     "any",
                     "any",
@@ -112,8 +112,8 @@
             },
             {
                 "param_name": "channelType",
-                "category": "Value show",
-                "description": "Restrict search to show-type channels.",
+                "category": "show",
+                "description": "Restrict search to channels of type 'show'.",
                 "samples": [
                     "show",
                     "show",
@@ -126,7 +126,7 @@
             {
                 "param_name": "channelType",
                 "category": "<MISS_KEY>",
-                "description": "Omitted channelType means no restriction by channel type.",
+                "description": "Omitting channelType applies no restriction by channel type.",
                 "samples": [
                     null,
                     null,
@@ -140,40 +140,40 @@
         "invalid": [
             {
                 "param_name": "channelType",
-                "category": "Unknown value",
-                "description": "Values not in the allowed set.",
+                "category": "Unsupported value",
+                "description": "Values not in the allowed set {any, show}.",
                 "samples": [
-                    "channel",
+                    "playlist",
+                    "video",
+                    "all",
                     "series",
-                    "brand",
-                    "official",
-                    "partner",
-                    "all"
+                    "channel",
+                    "random"
                 ]
             },
             {
                 "param_name": "channelType",
-                "category": "Case mismatch",
-                "description": "Incorrect casing is not accepted.",
+                "category": "Case and whitespace issues",
+                "description": "Values with incorrect case or extra whitespace.",
                 "samples": [
                     "Any",
                     "SHOW",
-                    "Show",
-                    "ANY",
-                    "sHow",
-                    "AnY"
+                    " any",
+                    "show ",
+                    " any ",
+                    "Show"
                 ]
             },
             {
                 "param_name": "channelType",
-                "category": "Non-string type",
-                "description": "A non-string value is invalid.",
+                "category": "Non-string types",
+                "description": "Invalid types for a string parameter.",
                 "samples": [
+                    1,
                     true,
                     false,
-                    1,
-                    0,
                     null,
+                    [],
                     {}
                 ]
             }
@@ -189,8 +189,8 @@
         "valid": [
             {
                 "param_name": "eventType",
-                "category": "Completed broadcasts",
-                "description": "Restrict search to completed live broadcasts (requires type=video).",
+                "category": "completed",
+                "description": "Restrict to completed broadcasts (requires type=video).",
                 "samples": [
                     "completed",
                     "completed",
@@ -202,8 +202,8 @@
             },
             {
                 "param_name": "eventType",
-                "category": "Live broadcasts",
-                "description": "Restrict search to currently live broadcasts (requires type=video).",
+                "category": "live",
+                "description": "Restrict to live broadcasts (requires type=video).",
                 "samples": [
                     "live",
                     "live",
@@ -215,8 +215,8 @@
             },
             {
                 "param_name": "eventType",
-                "category": "Upcoming broadcasts",
-                "description": "Restrict search to upcoming broadcasts (requires type=video).",
+                "category": "upcoming",
+                "description": "Restrict to upcoming broadcasts (requires type=video).",
                 "samples": [
                     "upcoming",
                     "upcoming",
@@ -224,47 +224,60 @@
                     "upcoming",
                     "upcoming",
                     "upcoming"
+                ]
+            },
+            {
+                "param_name": "eventType",
+                "category": "<MISS_KEY>",
+                "description": "Omitting eventType applies no restriction by broadcast event type.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
                 ]
             }
         ],
         "invalid": [
             {
                 "param_name": "eventType",
-                "category": "Unknown value",
-                "description": "Values outside the allowed set.",
+                "category": "Unsupported value",
+                "description": "Values not in the allowed set {completed, live, upcoming}.",
                 "samples": [
+                    "past",
+                    "current",
                     "scheduled",
                     "ended",
-                    "recorded",
-                    "all",
-                    "past",
-                    "future"
+                    "future",
+                    "all"
                 ]
             },
             {
                 "param_name": "eventType",
-                "category": "Case mismatch",
-                "description": "Incorrect casing is invalid.",
+                "category": "Case/format issues",
+                "description": "Incorrect case or extra spaces.",
                 "samples": [
-                    "Live",
-                    "COMPLETED",
-                    "Upcoming",
-                    "LIVE",
                     "Completed",
-                    "UPCOMING"
+                    "LIVE",
+                    " upcoming",
+                    "live ",
+                    "UpComing",
+                    " completed "
                 ]
             },
             {
                 "param_name": "eventType",
-                "category": "Semantic: used when type != video",
-                "description": "Providing eventType without setting type=video violates API rules.",
+                "category": "Non-string/empty",
+                "description": "Invalid types or empty string.",
                 "samples": [
-                    "live",
-                    "completed",
-                    "upcoming",
-                    "live",
-                    "completed",
-                    "upcoming"
+                    0,
+                    true,
+                    false,
+                    null,
+                    "",
+                    []
                 ]
             }
         ]
@@ -278,7 +291,7 @@
             {
                 "param_name": "forContentOwner",
                 "category": "Boolean true",
-                "description": "Restrict to resources owned by the content owner (requires CMS auth and onBehalfOfContentOwner).",
+                "description": "Restrict results to the content owner's resources (requires appropriate auth and onBehalfOfContentOwner).",
                 "samples": [
                     true,
                     true,
@@ -291,7 +304,7 @@
             {
                 "param_name": "forContentOwner",
                 "category": "Boolean false",
-                "description": "Do not restrict by content owner.",
+                "description": "Do not restrict results to a specific content owner.",
                 "samples": [
                     false,
                     false,
@@ -304,7 +317,7 @@
             {
                 "param_name": "forContentOwner",
                 "category": "<MISS_KEY>",
-                "description": "Omitted forContentOwner means no restriction by owner context.",
+                "description": "Omitting this flag applies no content-owner restriction.",
                 "samples": [
                     null,
                     null,
@@ -319,33 +332,33 @@
             {
                 "param_name": "forContentOwner",
                 "category": "String booleans",
-                "description": "Boolean provided as string is invalid.",
+                "description": "Using string literals instead of boolean type.",
                 "samples": [
                     "true",
                     "false",
                     "True",
                     "False",
-                    "YES",
-                    "NO"
+                    "1",
+                    "0"
                 ]
             },
             {
                 "param_name": "forContentOwner",
-                "category": "Numeric booleans",
-                "description": "Numbers instead of boolean type.",
+                "category": "Non-boolean types",
+                "description": "Invalid types for a boolean.",
                 "samples": [
                     1,
                     0,
-                    -1,
-                    2,
-                    10,
-                    100
+                    "yes",
+                    null,
+                    [],
+                    {}
                 ]
             },
             {
                 "param_name": "forContentOwner",
-                "category": "Semantic: true without onBehalfOfContentOwner",
-                "description": "Setting true without also providing onBehalfOfContentOwner and proper CMS auth.",
+                "category": "Conflicting flags (semantic)",
+                "description": "Passing true while missing required onBehalfOfContentOwner or invalid auth (semantic error).",
                 "samples": [
                     true,
                     true,
@@ -366,7 +379,7 @@
             {
                 "param_name": "forDeveloper",
                 "category": "Boolean true",
-                "description": "Restrict to videos uploaded via the developer's application (uses auth to identify developer).",
+                "description": "Restrict results to videos uploaded via the developer's application.",
                 "samples": [
                     true,
                     true,
@@ -379,7 +392,7 @@
             {
                 "param_name": "forDeveloper",
                 "category": "Boolean false",
-                "description": "Do not restrict by developer uploads.",
+                "description": "Do not restrict by developer.",
                 "samples": [
                     false,
                     false,
@@ -392,7 +405,7 @@
             {
                 "param_name": "forDeveloper",
                 "category": "<MISS_KEY>",
-                "description": "Omitted forDeveloper means no restriction by developer uploads.",
+                "description": "Omitting this flag applies no developer restriction.",
                 "samples": [
                     null,
                     null,
@@ -407,40 +420,40 @@
             {
                 "param_name": "forDeveloper",
                 "category": "String booleans",
-                "description": "Boolean encoded as a string is invalid.",
+                "description": "Using strings instead of boolean type.",
                 "samples": [
                     "true",
                     "false",
                     "TRUE",
                     "FALSE",
-                    "yes",
-                    "no"
+                    "1",
+                    "0"
                 ]
             },
             {
                 "param_name": "forDeveloper",
                 "category": "Non-boolean types",
-                "description": "Values that are not boolean.",
+                "description": "Invalid types for a boolean.",
                 "samples": [
                     1,
-                    0,
-                    "1",
+                    "yes",
+                    null,
                     [],
                     {},
-                    null
+                    ""
                 ]
             },
             {
                 "param_name": "forDeveloper",
-                "category": "Malformed boolean",
-                "description": "Typos or partial words.",
+                "category": "Conflicting with auth (semantic)",
+                "description": "Setting true without appropriate developer credentials (semantic error).",
                 "samples": [
-                    "tru",
-                    "flase",
-                    "t",
-                    "f",
-                    "y",
-                    "n"
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true
                 ]
             }
         ]
@@ -467,7 +480,7 @@
             {
                 "param_name": "forMine",
                 "category": "Boolean false",
-                "description": "Do not restrict to the authenticated user's videos.",
+                "description": "No restriction to the authenticated user's videos.",
                 "samples": [
                     false,
                     false,
@@ -480,7 +493,7 @@
             {
                 "param_name": "forMine",
                 "category": "<MISS_KEY>",
-                "description": "Omitting forMine leaves ownership unrestricted.",
+                "description": "Omitting this flag applies no ownership restriction.",
                 "samples": [
                     null,
                     null,
@@ -495,33 +508,33 @@
             {
                 "param_name": "forMine",
                 "category": "String booleans",
-                "description": "Strings instead of boolean.",
+                "description": "Using strings instead of boolean type.",
                 "samples": [
                     "true",
                     "false",
-                    "True",
-                    "False",
-                    "YES",
-                    "NO"
+                    "TRUE",
+                    "FALSE",
+                    "1",
+                    "0"
                 ]
             },
             {
                 "param_name": "forMine",
                 "category": "Non-boolean types",
-                "description": "Invalid types for a boolean parameter.",
+                "description": "Invalid types for a boolean.",
                 "samples": [
                     1,
-                    "0",
+                    "yes",
+                    null,
                     [],
                     {},
-                    null,
-                    2
+                    ""
                 ]
             },
             {
                 "param_name": "forMine",
-                "category": "Semantic: true when type != video",
-                "description": "Setting forMine=true without restricting type=video breaks API rule.",
+                "category": "Missing type=video (semantic)",
+                "description": "Setting forMine=true without type=video (semantic violation).",
                 "samples": [
                     true,
                     true,
@@ -538,88 +551,87 @@
         "type": "string",
         "param_name": "location",
         "format": [
-            "^\\(-?\\d{1,3}\\.\\d+,-?\\d{1,3}\\.\\d+\\)$",
-            "latitude in [-90,90], longitude in [-180,180]"
+            "^-?\\d{1,2}(?:\\.\\d+)?,-?\\d{1,3}(?:\\.\\d+)?$"
         ],
         "valid": [
             {
                 "param_name": "location",
-                "category": "Typical coordinates",
-                "description": "Valid lat/lon in parentheses within geographic bounds.",
+                "category": "Typical coordinates (no spaces)",
+                "description": "Valid decimal latitude,longitude within -90..90 and -180..180 respectively.",
                 "samples": [
-                    "(37.42307,-122.08427)",
-                    "(40.68925,-74.04450)",
-                    "(48.85837,2.29448)",
-                    "(-33.85678,151.21530)",
-                    "(35.68950,139.69171)",
-                    "(-22.95192,-43.21049)"
+                    "37.42307,-122.08427",
+                    "-33.86882,151.20930",
+                    "51.50740,-0.12780",
+                    "-34.60368,-58.38156",
+                    "35.68950,139.69170",
+                    "40.71278,-74.00597"
                 ]
             },
             {
                 "param_name": "location",
-                "category": "Boundary coordinates",
-                "description": "Valid edge lat/lon values within limits.",
+                "category": "Equatorial/Prime Meridian and small decimals",
+                "description": "Valid coordinates around 0 with small fractional parts.",
                 "samples": [
-                    "(90.00000,0.00000)",
-                    "(-90.00000,0.00000)",
-                    "(0.00000,180.00000)",
-                    "(0.00000,-180.00000)",
-                    "(0.00000,0.00000)",
-                    "(45.00000,-180.00000)"
+                    "0.00000,0.00000",
+                    "0.00001,-0.00001",
+                    "-0.5,0.5",
+                    "0.12345,0.67890",
+                    "-0.00010,0.00020",
+                    "1.00000,-1.00000"
                 ]
             },
             {
                 "param_name": "location",
-                "category": "<MISS_KEY>",
-                "description": "Omitting location means no geo filtering.",
+                "category": "Boundary values",
+                "description": "Latitudes and longitudes near or at their allowed extremes.",
                 "samples": [
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null
+                    "90.00000,180.00000",
+                    "-90.00000,-180.00000",
+                    "89.99999,179.99999",
+                    "-89.99999,-179.99999",
+                    "45.00000,180.00000",
+                    "-45.00000,-180.00000"
                 ]
             }
         ],
         "invalid": [
             {
                 "param_name": "location",
-                "category": "Location without locationRadius",
-                "description": "Providing location requires locationRadius; omitting it triggers an error.",
+                "category": "Out-of-range coordinates",
+                "description": "Latitude beyond ±90 or longitude beyond ±180.",
                 "samples": [
+                    "91.0,0",
+                    "-91.0,0",
+                    "0,181.0",
+                    "0,-181.0",
+                    "100.0,200.0",
+                    "-95.123,179.0"
+                ]
+            },
+            {
+                "param_name": "location",
+                "category": "Format errors",
+                "description": "Values with spaces, extra characters, or wrong separators.",
+                "samples": [
+                    "37.42307, -122.08427",
                     "(37.42307,-122.08427)",
-                    "(51.50740,-0.12780)",
-                    "(34.05223,-118.24368)",
-                    "(55.75583,37.61730)",
-                    "(28.61394,77.20902)",
-                    "(-1.29207,36.82195)"
+                    "37.42307;-122.08427",
+                    "37.42307 -122.08427",
+                    "lat=37.4,long=-122.0",
+                    "37,42307,-122,08427"
                 ]
             },
             {
                 "param_name": "location",
-                "category": "Malformed format",
-                "description": "Missing parentheses, wrong separator, or invalid characters.",
+                "category": "Missing/Type errors",
+                "description": "Empty or non-string values.",
                 "samples": [
-                    "37.42307,-122.08427",
-                    "(37.42307, -122.08427)",
-                    "(37.42307;-122.08427)",
-                    "(lat,lon)",
-                    "(37.42307 -122.08427)",
-                    "((37.42307,-122.08427))"
-                ]
-            },
-            {
-                "param_name": "location",
-                "category": "Out of range",
-                "description": "Latitude or longitude outside valid ranges.",
-                "samples": [
-                    "(91.00000,0.00000)",
-                    "(-91.00000,0.00000)",
-                    "(0.00000,181.00000)",
-                    "(0.00000,-181.00000)",
-                    "(120.00000,200.00000)",
-                    "(-100.00000,-200.00000)"
+                    "",
+                    null,
+                    true,
+                    123,
+                    [],
+                    {}
                 ]
             }
         ]
@@ -629,88 +641,87 @@
         "type": "string",
         "param_name": "locationRadius",
         "format": [
-            "^(\\d+(?:\\.\\d+)?)(m|km|ft|mi)$",
-            "max 1000km"
+            "^(\\d+(?:\\.\\d+)?)(m|km|ft|mi)$"
         ],
         "valid": [
             {
                 "param_name": "locationRadius",
-                "category": "Meters unit",
-                "description": "Radius in meters.",
+                "category": "Meters",
+                "description": "Positive number followed by 'm'.",
                 "samples": [
-                    "1500m",
-                    "250m",
+                    "5m",
+                    "500m",
                     "999m",
-                    "50m",
-                    "1m",
-                    "7500m"
+                    "1500m",
+                    "10000m",
+                    "1m"
                 ]
             },
             {
                 "param_name": "locationRadius",
-                "category": "Kilometers unit (<=1000km)",
-                "description": "Radius in kilometers within allowed limit.",
+                "category": "Kilometers within 1000 km",
+                "description": "Positive km values not exceeding 1000 km.",
                 "samples": [
                     "0.1km",
+                    "0.5km",
                     "1km",
-                    "15km",
+                    "100km",
                     "250km",
-                    "999km",
-                    "1000km"
+                    "999.9km"
                 ]
             },
             {
                 "param_name": "locationRadius",
-                "category": "Imperial units",
-                "description": "Radius in feet or miles.",
+                "category": "Feet/Miles",
+                "description": "Positive ft/mi values; miles should be reasonable (< 621.371 mi equals 1000 km).",
                 "samples": [
-                    "10000ft",
+                    "50ft",
                     "5280ft",
-                    "1mi",
-                    "0.5mi",
-                    "250ft",
-                    "10mi"
+                    "0.75mi",
+                    "1.5mi",
+                    "10mi",
+                    "100mi"
                 ]
             }
         ],
         "invalid": [
             {
                 "param_name": "locationRadius",
-                "category": "Unsupported unit",
-                "description": "Units other than m, km, ft, mi.",
+                "category": "Exceeds 1000 km limit",
+                "description": "Values greater than 1000 km (or equivalent) are not supported.",
                 "samples": [
-                    "5cm",
-                    "20yd",
-                    "3kmh",
-                    "10meters",
-                    "1000inch",
-                    "5kms"
+                    "1000.1km",
+                    "2000km",
+                    "1500km",
+                    "700mi",
+                    "1100000m",
+                    "4000000ft"
                 ]
             },
             {
                 "param_name": "locationRadius",
-                "category": "Exceeds maximum radius",
-                "description": "Radius larger than 1000 km (or equivalent).",
+                "category": "Format/unit errors",
+                "description": "Spaces, missing unit, or unsupported units.",
                 "samples": [
-                    "1001km",
-                    "5000km",
-                    "1000001m",
-                    "800mi",
-                    "4000000ft",
-                    "2000000m"
+                    "5 km",
+                    "1000",
+                    "2.5KM",
+                    "10kmh",
+                    "km5",
+                    "mi0.5"
                 ]
             },
             {
                 "param_name": "locationRadius",
-                "category": "Malformed or negative values",
-                "description": "Missing number, negative, or badly formatted.",
+                "category": "Non-positive values",
+                "description": "Zero or negative distances.",
                 "samples": [
-                    "-5km",
-                    "-100m",
-                    "km",
-                    ".5km",
-                    "5.",
-                    "abc"
+                    "0km",
+                    "-1km",
+                    "0m",
+                    "-0.5mi",
+                    "-10ft",
+                    "0.0mi"
                 ]
             }
         ]
@@ -719,40 +730,38 @@
         "op_name": "get /search",
         "type": "integer",
         "param_name": "maxResults",
-        "format": [
-            "integer range 0-50"
-        ],
+        "format": [],
         "valid": [
             {
                 "param_name": "maxResults",
-                "category": "Lower boundary and defaults",
-                "description": "Values near lower bound and default.",
+                "category": "Lower bound (0)",
+                "description": "Edge case: zero results requested.",
                 "samples": [
                     0,
-                    1,
-                    2,
-                    3,
-                    4,
-                    5
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
                 ]
             },
             {
                 "param_name": "maxResults",
-                "category": "Typical mid-range",
-                "description": "Common page sizes within range.",
+                "category": "Typical range (1-25)",
+                "description": "Commonly used values within the allowed range.",
                 "samples": [
+                    1,
+                    5,
                     10,
                     15,
                     20,
-                    25,
-                    30,
-                    40
+                    25
                 ]
             },
             {
                 "param_name": "maxResults",
-                "category": "Upper boundary",
-                "description": "Maximum allowed value.",
+                "category": "Upper bound (50)",
+                "description": "Edge case: maximum allowed results.",
                 "samples": [
                     50,
                     50,
@@ -761,46 +770,59 @@
                     50,
                     50
                 ]
+            },
+            {
+                "param_name": "maxResults",
+                "category": "<MISS_KEY>",   
+                "description": "Omitting maxResults defaults to 5 results per page.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
             }
         ],
         "invalid": [
             {
                 "param_name": "maxResults",
-                "category": "Negative values",
-                "description": "Below minimum 0.",
+                "category": "Out of range",
+                "description": "Negative or greater than 50.",
                 "samples": [
                     -1,
                     -5,
-                    -10,
-                    -50,
-                    -100,
-                    -999
-                ]
-            },
-            {
-                "param_name": "maxResults",
-                "category": "Exceeds maximum",
-                "description": "Greater than 50.",
-                "samples": [
                     51,
                     100,
-                    500,
                     1000,
-                    9999,
-                    2147483647
+                    -100
                 ]
             },
             {
                 "param_name": "maxResults",
                 "category": "Non-integer types",
-                "description": "Floats, strings, booleans, or null.",
+                "description": "Floats or strings when an integer is required.",
                 "samples": [
-                    5.5,
+                    1.5,
                     "10",
-                    true,
-                    false,
+                    "fifty",
+                    2.0,
                     null,
-                    []
+                    true
+                ]
+            },
+            {
+                "param_name": "maxResults",
+                "category": "Empty/structure",
+                "description": "Empty or structured values.",
+                "samples": [
+                    "",
+                    [],
+                    {},
+                    " ",
+                    "0 ",
+                    " 50"
                 ]
             }
         ]
@@ -810,39 +832,39 @@
         "type": "string",
         "param_name": "onBehalfOfContentOwner",
         "format": [
-            "^[A-Za-z0-9._-]{3,64}$"
+            "^[A-Za-z0-9_-]{3,}$"
         ],
         "valid": [
             {
                 "param_name": "onBehalfOfContentOwner",
-                "category": "Short alphanumeric owner IDs",
-                "description": "Simple owner identifiers.",
+                "category": "Alphanumeric identifier",
+                "description": "Content owner IDs with letters and numbers.",
                 "samples": [
                     "owner123",
-                    "AcmeCo",
-                    "MediaCo42",
-                    "ContentOwnerA",
-                    "YTPartner_01",
-                    "Owner_XYZ"
+                    "contentOwner42",
+                    "ytcms001",
+                    "Partner789",
+                    "OwnerABC123",
+                    "brand456"
                 ]
             },
             {
                 "param_name": "onBehalfOfContentOwner",
-                "category": "UUID-like identifiers",
-                "description": "IDs using UUID-style strings.",
+                "category": "Hyphen/underscore identifiers",
+                "description": "IDs including hyphens and underscores.",
                 "samples": [
-                    "550e8400-e29b-41d4-a716-446655440000",
-                    "a3f1c2b4-9d87-4e6f-8a2b-1c3d5e7f9a10",
-                    "1b2f3a4c-5678-4de9-9012-34ab56cd78ef",
-                    "00000000-0000-0000-0000-000000000001",
-                    "9f8d7c6b-5a4e-3d2c-1b0a-abcdefabcdef",
-                    "ABCDEF12-3456-7890-ABCD-1234567890AB"
+                    "owner-abc",
+                    "owner_xyz",
+                    "yt_cms-123",
+                    "partner-team_01",
+                    "co-123_owner",
+                    "cms_owner-2"
                 ]
             },
             {
                 "param_name": "onBehalfOfContentOwner",
                 "category": "<MISS_KEY>",
-                "description": "Omitting this parameter means no CMS-owner scoping.",
+                "description": "Omitting this parameter means no on-behalf-of context is used.",
                 "samples": [
                     null,
                     null,
@@ -856,34 +878,34 @@
         "invalid": [
             {
                 "param_name": "onBehalfOfContentOwner",
-                "category": "Empty or whitespace",
-                "description": "Owner ID cannot be empty.",
+                "category": "Too short or empty",
+                "description": "Empty or shorter than 3 characters.",
                 "samples": [
                     "",
-                    " ",
-                    "   ",
-                    "\n",
-                    "\t",
-                    "\r\n"
+                    "a",
+                    "ab",
+                    "  ",
+                    "_",
+                    "-"
                 ]
             },
             {
                 "param_name": "onBehalfOfContentOwner",
-                "category": "Overly long identifier",
-                "description": "IDs exceeding typical 64-character limit.",
+                "category": "Invalid characters/whitespace",
+                "description": "Contains spaces or unsupported punctuation.",
                 "samples": [
-                    "owner_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdef",
-                    "partner_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789abcd",
-                    "verylongownerid_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123",
-                    "contentowner_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456",
-                    "cmsowner_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
-                    "longownerid_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567"
+                    "owner name",
+                    "owner!",
+                    "owner@id",
+                    "owner#1",
+                    "owner$",
+                    "owner.id"
                 ]
             },
             {
                 "param_name": "onBehalfOfContentOwner",
                 "category": "Non-string types",
-                "description": "Values that are not strings.",
+                "description": "Wrong data types.",
                 "samples": [
                     123,
                     true,
@@ -905,8 +927,8 @@
         "valid": [
             {
                 "param_name": "order",
-                "category": "Default relevance ordering",
-                "description": "Sort by relevance.",
+                "category": "relevance",
+                "description": "Default ordering by relevance.",
                 "samples": [
                     "relevance",
                     "relevance",
@@ -918,69 +940,82 @@
             },
             {
                 "param_name": "order",
-                "category": "Chronological, rating, or title",
-                "description": "Sort by date, rating, or title.",
+                "category": "date",
+                "description": "Order by creation date.",
                 "samples": [
                     "date",
-                    "rating",
-                    "title",
                     "date",
-                    "rating",
-                    "title"
+                    "date",
+                    "date",
+                    "date",
+                    "date"
                 ]
             },
             {
                 "param_name": "order",
-                "category": "Count-based ordering",
-                "description": "Sort by videoCount or viewCount.",
+                "category": "viewCount",
+                "description": "Order by view count.",
                 "samples": [
-                    "videoCount",
                     "viewCount",
                     "viewCount",
-                    "videoCount",
                     "viewCount",
-                    "videoCount"
+                    "viewCount",
+                    "viewCount",
+                    "viewCount"
+                ]
+            },
+            {
+                "param_name":"order",
+                "category" : "<MISS_KEY>",
+                "description": "Omitting order defaults to relevance-based ordering.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
                 ]
             }
         ],
         "invalid": [
             {
                 "param_name": "order",
-                "category": "Unknown value",
-                "description": "Values not defined in the enum.",
+                "category": "Unsupported order value",
+                "description": "Not one of the allowed sort keys.",
                 "samples": [
+                    "views",
+                    "popularity",
+                    "likeCount",
                     "random",
-                    "popular",
-                    "score",
-                    "length",
-                    "likes",
-                    "comments"
+                    "trending",
+                    "alphabetical"
                 ]
             },
             {
                 "param_name": "order",
-                "category": "Case mismatch",
-                "description": "Incorrect case.",
+                "category": "Case/spacing issues",
+                "description": "Wrong case or extra spaces.",
                 "samples": [
                     "Relevance",
-                    "VIEWCOUNT",
-                    "Date",
-                    "Rating",
-                    "TITLE",
-                    "videocount"
+                    "DATE",
+                    " viewCount",
+                    "rating ",
+                    "Title",
+                    "videoCount "
                 ]
             },
             {
                 "param_name": "order",
-                "category": "Non-string type",
-                "description": "Invalid type.",
+                "category": "Non-string/empty",
+                "description": "Empty or wrong type.",
                 "samples": [
-                    1,
-                    true,
+                    "",
                     null,
+                    true,
+                    123,
                     [],
-                    {},
-                    0
+                    {}
                 ]
             }
         ]
@@ -990,39 +1025,39 @@
         "type": "string",
         "param_name": "pageToken",
         "format": [
-            "^[A-Za-z0-9_-]{1,80}$"
+            "^[A-Za-z0-9_-]+$"
         ],
         "valid": [
             {
                 "param_name": "pageToken",
-                "category": "Short opaque tokens",
-                "description": "Typical small tokens returned by the API.",
+                "category": "Short token",
+                "description": "Typical short page tokens from a prior response.",
                 "samples": [
-                    "CAUQAA",
-                    "EAAaAA",
-                    "QAA",
+                    "CAoQAA",
                     "CBQQAA",
                     "CDIQAA",
-                    "ChIQAQ"
+                    "CEAQAQ",
+                    "CGAQAA",
+                    "CJYBEAA"
                 ]
             },
             {
                 "param_name": "pageToken",
-                "category": "Base64url-like tokens",
-                "description": "URL-safe tokens with - and _ characters.",
+                "category": "Longer token",
+                "description": "Longer base64url-like tokens.",
                 "samples": [
-                    "EAAa-AB_C",
-                    "Q0FBRV9fLQ",
-                    "T0pRU19f",
-                    "YWJjZGVfLV8",
-                    "UEFHRV9UT0s",
-                    "TkVYVF9QQUdF"
+                    "EAAaBlBUOkNBUQ",
+                    "Eg0KC2NoYW5uZWxzGAA",
+                    "Egt2aWRlb3MYASAAKAA",
+                    "EAAaB0NITk5FTFM",
+                    "EAoKUExBWUxJU1QYAg",
+                    "EghWSURFT1MYAw"
                 ]
             },
             {
                 "param_name": "pageToken",
                 "category": "<MISS_KEY>",
-                "description": "No token returns the first page of results.",
+                "description": "Omitting pageToken returns the first page of results.",
                 "samples": [
                     null,
                     null,
@@ -1036,41 +1071,41 @@
         "invalid": [
             {
                 "param_name": "pageToken",
-                "category": "Contains spaces or punctuation",
-                "description": "Tokens must be URL-safe without spaces.",
+                "category": "Invalid characters",
+                "description": "Tokens containing spaces or invalid punctuation.",
                 "samples": [
-                    "bad token",
-                    "abc+def",
-                    "a/b?c",
-                    "token=123",
-                    "abc,def",
-                    "abc.def"
+                    "CAo QAA",
+                    "CBQQAA!",
+                    "CDI/QA",
+                    "CEAQ=AQ",
+                    "CGAQAA*",
+                    "CJY BEAA"
                 ]
             },
             {
                 "param_name": "pageToken",
-                "category": "Excessively long token",
-                "description": "Tokens longer than typical limits.",
+                "category": "Empty or whitespace",
+                "description": "Missing or blank token value.",
                 "samples": [
-                    "A1B2C3D4E5F6G7H8I9J0A1B2C3D4E5F6G7H8I9J0K1L2M3N4O5P6Q7R8S",
-                    "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm123456",
-                    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                    "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-                    "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
-                    "DDD-EEE_FFF-GGG_HHH-III_JJJ-KKK_LLL-MMM_NNN-OOO_PPP-QQQ_RRR"
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r"
                 ]
             },
             {
                 "param_name": "pageToken",
-                "category": "Non-string type",
-                "description": "Invalid types for token.",
+                "category": "Non-string types",
+                "description": "Wrong type for a token.",
                 "samples": [
-                    12345,
+                    123,
                     true,
-                    null,
+                    false,
                     [],
                     {},
-                    0
+                    null
                 ]
             }
         ]
@@ -1080,13 +1115,13 @@
         "type": "string",
         "param_name": "part",
         "format": [
-            "^(snippet)$"
+            "^snippet$"
         ],
         "valid": [
             {
                 "param_name": "part",
-                "category": "Exact 'snippet' value",
-                "description": "The only allowed part for this endpoint.",
+                "category": "Exact required value",
+                "description": "The part parameter must be exactly 'snippet'.",
                 "samples": [
                     "snippet",
                     "snippet",
@@ -1098,8 +1133,8 @@
             },
             {
                 "param_name": "part",
-                "category": "Correctly spelled 'snippet'",
-                "description": "Duplicate valid category to emphasize exact value requirement.",
+                "category": "Single allowed token",
+                "description": "Provide only the 'snippet' part.",
                 "samples": [
                     "snippet",
                     "snippet",
@@ -1111,8 +1146,8 @@
             },
             {
                 "param_name": "part",
-                "category": "Lowercase 'snippet' token",
-                "description": "Lowercase exact token as required.",
+                "category": "Lowercase exact match",
+                "description": "Lowercase exact 'snippet' required (case-sensitive).",
                 "samples": [
                     "snippet",
                     "snippet",
@@ -1127,7 +1162,7 @@
             {
                 "param_name": "part",
                 "category": "<MISS_KEY>",
-                "description": "Missing required parameter part.",
+                "description": "Missing required parameter results in an error.",
                 "samples": [
                     null,
                     null,
@@ -1139,28 +1174,28 @@
             },
             {
                 "param_name": "part",
-                "category": "Wrong part value",
-                "description": "Values not allowed for this endpoint.",
+                "category": "Wrong or additional parts",
+                "description": "Any value other than 'snippet' or lists with additional parts.",
                 "samples": [
                     "contentDetails",
                     "statistics",
-                    "id",
-                    "status",
-                    "topicDetails",
-                    "brandingSettings"
+                    "snippet,contentDetails",
+                    "Snippet",
+                    "SNIPPET",
+                    "snippet "
                 ]
             },
             {
                 "param_name": "part",
-                "category": "Case or spelling mismatch",
-                "description": "Incorrect case or typos.",
+                "category": "Non-string/empty",
+                "description": "Empty string or wrong types.",
                 "samples": [
-                    "Snippet",
-                    "SNIPPET",
-                    "snipet",
-                    "snippets",
-                    "SNipPet",
-                    "snippett"
+                    "",
+                    123,
+                    true,
+                    false,
+                    [],
+                    {}
                 ]
             }
         ]
@@ -1170,89 +1205,87 @@
         "type": "string",
         "param_name": "publishedAfter",
         "format": [
-            "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
-            "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}[+-]\\d{2}:\\d{2}$",
-            "RFC 3339"
+            "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
         ],
         "valid": [
             {
                 "param_name": "publishedAfter",
-                "category": "UTC Zulu time",
-                "description": "RFC3339 timestamps ending with Z.",
+                "category": "RFC3339 UTC timestamps (general)",
+                "description": "Valid timestamps with 'Z' (UTC).",
                 "samples": [
-                    "2020-01-01T00:00:00Z",
-                    "2019-12-31T23:59:59Z",
                     "1970-01-01T00:00:00Z",
-                    "2024-02-29T12:30:45Z",
-                    "1999-07-16T08:15:30Z",
-                    "2021-11-30T16:00:00Z"
+                    "2006-01-01T00:00:00Z",
+                    "2010-05-10T12:30:00Z",
+                    "2015-09-20T23:59:59Z",
+                    "2020-02-29T00:00:00Z",
+                    "2023-12-31T11:22:33Z"
                 ]
             },
             {
                 "param_name": "publishedAfter",
-                "category": "With timezone offset",
-                "description": "RFC3339 timestamps with explicit offsets.",
+                "category": "Recent dates",
+                "description": "Use recent timestamps in UTC.",
                 "samples": [
-                    "2020-05-10T14:00:00+02:00",
-                    "2018-03-25T01:30:00-05:00",
-                    "2017-06-10T23:59:59+00:00",
-                    "2022-12-31T23:00:00+09:30",
-                    "2005-09-15T08:45:00-03:15",
-                    "2021-01-01T00:00:00+05:30"
+                    "2021-01-01T00:00:00Z",
+                    "2021-06-15T08:45:00Z",
+                    "2022-03-10T12:00:00Z",
+                    "2022-11-05T18:30:00Z",
+                    "2023-04-01T00:00:00Z",
+                    "2024-01-15T09:15:00Z"
                 ]
             },
             {
                 "param_name": "publishedAfter",
-                "category": "Fractional seconds",
-                "description": "RFC3339 with fractional seconds.",
+                "category": "<MISS_KEY>",
+                "description": "Omitting publishedAfter applies no lower date bound.",
                 "samples": [
-                    "2020-06-01T12:00:00.123Z",
-                    "2016-02-29T00:00:00.999Z",
-                    "2010-10-10T10:10:10.010Z",
-                    "2000-01-01T00:00:00.000Z",
-                    "2023-08-20T04:05:06.789Z",
-                    "2024-04-15T09:30:00.500Z"
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
                 ]
             }
         ],
         "invalid": [
             {
                 "param_name": "publishedAfter",
-                "category": "Wrong date-time format",
-                "description": "Not in RFC3339 format.",
+                "category": "Wrong format",
+                "description": "Missing 'T'/'Z' or wrong separators.",
                 "samples": [
-                    "2020-01-01",
                     "2020-01-01 00:00:00",
-                    "01-01-2020",
                     "2020/01/01T00:00:00Z",
+                    "2020-01-01T00:00:00",
+                    "01-01-2020T00:00:00Z",
+                    "2020-1-1T0:0:0Z",
+                    "2020-01-01"
+                ]
+            },
+            {
+                "param_name": "publishedAfter",
+                "category": "Invalid date/time values",
+                "description": "Out-of-range month/day or leap day errors.",
+                "samples": [
                     "2020-13-01T00:00:00Z",
-                    "2020-00-10T00:00:00Z"
+                    "2020-00-10T00:00:00Z",
+                    "2020-02-30T00:00:00Z",
+                    "2019-02-29T12:00:00Z",
+                    "2020-04-31T23:59:59Z",
+                    "2020-12-15T24:00:00Z"
                 ]
             },
             {
                 "param_name": "publishedAfter",
-                "category": "Invalid time components",
-                "description": "Out-of-range time values or malformed offsets.",
+                "category": "Non-string/empty",
+                "description": "Empty or wrong types.",
                 "samples": [
-                    "2020-01-01T24:00:00Z",
-                    "2020-01-01T12:60:00Z",
-                    "2020-01-01T12:00:60Z",
-                    "2020-01-01T12:00Z",
-                    "2020-01-01T12:00:00+2:00",
-                    "2020-01-01T12:00:00+0200"
-                ]
-            },
-            {
-                "param_name": "publishedAfter",
-                "category": "Non-string type",
-                "description": "Invalid types for date-time.",
-                "samples": [
-                    12345,
+                    "",
+                    1577836800,
                     true,
                     null,
                     [],
-                    {},
-                    false
+                    {}
                 ]
             }
         ]
@@ -1262,89 +1295,87 @@
         "type": "string",
         "param_name": "publishedBefore",
         "format": [
-            "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
-            "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}[+-]\\d{2}:\\d{2}$",
-            "RFC 3339"
+            "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
         ],
         "valid": [
             {
                 "param_name": "publishedBefore",
-                "category": "UTC Zulu time",
-                "description": "RFC3339 timestamps ending with Z.",
+                "category": "RFC3339 UTC timestamps (general)",
+                "description": "Valid timestamps with 'Z' (UTC).",
                 "samples": [
-                    "2023-12-31T23:59:59Z",
+                    "1970-01-01T00:00:00Z",
+                    "2008-12-31T23:59:59Z",
+                    "2012-06-30T23:59:59Z",
+                    "2016-02-29T00:00:00Z",
+                    "2019-12-31T00:00:00Z",
+                    "2022-08-15T10:10:10Z"
+                ]
+            },
+            {
+                "param_name": "publishedBefore",
+                "category": "Recent dates",
+                "description": "Use recent timestamps in UTC.",
+                "samples": [
+                    "2021-05-01T00:00:00Z",
                     "2022-01-01T00:00:00Z",
-                    "2010-05-15T12:00:00Z",
-                    "2000-01-01T00:00:00Z",
-                    "1995-06-30T23:59:59Z",
-                    "2024-04-01T08:15:00Z"
+                    "2023-06-30T12:00:00Z",
+                    "2023-10-05T18:45:00Z",
+                    "2024-03-01T09:00:00Z",
+                    "2024-06-15T14:30:00Z"
                 ]
             },
             {
                 "param_name": "publishedBefore",
-                "category": "With timezone offset",
-                "description": "RFC3339 timestamps with explicit offsets.",
+                "category": "<MISS_KEY>",
+                "description": "Omitting publishedBefore applies no upper date bound.",
                 "samples": [
-                    "2021-03-10T18:30:00+01:00",
-                    "2019-07-04T09:00:00-07:00",
-                    "2018-11-11T11:11:11+00:00",
-                    "2016-02-29T23:59:59+05:30",
-                    "2014-09-15T06:45:00-03:00",
-                    "2008-12-31T22:00:00+09:00"
-                ]
-            },
-            {
-                "param_name": "publishedBefore",
-                "category": "Fractional seconds",
-                "description": "RFC3339 with fractional seconds.",
-                "samples": [
-                    "2020-12-31T23:59:59.999Z",
-                    "2012-06-30T23:59:60.000Z",
-                    "2015-05-20T10:10:10.100Z",
-                    "2003-03-03T03:03:03.003Z",
-                    "1999-12-31T23:59:59.500Z",
-                    "2024-03-31T07:00:00.250Z"
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
                 ]
             }
         ],
         "invalid": [
             {
                 "param_name": "publishedBefore",
-                "category": "Wrong date-time format",
-                "description": "Not in RFC3339 format.",
+                "category": "Wrong format",
+                "description": "Missing 'T'/'Z' or wrong separators.",
                 "samples": [
-                    "2023-12-31",
-                    "2023-12-31 23:59:59",
-                    "31-12-2023",
-                    "2023/12/31T23:59:59Z",
-                    "2023-00-10T00:00:00Z",
-                    "2023-01-32T00:00:00Z"
+                    "2020-01-01 00:00:00",
+                    "2020/01/01T00:00:00Z",
+                    "2020-01-01T00:00:00",
+                    "01-01-2020T00:00:00Z",
+                    "2020-1-1T0:0:0Z",
+                    "2020-01-01"
                 ]
             },
             {
                 "param_name": "publishedBefore",
-                "category": "Invalid time components",
-                "description": "Out-of-range time values or malformed offsets.",
+                "category": "Invalid date/time values",
+                "description": "Out-of-range month/day or leap day errors.",
                 "samples": [
-                    "2023-01-01T24:00:00Z",
-                    "2023-01-01T12:60:00Z",
-                    "2023-01-01T12:00:60Z",
-                    "2023-01-01T12:00Z",
-                    "2023-01-01T12:00:00+2:00",
-                    "2023-01-01T12:00:00+0200"
+                    "2020-13-01T00:00:00Z",
+                    "2020-00-10T00:00:00Z",
+                    "2020-02-30T00:00:00Z",
+                    "2019-02-29T12:00:00Z",
+                    "2020-04-31T23:59:59Z",
+                    "2020-12-15T24:00:00Z"
                 ]
             },
             {
                 "param_name": "publishedBefore",
-                "category": "Non-string type",
-                "description": "Invalid types for date-time.",
+                "category": "Non-string/empty",
+                "description": "Empty or wrong types.",
                 "samples": [
-                    12345,
+                    "",
+                    1577836800,
                     true,
                     null,
                     [],
-                    {},
-                    false
+                    {}
                 ]
             }
         ]
@@ -1354,88 +1385,87 @@
         "type": "string",
         "param_name": "q",
         "format": [
-            "plain terms and operators: term1%7Cterm2, -exclude",
-            "^[^\\n]{1,100}$"
+            "Free text; '|' must be URL-escaped as %7C"
         ],
         "valid": [
             {
                 "param_name": "q",
-                "category": "Simple single-term query",
-                "description": "Plain keyword without operators.",
+                "category": "Simple keywords",
+                "description": "Basic search terms without operators.",
                 "samples": [
-                    "music",
-                    "football",
-                    "cooking",
-                    "travel",
-                    "news",
-                    "technology"
-                ]
-            },
-            {
-                "param_name": "q",
-                "category": "Multi-term phrases",
-                "description": "Multiple words separated by spaces.",
-                "samples": [
-                    "funny cats",
-                    "how to bake bread",
+                    "cooking recipes",
+                    "python tutorial",
+                    "lofi hip hop",
+                    "travel vlog",
                     "guitar lessons",
-                    "space documentaries",
-                    "best coding tutorials",
-                    "daily yoga"
+                    "football highlights"
                 ]
             },
             {
                 "param_name": "q",
-                "category": "OR and NOT operators",
-                "description": "Using %7C for OR and leading minus to exclude.",
+                "category": "Boolean operators with URL-escaped pipe",
+                "description": "Queries using NOT (-) and OR (%7C).",
                 "samples": [
                     "boating%7Csailing",
                     "boating%7Csailing -fishing",
-                    "java%7Cpython -javascript",
-                    "movie trailers -hindi",
-                    "rock%7Cpop%7Cjazz",
-                    "machine learning -beginner"
+                    "music%7Cpodcast -ads",
+                    "cat%7Cdog -parrot",
+                    "java%7Ckotlin -scala",
+                    "android%7Cios -windows"
+                ]
+            },
+            {
+                "param_name": "q",
+                "category": "<MISS_KEY>",
+                "description": "Omitting q may rely on other filters to produce results.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
                 ]
             }
         ],
         "invalid": [
             {
                 "param_name": "q",
-                "category": "Empty or whitespace",
-                "description": "Blank queries are invalid.",
+                "category": "Unescaped pipe",
+                "description": "Using '|' instead of URL-escaped '%7C'.",
+                "samples": [
+                    "boating|sailing",
+                    "music|podcast -ads",
+                    "cat|dog -parrot",
+                    "java|kotlin -scala",
+                    "android|ios",
+                    "game|review"
+                ]
+            },
+            {
+                "param_name": "q",
+                "category": "Empty/whitespace",
+                "description": "Blank or whitespace-only queries.",
                 "samples": [
                     "",
                     " ",
                     "   ",
-                    "\n",
                     "\t",
-                    "\r\n"
+                    "\n",
+                    "\r"
                 ]
             },
             {
                 "param_name": "q",
-                "category": "Unescaped or malformed operators",
-                "description": "Using raw pipe or illegal characters.",
-                "samples": [
-                    "music|videos",
-                    "term1|term2 -term3",
-                    "test\tquery",
-                    "name=value",
-                    "bad%escape",
-                    "video|movie"
-                ]
-            },
-            {
-                "param_name": "q",
-                "category": "Non-string type",
-                "description": "Invalid types for query term.",
+                "category": "Non-string types",
+                "description": "Invalid types for a text query.",
                 "samples": [
                     123,
                     true,
+                    false,
                     null,
                     [],
-                    {},
-                    false
+                    {}
                 ]
             }
         ]
@@ -1445,88 +1475,87 @@
         "type": "string",
         "param_name": "regionCode",
         "format": [
-            "^[A-Z]{2}$",
-            "ISO 3166-1 alpha-2"
+            "^[A-Z]{2}$"
         ],
         "valid": [
             {
                 "param_name": "regionCode",
-                "category": "Americas country codes",
-                "description": "Valid ISO alpha-2 codes for the Americas.",
+                "category": "Common regions",
+                "description": "Two-letter ISO 3166-1 alpha-2 uppercase codes.",
                 "samples": [
                     "US",
-                    "CA",
-                    "MX",
-                    "BR",
-                    "AR",
-                    "CL"
-                ]
-            },
-            {
-                "param_name": "regionCode",
-                "category": "Europe country codes",
-                "description": "Valid ISO alpha-2 codes for Europe.",
-                "samples": [
                     "GB",
+                    "CA",
                     "DE",
-                    "FR",
-                    "IT",
-                    "ES",
-                    "NL"
+                    "JP",
+                    "IN"
                 ]
             },
             {
                 "param_name": "regionCode",
-                "category": "Asia-Pacific country codes",
-                "description": "Valid ISO alpha-2 codes for APAC.",
+                "category": "Other valid regions",
+                "description": "Less common but valid ISO codes.",
                 "samples": [
-                    "JP",
-                    "KR",
-                    "CN",
+                    "BR",
+                    "FR",
+                    "RU",
                     "AU",
-                    "IN",
-                    "NZ"
+                    "CN",
+                    "ZA"
+                ]
+            },
+            {
+                "param_name": "regionCode",
+                "category": "<MISS_KEY>",
+                "description": "Omitting regionCode uses default/global context.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
                 ]
             }
         ],
         "invalid": [
             {
                 "param_name": "regionCode",
-                "category": "Lowercase codes",
-                "description": "Region codes must be uppercase.",
+                "category": "Wrong length or case",
+                "description": "Codes not exactly two uppercase letters.",
                 "samples": [
-                    "us",
-                    "gb",
-                    "de",
-                    "fr",
-                    "it",
-                    "es"
+                    "usa",
+                    "Us",
+                    "U",
+                    "USA",
+                    "uS",
+                    "123"
                 ]
             },
             {
                 "param_name": "regionCode",
-                "category": "Invalid or non-country codes",
-                "description": "Not valid ISO alpha-2 country codes.",
+                "category": "Invalid characters",
+                "description": "Non-letter characters or spaces.",
                 "samples": [
-                    "EU",
-                    "XX",
-                    "ABC",
-                    "U1",
-                    "",
-                    "USA"
+                    "U$",
+                    "U ",
+                    " U",
+                    "U_",
+                    "U-",
+                    "U!"
                 ]
             },
             {
                 "param_name": "regionCode",
-                "category": "Non-string type",
-                "description": "Invalid types.",
+                "category": "Non-string types",
+                "description": "Wrong data types.",
                 "samples": [
                     1,
                     true,
+                    false,
                     null,
                     [],
-                    {},
-                    false
+                    {}
                 ]
             }
         ]
@@ -1541,34 +1570,34 @@
         "valid": [
             {
                 "param_name": "relatedToVideoId",
-                "category": "Standard 11-char video IDs",
-                "description": "Base64url-style 11-character IDs.",
+                "category": "Typical YouTube video IDs",
+                "description": "11-character base64url-like IDs.",
                 "samples": [
                     "dQw4w9WgXcQ",
-                    "kxopViU98Xo",
                     "9bZkp7q19f0",
-                    "M7FIvfx5J10",
-                    "e-ORhEE9VVg",
-                    "3JZ_D3ELwOQ"
+                    "oHg5SJYRHA0",
+                    "J---aiyznGQ",
+                    "eY52Zsg-KVI",
+                    "M7FIvfx5J10"
                 ]
             },
             {
                 "param_name": "relatedToVideoId",
-                "category": "IDs with underscores or hyphens",
-                "description": "Valid video IDs can include _ and -.",
+                "category": "IDs with underscores/hyphens",
+                "description": "Valid IDs including '_' or '-'.",
                 "samples": [
-                    "abc_def-ghi",
-                    "A1B2C3D4E5F",
-                    "_-A1b2C3D4E",
-                    "Q1w2E3r4T5Y",
-                    "ZZZ_zzZ-123",
-                    "__--__--__-"
+                    "abc_def-ghI",
+                    "A_B-C_D-EF1",
+                    "12_34-56AbC",
+                    "QW-ER_TYUi0",
+                    "zx_cv-bnM12",
+                    "LMN_op-QR12"
                 ]
             },
             {
                 "param_name": "relatedToVideoId",
                 "category": "<MISS_KEY>",
-                "description": "Omitting relatedToVideoId disables related video filtering.",
+                "description": "Omitting relatedToVideoId means no related-video constraint is applied.",
                 "samples": [
                     null,
                     null,
@@ -1583,35 +1612,35 @@
             {
                 "param_name": "relatedToVideoId",
                 "category": "Wrong length",
-                "description": "IDs not exactly 11 characters.",
+                "description": "IDs not exactly 11 characters long.",
                 "samples": [
-                    "shortid",
-                    "toolongvideoid12345",
-                    "abcd",
+                    "dQw4w9WgXc",
+                    "dQw4w9WgXcQQ",
+                    "shortID",
+                    "veryverylongid",
                     "1234567890",
-                    "abcdefghijklm",
-                    ""
+                    "ABCDEFGHIJKL"
                 ]
             },
             {
                 "param_name": "relatedToVideoId",
-                "category": "Illegal characters",
-                "description": "Characters outside base64url set.",
+                "category": "Invalid characters/whitespace",
+                "description": "Spaces or non-base64url characters.",
                 "samples": [
-                    "id$with$sign",
-                    "id with space",
-                    "id/with/slash",
-                    "id?query",
-                    "id,comma",
-                    "id.period"
+                    "dQw4 w9WgXcQ",
+                    "dQw4w9WgXc!",
+                    "dQw4w9WgXc=",
+                    "dQw4w9WgXc?",
+                    "dQw4w9WgXc@",
+                    "dQw4w9Wg XcQ"
                 ]
             },
             {
                 "param_name": "relatedToVideoId",
-                "category": "Non-string type",
-                "description": "Values that are not strings.",
+                "category": "Non-string types",
+                "description": "Wrong types for an ID.",
                 "samples": [
-                    12345,
+                    12345678901,
                     true,
                     false,
                     null,
@@ -1626,14 +1655,13 @@
         "type": "string",
         "param_name": "relevanceLanguage",
         "format": [
-            "^[a-z]{2}$",
-            "^(zh-Hans|zh-Hant)$"
+            "^([a-z]{2}|zh-Hans|zh-Hant)$"
         ],
         "valid": [
             {
                 "param_name": "relevanceLanguage",
-                "category": "Standard ISO 639-1 codes",
-                "description": "Two-letter lowercase language codes.",
+                "category": "ISO 639-1 two-letter codes",
+                "description": "Lowercase two-letter language codes.",
                 "samples": [
                     "en",
                     "es",
@@ -1645,69 +1673,69 @@
             },
             {
                 "param_name": "relevanceLanguage",
-                "category": "Simplified Chinese tag",
-                "description": "Special language tag for Simplified Chinese.",
+                "category": "Chinese variants",
+                "description": "Special values for Simplified and Traditional Chinese.",
                 "samples": [
                     "zh-Hans",
+                    "zh-Hant",
                     "zh-Hans",
+                    "zh-Hant",
                     "zh-Hans",
-                    "zh-Hans",
-                    "zh-Hans",
-                    "zh-Hans"
+                    "zh-Hant"
                 ]
             },
             {
                 "param_name": "relevanceLanguage",
-                "category": "Traditional Chinese tag",
-                "description": "Special language tag for Traditional Chinese.",
+                "category": "<MISS_KEY>",
+                "description": "Omitting relevanceLanguage lets the API choose relevance irrespective of language preference.",
                 "samples": [
-                    "zh-Hant",
-                    "zh-Hant",
-                    "zh-Hant",
-                    "zh-Hant",
-                    "zh-Hant",
-                    "zh-Hant"
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
                 ]
             }
         ],
         "invalid": [
             {
                 "param_name": "relevanceLanguage",
-                "category": "Uppercase or mixed-case codes",
-                "description": "Language codes should be lowercase or specific zh-Hans/zh-Hant.",
+                "category": "Wrong length or case",
+                "description": "Codes not two lowercase letters or unsupported variants.",
                 "samples": [
+                    "eng",
                     "EN",
-                    "ES",
-                    "Fr",
-                    "DE",
-                    "JA",
-                    "RU"
+                    "En",
+                    "zh",
+                    "Zh-Hans",
+                    "ZH-HANT"
                 ]
             },
             {
                 "param_name": "relevanceLanguage",
-                "category": "Locale with region",
-                "description": "Values with region subtags are not accepted here.",
+                "category": "Invalid characters",
+                "description": "Contains digits or punctuation not allowed.",
                 "samples": [
-                    "en-US",
-                    "pt-BR",
-                    "zh-CN",
-                    "es-419",
-                    "de-DE",
-                    "fr-CA"
+                    "e1",
+                    "e_",
+                    "e-",
+                    "e!",
+                    "1a",
+                    "a."
                 ]
             },
             {
                 "param_name": "relevanceLanguage",
-                "category": "Non-string or empty",
-                "description": "Invalid types or empty string.",
+                "category": "Non-string/empty",
+                "description": "Empty or wrong types.",
                 "samples": [
-                    1,
-                    true,
+                    "",
                     null,
+                    true,
+                    1,
                     [],
-                    {},
-                    ""
+                    {}
                 ]
             }
         ]
@@ -1722,8 +1750,8 @@
         "valid": [
             {
                 "param_name": "safeSearch",
-                "category": "Moderate",
-                "description": "Default moderation level.",
+                "category": "moderate",
+                "description": "Default behavior filtering some potentially mature content.",
                 "samples": [
                     "moderate",
                     "moderate",
@@ -1735,8 +1763,8 @@
             },
             {
                 "param_name": "safeSearch",
-                "category": "None",
-                "description": "Do not filter restricted content.",
+                "category": "none",
+                "description": "No filtering for restricted content.",
                 "samples": [
                     "none",
                     "none",
@@ -1748,8 +1776,8 @@
             },
             {
                 "param_name": "safeSearch",
-                "category": "Strict",
-                "description": "Strict filtering of restricted content.",
+                "category": "strict",
+                "description": "Strict filtering for mature content.",
                 "samples": [
                     "strict",
                     "strict",
@@ -1758,42 +1786,55 @@
                     "strict",
                     "strict"
                 ]
+            },
+            {
+                "param_name": "safeSearch",
+                "category": "<MISS_KEY>",
+                "description": "Omitting safeSearch defaults to moderate filtering.",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
             }
         ],
         "invalid": [
             {
                 "param_name": "safeSearch",
-                "category": "Unknown value",
-                "description": "Values not in the enum.",
+                "category": "Unsupported value",
+                "description": "Not in {moderate, none, strict}.",
                 "samples": [
-                    "low",
-                    "high",
                     "safe",
-                    "adult",
-                    "moderated",
-                    "strictest"
+                    "medium",
+                    "high",
+                    "low",
+                    "false",
+                    "true"
                 ]
             },
             {
                 "param_name": "safeSearch",
-                "category": "Case mismatch",
-                "description": "Incorrect casing.",
+                "category": "Case/spacing issues",
+                "description": "Wrong case or extra spaces.",
                 "samples": [
                     "Moderate",
                     "NONE",
+                    " strict",
+                    "none ",
                     "Strict",
-                    "STRICT",
-                    "None",
-                    "MODERATE"
+                    " moderate "
                 ]
             },
             {
                 "param_name": "safeSearch",
-                "category": "Non-string type",
-                "description": "Invalid type.",
+                "category": "Non-string/empty",
+                "description": "Empty or wrong types.",
                 "samples": [
+                    "",
                     0,
-                    1,
                     true,
                     null,
                     [],
@@ -1807,129 +1848,39 @@
         "type": "string",
         "param_name": "topicId",
         "format": [
-            "^(\\/m\\/|\\/g\\/|\\/en\\/)[A-Za-z0-9_\\-]+$"
+            "^/m/[0-9a-z_]+$"
         ],
         "valid": [
             {
                 "param_name": "topicId",
-                "category": "Freebase /m/ topics",
-                "description": "IDs starting with /m/.",
+                "category": "Freebase topic IDs",
+                "description": "IDs starting with /m/ followed by lowercase letters, digits, or underscores.",
                 "samples": [
                     "/m/02mjmr",
-                    "/m/01k8wb",
-                    "/m/09s1f",
-                    "/m/05z1_",
-                    "/m/02j71",
-                    "/m/0d6lp"
+                    "/m/01g317",
+                    "/m/07c1v",
+                    "/m/05zppz",
+                    "/m/0dgd_",
+                    "/m/0f2v_"
                 ]
             },
             {
                 "param_name": "topicId",
-                "category": "Freebase /g/ topics",
-                "description": "IDs starting with /g/.",
+                "category": "Longer topic IDs",
+                "description": "Longer but valid Freebase topic patterns.",
                 "samples": [
-                    "/g/11c6w4x3k0",
-                    "/g/120y1t3v",
-                    "/g/11b6c1f2d9",
-                    "/g/11f3k0m8nq",
-                    "/g/113abcxyz",
-                    "/g/110abcd12"
+                    "/m/0123abcd",
+                    "/m/0abc_def",
+                    "/m/0xyz1234",
+                    "/m/01ab2c3d",
+                    "/m/0pqrs_tu",
+                    "/m/0lmno_pq"
                 ]
             },
             {
                 "param_name": "topicId",
-                "category": "/en/ topics",
-                "description": "English topic identifiers.",
-                "samples": [
-                    "/en/michael_jackson",
-                    "/en/new_york_city",
-                    "/en/python",
-                    "/en/dog",
-                    "/en/football",
-                    "/en/quantum_mechanics"
-                ]
-            }
-        ],
-        "invalid": [
-            {
-                "param_name": "topicId",
-                "category": "Missing leading slash or prefix",
-                "description": "Not starting with /m/, /g/, or /en/.",
-                "samples": [
-                    "m/02mjmr",
-                    "en/python",
-                    "g/11c6w4x3k0",
-                    "m/abc",
-                    "en/xyz",
-                    "g/123"
-                ]
-            },
-            {
-                "param_name": "topicId",
-                "category": "Whitespace or spaces",
-                "description": "Contains spaces or empty path segment.",
-                "samples": [
-                    "/m/abc def",
-                    "/en/hello world",
-                    "/m/with space",
-                    "/g/with space",
-                    "/m/abc/def",
-                    "/en/"
-                ]
-            },
-            {
-                "param_name": "topicId",
-                "category": "Non-string type",
-                "description": "Values not strings.",
-                "samples": [
-                    123,
-                    true,
-                    false,
-                    null,
-                    [],
-                    {}
-                ]
-            }
-        ]
-    },
-    {
-        "op_name": "get /search",
-        "type": "string",
-        "param_name": "type",
-        "format": [
-            "^(video|channel|playlist)(,(video|channel|playlist)){0,2}$"
-        ],
-        "valid": [
-            {
-                "param_name": "type",
-                "category": "Single resource type",
-                "description": "Restrict to one resource type.",
-                "samples": [
-                    "video",
-                    "channel",
-                    "playlist",
-                    "video",
-                    "channel",
-                    "playlist"
-                ]
-            },
-            {
-                "param_name": "type",
-                "category": "Multiple resource types",
-                "description": "Comma-separated list of distinct types.",
-                "samples": [
-                    "video,channel",
-                    "channel,playlist",
-                    "video,playlist",
-                    "playlist,video",
-                    "channel,video",
-                    "playlist,channel"
-                ]
-            },
-            {
-                "param_name": "type",
                 "category": "<MISS_KEY>",
-                "description": "Omitted type defaults to video,channel,playlist.",
+                "description": "Omitting topicId applies no topic filter.",
                 "samples": [
                     null,
                     null,
@@ -1942,42 +1893,132 @@
         ],
         "invalid": [
             {
-                "param_name": "type",
-                "category": "Unknown type",
-                "description": "Values outside allowed set.",
+                "param_name": "topicId",
+                "category": "Missing prefix or uppercase",
+                "description": "IDs not starting with /m/ or containing uppercase letters.",
                 "samples": [
-                    "movie",
-                    "episodes",
+                    "m/02mjmr",
+                    "/M/02mjmr",
+                    "/m/02Mjmr",
+                    "/m02mjmr",
+                    "02mjmr",
+                    "/g/02mjmr"
+                ]
+            },
+            {
+                "param_name": "topicId",
+                "category": "Invalid characters",
+                "description": "Spaces or punctuation not allowed.",
+                "samples": [
+                    "/m/02m jmr",
+                    "/m/02mjmr!",
+                    "/m/02mjmr-",
+                    "/m/02mjmr.",
+                    "/m/02mjmr@",
+                    "/m/02m#mr"
+                ]
+            },
+            {
+                "param_name": "topicId",
+                "category": "Non-string/empty",
+                "description": "Empty or wrong type.",
+                "samples": [
+                    "",
+                    123,
+                    true,
+                    null,
+                    [],
+                    {}
+                ]
+            }
+        ]
+    },
+    {
+        "op_name": "get /search",
+        "type": "string",
+        "param_name": "type",
+        "format": [
+            "^(video|channel|playlist)(,(video|channel|playlist))*$"
+        ],
+        "valid": [
+            {
+                "param_name": "type",
+                "category": "Single type: video",
+                "description": "Restrict to videos.",
+                "samples": [
+                    "video",
+                    "video",
+                    "video",
+                    "video",
+                    "video",
+                    "video"
+                ]
+            },
+            {
+                "param_name": "type",
+                "category": "Single type: channel",
+                "description": "Restrict to channels.",
+                "samples": [
+                    "channel",
+                    "channel",
+                    "channel",
+                    "channel",
+                    "channel",
+                    "channel"
+                ]
+            },
+            {
+                "param_name": "type",
+                "category": "Single type: playlist",
+                "description": "Restrict to playlists.",
+                "samples": [
+                    "playlist",
+                    "playlist",
+                    "playlist",
+                    "playlist",
+                    "playlist",
+                    "playlist"
+                ]
+            }
+        ],
+        "invalid": [
+            {
+                "param_name": "type",
+                "category": "Invalid values",
+                "description": "Values outside the allowed set.",
+                "samples": [
                     "videos",
                     "channels",
-                    "lists",
-                    "all"
+                    "playlists",
+                    "all",
+                    "any",
+                    "user"
                 ]
             },
             {
                 "param_name": "type",
                 "category": "Formatting errors",
-                "description": "Trailing commas, spaces, duplicates, or extra items.",
+                "description": "Spaces, uppercase, or trailing commas.",
                 "samples": [
-                    "video,",
-                    " video",
-                    "video ,channel",
-                    "video,,channel",
-                    "video,channel,blog",
-                    "video,channel,playlist,"
+                    "video, channel",
+                    "Video",
+                    "CHANNEL",
+                    "playlist,",
+                    "video ,playlist",
+                    "video,playlist "
                 ]
             },
             {
                 "param_name": "type",
-                "category": "Non-string type",
-                "description": "Invalid types.",
+                "category": "Non-string/empty",
+                "description": "Wrong types or empty.",
                 "samples": [
+                    "",
                     1,
                     true,
                     null,
                     [],
-                    {},
-                    false
+                    {}
                 ]
             }
         ]
@@ -1992,8 +2033,8 @@
         "valid": [
             {
                 "param_name": "videoCaption",
-                "category": "Any",
-                "description": "Do not filter by captions (requires type=video if set).",
+                "category": "any",
+                "description": "No filtering by captions (requires type=video).",
                 "samples": [
                     "any",
                     "any",
@@ -2005,8 +2046,8 @@
             },
             {
                 "param_name": "videoCaption",
-                "category": "Closed caption",
-                "description": "Only videos with captions (requires type=video).",
+                "category": "closedCaption",
+                "description": "Filter to videos with captions (requires type=video).",
                 "samples": [
                     "closedCaption",
                     "closedCaption",
@@ -2018,8 +2059,8 @@
             },
             {
                 "param_name": "videoCaption",
-                "category": "None",
-                "description": "Only videos without captions (requires type=video).",
+                "category": "none",
+                "description": "Filter to videos without captions (requires type=video).",
                 "samples": [
                     "none",
                     "none",
@@ -2033,41 +2074,41 @@
         "invalid": [
             {
                 "param_name": "videoCaption",
-                "category": "Unknown value",
-                "description": "Not in the allowed set.",
+                "category": "Unsupported values",
+                "description": "Values outside the allowed set.",
                 "samples": [
                     "true",
                     "false",
+                    "subtitle",
                     "captions",
-                    "subtitles",
-                    "on",
-                    "off"
+                    "closedcaption",
+                    "cc"
                 ]
             },
             {
                 "param_name": "videoCaption",
-                "category": "Case mismatch",
-                "description": "Incorrect casing.",
+                "category": "Case/spacing issues",
+                "description": "Wrong case or extra spaces.",
                 "samples": [
-                    "Any",
                     "ClosedCaption",
-                    "NONE",
-                    "Closedcaption",
-                    "CLOSEDcaption",
-                    "None"
+                    "ANY",
+                    " none",
+                    "closedCaption ",
+                    "None",
+                    " any "
                 ]
             },
             {
                 "param_name": "videoCaption",
-                "category": "Semantic: used when type != video",
-                "description": "Providing videoCaption without type=video breaks API rule.",
+                "category": "Non-string/empty",
+                "description": "Wrong types or empty string.",
                 "samples": [
-                    "any",
-                    "closedCaption",
-                    "none",
-                    "any",
-                    "closedCaption",
-                    "none"
+                    "",
+                    0,
+                    true,
+                    null,
+                    [],
+                    {}
                 ]
             }
         ]
@@ -2077,39 +2118,39 @@
         "type": "string",
         "param_name": "videoCategoryId",
         "format": [
-            "^[0-9]+$"
+            "^\\d+$"
         ],
         "valid": [
             {
                 "param_name": "videoCategoryId",
-                "category": "Common category IDs",
-                "description": "Typical YouTube video category IDs (string form).",
+                "category": "Common category IDs (digits)",
+                "description": "Digit-only IDs; categories depend on region.",
                 "samples": [
                     "1",
                     "2",
                     "10",
                     "17",
+                    "22",
+                    "24"
+                ]
+            },
+            {
+                "param_name": "videoCategoryId",
+                "category": "Other numeric IDs",
+                "description": "Other valid numeric strings.",
+                "samples": [
+                    "15",
+                    "19",
                     "20",
+                    "23",
+                    "27",
                     "28"
                 ]
             },
             {
                 "param_name": "videoCategoryId",
-                "category": "Additional category IDs",
-                "description": "More valid category IDs.",
-                "samples": [
-                    "22",
-                    "23",
-                    "24",
-                    "25",
-                    "26",
-                    "27"
-                ]
-            },
-            {
-                "param_name": "videoCategoryId",
                 "category": "<MISS_KEY>",
-                "description": "Omitting does not filter by category.",
+                "description": "Omitting videoCategoryId applies no category filter (requires type=video to use).",
                 "samples": [
                     null,
                     null,
@@ -2123,41 +2164,41 @@
         "invalid": [
             {
                 "param_name": "videoCategoryId",
-                "category": "Non-numeric values",
-                "description": "Category IDs must be digits.",
+                "category": "Non-numeric strings",
+                "description": "Contains non-digit characters.",
                 "samples": [
-                    "music",
-                    "cat10",
-                    "id-17",
-                    "ten",
-                    "twenty",
-                    ""
-                ]
-            },
-            {
-                "param_name": "videoCategoryId",
-                "category": "Negative or malformed",
-                "description": "Negative numbers or decimals.",
-                "samples": [
-                    "-1",
-                    "3.5",
-                    "00",
                     "01a",
-                    "-10",
-                    "-0"
+                    "cat10",
+                    "ten",
+                    "1.0",
+                    "-1",
+                    "22 "
                 ]
             },
             {
                 "param_name": "videoCategoryId",
-                "category": "Semantic: used when type != video",
-                "description": "Using videoCategoryId without setting type=video violates API.",
+                "category": "Empty/whitespace",
+                "description": "Empty or whitespace-only.",
                 "samples": [
-                    "10",
-                    "17",
-                    "20",
-                    "22",
-                    "24",
-                    "28"
+                    "",
+                    " ",
+                    "   ",
+                    "\t",
+                    "\n",
+                    "\r"
+                ]
+            },
+            {
+                "param_name": "videoCategoryId",
+                "category": "Non-string types",
+                "description": "Wrong data types.",
+                "samples": [
+                    10,
+                    22.0,
+                    true,
+                    null,
+                    [],
+                    {}
                 ]
             }
         ]
@@ -2172,8 +2213,8 @@
         "valid": [
             {
                 "param_name": "videoDefinition",
-                "category": "Any",
-                "description": "No restriction on definition (requires type=video).",
+                "category": "any",
+                "description": "No filter on definition (requires type=video).",
                 "samples": [
                     "any",
                     "any",
@@ -2185,8 +2226,8 @@
             },
             {
                 "param_name": "videoDefinition",
-                "category": "High definition",
-                "description": "HD videos only (requires type=video).",
+                "category": "high",
+                "description": "High definition videos only (requires type=video).",
                 "samples": [
                     "high",
                     "high",
@@ -2198,8 +2239,8 @@
             },
             {
                 "param_name": "videoDefinition",
-                "category": "Standard definition",
-                "description": "SD videos only (requires type=video).",
+                "category": "standard",
+                "description": "Standard definition videos only (requires type=video).",
                 "samples": [
                     "standard",
                     "standard",
@@ -2207,47 +2248,60 @@
                     "standard",
                     "standard",
                     "standard"
+                ]
+            },
+            {
+                "param_name": "videoDefinition",
+                "category": "<MISS_KEY>",
+                "description": "Omitting videoDefinition applies no definition filter (requires type=video to use).",
+                "samples": [
+                    null,
+                    null,
+                    null,   
+                    null,
+                    null,
+                    null
                 ]
             }
         ],
         "invalid": [
             {
                 "param_name": "videoDefinition",
-                "category": "Unknown value",
-                "description": "Not in allowed set.",
+                "category": "Unsupported value",
+                "description": "Not in {any, high, standard}.",
                 "samples": [
                     "hd",
                     "sd",
                     "low",
-                    "ultra",
-                    "1080p",
-                    "4k"
+                    "medium",
+                    "true",
+                    "false"
                 ]
             },
             {
                 "param_name": "videoDefinition",
-                "category": "Case mismatch",
-                "description": "Incorrect casing.",
+                "category": "Case/spacing issues",
+                "description": "Wrong case or extra spaces.",
                 "samples": [
-                    "Any",
-                    "HIGH",
-                    "Standard",
                     "High",
                     "STANDARD",
-                    "StandArd"
+                    " any",
+                    "standard ",
+                    "Any",
+                    " high "
                 ]
             },
             {
                 "param_name": "videoDefinition",
-                "category": "Semantic: used when type != video",
-                "description": "Setting videoDefinition without type=video.",
+                "category": "Non-string/empty",
+                "description": "Wrong types or empty string.",
                 "samples": [
-                    "any",
-                    "high",
-                    "standard",
-                    "any",
-                    "high",
-                    "standard"
+                    "",
+                    null,
+                    true,
+                    1,
+                    [],
+                    {}
                 ]
             }
         ]
@@ -2262,8 +2316,8 @@
         "valid": [
             {
                 "param_name": "videoDimension",
-                "category": "2D videos",
-                "description": "Restrict to 2D (requires type=video).",
+                "category": "2d",
+                "description": "Restrict to 2D videos (requires type=video).",
                 "samples": [
                     "2d",
                     "2d",
@@ -2275,8 +2329,8 @@
             },
             {
                 "param_name": "videoDimension",
-                "category": "3D videos",
-                "description": "Restrict to 3D (requires type=video).",
+                "category": "3d",
+                "description": "Restrict to 3D videos (requires type=video).",
                 "samples": [
                     "3d",
                     "3d",
@@ -2288,8 +2342,8 @@
             },
             {
                 "param_name": "videoDimension",
-                "category": "Any dimension",
-                "description": "Do not filter by dimension (requires type=video).",
+                "category": "any",
+                "description": "No filter on dimension (requires type=video).",
                 "samples": [
                     "any",
                     "any",
@@ -2303,41 +2357,41 @@
         "invalid": [
             {
                 "param_name": "videoDimension",
-                "category": "Unknown value",
-                "description": "Not in the enum.",
+                "category": "Unsupported value",
+                "description": "Not in {2d, 3d, any}.",
                 "samples": [
                     "2D",
                     "3D",
                     "two",
-                    "stereo",
-                    "mono",
-                    "depth"
+                    "three",
+                    "flat",
+                    "stereo"
                 ]
             },
             {
                 "param_name": "videoDimension",
-                "category": "Case mismatch",
-                "description": "Incorrect casing or capitalization.",
+                "category": "Spacing/format issues",
+                "description": "Spaces or trailing characters.",
                 "samples": [
-                    "Any",
-                    "ANY",
-                    "TwoD",
-                    "ThreeD",
-                    "AnY",
-                    "Two"
+                    "2d ",
+                    " 3d",
+                    "any ",
+                    " any",
+                    "2 d",
+                    "3 d"
                 ]
             },
             {
                 "param_name": "videoDimension",
-                "category": "Semantic: used when type != video",
-                "description": "Providing videoDimension without type=video.",
+                "category": "Non-string/empty",
+                "description": "Wrong types or empty string.",
                 "samples": [
-                    "2d",
-                    "3d",
-                    "any",
-                    "2d",
-                    "3d",
-                    "any"
+                    "",
+                    2,
+                    3,
+                    true,
+                    null,
+                    []
                 ]
             }
         ]
@@ -2352,34 +2406,34 @@
         "valid": [
             {
                 "param_name": "videoDuration",
-                "category": "Any duration",
-                "description": "No duration filter (requires type=video).",
+                "category": "short",
+                "description": "Short videos (requires type=video).",
                 "samples": [
-                    "any",
-                    "any",
-                    "any",
-                    "any",
-                    "any",
-                    "any"
+                    "short",
+                    "short",
+                    "short",
+                    "short",
+                    "short",
+                    "short"
                 ]
             },
             {
                 "param_name": "videoDuration",
-                "category": "Short or medium",
-                "description": "Short or medium duration videos.",
+                "category": "medium",
+                "description": "Medium-length videos (requires type=video).",
                 "samples": [
-                    "short",
                     "medium",
-                    "short",
                     "medium",
-                    "short",
+                    "medium",
+                    "medium",
+                    "medium",
                     "medium"
                 ]
             },
             {
                 "param_name": "videoDuration",
-                "category": "Long duration",
-                "description": "Only long duration videos.",
+                "category": "long",
+                "description": "Long videos (requires type=video).",
                 "samples": [
                     "long",
                     "long",
@@ -2387,47 +2441,60 @@
                     "long",
                     "long",
                     "long"
+                ]
+            },
+            {
+                "param_name": "videoDuration",
+                "category": "<MISS_KEY>",
+                "description": "Omitting videoDuration applies no duration filter (requires type=video to use).",
+                "samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
                 ]
             }
         ],
         "invalid": [
             {
                 "param_name": "videoDuration",
-                "category": "Unknown value",
-                "description": "Not in the allowed set.",
+                "category": "Unsupported value",
+                "description": "Not in {any, long, medium, short}.",
                 "samples": [
-                    "shorter",
-                    "longer",
+                    "shorts",
                     "mid",
+                    "longer",
                     "tiny",
                     "huge",
-                    "xl"
+                    "minutes"
                 ]
             },
             {
                 "param_name": "videoDuration",
-                "category": "Case mismatch",
-                "description": "Incorrect casing.",
+                "category": "Case/spacing issues",
+                "description": "Wrong case or extra spaces.",
                 "samples": [
-                    "Any",
                     "Short",
+                    "MEDIUM",
+                    " long",
+                    "short ",
                     "Medium",
-                    "LONG",
-                    "Short ",
-                    "MEDIUM"
+                    " long "
                 ]
             },
             {
                 "param_name": "videoDuration",
-                "category": "Semantic: used when type != video",
-                "description": "Providing videoDuration without type=video.",
+                "category": "Non-string/empty",
+                "description": "Wrong types or empty string.",
                 "samples": [
-                    "short",
-                    "medium",
-                    "long",
-                    "any",
-                    "short",
-                    "long"
+                    "",
+                    null,
+                    true,
+                    1,
+                    [],
+                    {}
                 ]
             }
         ]
@@ -2442,8 +2509,8 @@
         "valid": [
             {
                 "param_name": "videoEmbeddable",
-                "category": "Any",
-                "description": "Do not filter by embeddability (requires type=video).",
+                "category": "any",
+                "description": "No restriction on embeddability (requires type=video).",
                 "samples": [
                     "any",
                     "any",
@@ -2455,8 +2522,8 @@
             },
             {
                 "param_name": "videoEmbeddable",
-                "category": "Embeddable only",
-                "description": "Only videos embeddable off YouTube (requires type=video).",
+                "category": "true",
+                "description": "Only embeddable videos (requires type=video).",
                 "samples": [
                     "true",
                     "true",
@@ -2469,7 +2536,7 @@
             {
                 "param_name": "videoEmbeddable",
                 "category": "<MISS_KEY>",
-                "description": "Omitting leaves embeddability unfiltered.",
+                "description": "Omitting applies no embeddability filter (requires type=video to use).",
                 "samples": [
                     null,
                     null,
@@ -2483,41 +2550,41 @@
         "invalid": [
             {
                 "param_name": "videoEmbeddable",
-                "category": "Unsupported value",
-                "description": "Values not allowed by enum.",
+                "category": "Unsupported values",
+                "description": "Strings other than 'any' or 'true'.",
                 "samples": [
                     "false",
                     "yes",
-                    "no",
                     "1",
-                    "0",
-                    "embed"
+                    "embed",
+                    "only",
+                    "All"
                 ]
             },
             {
                 "param_name": "videoEmbeddable",
-                "category": "Case mismatch",
-                "description": "Incorrect casing.",
+                "category": "Case/spacing issues",
+                "description": "Wrong case or extra spaces.",
                 "samples": [
-                    "ANY",
                     "True",
-                    "TRUE",
+                    "ANY",
+                    " true",
+                    "any ",
                     "Any",
-                    "tRUE",
-                    "AnY"
+                    " true "
                 ]
             },
             {
                 "param_name": "videoEmbeddable",
-                "category": "Semantic: used when type != video",
-                "description": "Setting videoEmbeddable without type=video.",
+                "category": "Non-string/empty",
+                "description": "Wrong types or empty.",
                 "samples": [
-                    "any",
-                    "true",
-                    "any",
-                    "true",
-                    "any",
-                    "true"
+                    "",
+                    true,
+                    false,
+                    1,
+                    null,
+                    []
                 ]
             }
         ]
@@ -2532,8 +2599,8 @@
         "valid": [
             {
                 "param_name": "videoLicense",
-                "category": "Any license",
-                "description": "No filtering by license (requires type=video).",
+                "category": "any",
+                "description": "No restriction on license (requires type=video).",
                 "samples": [
                     "any",
                     "any",
@@ -2545,7 +2612,7 @@
             },
             {
                 "param_name": "videoLicense",
-                "category": "Creative Commons",
+                "category": "creativeCommon",
                 "description": "Filter to Creative Commons licensed videos (requires type=video).",
                 "samples": [
                     "creativeCommon",
@@ -2558,8 +2625,8 @@
             },
             {
                 "param_name": "videoLicense",
-                "category": "YouTube standard license",
-                "description": "Filter to standard YouTube licensed videos (requires type=video).",
+                "category": "youtube",
+                "description": "Filter to standard YouTube license (requires type=video).",
                 "samples": [
                     "youtube",
                     "youtube",
@@ -2573,41 +2640,41 @@
         "invalid": [
             {
                 "param_name": "videoLicense",
-                "category": "Unknown value",
-                "description": "Not in enum.",
+                "category": "Unsupported values",
+                "description": "Not in {any, creativeCommon, youtube}.",
                 "samples": [
+                    "creative commons",
                     "cc",
-                    "standard",
                     "yt",
-                    "commercial",
-                    "public",
-                    "private"
-                ]
-            },
-            {
-                "param_name": "videoLicense",
-                "category": "Case mismatch",
-                "description": "Incorrect casing.",
-                "samples": [
+                    "standard",
                     "CreativeCommon",
-                    "YOUTUBE",
-                    "Any",
-                    "creativecommon",
-                    "YouTube",
-                    "ANY"
+                    "YouTube"
                 ]
             },
             {
                 "param_name": "videoLicense",
-                "category": "Semantic: used when type != video",
-                "description": "Providing videoLicense without type=video.",
+                "category": "Spacing/case issues",
+                "description": "Extra spaces or wrong case.",
                 "samples": [
-                    "any",
-                    "creativeCommon",
-                    "youtube",
-                    "any",
-                    "creativeCommon",
-                    "youtube"
+                    " creativeCommon",
+                    "youtube ",
+                    "ANY",
+                    "creativecommon",
+                    "YouTube ",
+                    " any "
+                ]
+            },
+            {
+                "param_name": "videoLicense",
+                "category": "Non-string/empty",
+                "description": "Wrong types or empty.",
+                "samples": [
+                    "",
+                    true,
+                    false,
+                    null,
+                    0,
+                    []
                 ]
             }
         ]
@@ -2622,8 +2689,8 @@
         "valid": [
             {
                 "param_name": "videoSyndicated",
-                "category": "Any",
-                "description": "Do not filter by syndication (requires type=video).",
+                "category": "any",
+                "description": "No restriction on syndicated playback (requires type=video).",
                 "samples": [
                     "any",
                     "any",
@@ -2635,7 +2702,7 @@
             },
             {
                 "param_name": "videoSyndicated",
-                "category": "Syndicated only",
+                "category": "true",
                 "description": "Only videos playable outside youtube.com (requires type=video).",
                 "samples": [
                     "true",
@@ -2649,7 +2716,7 @@
             {
                 "param_name": "videoSyndicated",
                 "category": "<MISS_KEY>",
-                "description": "Omitting leaves syndication unfiltered.",
+                "description": "Omitting applies no syndication filter (requires type=video to use).",
                 "samples": [
                     null,
                     null,
@@ -2663,41 +2730,41 @@
         "invalid": [
             {
                 "param_name": "videoSyndicated",
-                "category": "Unsupported value",
-                "description": "Values not allowed by enum.",
+                "category": "Unsupported values",
+                "description": "Strings other than 'any' or 'true'.",
                 "samples": [
                     "false",
                     "yes",
-                    "no",
                     "1",
-                    "0",
-                    "syndicated"
+                    "syndicated",
+                    "outsite",
+                    "All"
                 ]
             },
             {
                 "param_name": "videoSyndicated",
-                "category": "Case mismatch",
-                "description": "Incorrect casing.",
+                "category": "Case/spacing issues",
+                "description": "Wrong case or extra spaces.",
                 "samples": [
-                    "ANY",
                     "True",
-                    "TRUE",
+                    "ANY",
+                    " true",
+                    "any ",
                     "Any",
-                    "tRUE",
-                    "AnY"
+                    " true "
                 ]
             },
             {
                 "param_name": "videoSyndicated",
-                "category": "Semantic: used when type != video",
-                "description": "Setting videoSyndicated without type=video.",
+                "category": "Non-string/empty",
+                "description": "Wrong types or empty.",
                 "samples": [
-                    "any",
-                    "true",
-                    "any",
-                    "true",
-                    "any",
-                    "true"
+                    "",
+                    true,
+                    false,
+                    1,
+                    null,
+                    []
                 ]
             }
         ]
@@ -2712,8 +2779,8 @@
         "valid": [
             {
                 "param_name": "videoType",
-                "category": "Any",
-                "description": "Do not filter by video type (requires type=video).",
+                "category": "any",
+                "description": "No restriction on video type (requires type=video).",
                 "samples": [
                     "any",
                     "any",
@@ -2725,7 +2792,7 @@
             },
             {
                 "param_name": "videoType",
-                "category": "Episode",
+                "category": "episode",
                 "description": "Filter to episodes (requires type=video).",
                 "samples": [
                     "episode",
@@ -2738,7 +2805,7 @@
             },
             {
                 "param_name": "videoType",
-                "category": "Movie",
+                "category": "movie",
                 "description": "Filter to movies (requires type=video).",
                 "samples": [
                     "movie",
@@ -2748,46 +2815,59 @@
                     "movie",
                     "movie"
                 ]
+            },
+            {
+                "param_name": "videoType",
+                "category": "<MISS_KEY>",
+                "description": "Omitting videoType applies no type filter (requires type=video to use).",
+                "samples": [    
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
             }
         ],
         "invalid": [
             {
                 "param_name": "videoType",
-                "category": "Unknown value",
-                "description": "Not in enum.",
+                "category": "Unsupported value",
+                "description": "Values not in {any, episode, movie}.",
                 "samples": [
-                    "clip",
-                    "trailer",
-                    "short",
                     "series",
-                    "film",
-                    "tv"
+                    "short",
+                    "feature",
+                    "clip",
+                    "show",
+                    "film"
                 ]
             },
             {
                 "param_name": "videoType",
-                "category": "Case mismatch",
-                "description": "Incorrect casing.",
+                "category": "Case/spacing issues",
+                "description": "Wrong case or extra spaces.",
                 "samples": [
                     "Any",
-                    "Episode",
-                    "MOVIE",
-                    "Movie",
                     "EPISODE",
-                    "ANY"
+                    " movie",
+                    "episode ",
+                    "Movie",
+                    " any "
                 ]
             },
             {
                 "param_name": "videoType",
-                "category": "Non-string type",
-                "description": "Invalid types.",
+                "category": "Non-string/empty",
+                "description": "Wrong types or empty string.",
                 "samples": [
-                    1,
-                    true,
+                    "",
                     null,
+                    true,
+                    1,
                     [],
-                    {},
-                    false
+                    {}
                 ]
             }
         ]

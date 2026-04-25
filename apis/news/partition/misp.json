@@ -1,5 +1,24 @@
 [
     {
+        "op_name": "get /countries",
+        "space_list": [
+            {
+                "space_name": "space1",
+                "satisfied_dependencies": "Minimum input space.",
+                "involved_parameters": [],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {},
+                        "parameter": [],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "op_name": "get /news",
         "space_list": [
             {
@@ -18,7 +37,7 @@
             },
             {
                 "space_name": "space2",
-                "satisfied_dependencies": "Scalable space for optional parameter 'authorId'.",
+                "satisfied_dependencies": "Scalable space for the optional parameter named 'authorId'.",
                 "involved_parameters": [
                     "authorId"
                 ],
@@ -30,46 +49,46 @@
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "Numeric ID string",
-                                    "description": "A string of digits representing an author ID.",
+                                    "format": "^(?!\\s*$).+",
+                                    "input_space_category": "Alphanumeric identifier",
+                                    "description": "Non-empty, non-whitespace author IDs composed of letters and digits without spaces.",
                                     "representative_samples": [
-                                        "1",
-                                        "42",
-                                        "100",
-                                        "999999",
-                                        "000123",
-                                        "8080"
+                                        "auth123",
+                                        "user42",
+                                        "A7B9C3",
+                                        "johnDoe1",
+                                        "writer007",
+                                        "newsx86"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "UUID string",
-                                    "description": "A UUID-formatted string used as an author identifier.",
+                                    "format": "^(?!\\s*$).+",
+                                    "input_space_category": "UUID-formatted identifier",
+                                    "description": "Non-empty, non-whitespace author IDs in UUID format (commonly used as identifiers).",
                                     "representative_samples": [
-                                        "123e4567-e89b-12d3-a456-426614174000",
                                         "550e8400-e29b-41d4-a716-446655440000",
-                                        "9f1c2d3e-4b5a-6c7d-8e9f-0a1b2c3d4e5f",
+                                        "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                                        "9b2c9f1a-4d3e-4b8f-9c7a-123456789abc",
                                         "00000000-0000-0000-0000-000000000001",
                                         "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-                                        "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+                                        "1d4f0e2a-5b6c-4c3a-8e9f-7a6b5c4d3e2f"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "Slug/username ID",
-                                    "description": "An alphanumeric slug or username with optional underscores or dashes.",
+                                    "format": "^(?!\\s*$).+",
+                                    "input_space_category": "Identifier with punctuation",
+                                    "description": "Non-empty, non-whitespace author IDs that include underscores, hyphens, or dots.",
                                     "representative_samples": [
-                                        "alice",
-                                        "bob_smith",
-                                        "john-doe-2",
-                                        "writer123",
-                                        "news_bot",
-                                        "Author-XYZ"
+                                        "alice_smith",
+                                        "bob-smith",
+                                        "charlie.s",
+                                        "editor-chief",
+                                        "writer_alpha-2",
+                                        "news.bot.01"
                                     ]
                                 }
                             ]
@@ -86,10 +105,10 @@
                             "authorId": [
                                 {
                                     "tag": "valid",
-                                    "type": "string",
+                                    "type": null,
                                     "format": null,
                                     "input_space_category": "<MISS_KEY>",
-                                    "description": "The authorId filter is omitted; API returns news unfiltered by author.",
+                                    "description": "Parameter is omitted; the API returns news without filtering by author.",
                                     "representative_samples": [
                                         null,
                                         null,
@@ -109,7 +128,7 @@
             },
             {
                 "space_name": "space3",
-                "satisfied_dependencies": "Scalable space for optional parameter 'country'.",
+                "satisfied_dependencies": "Scalable space for the optional parameter named 'country'.",
                 "involved_parameters": [
                     "country"
                 ],
@@ -121,61 +140,47 @@
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "Full country name",
-                                    "description": "A standard country name in English.",
+                                    "format": "^(?!\\s*$).+",
+                                    "input_space_category": "Canonical country name",
+                                    "description": "Recognized country names in standard English.",
                                     "representative_samples": [
-                                        "Norway",
                                         "United States",
-                                        "United Kingdom",
                                         "Germany",
                                         "Brazil",
-                                        "South Africa"
+                                        "Japan",
+                                        "Canada",
+                                        "Australia",
+                                        "Zambia"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "ISO 3166-1 alpha-2 code",
-                                    "description": "Two-letter uppercase country code.",
+                                    "format": "^(?!\\s*$).+",
+                                    "input_space_category": "Country names with diacritics or punctuation",
+                                    "description": "Recognized country names that include diacritics, hyphens, commas, or apostrophes.",
                                     "representative_samples": [
-                                        "NO",
-                                        "US",
-                                        "GB",
-                                        "DE",
-                                        "BR",
-                                        "ZA"
+                                        "Côte d'Ivoire",
+                                        "São Tomé and Príncipe",
+                                        "Timor-Leste",
+                                        "Bosnia and Herzegovina",
+                                        "Korea, Republic of",
+                                        "Curaçao"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "ISO 3166-1 alpha-3 code",
-                                    "description": "Three-letter uppercase country code.",
+                                    "format": "^(?!\\s*$).+",
+                                    "input_space_category": "Case-insensitive names",
+                                    "description": "Recognized country names with varied casing.",
                                     "representative_samples": [
-                                        "NOR",
-                                        "USA",
-                                        "GBR",
-                                        "DEU",
-                                        "BRA",
-                                        "ZAF"
-                                    ]
-                                },
-                                {
-                                    "tag": "valid",
-                                    "type": "string",
-                                    "format": null,
-                                    "input_space_category": "Common abbreviations or alt names",
-                                    "description": "Commonly used abbreviations or country name variants.",
-                                    "representative_samples": [
-                                        "UK",
-                                        "U.S.",
-                                        "South Korea",
-                                        "Czech Republic",
-                                        "Ivory Coast",
-                                        "UAE"
+                                        "united kingdom",
+                                        "FRANCE",
+                                        "spain",
+                                        "ITALY",
+                                        "mexico",
+                                        "SOUTH AFRICA"
                                     ]
                                 }
                             ]
@@ -192,10 +197,10 @@
                             "country": [
                                 {
                                     "tag": "valid",
-                                    "type": "string",
+                                    "type": null,
                                     "format": null,
                                     "input_space_category": "<MISS_KEY>",
-                                    "description": "The country filter is omitted; API returns news unfiltered by country.",
+                                    "description": "Parameter is omitted; the API returns news without filtering by country.",
                                     "representative_samples": [
                                         null,
                                         null,
@@ -221,6 +226,20 @@
             {
                 "space_name": "space1",
                 "satisfied_dependencies": "Minimum input space.",
+                "involved_parameters": [],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {},
+                        "parameter": [],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    }
+                ]
+            },
+            {
+                "space_name": "space2",
+                "satisfied_dependencies": "When creating a news, the request body must include authorId, country, and text; none of these three may be omitted.",
                 "involved_parameters": [
                     "authorId",
                     "country",
@@ -234,46 +253,46 @@
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "Numeric ID string",
-                                    "description": "Author identifier represented as digits only.",
+                                    "format": "^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$",
+                                    "input_space_category": "Existing author UUID",
+                                    "description": "An existing author identifier in UUID format; the author exists in the system.",
                                     "representative_samples": [
-                                        "1",
-                                        "42",
-                                        "12345",
-                                        "987654321",
-                                        "100200300",
-                                        "9999999999"
-                                    ]
-                                },
-                                {
-                                    "tag": "valid",
-                                    "type": "string",
-                                    "format": null,
-                                    "input_space_category": "UUID string",
-                                    "description": "Author identifier represented as a UUID.",
-                                    "representative_samples": [
-                                        "550e8400-e29b-41d4-a716-446655440000",
+                                        "3f9a1b2c-4d5e-6789-abcd-ef0123456789",
+                                        "8b2f6c50-1a3d-4e6f-9b8c-7d6e5f4a3b2c",
                                         "123e4567-e89b-12d3-a456-426614174000",
-                                        "9f8c1d2e-3b4a-4c5d-8e6f-7a8b9c0d1e2f",
-                                        "e7d1c2b3-a4f5-4e6d-b7c8-9d0e1f2a3b4c",
-                                        "0f1e2d3c-4b5a-6c7d-8e9f-0a1b2c3d4e5f",
-                                        "aabbccdd-eeff-4a00-8800-112233445566"
+                                        "0f1e2d3c-4b5a-6978-9c0d-1e2f3a4b5c6d",
+                                        "9a8b7c6d-5e4f-3a2b-1c0d-efabcdefabcd",
+                                        "6f1d2c3b-4a5e-8c9d-0b1a-2c3d4e5f6a7b"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "Alphanumeric slug",
-                                    "description": "Alphanumeric id with underscores or hyphens, up to 64 chars.",
+                                    "format": "^[0-9]{1,20}$",
+                                    "input_space_category": "Existing author numeric ID string",
+                                    "description": "A numeric identifier represented as a string that maps to an existing author.",
                                     "representative_samples": [
-                                        "auth_001",
-                                        "AUTH-2024-XYZ",
-                                        "userA12",
-                                        "author_joe",
-                                        "writer99",
-                                        "auth-abc_123"
+                                        "17",
+                                        "101",
+                                        "2001",
+                                        "50012",
+                                        "999999",
+                                        "1234567890"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z0-9_\\-]{3,64}$",
+                                    "input_space_category": "Existing author username/slug",
+                                    "description": "An alphanumeric slug/username of an existing author.",
+                                    "representative_samples": [
+                                        "john_doe",
+                                        "alice99",
+                                        "mk-press",
+                                        "Author_2024",
+                                        "LiWei",
+                                        "newsbot"
                                     ]
                                 }
                             ],
@@ -281,46 +300,46 @@
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
+                                    "format": "^[A-Z]{2}$",
                                     "input_space_category": "ISO 3166-1 alpha-2 code",
-                                    "description": "Two-letter uppercase country code.",
+                                    "description": "Two-letter uppercase country code recognized by the system.",
                                     "representative_samples": [
                                         "US",
                                         "NO",
                                         "GB",
-                                        "FR",
                                         "DE",
-                                        "IN"
+                                        "IN",
+                                        "BR"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
+                                    "format": "^[A-Z]{3}$",
                                     "input_space_category": "ISO 3166-1 alpha-3 code",
-                                    "description": "Three-letter uppercase country code.",
+                                    "description": "Three-letter uppercase country code recognized by the system.",
                                     "representative_samples": [
                                         "USA",
                                         "NOR",
                                         "GBR",
-                                        "FRA",
                                         "DEU",
-                                        "IND"
+                                        "IND",
+                                        "BRA"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "Full country name",
-                                    "description": "Standard country names.",
+                                    "format": "^[A-Za-z][A-Za-z \\-]{1,}$",
+                                    "input_space_category": "Country English name",
+                                    "description": "Full English country names recognized by the system.",
                                     "representative_samples": [
                                         "United States",
                                         "Norway",
                                         "United Kingdom",
-                                        "France",
                                         "Germany",
-                                        "India"
+                                        "India",
+                                        "Brazil"
                                     ]
                                 }
                             ],
@@ -329,60 +348,45 @@
                                     "tag": "valid",
                                     "type": "string",
                                     "format": "^[\\s\\S]+$",
-                                    "input_space_category": "Short headline",
-                                    "description": "Concise news headline or brief text.",
+                                    "input_space_category": "Short news text",
+                                    "description": "Concise, non-empty UTF-8 text describing the news.",
                                     "representative_samples": [
-                                        "Breaking news update",
-                                        "Local sports team wins",
-                                        "Weather alert issued",
-                                        "Market hits new high",
-                                        "New museum opens downtown",
-                                        "Festival dates announced"
+                                        "Breaking: Market rally today.",
+                                        "Local team wins championship.",
+                                        "New cafe opens downtown.",
+                                        "Weather: sunny all week.",
+                                        "CEO announces new plan.",
+                                        "Traffic delays on I-80."
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
                                     "format": "^[\\s\\S]+$",
-                                    "input_space_category": "Paragraph (single sentence)",
-                                    "description": "A sentence-length news text under 100 characters.",
+                                    "input_space_category": "UTF-8 non-ASCII content",
+                                    "description": "Valid non-empty text containing non-ASCII characters (UTF-8).",
                                     "representative_samples": [
-                                        "The city council approved a new park project near the river on Tuesday evening.",
-                                        "Scientists report a promising vaccine milestone after successful phase II trials.",
-                                        "Firefighters contained a warehouse blaze, preventing damage to nearby homes.",
-                                        "Local schools will shift to staggered schedules to reduce morning traffic jams.",
-                                        "A major airline announced new routes, connecting smaller towns to big hubs.",
-                                        "Farmers welcomed steady rain after months of drought across the central region."
+                                        "Olá mundo, notícia!",
+                                        "最新消息：科技公司发布新品。",
+                                        "Привет, это новости.",
+                                        "¡Urgente! Actualización en curso.",
+                                        "Résumé du jour: économie.",
+                                        "東京で新しい美術展が開催。"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
                                     "format": "^[\\s\\S]+$",
-                                    "input_space_category": "Multilingual or emoji",
-                                    "description": "News text containing Unicode characters and emojis.",
+                                    "input_space_category": "Single-paragraph news summary",
+                                    "description": "Non-empty paragraph-sized content within typical limits.",
                                     "representative_samples": [
-                                        "Noticias de última hora",
-                                        "最新のニュース速報",
-                                        "Dernières nouvelles",
-                                        "Últimas notícias 🇧🇷",
-                                        "خبر عاجل",
-                                        "Nachrichten-Update"
-                                    ]
-                                },
-                                {
-                                    "tag": "valid",
-                                    "type": "string",
-                                    "format": "^[\\s\\S]+$",
-                                    "input_space_category": "With newlines",
-                                    "description": "Text containing newlines and punctuation.",
-                                    "representative_samples": [
-                                        "Breaking:\nMayor resigns",
-                                        "Update:\nRoad closed on I-5",
-                                        "Weather:\nHeavy rain expected",
-                                        "Sports:\nHome team wins 2-1",
-                                        "Finance:\nStocks rally today",
-                                        "Tech:\nNew phone released"
+                                        "Officials confirmed funding for the project after months of debate.",
+                                        "Residents report improvements following the new recycling program.",
+                                        "Scientists reveal promising results in early vaccine trials.",
+                                        "City council approves plans for expanded public transit routes.",
+                                        "Startup secures seed funding to accelerate product development.",
+                                        "Wildlife conservation efforts show notable recovery trends."
                                     ]
                                 }
                             ]
@@ -394,74 +398,636 @@
                         ],
                         "parameter_value": [],
                         "parameter_parameter": []
-                    }
-                ]
-            },
-            {
-                "space_name": "space2",
-                "satisfied_dependencies": "Scalable space for optional parameter 'creationTime'.",
-                "involved_parameters": [
-                    "creationTime"
-                ],
-                "subspace_list": [
+                    },
                     {
-                        "subspace_name": "subspace1",
+                        "subspace_name": "error_space1",
                         "single_parameter_spaces": {
-                            "creationTime": [
+                            "authorId": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "authorId is omitted from the request body (optional by schema). Typical server behavior for creation: reject with validation error since authorId is required by business rules.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ],
+                            "country": [
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "<MISS_KEY> (vendor media type)",
-                                    "description": "Omitted when using application/vnd.tsdes.news+json;charset=UTF-8;version=2.",
+                                    "format": "^[A-Z]{2}$",
+                                    "input_space_category": "ISO 3166-1 alpha-2 code",
+                                    "description": "Two-letter uppercase country code recognized by the system.",
                                     "representative_samples": [
-                                        null,
-                                        null,
-                                        null,
-                                        null,
-                                        null,
-                                        null
+                                        "US",
+                                        "NO",
+                                        "GB",
+                                        "DE",
+                                        "IN",
+                                        "BR"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "<MISS_KEY> (minimal payload)",
-                                    "description": "Omitted in minimal body containing only authorId, country, and text.",
+                                    "format": "^[A-Z]{3}$",
+                                    "input_space_category": "ISO 3166-1 alpha-3 code",
+                                    "description": "Three-letter uppercase country code recognized by the system.",
                                     "representative_samples": [
-                                        null,
-                                        null,
-                                        null,
-                                        null,
-                                        null,
+                                        "USA",
+                                        "NOR",
+                                        "GBR",
+                                        "DEU",
+                                        "IND",
+                                        "BRA"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z][A-Za-z \\-]{1,}$",
+                                    "input_space_category": "Country English name",
+                                    "description": "Full English country names recognized by the system.",
+                                    "representative_samples": [
+                                        "United States",
+                                        "Norway",
+                                        "United Kingdom",
+                                        "Germany",
+                                        "India",
+                                        "Brazil"
+                                    ]
+                                }
+                            ],
+                            "text": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Short news text",
+                                    "description": "Concise, non-empty UTF-8 text describing the news.",
+                                    "representative_samples": [
+                                        "Breaking: Market rally today.",
+                                        "Local team wins championship.",
+                                        "New cafe opens downtown.",
+                                        "Weather: sunny all week.",
+                                        "CEO announces new plan.",
+                                        "Traffic delays on I-80."
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "UTF-8 non-ASCII content",
+                                    "description": "Valid non-empty text containing non-ASCII characters (UTF-8).",
+                                    "representative_samples": [
+                                        "Olá mundo, notícia!",
+                                        "最新消息：科技公司发布新品。",
+                                        "Привет, это новости.",
+                                        "¡Urgente! Actualización en curso.",
+                                        "Résumé du jour: économie.",
+                                        "東京で新しい美術展が開催。"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Single-paragraph news summary",
+                                    "description": "Non-empty paragraph-sized content within typical limits.",
+                                    "representative_samples": [
+                                        "Officials confirmed funding for the project after months of debate.",
+                                        "Residents report improvements following the new recycling program.",
+                                        "Scientists reveal promising results in early vaccine trials.",
+                                        "City council approves plans for expanded public transit routes.",
+                                        "Startup secures seed funding to accelerate product development.",
+                                        "Wildlife conservation efforts show notable recovery trends."
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "country",
+                            "text"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space2",
+                        "single_parameter_spaces": {
+                            "authorId": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$",
+                                    "input_space_category": "Existing author UUID",
+                                    "description": "An existing author identifier in UUID format; the author exists in the system.",
+                                    "representative_samples": [
+                                        "3f9a1b2c-4d5e-6789-abcd-ef0123456789",
+                                        "8b2f6c50-1a3d-4e6f-9b8c-7d6e5f4a3b2c",
+                                        "123e4567-e89b-12d3-a456-426614174000",
+                                        "0f1e2d3c-4b5a-6978-9c0d-1e2f3a4b5c6d",
+                                        "9a8b7c6d-5e4f-3a2b-1c0d-efabcdefabcd",
+                                        "6f1d2c3b-4a5e-8c9d-0b1a-2c3d4e5f6a7b"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]{1,20}$",
+                                    "input_space_category": "Existing author numeric ID string",
+                                    "description": "A numeric identifier represented as a string that maps to an existing author.",
+                                    "representative_samples": [
+                                        "17",
+                                        "101",
+                                        "2001",
+                                        "50012",
+                                        "999999",
+                                        "1234567890"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z0-9_\\-]{3,64}$",
+                                    "input_space_category": "Existing author username/slug",
+                                    "description": "An alphanumeric slug/username of an existing author.",
+                                    "representative_samples": [
+                                        "john_doe",
+                                        "alice99",
+                                        "mk-press",
+                                        "Author_2024",
+                                        "LiWei",
+                                        "newsbot"
+                                    ]
+                                }
+                            ],
+                            "country": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "country is omitted (optional by schema). Typical server behavior for creation: reject with validation error since country is required by business rules.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ],
+                            "text": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Short news text",
+                                    "description": "Concise, non-empty UTF-8 text describing the news.",
+                                    "representative_samples": [
+                                        "Breaking: Market rally today.",
+                                        "Local team wins championship.",
+                                        "New cafe opens downtown.",
+                                        "Weather: sunny all week.",
+                                        "CEO announces new plan.",
+                                        "Traffic delays on I-80."
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "UTF-8 non-ASCII content",
+                                    "description": "Valid non-empty text containing non-ASCII characters (UTF-8).",
+                                    "representative_samples": [
+                                        "Olá mundo, notícia!",
+                                        "最新消息：科技公司发布新品。",
+                                        "Привет, это новости.",
+                                        "¡Urgente! Actualización en curso.",
+                                        "Résumé du jour: économie.",
+                                        "東京で新しい美術展が開催。"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Single-paragraph news summary",
+                                    "description": "Non-empty paragraph-sized content within typical limits.",
+                                    "representative_samples": [
+                                        "Officials confirmed funding for the project after months of debate.",
+                                        "Residents report improvements following the new recycling program.",
+                                        "Scientists reveal promising results in early vaccine trials.",
+                                        "City council approves plans for expanded public transit routes.",
+                                        "Startup secures seed funding to accelerate product development.",
+                                        "Wildlife conservation efforts show notable recovery trends."
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "authorId",
+                            "text"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space3",
+                        "single_parameter_spaces": {
+                            "authorId": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$",
+                                    "input_space_category": "Existing author UUID",
+                                    "description": "An existing author identifier in UUID format; the author exists in the system.",
+                                    "representative_samples": [
+                                        "3f9a1b2c-4d5e-6789-abcd-ef0123456789",
+                                        "8b2f6c50-1a3d-4e6f-9b8c-7d6e5f4a3b2c",
+                                        "123e4567-e89b-12d3-a456-426614174000",
+                                        "0f1e2d3c-4b5a-6978-9c0d-1e2f3a4b5c6d",
+                                        "9a8b7c6d-5e4f-3a2b-1c0d-efabcdefabcd",
+                                        "6f1d2c3b-4a5e-8c9d-0b1a-2c3d4e5f6a7b"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]{1,20}$",
+                                    "input_space_category": "Existing author numeric ID string",
+                                    "description": "A numeric identifier represented as a string that maps to an existing author.",
+                                    "representative_samples": [
+                                        "17",
+                                        "101",
+                                        "2001",
+                                        "50012",
+                                        "999999",
+                                        "1234567890"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z0-9_\\-]{3,64}$",
+                                    "input_space_category": "Existing author username/slug",
+                                    "description": "An alphanumeric slug/username of an existing author.",
+                                    "representative_samples": [
+                                        "john_doe",
+                                        "alice99",
+                                        "mk-press",
+                                        "Author_2024",
+                                        "LiWei",
+                                        "newsbot"
+                                    ]
+                                }
+                            ],
+                            "country": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Z]{2}$",
+                                    "input_space_category": "ISO 3166-1 alpha-2 code",
+                                    "description": "Two-letter uppercase country code recognized by the system.",
+                                    "representative_samples": [
+                                        "US",
+                                        "NO",
+                                        "GB",
+                                        "DE",
+                                        "IN",
+                                        "BR"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Z]{3}$",
+                                    "input_space_category": "ISO 3166-1 alpha-3 code",
+                                    "description": "Three-letter uppercase country code recognized by the system.",
+                                    "representative_samples": [
+                                        "USA",
+                                        "NOR",
+                                        "GBR",
+                                        "DEU",
+                                        "IND",
+                                        "BRA"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z][A-Za-z \\-]{1,}$",
+                                    "input_space_category": "Country English name",
+                                    "description": "Full English country names recognized by the system.",
+                                    "representative_samples": [
+                                        "United States",
+                                        "Norway",
+                                        "United Kingdom",
+                                        "Germany",
+                                        "India",
+                                        "Brazil"
+                                    ]
+                                }
+                            ],
+                            "text": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "text is omitted (optional by schema). Typical server behavior for creation: reject with validation error since text is required by business rules.",
+                                    "representative_samples": [
                                         null
                                     ]
                                 }
                             ]
                         },
                         "parameter": [
-                            "creationTime"
+                            "authorId",
+                            "country"
                         ],
                         "parameter_value": [],
                         "parameter_parameter": []
                     },
                     {
-                        "subspace_name": "subspace2",
+                        "subspace_name": "error_space4",
                         "single_parameter_spaces": {
-                            "creationTime": [
+                            "authorId": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "authorId is omitted from the request body (optional by schema). Typical server behavior for creation: reject with validation error since authorId is required by business rules.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ],
+                            "country": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "country is omitted (optional by schema). Typical server behavior for creation: reject with validation error since country is required by business rules.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ],
+                            "text": [
                                 {
                                     "tag": "valid",
                                     "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Short news text",
+                                    "description": "Concise, non-empty UTF-8 text describing the news.",
+                                    "representative_samples": [
+                                        "Breaking: Market rally today.",
+                                        "Local team wins championship.",
+                                        "New cafe opens downtown.",
+                                        "Weather: sunny all week.",
+                                        "CEO announces new plan.",
+                                        "Traffic delays on I-80."
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "UTF-8 non-ASCII content",
+                                    "description": "Valid non-empty text containing non-ASCII characters (UTF-8).",
+                                    "representative_samples": [
+                                        "Olá mundo, notícia!",
+                                        "最新消息：科技公司发布新品。",
+                                        "Привет, это новости.",
+                                        "¡Urgente! Actualización en curso.",
+                                        "Résumé du jour: économie.",
+                                        "東京で新しい美術展が開催。"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Single-paragraph news summary",
+                                    "description": "Non-empty paragraph-sized content within typical limits.",
+                                    "representative_samples": [
+                                        "Officials confirmed funding for the project after months of debate.",
+                                        "Residents report improvements following the new recycling program.",
+                                        "Scientists reveal promising results in early vaccine trials.",
+                                        "City council approves plans for expanded public transit routes.",
+                                        "Startup secures seed funding to accelerate product development.",
+                                        "Wildlife conservation efforts show notable recovery trends."
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "text"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space5",
+                        "single_parameter_spaces": {
+                            "authorId": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
                                     "format": null,
                                     "input_space_category": "<MISS_KEY>",
-                                    "description": "creationTime omitted; server will set the creation timestamp.",
+                                    "description": "authorId is omitted from the request body (optional by schema). Typical server behavior for creation: reject with validation error since authorId is required by business rules.",
                                     "representative_samples": [
-                                        null,
-                                        null,
-                                        null,
-                                        null,
-                                        null,
+                                        null
+                                    ]
+                                }
+                            ],
+                            "country": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Z]{2}$",
+                                    "input_space_category": "ISO 3166-1 alpha-2 code",
+                                    "description": "Two-letter uppercase country code recognized by the system.",
+                                    "representative_samples": [
+                                        "US",
+                                        "NO",
+                                        "GB",
+                                        "DE",
+                                        "IN",
+                                        "BR"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Z]{3}$",
+                                    "input_space_category": "ISO 3166-1 alpha-3 code",
+                                    "description": "Three-letter uppercase country code recognized by the system.",
+                                    "representative_samples": [
+                                        "USA",
+                                        "NOR",
+                                        "GBR",
+                                        "DEU",
+                                        "IND",
+                                        "BRA"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z][A-Za-z \\-]{1,}$",
+                                    "input_space_category": "Country English name",
+                                    "description": "Full English country names recognized by the system.",
+                                    "representative_samples": [
+                                        "United States",
+                                        "Norway",
+                                        "United Kingdom",
+                                        "Germany",
+                                        "India",
+                                        "Brazil"
+                                    ]
+                                }
+                            ],
+                            "text": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "text is omitted (optional by schema). Typical server behavior for creation: reject with validation error since text is required by business rules.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "country"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space6",
+                        "single_parameter_spaces": {
+                            "authorId": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$",
+                                    "input_space_category": "Existing author UUID",
+                                    "description": "An existing author identifier in UUID format; the author exists in the system.",
+                                    "representative_samples": [
+                                        "3f9a1b2c-4d5e-6789-abcd-ef0123456789",
+                                        "8b2f6c50-1a3d-4e6f-9b8c-7d6e5f4a3b2c",
+                                        "123e4567-e89b-12d3-a456-426614174000",
+                                        "0f1e2d3c-4b5a-6978-9c0d-1e2f3a4b5c6d",
+                                        "9a8b7c6d-5e4f-3a2b-1c0d-efabcdefabcd",
+                                        "6f1d2c3b-4a5e-8c9d-0b1a-2c3d4e5f6a7b"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]{1,20}$",
+                                    "input_space_category": "Existing author numeric ID string",
+                                    "description": "A numeric identifier represented as a string that maps to an existing author.",
+                                    "representative_samples": [
+                                        "17",
+                                        "101",
+                                        "2001",
+                                        "50012",
+                                        "999999",
+                                        "1234567890"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[A-Za-z0-9_\\-]{3,64}$",
+                                    "input_space_category": "Existing author username/slug",
+                                    "description": "An alphanumeric slug/username of an existing author.",
+                                    "representative_samples": [
+                                        "john_doe",
+                                        "alice99",
+                                        "mk-press",
+                                        "Author_2024",
+                                        "LiWei",
+                                        "newsbot"
+                                    ]
+                                }
+                            ],
+                            "country": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "country is omitted (optional by schema). Typical server behavior for creation: reject with validation error since country is required by business rules.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ],
+                            "text": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "text is omitted (optional by schema). Typical server behavior for creation: reject with validation error since text is required by business rules.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "authorId"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space7",
+                        "single_parameter_spaces": {
+                            "authorId": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "authorId is omitted from the request body (optional by schema). Typical server behavior for creation: reject with validation error since authorId is required by business rules.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ],
+                            "country": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "country is omitted (optional by schema). Typical server behavior for creation: reject with validation error since country is required by business rules.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ],
+                            "text": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "text is omitted (optional by schema). Typical server behavior for creation: reject with validation error since text is required by business rules.",
+                                    "representative_samples": [
                                         null
                                     ]
                                 }
@@ -475,9 +1041,10 @@
             },
             {
                 "space_name": "space3",
-                "satisfied_dependencies": "Scalable space for optional parameter 'newsId'.",
+                "satisfied_dependencies": "When creating a news, the request body must not include newsId or creationTime; these are assigned by the server.",
                 "involved_parameters": [
-                    "newsId"
+                    "newsId",
+                    "creationTime"
                 ],
                 "subspace_list": [
                     {
@@ -486,31 +1053,75 @@
                             "newsId": [
                                 {
                                     "tag": "valid",
-                                    "type": "string",
+                                    "type": null,
                                     "format": null,
-                                    "input_space_category": "<MISS_KEY> (vendor media type)",
-                                    "description": "Omitted when using application/vnd.tsdes.news+json;charset=UTF-8;version=2.",
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "newsId omitted as required by create semantics; the server assigns it.",
                                     "representative_samples": [
-                                        null,
-                                        null,
-                                        null,
-                                        null,
-                                        null,
                                         null
+                                    ]
+                                }
+                            ],
+                            "creationTime": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "creationTime omitted as required by create semantics; the server assigns it.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space1",
+                        "single_parameter_spaces": {
+                            "newsId": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$",
+                                    "input_space_category": "Client-supplied UUID (ignored)",
+                                    "description": "A UUID that the server may ignore and overwrite.",
+                                    "representative_samples": [
+                                        "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+                                        "9b2d6a10-3c4e-4f6a-8b9c-1d2e3f4a5b6c",
+                                        "123e4567-e89b-12d3-a456-426614174001",
+                                        "0a1b2c3d-4e5f-6789-abcd-ef0123456780",
+                                        "7e1d2c3b-4a5e-8c9d-0b1a-2c3d4e5f6a7c",
+                                        "6d1c2b3a-4e5f-8a9b-0c1d-2e3f4a5b6c7d"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "<MISS_KEY> (minimal payload)",
-                                    "description": "Omitted in minimal body containing only authorId, country, and text.",
+                                    "format": "^[0-9]{1,19}$",
+                                    "input_space_category": "Client-supplied numeric string (ignored)",
+                                    "description": "A numeric ID string that the server may ignore and overwrite.",
                                     "representative_samples": [
-                                        null,
-                                        null,
-                                        null,
-                                        null,
-                                        null,
+                                        "1",
+                                        "42",
+                                        "1001",
+                                        "99999",
+                                        "202400123",
+                                        "5555555"
+                                    ]
+                                }
+                            ],
+                            "creationTime": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "creationTime omitted as required by create semantics; the server assigns it.",
+                                    "representative_samples": [
                                         null
                                     ]
                                 }
@@ -523,27 +1134,131 @@
                         "parameter_parameter": []
                     },
                     {
-                        "subspace_name": "subspace2",
+                        "subspace_name": "error_space2",
+                        "single_parameter_spaces": {
+                            "newsId": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "newsId omitted as required by create semantics; the server assigns it.",
+                                    "representative_samples": [
+                                        null
+                                    ]
+                                }
+                            ],
+                            "creationTime": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$",
+                                    "input_space_category": "Client-supplied ISO 8601 timestamp (ignored)",
+                                    "description": "A well-formed ISO 8601 UTC timestamp that the server may ignore and overwrite.",
+                                    "representative_samples": [
+                                        "2025-01-02T15:30:45Z",
+                                        "2024-12-31T23:59:59Z",
+                                        "2023-06-15T08:00:00Z",
+                                        "2022-09-10T00:00:01Z",
+                                        "2021-11-05T12:45:30Z",
+                                        "2020-03-01T05:15:00Z"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$",
+                                    "input_space_category": "Client-supplied 'YYYY-MM-DD HH:mm:ss' (ignored)",
+                                    "description": "A common timestamp format that the server may ignore and overwrite.",
+                                    "representative_samples": [
+                                        "2025-01-02 15:30:45",
+                                        "2024-12-31 23:59:59",
+                                        "2023-06-15 08:00:00",
+                                        "2022-09-10 00:00:01",
+                                        "2021-11-05 12:45:30",
+                                        "2020-03-01 05:15:00"
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "creationTime"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "error_space3",
                         "single_parameter_spaces": {
                             "newsId": [
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "<MISS_KEY>",
-                                    "description": "newsId omitted; server generates the id on creation.",
+                                    "format": "^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$",
+                                    "input_space_category": "Client-supplied UUID (ignored)",
+                                    "description": "A UUID that the server may ignore and overwrite.",
                                     "representative_samples": [
-                                        null,
-                                        null,
-                                        null,
-                                        null,
-                                        null,
-                                        null
+                                        "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+                                        "9b2d6a10-3c4e-4f6a-8b9c-1d2e3f4a5b6c",
+                                        "123e4567-e89b-12d3-a456-426614174001",
+                                        "0a1b2c3d-4e5f-6789-abcd-ef0123456780",
+                                        "7e1d2c3b-4a5e-8c9d-0b1a-2c3d4e5f6a7c",
+                                        "6d1c2b3a-4e5f-8a9b-0c1d-2e3f4a5b6c7d"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]{1,19}$",
+                                    "input_space_category": "Client-supplied numeric string (ignored)",
+                                    "description": "A numeric ID string that the server may ignore and overwrite.",
+                                    "representative_samples": [
+                                        "1",
+                                        "42",
+                                        "1001",
+                                        "99999",
+                                        "202400123",
+                                        "5555555"
+                                    ]
+                                }
+                            ],
+                            "creationTime": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$",
+                                    "input_space_category": "Client-supplied ISO 8601 timestamp (ignored)",
+                                    "description": "A well-formed ISO 8601 UTC timestamp that the server may ignore and overwrite.",
+                                    "representative_samples": [
+                                        "2025-01-02T15:30:45Z",
+                                        "2024-12-31T23:59:59Z",
+                                        "2023-06-15T08:00:00Z",
+                                        "2022-09-10T00:00:01Z",
+                                        "2021-11-05T12:45:30Z",
+                                        "2020-03-01T05:15:00Z"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$",
+                                    "input_space_category": "Client-supplied 'YYYY-MM-DD HH:mm:ss' (ignored)",
+                                    "description": "A common timestamp format that the server may ignore and overwrite.",
+                                    "representative_samples": [
+                                        "2025-01-02 15:30:45",
+                                        "2024-12-31 23:59:59",
+                                        "2023-06-15 08:00:00",
+                                        "2022-09-10 00:00:01",
+                                        "2021-11-05 12:45:30",
+                                        "2020-03-01 05:15:00"
                                     ]
                                 }
                             ]
                         },
-                        "parameter": [],
+                        "parameter": [
+                            "newsId",
+                            "creationTime"
+                        ],
                         "parameter_value": [],
                         "parameter_parameter": []
                     }
@@ -569,45 +1284,45 @@
                                     "tag": "valid",
                                     "type": "string",
                                     "format": "^[0-9]+$",
-                                    "input_space_category": "Positive integer ID (no leading zeros)",
-                                    "description": "A numeric string of digits representing a positive news ID with no leading zeros.",
+                                    "input_space_category": "Typical small IDs (no leading zeros)",
+                                    "description": "Digit-only, non-empty path segment representing small positive integers without leading zeros.",
                                     "representative_samples": [
                                         "1",
-                                        "2",
-                                        "9",
-                                        "10",
+                                        "7",
                                         "42",
-                                        "999"
+                                        "99",
+                                        "123",
+                                        "9876"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
                                     "format": "^[0-9]+$",
-                                    "input_space_category": "Positive integer ID with leading zeros",
-                                    "description": "A numeric string that contains only digits and may start with one or more zeros.",
+                                    "input_space_category": "Large IDs within common integer ranges",
+                                    "description": "Digit-only IDs that fit typical 32/64-bit integer ranges.",
                                     "representative_samples": [
-                                        "001",
-                                        "00042",
-                                        "0000005",
-                                        "010",
-                                        "000123",
-                                        "0000000009"
-                                    ]
-                                },
-                                {
-                                    "tag": "valid",
-                                    "type": "string",
-                                    "format": "^[0-9]+$",
-                                    "input_space_category": "Large positive numeric ID within typical 64-bit range",
-                                    "description": "A larger numeric ID composed of digits only, still within common 64-bit signed integer limits.",
-                                    "representative_samples": [
+                                        "10000",
+                                        "65535",
+                                        "99999999",
                                         "2147483647",
-                                        "2147483646",
                                         "4294967295",
-                                        "9999999999",
-                                        "1234567890123",
-                                        "9223372036854775806"
+                                        "9223372036854775807"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Zero and leading-zero IDs",
+                                    "description": "Digit-only IDs that are 0 or have leading zeros; still a single URL-safe segment with only digits.",
+                                    "representative_samples": [
+                                        "0",
+                                        "00",
+                                        "007",
+                                        "000123",
+                                        "00000001",
+                                        "0000000005"
                                     ]
                                 }
                             ]
@@ -640,45 +1355,45 @@
                                     "tag": "valid",
                                     "type": "string",
                                     "format": "^[0-9]+$",
-                                    "input_space_category": "Positive integer id (no leading zeros)",
-                                    "description": "Path id as a numeric string representing a positive integer without leading zeros.",
+                                    "input_space_category": "Standard positive integer id (no leading zeros)",
+                                    "description": "Digits-only, non-empty, representing a typical positive integer identifier.",
                                     "representative_samples": [
                                         "1",
-                                        "7",
-                                        "42",
-                                        "99",
-                                        "1234",
-                                        "98765"
+                                        "23",
+                                        "456",
+                                        "7890",
+                                        "12345",
+                                        "987654321"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
                                     "format": "^[0-9]+$",
-                                    "input_space_category": "Numeric string with leading zeros",
-                                    "description": "Path id provided as a numeric string that includes leading zeros.",
-                                    "representative_samples": [
-                                        "01",
-                                        "0005",
-                                        "000123",
-                                        "020",
-                                        "0000001",
-                                        "00100"
-                                    ]
-                                },
-                                {
-                                    "tag": "valid",
-                                    "type": "string",
-                                    "format": "^[0-9]+$",
-                                    "input_space_category": "Large numeric id values",
-                                    "description": "Path id as a large numeric string often used as database identifiers.",
+                                    "input_space_category": "Large numeric ids",
+                                    "description": "Digits-only ids that are large but still valid as digit strings.",
                                     "representative_samples": [
                                         "2147483647",
                                         "4294967295",
-                                        "9223372036854775807",
                                         "9007199254740991",
-                                        "18446744073709551615",
-                                        "281474976710655"
+                                        "9223372036854775807",
+                                        "123456789012345678",
+                                        "999999999999999999"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Zero and zero-padded ids",
+                                    "description": "Digits-only ids including zero and zero-padded forms (still digits only).",
+                                    "representative_samples": [
+                                        "0",
+                                        "00",
+                                        "007",
+                                        "000123",
+                                        "0000001",
+                                        "0000000000"
                                     ]
                                 }
                             ]
@@ -693,7 +1408,275 @@
             },
             {
                 "space_name": "space2",
-                "satisfied_dependencies": "Scalable space for optional parameter 'authorId'.",
+                "satisfied_dependencies": "In an update request, if the request body contains newsId, it must equal the path parameter id; the id of a news cannot be changed.",
+                "involved_parameters": [
+                    "newsId",
+                    "id"
+                ],
+                "subspace_list": [
+                    {
+                        "subspace_name": "subspace1",
+                        "single_parameter_spaces": {
+                            "id": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Standard positive integer id (no leading zeros)",
+                                    "description": "Digits-only, non-empty, representing a typical positive integer identifier.",
+                                    "representative_samples": [
+                                        "1",
+                                        "23",
+                                        "456",
+                                        "7890",
+                                        "12345",
+                                        "987654321"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Large numeric ids",
+                                    "description": "Digits-only ids that are large but still valid as digit strings.",
+                                    "representative_samples": [
+                                        "2147483647",
+                                        "4294967295",
+                                        "9007199254740991",
+                                        "9223372036854775807",
+                                        "123456789012345678",
+                                        "999999999999999999"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Zero and zero-padded ids",
+                                    "description": "Digits-only ids including zero and zero-padded forms (still digits only).",
+                                    "representative_samples": [
+                                        "0",
+                                        "00",
+                                        "007",
+                                        "000123",
+                                        "0000001",
+                                        "0000000000"
+                                    ]
+                                }
+                            ],
+                            "newsId": [
+                                {
+                                    "tag": "valid",
+                                    "type": null,
+                                    "format": null,
+                                    "input_space_category": "<MISS_KEY>",
+                                    "description": "Omitted newsId; server may accept omission and rely on the path id.",
+                                    "representative_samples": [
+                                        null,
+                                        null,
+                                        null,
+                                        null,
+                                        null,
+                                        null
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "id"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": []
+                    },
+                    {
+                        "subspace_name": "subspace2",
+                        "single_parameter_spaces": {
+                            "newsId": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Matches path id (short numeric)",
+                                    "description": "Digits-only string equal to the existing immutable id (1-6 digits).",
+                                    "representative_samples": [
+                                        "1",
+                                        "12",
+                                        "123",
+                                        "2345",
+                                        "67890",
+                                        "123456"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Matches path id (long numeric)",
+                                    "description": "Digits-only string equal to the existing immutable id (7-19 digits).",
+                                    "representative_samples": [
+                                        "123456789",
+                                        "2147483647",
+                                        "4294967295",
+                                        "9007199254740991",
+                                        "9223372036854775807",
+                                        "1234567890123456789"
+                                    ]
+                                }
+                            ],
+                            "id": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Standard positive integer id (no leading zeros)",
+                                    "description": "Digits-only, non-empty, representing a typical positive integer identifier.",
+                                    "representative_samples": [
+                                        "1",
+                                        "23",
+                                        "456",
+                                        "7890",
+                                        "12345",
+                                        "987654321"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Large numeric ids",
+                                    "description": "Digits-only ids that are large but still valid as digit strings.",
+                                    "representative_samples": [
+                                        "2147483647",
+                                        "4294967295",
+                                        "9007199254740991",
+                                        "9223372036854775807",
+                                        "123456789012345678",
+                                        "999999999999999999"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Zero and zero-padded ids",
+                                    "description": "Digits-only ids including zero and zero-padded forms (still digits only).",
+                                    "representative_samples": [
+                                        "0",
+                                        "00",
+                                        "007",
+                                        "000123",
+                                        "0000001",
+                                        "0000000000"
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "newsId",
+                            "id"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": [
+                            "newsId = id"
+                        ]
+                    },
+                    {
+                        "subspace_name": "error_space1",
+                        "single_parameter_spaces": {
+                            "newsId": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Matches path id (short numeric)",
+                                    "description": "Digits-only string equal to the existing immutable id (1-6 digits).",
+                                    "representative_samples": [
+                                        "1",
+                                        "12",
+                                        "123",
+                                        "2345",
+                                        "67890",
+                                        "123456"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Matches path id (long numeric)",
+                                    "description": "Digits-only string equal to the existing immutable id (7-19 digits).",
+                                    "representative_samples": [
+                                        "123456789",
+                                        "2147483647",
+                                        "4294967295",
+                                        "9007199254740991",
+                                        "9223372036854775807",
+                                        "1234567890123456789"
+                                    ]
+                                }
+                            ],
+                            "id": [
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Standard positive integer id (no leading zeros)",
+                                    "description": "Digits-only, non-empty, representing a typical positive integer identifier.",
+                                    "representative_samples": [
+                                        "1",
+                                        "23",
+                                        "456",
+                                        "7890",
+                                        "12345",
+                                        "987654321"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Large numeric ids",
+                                    "description": "Digits-only ids that are large but still valid as digit strings.",
+                                    "representative_samples": [
+                                        "2147483647",
+                                        "4294967295",
+                                        "9007199254740991",
+                                        "9223372036854775807",
+                                        "123456789012345678",
+                                        "999999999999999999"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Zero and zero-padded ids",
+                                    "description": "Digits-only ids including zero and zero-padded forms (still digits only).",
+                                    "representative_samples": [
+                                        "0",
+                                        "00",
+                                        "007",
+                                        "000123",
+                                        "0000001",
+                                        "0000000000"
+                                    ]
+                                }
+                            ]
+                        },
+                        "parameter": [
+                            "newsId",
+                            "id"
+                        ],
+                        "parameter_value": [],
+                        "parameter_parameter": [
+                            "newsId != id"
+                        ]
+                    }
+                ]
+            },
+            {
+                "space_name": "space3",
+                "satisfied_dependencies": "Scalable space for the optional parameter named 'authorId'.",
                 "involved_parameters": [
                     "authorId"
                 ],
@@ -705,46 +1688,46 @@
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "UUID-formatted author id",
-                                    "description": "Author id as a standard UUID string.",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Alphanumeric with underscore or hyphen",
+                                    "description": "Common author identifier strings without spaces.",
+                                    "representative_samples": [
+                                        "user123",
+                                        "A1",
+                                        "john_doe",
+                                        "author-7",
+                                        "ID_2024",
+                                        "newswriter01"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "UUID-like identifiers",
+                                    "description": "Universally unique identifier strings often used for user ids.",
                                     "representative_samples": [
                                         "550e8400-e29b-41d4-a716-446655440000",
                                         "123e4567-e89b-12d3-a456-426614174000",
-                                        "9f8c7b6a-5d4e-3c2b-8a7f-1e0d9c8b7a6f",
-                                        "00112233-4455-6677-8899-aabbccddeeff",
+                                        "9b2c5f10-5e2b-4af7-9c8e-3a3f117a1b2c",
                                         "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-                                        "0a1b2c3d-4e5f-6789-8abc-def012345678"
+                                        "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                                        "6ba7b810-9dad-11d1-80b4-00c04fd430c8"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "Alphanumeric/underscore/hyphen identifiers",
-                                    "description": "Author id using allowed characters for service-local identifiers.",
-                                    "representative_samples": [
-                                        "alice01",
-                                        "bob_smith",
-                                        "user-123",
-                                        "Author_2023",
-                                        "news-writer",
-                                        "johnDoe_99"
-                                    ]
-                                },
-                                {
-                                    "tag": "valid",
-                                    "type": "string",
-                                    "format": null,
+                                    "format": "^[\\s\\S]+$",
                                     "input_space_category": "Numeric string identifiers",
-                                    "description": "Author id as a purely numeric string.",
+                                    "description": "Author identifiers comprised purely of digits.",
                                     "representative_samples": [
-                                        "1",
-                                        "42",
                                         "1001",
+                                        "42",
+                                        "0007",
+                                        "20240312",
                                         "987654",
-                                        "0005",
-                                        "20240510"
+                                        "123456789"
                                     ]
                                 }
                             ]
@@ -761,11 +1744,16 @@
                             "authorId": [
                                 {
                                     "tag": "valid",
-                                    "type": "string",
+                                    "type": null,
                                     "format": null,
                                     "input_space_category": "<MISS_KEY>",
-                                    "description": "Optional authorId omitted from the body.",
+                                    "description": "Omitted authorId; server may accept omission for full replacement if not strictly required by business rules.",
                                     "representative_samples": [
+                                        null,
+                                        null,
+                                        null,
+                                        null,
+                                        null,
                                         null
                                     ]
                                 }
@@ -778,8 +1766,8 @@
                 ]
             },
             {
-                "space_name": "space3",
-                "satisfied_dependencies": "Scalable space for optional parameter 'country'.",
+                "space_name": "space4",
+                "satisfied_dependencies": "Scalable space for the optional parameter named 'country'.",
                 "involved_parameters": [
                     "country"
                 ],
@@ -791,45 +1779,45 @@
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "ISO 3166-1 alpha-2 code",
+                                    "format": "^[A-Z]{2}$",
+                                    "input_space_category": "ISO 3166-1 alpha-2 country code",
                                     "description": "Two-letter uppercase country codes.",
                                     "representative_samples": [
                                         "US",
-                                        "NO",
-                                        "CN",
-                                        "IN",
                                         "GB",
-                                        "BR"
+                                        "DE",
+                                        "FR",
+                                        "CN",
+                                        "IN"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "ISO 3166-1 alpha-3 code",
+                                    "format": "^[A-Z]{3}$",
+                                    "input_space_category": "ISO 3166-1 alpha-3 country code",
                                     "description": "Three-letter uppercase country codes.",
                                     "representative_samples": [
                                         "USA",
-                                        "NOR",
-                                        "CHN",
-                                        "IND",
                                         "GBR",
-                                        "BRA"
+                                        "DEU",
+                                        "FRA",
+                                        "CHN",
+                                        "IND"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
+                                    "format": "^[A-Za-z][A-Za-z ]+$",
                                     "input_space_category": "Country names",
-                                    "description": "Full country names in English.",
+                                    "description": "Common country names in English.",
                                     "representative_samples": [
                                         "United States",
-                                        "Norway",
-                                        "Brazil",
-                                        "China",
                                         "United Kingdom",
+                                        "Germany",
+                                        "France",
+                                        "China",
                                         "India"
                                     ]
                                 }
@@ -847,11 +1835,16 @@
                             "country": [
                                 {
                                     "tag": "valid",
-                                    "type": "string",
+                                    "type": null,
                                     "format": null,
                                     "input_space_category": "<MISS_KEY>",
-                                    "description": "Optional country omitted from the body.",
+                                    "description": "Omitted country is acceptable when not provided.",
                                     "representative_samples": [
+                                        null,
+                                        null,
+                                        null,
+                                        null,
+                                        null,
                                         null
                                     ]
                                 }
@@ -864,8 +1857,8 @@
                 ]
             },
             {
-                "space_name": "space4",
-                "satisfied_dependencies": "Scalable space for optional parameter 'creationTime'.",
+                "space_name": "space5",
+                "satisfied_dependencies": "Scalable space for the optional parameter named 'creationTime'.",
                 "involved_parameters": [
                     "creationTime"
                 ],
@@ -877,46 +1870,46 @@
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "ISO 8601 UTC (Z)",
-                                    "description": "Date-time strings in UTC with Z suffix.",
+                                    "format": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+\\-][0-9]{2}:[0-9]{2})$",
+                                    "input_space_category": "UTC time with Z designator",
+                                    "description": "RFC3339 timestamps with Z (UTC).",
                                     "representative_samples": [
-                                        "2023-05-10T14:30:00Z",
-                                        "2020-02-29T23:59:59Z",
-                                        "1999-12-31T23:59:59Z",
-                                        "2024-01-01T00:00:00Z",
-                                        "2015-06-30T23:59:59Z",
-                                        "2030-12-15T08:05:01Z"
+                                        "2024-03-12T15:30:00Z",
+                                        "2021-12-31T23:59:59Z",
+                                        "2000-01-01T00:00:00Z",
+                                        "1999-07-16T08:30:45Z",
+                                        "2030-06-15T12:00:00Z",
+                                        "2022-11-05T05:05:05Z"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "ISO 8601 with timezone offset",
-                                    "description": "Date-time strings with explicit positive or negative timezone offset.",
+                                    "format": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+\\-][0-9]{2}:[0-9]{2})$",
+                                    "input_space_category": "Time with explicit timezone offset",
+                                    "description": "RFC3339 timestamps including a numeric timezone offset.",
                                     "representative_samples": [
-                                        "2023-05-10T14:30:00+02:00",
-                                        "2023-05-10T08:30:00-04:00",
-                                        "2021-11-07T01:30:00-05:00",
-                                        "2019-03-31T02:30:00+01:00",
-                                        "2022-09-15T00:00:00+00:00",
-                                        "2024-10-05T16:45:30+05:30"
+                                        "2023-01-01T00:00:00+05:30",
+                                        "2024-02-29T23:59:59-04:00",
+                                        "2019-04-10T09:15:00+00:00",
+                                        "2020-10-10T10:10:10+09:00",
+                                        "2025-08-20T18:45:00-07:00",
+                                        "2026-03-28T03:30:00+02:00"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": null,
-                                    "input_space_category": "ISO 8601 with milliseconds",
-                                    "description": "Date-time strings including fractional seconds component.",
+                                    "format": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+\\-][0-9]{2}:[0-9]{2})$",
+                                    "input_space_category": "Fractional seconds",
+                                    "description": "RFC3339 timestamps with milliseconds or fractional seconds.",
                                     "representative_samples": [
-                                        "2023-05-10T14:30:00.123Z",
-                                        "2023-05-10T14:30:00.000Z",
-                                        "2023-05-10T14:30:00.999+02:00",
-                                        "2020-02-29T00:00:00.456Z",
-                                        "2021-12-31T23:59:59.001-03:00",
-                                        "2018-07-01T12:00:00.010+00:00"
+                                        "2024-03-12T15:30:00.123Z",
+                                        "2021-12-31T23:59:59.999Z",
+                                        "2018-07-01T12:34:56.1+01:00",
+                                        "2017-01-15T06:07:08.000-05:00",
+                                        "2022-02-02T02:02:02.250Z",
+                                        "2023-05-05T05:05:05.555+03:00"
                                     ]
                                 }
                             ]
@@ -933,97 +1926,16 @@
                             "creationTime": [
                                 {
                                     "tag": "valid",
-                                    "type": "string",
+                                    "type": null,
                                     "format": null,
                                     "input_space_category": "<MISS_KEY>",
-                                    "description": "Optional creationTime omitted from the body.",
+                                    "description": "Omitted creationTime is acceptable when not provided.",
                                     "representative_samples": [
-                                        null
-                                    ]
-                                }
-                            ]
-                        },
-                        "parameter": [],
-                        "parameter_value": [],
-                        "parameter_parameter": []
-                    }
-                ]
-            },
-            {
-                "space_name": "space5",
-                "satisfied_dependencies": "Scalable space for optional parameter 'newsId'.",
-                "involved_parameters": [
-                    "newsId"
-                ],
-                "subspace_list": [
-                    {
-                        "subspace_name": "subspace1",
-                        "single_parameter_spaces": {
-                            "newsId": [
-                                {
-                                    "tag": "valid",
-                                    "type": "string",
-                                    "format": "^[0-9]+$",
-                                    "input_space_category": "Equal to path id (numeric) - small",
-                                    "description": "newsId equals the path id exactly for smaller values.",
-                                    "representative_samples": [
-                                        "1",
-                                        "7",
-                                        "42",
-                                        "99",
-                                        "100",
-                                        "500"
-                                    ]
-                                },
-                                {
-                                    "tag": "valid",
-                                    "type": "string",
-                                    "format": "^[0-9]+$",
-                                    "input_space_category": "Equal to path id (numeric) - large and boundary",
-                                    "description": "newsId equals the path id exactly for large identifier values.",
-                                    "representative_samples": [
-                                        "2147483647",
-                                        "4294967295",
-                                        "9223372036854775807",
-                                        "9007199254740991",
-                                        "18446744073709551615",
-                                        "281474976710655"
-                                    ]
-                                },
-                                {
-                                    "tag": "valid",
-                                    "type": "string",
-                                    "format": "^[0-9]+$",
-                                    "input_space_category": "Equal with leading zeros (exact string match)",
-                                    "description": "newsId equals the path id including leading zeros (string equality).",
-                                    "representative_samples": [
-                                        "0001",
-                                        "0005",
-                                        "00100",
-                                        "0000001",
-                                        "000020",
-                                        "000123"
-                                    ]
-                                }
-                            ]
-                        },
-                        "parameter": [
-                            "newsId"
-                        ],
-                        "parameter_value": [],
-                        "parameter_parameter": []
-                    },
-                    {
-                        "subspace_name": "subspace2",
-                        "single_parameter_spaces": {
-                            "newsId": [
-                                {
-                                    "tag": "valid",
-                                    "type": "string",
-                                    "format": "^[0-9]+$",
-                                    "input_space_category": "<MISS_KEY>",
-                                    "description": "Optional newsId omitted, allowing the server to keep the existing id.",
-                                    "representative_samples": [
+                                        null,
+                                        null,
+                                        null,
+                                        null,
+                                        null,
                                         null
                                     ]
                                 }
@@ -1037,7 +1949,7 @@
             },
             {
                 "space_name": "space6",
-                "satisfied_dependencies": "Scalable space for optional parameter 'text'.",
+                "satisfied_dependencies": "Scalable space for the optional parameter named 'text'.",
                 "involved_parameters": [
                     "text"
                 ],
@@ -1049,46 +1961,46 @@
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": "^[\\s\\S]*$",
-                                    "input_space_category": "Short headline",
-                                    "description": "Concise headline-style news text.",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Short content",
+                                    "description": "Concise non-empty news text.",
                                     "representative_samples": [
-                                        "Storm hits coast",
-                                        "Market closes higher",
-                                        "Team wins championship",
-                                        "Elections announced",
-                                        "New policy unveiled",
-                                        "Tech stocks rally"
+                                        "Breaking news update.",
+                                        "Official statement released.",
+                                        "Local event draws crowds.",
+                                        "Market closes higher today.",
+                                        "Team wins the championship.",
+                                        "Weather alert issued."
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": "^[\\s\\S]*$",
-                                    "input_space_category": "Paragraph-like text",
-                                    "description": "One to two sentences describing the news.",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Medium content",
+                                    "description": "A few sentences of meaningful news content.",
                                     "representative_samples": [
-                                        "The city council approved the new plan after a lengthy debate.",
-                                        "Scientists report a breakthrough in battery technology.",
-                                        "Residents are urged to conserve water during the dry season.",
-                                        "The company posted record profits in the second quarter.",
-                                        "Officials launched an inquiry into the data breach.",
-                                        "Tourists flocked to the festival despite the rain."
+                                        "The city council approved the budget after a lengthy debate on public services.",
+                                        "Scientists announced promising results from a new vaccine trial this week.",
+                                        "Authorities are investigating the cause of the outage that affected several areas.",
+                                        "The company reported steady growth, citing strong demand across regions.",
+                                        "Firefighters contained the blaze after hours of coordinated effort.",
+                                        "Officials confirmed that repairs will begin early next month."
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": "^[\\s\\S]*$",
-                                    "input_space_category": "Unicode and punctuation",
-                                    "description": "Text including unicode symbols, accents, and punctuation.",
+                                    "format": "^[\\s\\S]+$",
+                                    "input_space_category": "Multilingual/Unicode content",
+                                    "description": "Non-empty content with international characters.",
                                     "representative_samples": [
-                                        "Café reopens — crowds cheer!",
-                                        "Prices rise 2.5% in Q2 📈",
-                                        "Niño brings heavy rains",
-                                        "“Green Day” concert postponed",
-                                        "Startup raises $10M seed round",
-                                        "Résumé tips trending online"
+                                        "国内疫情防控取得阶段性成果。",
+                                        "El análisis muestra una tendencia positiva.",
+                                        "La décision a été annoncée ce matin.",
+                                        "تم الإعلان عن النتائج الرسمية اليوم.",
+                                        "Службы сообщили об улучшении ситуации.",
+                                        "Atualização: tráfego intenso no centro."
                                     ]
                                 }
                             ]
@@ -1105,11 +2017,16 @@
                             "text": [
                                 {
                                     "tag": "valid",
-                                    "type": "string",
-                                    "format": "^[\\s\\S]*$",
+                                    "type": null,
+                                    "format": null,
                                     "input_space_category": "<MISS_KEY>",
-                                    "description": "Optional text omitted from the body.",
+                                    "description": "Omitted text; may be accepted though text should be non-empty for a full replacement.",
                                     "representative_samples": [
+                                        null,
+                                        null,
+                                        null,
+                                        null,
+                                        null,
                                         null
                                     ]
                                 }
@@ -1140,46 +2057,46 @@
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": "^[0-9]+$",
-                                    "input_space_category": "Canonical positive integer IDs (digits only, no leading zeros)",
-                                    "description": "Common positive numeric IDs represented as digit-only strings without leading zeros.",
+                                    "format": "^[1-9][0-9]*$",
+                                    "input_space_category": "Small positive IDs (1-digit, no leading zeros)",
+                                    "description": "Single-digit positive integers composed only of ASCII digits, valid as a path segment.",
                                     "representative_samples": [
                                         "1",
                                         "2",
-                                        "10",
-                                        "42",
-                                        "345",
-                                        "6789"
+                                        "3",
+                                        "4",
+                                        "5",
+                                        "9"
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "string",
-                                    "format": "^[0-9]+$",
-                                    "input_space_category": "Large positive IDs (digits only)",
-                                    "description": "Large numeric IDs still represented as digit-only strings, typical for production systems.",
+                                    "format": "^[1-9][0-9]*$",
+                                    "input_space_category": "Typical IDs (2-4 digits, no leading zeros)",
+                                    "description": "Common positive integer IDs without leading zeros, digits only.",
                                     "representative_samples": [
-                                        "100000",
+                                        "12",
+                                        "57",
+                                        "300",
+                                        "999",
+                                        "1024",
+                                        "2023"
+                                    ]
+                                },
+                                {
+                                    "tag": "valid",
+                                    "type": "string",
+                                    "format": "^[1-9][0-9]*$",
+                                    "input_space_category": "Large IDs (5-12 digits, digits only)",
+                                    "description": "Higher numeric IDs composed solely of digits, still within typical path segment limits.",
+                                    "representative_samples": [
+                                        "10000",
+                                        "987654",
                                         "2147483647",
-                                        "999999999",
                                         "4294967295",
-                                        "5000000000",
-                                        "9223372036854775807"
-                                    ]
-                                },
-                                {
-                                    "tag": "valid",
-                                    "type": "string",
-                                    "format": "^[0-9]+$",
-                                    "input_space_category": "Digits-only IDs with leading zeros",
-                                    "description": "IDs provided as digit-only strings that include leading zeros but still represent a numeric identifier.",
-                                    "representative_samples": [
-                                        "001",
-                                        "000123",
-                                        "010",
-                                        "0000007",
-                                        "042",
-                                        "000999"
+                                        "123456789012",
+                                        "999999999999"
                                     ]
                                 }
                             ]
@@ -1211,46 +2128,46 @@
                                 {
                                     "tag": "valid",
                                     "type": "integer",
-                                    "format": "int64",
-                                    "input_space_category": "Minimal positive IDs",
-                                    "description": "Smallest allowed positive integer IDs for existing news items (>= 1).",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Existing small positive IDs",
+                                    "description": "Typical existing news IDs as small positive integers within int64 range.",
                                     "representative_samples": [
                                         1,
                                         2,
-                                        3,
-                                        4,
-                                        5,
-                                        10
+                                        42,
+                                        256,
+                                        1024,
+                                        9999
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "integer",
-                                    "format": "int64",
-                                    "input_space_category": "Typical existing news IDs",
-                                    "description": "Commonly used positive integer IDs expected to map to existing news.",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Moderate-range IDs",
+                                    "description": "Valid existing IDs in mid-range, still well within 64-bit bounds.",
                                     "representative_samples": [
-                                        101,
-                                        123,
-                                        456,
-                                        789,
-                                        1000,
-                                        98765
+                                        12345,
+                                        678901,
+                                        2000000,
+                                        40005000,
+                                        77777777,
+                                        999999999
                                     ]
                                 },
                                 {
                                     "tag": "valid",
                                     "type": "integer",
-                                    "format": "int64",
-                                    "input_space_category": "High-range positive IDs (within int64)",
-                                    "description": "Larger positive integer IDs still within 64-bit range.",
+                                    "format": "^[0-9]+$",
+                                    "input_space_category": "Large positive int64 within safe range",
+                                    "description": "Very large positive IDs that are still within 64-bit signed integer limits and common JSON safe integer range.",
                                     "representative_samples": [
-                                        2147483648,
-                                        4294967296,
-                                        5000000000,
-                                        7500000000,
-                                        9000000000,
-                                        12000000000
+                                        5000000000000000,
+                                        6000000000000001,
+                                        7000000000000000,
+                                        8000000000000000,
+                                        8500000000000000,
+                                        9007199254740991
                                     ]
                                 }
                             ]

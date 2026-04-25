@@ -4,11 +4,11 @@ from datetime import datetime
 from pathlib import Path
 
 SERVICES = [
-    "scs",
+    # "scs",
     # "restcountries",
     # "languagetool",
     # "ncs",
-    # "news",
+    "news",
     # "petstore",
     # "youtube",
     # "person",

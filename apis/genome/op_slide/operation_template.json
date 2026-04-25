@@ -101,7 +101,9 @@
             },
             "operationId": "fetchVariantAnnotationPOST"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+        ]
     },
     {
         "method": "post",
@@ -205,7 +207,9 @@
             },
             "operationId": "fetchVariantAnnotationByIdPOST"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+        ]
     },
     {
         "method": "get",
@@ -302,7 +306,9 @@
             },
             "operationId": "fetchVariantAnnotationByIdGET"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+        ]
     },
     {
         "method": "post",
@@ -465,7 +471,12 @@
             },
             "operationId": "fetchVariantAnnotationByGenomicLocationPOST"
         },
-        "dependencies": []
+        "dependencies": [
+            "For each genomic location item in the request body, the properties chromosome, start, end, referenceAllele, and variantAllele must all be provided together (all-or-none);",
+            "Within each genomic location item, start must be less than or equal to end;",
+            "Within each genomic location item, referenceAllele and variantAllele must both be provided and must not be identical;",
+            "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+        ]
     },
     {
         "method": "get",
@@ -562,7 +573,10 @@
             },
             "operationId": "fetchVariantAnnotationByGenomicLocationGET"
         },
-        "dependencies": []
+        "dependencies": [
+            "The genomicLocation path value must provide exactly five comma-separated components in the order: chromosome,start,end,referenceAllele,variantAllele; start must be less than or equal to end;",
+            "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+        ]
     },
     {
         "method": "get",
@@ -659,7 +673,9 @@
             },
             "operationId": "fetchVariantAnnotationGET"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the fields parameter includes data from a source that requires authentication (e.g., oncokb), the token parameter must contain a corresponding entry for that source;"
+        ]
     },
     {
         "method": "post",
@@ -1064,7 +1080,9 @@
             },
             "operationId": "fetchEnsemblTranscriptsGET"
         },
-        "dependencies": []
+        "dependencies": [
+            "The geneId, proteinId, and hugoSymbol query parameters are independent optional filters; if none are provided, all transcripts are returned;"
+        ]
     },
     {
         "method": "post",
@@ -1076,28 +1094,28 @@
                 "param_type": "body",
                 "val_type": "string",
                 "is_required": false,
-                "description": "List of Ensembl gene IDs. For example [\"ENSG00000136999\", \"ENSG00000272398\", \"ENSG00000198695\"]"
+                "description": ""
             },
             {
                 "param_name": "hugoSymbols[]",
                 "param_type": "body",
                 "val_type": "string",
                 "is_required": false,
-                "description": "List of Hugo Symbols. For example [\"TP53\", \"PIK3CA\", \"BRCA1\"]"
+                "description": ""
             },
             {
                 "param_name": "proteinIds[]",
                 "param_type": "body",
                 "val_type": "string",
                 "is_required": false,
-                "description": "List of Ensembl protein IDs. For example [\"ENSP00000439985\", \"ENSP00000478460\", \"ENSP00000346196\"]"
+                "description": ""
             },
             {
                 "param_name": "transcriptIds[]",
                 "param_type": "body",
                 "val_type": "string",
                 "is_required": false,
-                "description": "List of Ensembl transcript IDs. For example [\"ENST00000361390\", \"ENST00000361453\", \"ENST00000361624\"]"
+                "description": ""
             }
         ],
         "raw_doc_slide": {
@@ -1164,7 +1182,10 @@
             },
             "operationId": "fetchEnsemblTranscriptsByEnsemblFilterPOST"
         },
-        "dependencies": []
+        "dependencies": [
+            "In the request body ensemblFilter, exactly one of the arrays transcriptIds, hugoSymbols, proteinIds, or geneIds should be provided and non-empty (Only One);",
+            "At least one of transcriptIds, hugoSymbols, proteinIds, or geneIds must be provided in the request body; if more than one are supplied simultaneously, the request should be treated as invalid or ambiguous;"
+        ]
     },
     {
         "method": "get",
@@ -1515,7 +1536,7 @@
                 "param_type": "body",
                 "val_type": "string",
                 "is_required": false,
-                "description": "List of Ensembl transcript IDs. For example [\"ENST00000361390\", \"ENST00000361453\", \"ENST00000361624\"]"
+                "description": ""
             }
         ],
         "raw_doc_slide": {
@@ -1561,7 +1582,9 @@
             },
             "operationId": "fetchPostTranslationalModificationsByPtmFilterPOST"
         },
-        "dependencies": []
+        "dependencies": [
+            "The request body ptmFilter must include the transcriptIds array, and it must contain at least one Ensembl transcript ID;"
+        ]
     },
     {
         "method": "get",

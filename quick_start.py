@@ -5,15 +5,15 @@ import datetime
 services = [
     # "scs",
     # "restcountries",
-    #  "languagetool",
+    # "languagetool",
     # "ncs",
     # "news",
     # "petstore",
     # "youtube",
     # "person",
-      "user"
-     # "genome"
-    # "project"
+    # "user"
+    # "genome"
+     "project"
 ]
 
 time_limit = 3600
@@ -26,7 +26,8 @@ def run_fuzzing(service, time_limit, requests):
         "--time_limit", str(time_limit),
         "--requests", str(requests),
         # "--exec-log-only"
-        "--no-log"
+        "--no-log",
+        "--bugs"
     ]
     # 后台执行，输出丢弃
     with open(os.devnull, "w") as devnull:

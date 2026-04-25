@@ -1,6 +1,7 @@
 import logging
 import time
 import json
+from typing import Callable, Optional
 
 from tqdm import tqdm
 
@@ -44,6 +45,7 @@ class Fuzzer:
         response_checker: RespChecker,
         max_requests=100,
         time_limit=60,
+        on_request_sent: Optional[Callable[[int], None]] = None,
     ):
         """initialize the basic configuration of the fuzzer.
         Args:
@@ -70,6 +72,7 @@ class Fuzzer:
         )
 
         self.send_requests = 0
+        self.on_request_sent = on_request_sent
 
     def start(self):
         """start the fuzzing process util the max requests or time limit is reached."""
@@ -87,6 +90,8 @@ class Fuzzer:
                 try:
                     self.exec_loop_iteration()
                     self.send_requests += 1
+                    if self.on_request_sent:
+                        self.on_request_sent(self.send_requests)
                     pbar.update(1)
                 except Exception as e:
                     logger.error(

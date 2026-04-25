@@ -3,1507 +3,1043 @@
         "op_name": "get /api/bessj/{n}/{x}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1"
         ],
         "selected_parameters_list": {
             "n": {
                 "tag": "valid",
                 "type": "integer",
-                "format": "int32",
-                "input_space_category": "Negative orders (integer)",
-                "description": "Integer negative orders which are mathematically defined for Jn.",
+                "format": "^-?(0|[1-9][0-9]*)$",
+                "input_space_category": "High positive orders within int32 range",
+                "description": "Larger non-negative orders that still fit in 32-bit signed integer limits.",
                 "representative_samples": [
-                    -1,
-                    -2,
-                    -3,
-                    -10,
-                    -50,
-                    -999
+                    32767,
+                    65535,
+                    1000000,
+                    100000000,
+                    2147483646,
+                    2147483647
                 ]
             },
             "x": {
                 "tag": "valid",
                 "type": "number",
-                "format": "double",
-                "input_space_category": "Moderate real values",
-                "description": "Typical finite real inputs for x.",
+                "format": "^-?(?:\\d+(?:\\.\\d+)?|\\d*\\.\\d+)$",
+                "input_space_category": "Typical finite real numbers",
+                "description": "Common decimal literals without scientific notation, finite and parseable as double.",
                 "representative_samples": [
                     -3.14,
+                    -0.001,
+                    0,
+                    0.5,
                     2.71828,
-                    1.0,
-                    -8.5,
-                    6.283185,
-                    10.0
+                    10.5
                 ]
             }
         },
-        "parameter_parameter": []
+        "parameter_parameter": [
+            "No inter-parameter constraint between n and x"
+        ]
     },
     {
         "op_name": "get /api/bessj/{n}/{x}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1"
         ],
         "selected_parameters_list": {
             "n": {
                 "tag": "valid",
                 "type": "integer",
-                "format": "int32",
-                "input_space_category": "Small non-negative orders",
-                "description": "Typical small integer orders for Bessel Jn where n >= 0.",
+                "format": "^-?(0|[1-9][0-9]*)$",
+                "input_space_category": "Small non-negative orders (0–10)",
+                "description": "Typical Bessel orders commonly used; valid int32 with no decimal part.",
                 "representative_samples": [
                     0,
                     1,
                     2,
                     3,
-                    4,
-                    5
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Large magnitude finite doubles",
-                "description": "Large but finite double-precision values for x.",
-                "representative_samples": [
-                    1000000.0,
-                    -1000000.0,
-                    1e+20,
-                    -1e+20,
-                    1e+308,
-                    -1e+308
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/bessj/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large orders within 32-bit signed range",
-                "description": "High but valid int32 values for order n.",
-                "representative_samples": [
-                    1000,
-                    10000,
-                    50000,
-                    2147483647,
-                    999999,
-                    123456789
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Moderate real values",
-                "description": "Typical finite real inputs for x.",
-                "representative_samples": [
-                    -3.14,
-                    2.71828,
-                    1.0,
-                    -8.5,
-                    6.283185,
-                    10.0
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/bessj/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Negative orders (integer)",
-                "description": "Integer negative orders which are mathematically defined for Jn.",
-                "representative_samples": [
-                    -1,
-                    -2,
-                    -3,
-                    -10,
-                    -50,
-                    -999
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Zero and near-zero values",
-                "description": "Values around zero, common for evaluating Bessel behavior near origin.",
-                "representative_samples": [
-                    0.0,
-                    1e-06,
-                    -1e-06,
-                    0.0001,
-                    -0.0001,
-                    0.001
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/bessj/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large orders within 32-bit signed range",
-                "description": "High but valid int32 values for order n.",
-                "representative_samples": [
-                    1000,
-                    10000,
-                    50000,
-                    2147483647,
-                    999999,
-                    123456789
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Zero and near-zero values",
-                "description": "Values around zero, common for evaluating Bessel behavior near origin.",
-                "representative_samples": [
-                    0.0,
-                    1e-06,
-                    -1e-06,
-                    0.0001,
-                    -0.0001,
-                    0.001
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/bessj/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Negative orders (integer)",
-                "description": "Integer negative orders which are mathematically defined for Jn.",
-                "representative_samples": [
-                    -1,
-                    -2,
-                    -3,
-                    -10,
-                    -50,
-                    -999
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Large magnitude finite doubles",
-                "description": "Large but finite double-precision values for x.",
-                "representative_samples": [
-                    1000000.0,
-                    -1000000.0,
-                    1e+20,
-                    -1e+20,
-                    1e+308,
-                    -1e+308
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/bessj/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Negative orders (integer)",
-                "description": "Integer negative orders which are mathematically defined for Jn.",
-                "representative_samples": [
-                    -1,
-                    -2,
-                    -3,
-                    -10,
-                    -50,
-                    -999
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Moderate real values",
-                "description": "Typical finite real inputs for x.",
-                "representative_samples": [
-                    -3.14,
-                    2.71828,
-                    1.0,
-                    -8.5,
-                    6.283185,
-                    10.0
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/bessj/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Negative orders (integer)",
-                "description": "Integer negative orders which are mathematically defined for Jn.",
-                "representative_samples": [
-                    -1,
-                    -2,
-                    -3,
-                    -10,
-                    -50,
-                    -999
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Zero and near-zero values",
-                "description": "Values around zero, common for evaluating Bessel behavior near origin.",
-                "representative_samples": [
-                    0.0,
-                    1e-06,
-                    -1e-06,
-                    0.0001,
-                    -0.0001,
-                    0.001
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/bessj/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Negative orders (integer)",
-                "description": "Integer negative orders which are mathematically defined for Jn.",
-                "representative_samples": [
-                    -1,
-                    -2,
-                    -3,
-                    -10,
-                    -50,
-                    -999
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Zero and near-zero values",
-                "description": "Values around zero, common for evaluating Bessel behavior near origin.",
-                "representative_samples": [
-                    0.0,
-                    1e-06,
-                    -1e-06,
-                    0.0001,
-                    -0.0001,
-                    0.001
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/bessj/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Negative orders (integer)",
-                "description": "Integer negative orders which are mathematically defined for Jn.",
-                "representative_samples": [
-                    -1,
-                    -2,
-                    -3,
-                    -10,
-                    -50,
-                    -999
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Moderate real values",
-                "description": "Typical finite real inputs for x.",
-                "representative_samples": [
-                    -3.14,
-                    2.71828,
-                    1.0,
-                    -8.5,
-                    6.283185,
-                    10.0
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/expint/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Medium positive order (10-100)",
-                "description": "Moderate positive integer orders that are typical for computations.",
-                "representative_samples": [
-                    10,
-                    12,
-                    25,
-                    50,
-                    75,
-                    100
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Moderate positive x",
-                "description": "Typical positive real inputs used in standard computations.",
-                "representative_samples": [
-                    0.5,
-                    1.0,
-                    2.5,
-                    5.0,
-                    10.0,
-                    20.0
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/expint/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive order within int32 range",
-                "description": "Large but valid positive integer orders within 32-bit signed integer limits.",
-                "representative_samples": [
-                    101,
-                    1000,
-                    5000,
-                    10000,
-                    50000,
-                    2147483647
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Small positive x close to zero",
-                "description": "Positive real values very close to zero; common for asymptotic evaluations.",
-                "representative_samples": [
-                    1e-12,
-                    1e-09,
-                    1e-06,
-                    0.001,
-                    0.01,
-                    0.1
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/expint/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Medium positive order (10-100)",
-                "description": "Moderate positive integer orders that are typical for computations.",
-                "representative_samples": [
-                    10,
-                    12,
-                    25,
-                    50,
-                    75,
-                    100
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Small positive x close to zero",
-                "description": "Positive real values very close to zero; common for asymptotic evaluations.",
-                "representative_samples": [
-                    1e-12,
-                    1e-09,
-                    1e-06,
-                    0.001,
-                    0.01,
-                    0.1
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/expint/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive order within int32 range",
-                "description": "Large but valid positive integer orders within 32-bit signed integer limits.",
-                "representative_samples": [
-                    101,
-                    1000,
-                    5000,
-                    10000,
-                    50000,
-                    2147483647
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Small positive x close to zero",
-                "description": "Positive real values very close to zero; common for asymptotic evaluations.",
-                "representative_samples": [
-                    1e-12,
-                    1e-09,
-                    1e-06,
-                    0.001,
-                    0.01,
-                    0.1
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/expint/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive order within int32 range",
-                "description": "Large but valid positive integer orders within 32-bit signed integer limits.",
-                "representative_samples": [
-                    101,
-                    1000,
-                    5000,
-                    10000,
-                    50000,
-                    2147483647
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Moderate positive x",
-                "description": "Typical positive real inputs used in standard computations.",
-                "representative_samples": [
-                    0.5,
-                    1.0,
-                    2.5,
-                    5.0,
-                    10.0,
-                    20.0
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/expint/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Small positive order (1-9)",
-                "description": "Common positive integer orders for E_n(x) within a small range.",
-                "representative_samples": [
-                    1,
-                    2,
-                    3,
-                    4,
                     5,
-                    6
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Small positive x close to zero",
-                "description": "Positive real values very close to zero; common for asymptotic evaluations.",
-                "representative_samples": [
-                    1e-12,
-                    1e-09,
-                    1e-06,
-                    0.001,
-                    0.01,
-                    0.1
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/expint/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Medium positive order (10-100)",
-                "description": "Moderate positive integer orders that are typical for computations.",
-                "representative_samples": [
-                    10,
-                    12,
-                    25,
-                    50,
-                    75,
-                    100
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Small positive x close to zero",
-                "description": "Positive real values very close to zero; common for asymptotic evaluations.",
-                "representative_samples": [
-                    1e-12,
-                    1e-09,
-                    1e-06,
-                    0.001,
-                    0.01,
-                    0.1
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/expint/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive order within int32 range",
-                "description": "Large but valid positive integer orders within 32-bit signed integer limits.",
-                "representative_samples": [
-                    101,
-                    1000,
-                    5000,
-                    10000,
-                    50000,
-                    2147483647
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Moderate positive x",
-                "description": "Typical positive real inputs used in standard computations.",
-                "representative_samples": [
-                    0.5,
-                    1.0,
-                    2.5,
-                    5.0,
-                    10.0,
-                    20.0
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/expint/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Medium positive order (10-100)",
-                "description": "Moderate positive integer orders that are typical for computations.",
-                "representative_samples": [
-                    10,
-                    12,
-                    25,
-                    50,
-                    75,
-                    100
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Moderate positive x",
-                "description": "Typical positive real inputs used in standard computations.",
-                "representative_samples": [
-                    0.5,
-                    1.0,
-                    2.5,
-                    5.0,
-                    10.0,
-                    20.0
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/expint/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Medium positive order (10-100)",
-                "description": "Moderate positive integer orders that are typical for computations.",
-                "representative_samples": [
-                    10,
-                    12,
-                    25,
-                    50,
-                    75,
-                    100
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": "double",
-                "input_space_category": "Small positive x close to zero",
-                "description": "Positive real values very close to zero; common for asymptotic evaluations.",
-                "representative_samples": [
-                    1e-12,
-                    1e-09,
-                    1e-06,
-                    0.001,
-                    0.01,
-                    0.1
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/fisher/{m}/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "m": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Small degrees of freedom (1-10)",
-                "description": "Positive integer degrees of freedom in a small range suitable for many Fisher F computations.",
-                "representative_samples": [
-                    1,
-                    2,
-                    3,
-                    5,
-                    7,
                     10
                 ]
             },
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Large degrees of freedom within int32",
-                "description": "Larger positive integers still within 32-bit signed maximum.",
-                "representative_samples": [
-                    1500,
-                    10000,
-                    50000,
-                    250000,
-                    1000000,
-                    2147483647
-                ]
-            },
             "x": {
                 "tag": "valid",
                 "type": "number",
                 "format": null,
-                "input_space_category": "Large nonnegative values",
-                "description": "Large but nonnegative inputs within floating-point representable range.",
+                "input_space_category": "Near-zero values",
+                "description": "Small magnitude values around zero, expressed without scientific notation.",
                 "representative_samples": [
-                    10,
-                    100,
-                    1000,
-                    10000,
-                    1000000,
-                    1000000000
+                    0.0,
+                    -0.0,
+                    1e-12,
+                    -1e-12,
+                    0.0001,
+                    -0.0001
                 ]
             }
         },
-        "parameter_parameter": []
+        "parameter_parameter": [
+            "No inter-parameter constraint between n and x"
+        ]
     },
     {
-        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "op_name": "get /api/bessj/{n}/{x}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1"
         ],
         "selected_parameters_list": {
-            "m": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Large degrees of freedom within int32",
-                "description": "Large but valid positive integers up to 32-bit signed integer max.",
-                "representative_samples": [
-                    1000,
-                    5000,
-                    10000,
-                    100000,
-                    1000000,
-                    2147483647
-                ]
-            },
             "n": {
                 "tag": "valid",
                 "type": "integer",
-                "format": null,
-                "input_space_category": "Moderate degrees of freedom (11-1000)",
-                "description": "Common, valid positive integer inputs for degrees of freedom.",
+                "format": "^-?(0|[1-9][0-9]*)$",
+                "input_space_category": "High positive orders within int32 range",
+                "description": "Larger non-negative orders that still fit in 32-bit signed integer limits.",
                 "representative_samples": [
-                    20,
-                    33,
-                    64,
-                    128,
-                    512,
-                    1000
+                    32767,
+                    65535,
+                    1000000,
+                    100000000,
+                    2147483646,
+                    2147483647
                 ]
             },
             "x": {
                 "tag": "valid",
                 "type": "number",
                 "format": null,
-                "input_space_category": "Zero and near-zero nonnegative",
-                "description": "F-statistic values at 0 or very close to 0, allowed for Fisher F CDF/PDF.",
+                "input_space_category": "Near-zero values",
+                "description": "Small magnitude values around zero, expressed without scientific notation.",
+                "representative_samples": [
+                    0.0,
+                    -0.0,
+                    1e-12,
+                    -1e-12,
+                    0.0001,
+                    -0.0001
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "No inter-parameter constraint between n and x"
+        ]
+    },
+    {
+        "op_name": "get /api/bessj/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "n": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?(0|[1-9][0-9]*)$",
+                "input_space_category": "High positive orders within int32 range",
+                "description": "Larger non-negative orders that still fit in 32-bit signed integer limits.",
+                "representative_samples": [
+                    32767,
+                    65535,
+                    1000000,
+                    100000000,
+                    2147483646,
+                    2147483647
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": null,
+                "input_space_category": "Near-zero values",
+                "description": "Small magnitude values around zero, expressed without scientific notation.",
+                "representative_samples": [
+                    0.0,
+                    -0.0,
+                    1e-12,
+                    -1e-12,
+                    0.0001,
+                    -0.0001
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "No inter-parameter constraint between n and x"
+        ]
+    },
+    {
+        "op_name": "get /api/bessj/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "n": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?(0|[1-9][0-9]*)$",
+                "input_space_category": "Small non-negative orders (0–10)",
+                "description": "Typical Bessel orders commonly used; valid int32 with no decimal part.",
                 "representative_samples": [
                     0,
+                    1,
+                    2,
+                    3,
+                    5,
+                    10
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^-?(?:\\d+(?:\\.\\d+)?|\\d*\\.\\d+)$",
+                "input_space_category": "Large magnitude finite decimals (no exponent)",
+                "description": "Larger absolute values expressed as plain decimal literals (no spaces or exponent).",
+                "representative_samples": [
+                    123456789.0,
+                    -987654321.123,
+                    1000000000000.0,
+                    -2500000000000.75,
+                    99999999999999.98,
+                    -100000000000000.0
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "No inter-parameter constraint between n and x"
+        ]
+    },
+    {
+        "op_name": "get /api/bessj/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "n": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?(0|[1-9][0-9]*)$",
+                "input_space_category": "Small non-negative orders (0–10)",
+                "description": "Typical Bessel orders commonly used; valid int32 with no decimal part.",
+                "representative_samples": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    5,
+                    10
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": null,
+                "input_space_category": "Near-zero values",
+                "description": "Small magnitude values around zero, expressed without scientific notation.",
+                "representative_samples": [
+                    0.0,
+                    -0.0,
                     1e-12,
-                    1e-09,
-                    1e-06,
+                    -1e-12,
                     0.0001,
-                    0.01
+                    -0.0001
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "No inter-parameter constraint between n and x"
+        ]
+    },
+    {
+        "op_name": "get /api/bessj/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "n": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?(0|[1-9][0-9]*)$",
+                "input_space_category": "Small non-negative orders (0–10)",
+                "description": "Typical Bessel orders commonly used; valid int32 with no decimal part.",
+                "representative_samples": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    5,
+                    10
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^-?(?:\\d+(?:\\.\\d+)?|\\d*\\.\\d+)$",
+                "input_space_category": "Large magnitude finite decimals (no exponent)",
+                "description": "Larger absolute values expressed as plain decimal literals (no spaces or exponent).",
+                "representative_samples": [
+                    123456789.0,
+                    -987654321.123,
+                    1000000000000.0,
+                    -2500000000000.75,
+                    99999999999999.98,
+                    -100000000000000.0
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "No inter-parameter constraint between n and x"
+        ]
+    },
+    {
+        "op_name": "get /api/bessj/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "n": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?(0|[1-9][0-9]*)$",
+                "input_space_category": "High positive orders within int32 range",
+                "description": "Larger non-negative orders that still fit in 32-bit signed integer limits.",
+                "representative_samples": [
+                    32767,
+                    65535,
+                    1000000,
+                    100000000,
+                    2147483646,
+                    2147483647
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^-?(?:\\d+(?:\\.\\d+)?|\\d*\\.\\d+)$",
+                "input_space_category": "Typical finite real numbers",
+                "description": "Common decimal literals without scientific notation, finite and parseable as double.",
+                "representative_samples": [
+                    -3.14,
+                    -0.001,
+                    0,
+                    0.5,
+                    2.71828,
+                    10.5
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "No inter-parameter constraint between n and x"
+        ]
+    },
+    {
+        "op_name": "get /api/bessj/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "n": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?(0|[1-9][0-9]*)$",
+                "input_space_category": "Small non-negative orders (0–10)",
+                "description": "Typical Bessel orders commonly used; valid int32 with no decimal part.",
+                "representative_samples": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    5,
+                    10
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": null,
+                "input_space_category": "Near-zero values",
+                "description": "Small magnitude values around zero, expressed without scientific notation.",
+                "representative_samples": [
+                    0.0,
+                    -0.0,
+                    1e-12,
+                    -1e-12,
+                    0.0001,
+                    -0.0001
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "No inter-parameter constraint between n and x"
+        ]
+    },
+    {
+        "op_name": "get /api/bessj/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "n": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?(0|[1-9][0-9]*)$",
+                "input_space_category": "High positive orders within int32 range",
+                "description": "Larger non-negative orders that still fit in 32-bit signed integer limits.",
+                "representative_samples": [
+                    32767,
+                    65535,
+                    1000000,
+                    100000000,
+                    2147483646,
+                    2147483647
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": null,
+                "input_space_category": "Near-zero values",
+                "description": "Small magnitude values around zero, expressed without scientific notation.",
+                "representative_samples": [
+                    0.0,
+                    -0.0,
+                    1e-12,
+                    -1e-12,
+                    0.0001,
+                    -0.0001
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "No inter-parameter constraint between n and x"
+        ]
+    },
+    {
+        "op_name": "get /api/expint/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "n": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Large positive orders near 32-bit boundary",
+                "description": "Large but valid positive integers within 32-bit signed range.",
+                "representative_samples": [
+                    1000000,
+                    50000000,
+                    214748364,
+                    1000000000,
+                    2147483646,
+                    2147483647
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Positive finite real numbers (scientific notation)",
+                "description": "x strictly greater than 0 in scientific notation; values are finite and use dot where fractional part is present.",
+                "representative_samples": [
+                    1e-05,
+                    70.0,
+                    0.00999,
+                    2.0,
+                    350.0,
+                    6.022e+23
                 ]
             }
         },
         "parameter_parameter": []
     },
     {
-        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "op_name": "get /api/expint/{n}/{x}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
         ],
         "selected_parameters_list": {
-            "m": {
+            "n": {
                 "tag": "valid",
                 "type": "integer",
-                "format": null,
-                "input_space_category": "Moderate degrees of freedom (11-1000)",
-                "description": "Typical positive integer inputs for degrees of freedom.",
+                "format": "^-?\\d+$",
+                "input_space_category": "Moderate positive orders",
+                "description": "Valid medium-size positive integers where computation remains practical.",
                 "representative_samples": [
-                    11,
-                    12,
+                    20,
                     50,
                     100,
                     256,
-                    999
-                ]
-            },
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Large degrees of freedom within int32",
-                "description": "Larger positive integers still within 32-bit signed maximum.",
-                "representative_samples": [
-                    1500,
-                    10000,
-                    50000,
-                    250000,
-                    1000000,
-                    2147483647
+                    512,
+                    1024
                 ]
             },
             "x": {
                 "tag": "valid",
                 "type": "number",
-                "format": null,
-                "input_space_category": "Large nonnegative values",
-                "description": "Large but nonnegative inputs within floating-point representable range.",
-                "representative_samples": [
-                    10,
-                    100,
-                    1000,
-                    10000,
-                    1000000,
-                    1000000000
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/fisher/{m}/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "m": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Small degrees of freedom (1-10)",
-                "description": "Positive integer degrees of freedom in a small range suitable for many Fisher F computations.",
-                "representative_samples": [
-                    1,
-                    2,
-                    3,
-                    5,
-                    7,
-                    10
-                ]
-            },
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Small degrees of freedom (1-10)",
-                "description": "Positive integer degrees of freedom at the low end for Fisher F.",
-                "representative_samples": [
-                    1,
-                    4,
-                    6,
-                    8,
-                    9,
-                    10
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Typical F-statistic range",
-                "description": "Common nonnegative values encountered in practice.",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Positive finite real numbers (decimal literals)",
+                "description": "x strictly greater than 0, finite, provided as decimal literals using dot as the decimal separator.",
                 "representative_samples": [
                     0.1,
-                    0.5,
-                    1,
-                    2.75,
-                    3.14,
-                    5
+                    0.0001,
+                    1.0,
+                    2.5,
+                    3.1415,
+                    10.0
                 ]
             }
         },
         "parameter_parameter": []
     },
     {
-        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "op_name": "get /api/expint/{n}/{x}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
         ],
         "selected_parameters_list": {
-            "m": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Large degrees of freedom within int32",
-                "description": "Large but valid positive integers up to 32-bit signed integer max.",
-                "representative_samples": [
-                    1000,
-                    5000,
-                    10000,
-                    100000,
-                    1000000,
-                    2147483647
-                ]
-            },
             "n": {
                 "tag": "valid",
                 "type": "integer",
-                "format": null,
-                "input_space_category": "Moderate degrees of freedom (11-1000)",
-                "description": "Common, valid positive integer inputs for degrees of freedom.",
-                "representative_samples": [
-                    20,
-                    33,
-                    64,
-                    128,
-                    512,
-                    1000
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Zero and near-zero nonnegative",
-                "description": "F-statistic values at 0 or very close to 0, allowed for Fisher F CDF/PDF.",
-                "representative_samples": [
-                    0,
-                    1e-12,
-                    1e-09,
-                    1e-06,
-                    0.0001,
-                    0.01
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/fisher/{m}/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "m": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Large degrees of freedom within int32",
-                "description": "Large but valid positive integers up to 32-bit signed integer max.",
-                "representative_samples": [
-                    1000,
-                    5000,
-                    10000,
-                    100000,
-                    1000000,
-                    2147483647
-                ]
-            },
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Large degrees of freedom within int32",
-                "description": "Larger positive integers still within 32-bit signed maximum.",
-                "representative_samples": [
-                    1500,
-                    10000,
-                    50000,
-                    250000,
-                    1000000,
-                    2147483647
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Zero and near-zero nonnegative",
-                "description": "F-statistic values at 0 or very close to 0, allowed for Fisher F CDF/PDF.",
-                "representative_samples": [
-                    0,
-                    1e-12,
-                    1e-09,
-                    1e-06,
-                    0.0001,
-                    0.01
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/fisher/{m}/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "m": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Small degrees of freedom (1-10)",
-                "description": "Positive integer degrees of freedom in a small range suitable for many Fisher F computations.",
+                "format": "^-?\\d+$",
+                "input_space_category": "Small positive orders (n >= 1, typical use)",
+                "description": "Valid positive integer orders commonly used for E_n(x) computations.",
                 "representative_samples": [
                     1,
                     2,
                     3,
-                    5,
-                    7,
-                    10
-                ]
-            },
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Moderate degrees of freedom (11-1000)",
-                "description": "Common, valid positive integer inputs for degrees of freedom.",
-                "representative_samples": [
-                    20,
-                    33,
-                    64,
-                    128,
-                    512,
-                    1000
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Large nonnegative values",
-                "description": "Large but nonnegative inputs within floating-point representable range.",
-                "representative_samples": [
-                    10,
-                    100,
-                    1000,
-                    10000,
-                    1000000,
-                    1000000000
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/fisher/{m}/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "m": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Moderate degrees of freedom (11-1000)",
-                "description": "Typical positive integer inputs for degrees of freedom.",
-                "representative_samples": [
-                    11,
-                    12,
-                    50,
-                    100,
-                    256,
-                    999
-                ]
-            },
-            "n": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Small degrees of freedom (1-10)",
-                "description": "Positive integer degrees of freedom at the low end for Fisher F.",
-                "representative_samples": [
-                    1,
                     4,
-                    6,
-                    8,
-                    9,
+                    5,
                     10
                 ]
             },
             "x": {
                 "tag": "valid",
                 "type": "number",
-                "format": null,
-                "input_space_category": "Large nonnegative values",
-                "description": "Large but nonnegative inputs within floating-point representable range.",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Positive finite real numbers (scientific notation)",
+                "description": "x strictly greater than 0 in scientific notation; values are finite and use dot where fractional part is present.",
                 "representative_samples": [
-                    10,
-                    100,
-                    1000,
-                    10000,
-                    1000000,
-                    1000000000
+                    1e-05,
+                    70.0,
+                    0.00999,
+                    2.0,
+                    350.0,
+                    6.022e+23
                 ]
             }
         },
         "parameter_parameter": []
     },
     {
-        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "op_name": "get /api/expint/{n}/{x}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
         ],
         "selected_parameters_list": {
-            "m": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Large degrees of freedom within int32",
-                "description": "Large but valid positive integers up to 32-bit signed integer max.",
-                "representative_samples": [
-                    1000,
-                    5000,
-                    10000,
-                    100000,
-                    1000000,
-                    2147483647
-                ]
-            },
             "n": {
                 "tag": "valid",
                 "type": "integer",
-                "format": null,
-                "input_space_category": "Moderate degrees of freedom (11-1000)",
-                "description": "Common, valid positive integer inputs for degrees of freedom.",
+                "format": "^-?\\d+$",
+                "input_space_category": "Moderate positive orders",
+                "description": "Valid medium-size positive integers where computation remains practical.",
                 "representative_samples": [
                     20,
-                    33,
-                    64,
-                    128,
-                    512,
-                    1000
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Zero and near-zero nonnegative",
-                "description": "F-statistic values at 0 or very close to 0, allowed for Fisher F CDF/PDF.",
-                "representative_samples": [
-                    0,
-                    1e-12,
-                    1e-09,
-                    1e-06,
-                    0.0001,
-                    0.01
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/fisher/{m}/{n}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "m": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Moderate degrees of freedom (11-1000)",
-                "description": "Typical positive integer inputs for degrees of freedom.",
-                "representative_samples": [
-                    11,
-                    12,
                     50,
                     100,
                     256,
-                    999
+                    512,
+                    1024
                 ]
             },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Positive finite real numbers (decimal literals)",
+                "description": "x strictly greater than 0, finite, provided as decimal literals using dot as the decimal separator.",
+                "representative_samples": [
+                    0.1,
+                    0.0001,
+                    1.0,
+                    2.5,
+                    3.1415,
+                    10.0
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/expint/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
             "n": {
                 "tag": "valid",
                 "type": "integer",
-                "format": null,
-                "input_space_category": "Moderate degrees of freedom (11-1000)",
-                "description": "Common, valid positive integer inputs for degrees of freedom.",
+                "format": "^-?\\d+$",
+                "input_space_category": "Large positive orders near 32-bit boundary",
+                "description": "Large but valid positive integers within 32-bit signed range.",
+                "representative_samples": [
+                    1000000,
+                    50000000,
+                    214748364,
+                    1000000000,
+                    2147483646,
+                    2147483647
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Very small positive finite x near zero (but > 0)",
+                "description": "x is positive and very close to zero to test convergence behavior; still finite and nonzero.",
+                "representative_samples": [
+                    1e-308,
+                    1e-300,
+                    1e-250,
+                    1e-200,
+                    1e-100,
+                    1e-50
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/expint/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "n": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Large positive orders near 32-bit boundary",
+                "description": "Large but valid positive integers within 32-bit signed range.",
+                "representative_samples": [
+                    1000000,
+                    50000000,
+                    214748364,
+                    1000000000,
+                    2147483646,
+                    2147483647
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Very small positive finite x near zero (but > 0)",
+                "description": "x is positive and very close to zero to test convergence behavior; still finite and nonzero.",
+                "representative_samples": [
+                    1e-308,
+                    1e-300,
+                    1e-250,
+                    1e-200,
+                    1e-100,
+                    1e-50
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/expint/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "n": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Moderate positive orders",
+                "description": "Valid medium-size positive integers where computation remains practical.",
                 "representative_samples": [
                     20,
-                    33,
-                    64,
-                    128,
+                    50,
+                    100,
+                    256,
                     512,
+                    1024
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Positive finite real numbers (decimal literals)",
+                "description": "x strictly greater than 0, finite, provided as decimal literals using dot as the decimal separator.",
+                "representative_samples": [
+                    0.1,
+                    0.0001,
+                    1.0,
+                    2.5,
+                    3.1415,
+                    10.0
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/expint/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "n": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Moderate positive orders",
+                "description": "Valid medium-size positive integers where computation remains practical.",
+                "representative_samples": [
+                    20,
+                    50,
+                    100,
+                    256,
+                    512,
+                    1024
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Very small positive finite x near zero (but > 0)",
+                "description": "x is positive and very close to zero to test convergence behavior; still finite and nonzero.",
+                "representative_samples": [
+                    1e-308,
+                    1e-300,
+                    1e-250,
+                    1e-200,
+                    1e-100,
+                    1e-50
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/expint/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "n": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Large positive orders near 32-bit boundary",
+                "description": "Large but valid positive integers within 32-bit signed range.",
+                "representative_samples": [
+                    1000000,
+                    50000000,
+                    214748364,
+                    1000000000,
+                    2147483646,
+                    2147483647
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Positive finite real numbers (scientific notation)",
+                "description": "x strictly greater than 0 in scientific notation; values are finite and use dot where fractional part is present.",
+                "representative_samples": [
+                    1e-05,
+                    70.0,
+                    0.00999,
+                    2.0,
+                    350.0,
+                    6.022e+23
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/expint/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "n": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Small positive orders (n >= 1, typical use)",
+                "description": "Valid positive integer orders commonly used for E_n(x) computations.",
+                "representative_samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    10
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Very small positive finite x near zero (but > 0)",
+                "description": "x is positive and very close to zero to test convergence behavior; still finite and nonzero.",
+                "representative_samples": [
+                    1e-308,
+                    1e-300,
+                    1e-250,
+                    1e-200,
+                    1e-100,
+                    1e-50
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/fisher/{m}/{n}/{x}",
+        "tag": "normal",
+        "selected_spaces": [],
+        "selected_parameters_list": {},
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/gammq/{a}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Small positive a near 0 (a > 0, close to boundary)",
+                "description": "Finite positive real numbers very close to 0, testing numerical stability while respecting a > 0.",
+                "representative_samples": [
+                    1e-12,
+                    1e-08,
+                    1e-06,
+                    0.0001,
+                    0.001,
+                    0.01
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Zero boundary (x = 0)",
+                "description": "Exact zero inputs are valid and test edge conditions for Q(a, x).",
+                "representative_samples": [
+                    0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/gammq/{a}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Small positive a near 0 (a > 0, close to boundary)",
+                "description": "Finite positive real numbers very close to 0, testing numerical stability while respecting a > 0.",
+                "representative_samples": [
+                    1e-12,
+                    1e-08,
+                    1e-06,
+                    0.0001,
+                    0.001,
+                    0.01
+                ]
+            },
+            "x": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Zero boundary (x = 0)",
+                "description": "Exact zero inputs are valid and test edge conditions for Q(a, x).",
+                "representative_samples": [
+                    0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/gammq/{a}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Large positive a",
+                "description": "Finite larger values of a to test scaling and convergence behavior.",
+                "representative_samples": [
+                    10,
+                    20,
+                    50,
+                    100,
+                    250.5,
                     1000
                 ]
             },
             "x": {
                 "tag": "valid",
                 "type": "number",
-                "format": null,
-                "input_space_category": "Large nonnegative values",
-                "description": "Large but nonnegative inputs within floating-point representable range.",
-                "representative_samples": [
-                    10,
-                    100,
-                    1000,
-                    10000,
-                    1000000,
-                    1000000000
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/gammq/{a}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Large positive a (a > 100)",
-                "description": "Stress large-parameter regime that may affect asymptotic approximations and stability.",
-                "representative_samples": [
-                    100,
-                    256.5,
-                    500,
-                    1000,
-                    10000,
-                    500000
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Large positive x",
-                "description": "Large x values to test tail behavior and underflow/overflow handling.",
-                "representative_samples": [
-                    100,
-                    500,
-                    1000,
-                    10000,
-                    500000,
-                    100000000
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/gammq/{a}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Large positive a (a > 100)",
-                "description": "Stress large-parameter regime that may affect asymptotic approximations and stability.",
-                "representative_samples": [
-                    100,
-                    256.5,
-                    500,
-                    1000,
-                    10000,
-                    500000
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Large positive x",
-                "description": "Large x values to test tail behavior and underflow/overflow handling.",
-                "representative_samples": [
-                    100,
-                    500,
-                    1000,
-                    10000,
-                    500000,
-                    100000000
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/gammq/{a}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Near-zero positive a (0 < a < 0.1)",
-                "description": "For gammq, a must be positive; tiny positive values exercise numerical stability near the lower bound.",
-                "representative_samples": [
-                    1e-12,
-                    1e-08,
-                    1e-05,
-                    0.0001,
-                    0.001,
-                    0.01
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Large positive x",
-                "description": "Large x values to test tail behavior and underflow/overflow handling.",
-                "representative_samples": [
-                    100,
-                    500,
-                    1000,
-                    10000,
-                    500000,
-                    100000000
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/gammq/{a}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Near-zero positive a (0 < a < 0.1)",
-                "description": "For gammq, a must be positive; tiny positive values exercise numerical stability near the lower bound.",
-                "representative_samples": [
-                    1e-12,
-                    1e-08,
-                    1e-05,
-                    0.0001,
-                    0.001,
-                    0.01
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Zero and tiny non-negative x (x ≥ 0, small)",
-                "description": "gammq typically allows x ≥ 0; includes exact zero and very small positives.",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Zero boundary (x = 0)",
+                "description": "Exact zero inputs are valid and test edge conditions for Q(a, x).",
                 "representative_samples": [
                     0,
-                    1e-12,
-                    1e-08,
-                    1e-05,
-                    0.0001,
-                    0.001
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
                 ]
             }
         },
@@ -1513,77 +1049,39 @@
         "op_name": "get /api/gammq/{a}/{x}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
         ],
         "selected_parameters_list": {
             "a": {
                 "tag": "valid",
                 "type": "number",
-                "format": null,
-                "input_space_category": "Near-zero positive a (0 < a < 0.1)",
-                "description": "For gammq, a must be positive; tiny positive values exercise numerical stability near the lower bound.",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Large positive a",
+                "description": "Finite larger values of a to test scaling and convergence behavior.",
                 "representative_samples": [
-                    1e-12,
-                    1e-08,
-                    1e-05,
-                    0.0001,
-                    0.001,
-                    0.01
-                ]
-            },
-            "x": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Large positive x",
-                "description": "Large x values to test tail behavior and underflow/overflow handling.",
-                "representative_samples": [
-                    100,
-                    500,
-                    1000,
-                    10000,
-                    500000,
-                    100000000
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/gammq/{a}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Moderate positive a (1 ≤ a ≤ 25)",
-                "description": "Common practical values for the shape parameter a within a moderate range.",
-                "representative_samples": [
-                    1,
-                    2.5,
-                    3,
-                    5.75,
                     10,
-                    25
+                    20,
+                    50,
+                    100,
+                    250.5,
+                    1000
                 ]
             },
             "x": {
                 "tag": "valid",
                 "type": "number",
-                "format": null,
-                "input_space_category": "Zero and tiny non-negative x (x ≥ 0, small)",
-                "description": "gammq typically allows x ≥ 0; includes exact zero and very small positives.",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Zero boundary (x = 0)",
+                "description": "Exact zero inputs are valid and test edge conditions for Q(a, x).",
                 "representative_samples": [
                     0,
-                    1e-12,
-                    1e-08,
-                    1e-05,
-                    0.0001,
-                    0.001
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
                 ]
             }
         },
@@ -1593,30 +1091,32 @@
         "op_name": "get /api/gammq/{a}/{x}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
         ],
         "selected_parameters_list": {
             "a": {
                 "tag": "valid",
                 "type": "number",
-                "format": null,
-                "input_space_category": "Moderate positive a (1 ≤ a ≤ 25)",
-                "description": "Common practical values for the shape parameter a within a moderate range.",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Large positive a",
+                "description": "Finite larger values of a to test scaling and convergence behavior.",
                 "representative_samples": [
-                    1,
-                    2.5,
-                    3,
-                    5.75,
                     10,
-                    25
+                    20,
+                    50,
+                    100,
+                    250.5,
+                    1000
                 ]
             },
             "x": {
                 "tag": "valid",
                 "type": "number",
-                "format": null,
-                "input_space_category": "Moderate positive x",
-                "description": "Common evaluation range for the argument x.",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Moderate positive x (typical values)",
+                "description": "Common finite nonnegative values used in statistical applications.",
                 "representative_samples": [
                     0.5,
                     1,
@@ -1633,37 +1133,39 @@
         "op_name": "get /api/gammq/{a}/{x}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
         ],
         "selected_parameters_list": {
             "a": {
                 "tag": "valid",
                 "type": "number",
-                "format": null,
-                "input_space_category": "Moderate positive a (1 ≤ a ≤ 25)",
-                "description": "Common practical values for the shape parameter a within a moderate range.",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Moderate positive a (typical values)",
+                "description": "Common finite positive values for a where computation is well-conditioned.",
                 "representative_samples": [
+                    0.1,
+                    0.25,
+                    0.5,
                     1,
                     2.5,
-                    3,
-                    5.75,
-                    10,
-                    25
+                    9.9
                 ]
             },
             "x": {
                 "tag": "valid",
                 "type": "number",
-                "format": null,
-                "input_space_category": "Zero and tiny non-negative x (x ≥ 0, small)",
-                "description": "gammq typically allows x ≥ 0; includes exact zero and very small positives.",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Zero boundary (x = 0)",
+                "description": "Exact zero inputs are valid and test edge conditions for Q(a, x).",
                 "representative_samples": [
                     0,
-                    1e-12,
-                    1e-08,
-                    1e-05,
-                    0.0001,
-                    0.001
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
                 ]
             }
         },
@@ -1673,317 +1175,165 @@
         "op_name": "get /api/gammq/{a}/{x}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
         ],
         "selected_parameters_list": {
             "a": {
                 "tag": "valid",
                 "type": "number",
-                "format": null,
-                "input_space_category": "Large positive a (a > 100)",
-                "description": "Stress large-parameter regime that may affect asymptotic approximations and stability.",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Moderate positive a (typical values)",
+                "description": "Common finite positive values for a where computation is well-conditioned.",
                 "representative_samples": [
-                    100,
-                    256.5,
-                    500,
-                    1000,
-                    10000,
-                    500000
+                    0.1,
+                    0.25,
+                    0.5,
+                    1,
+                    2.5,
+                    9.9
                 ]
             },
             "x": {
                 "tag": "valid",
                 "type": "number",
-                "format": null,
-                "input_space_category": "Zero and tiny non-negative x (x ≥ 0, small)",
-                "description": "gammq typically allows x ≥ 0; includes exact zero and very small positives.",
-                "representative_samples": [
-                    0,
-                    1e-12,
-                    1e-08,
-                    1e-05,
-                    0.0001,
-                    0.001
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/gammq/{a}/{x}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "number",
-                "format": null,
-                "input_space_category": "Near-zero positive a (0 < a < 0.1)",
-                "description": "For gammq, a must be positive; tiny positive values exercise numerical stability near the lower bound.",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Small positive x near 0",
+                "description": "Finite small positive values close to 0 to test sensitivity and convergence.",
                 "representative_samples": [
                     1e-12,
                     1e-08,
-                    1e-05,
+                    1e-06,
                     0.0001,
                     0.001,
                     0.01
                 ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/gammq/{a}/{x}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Moderate positive a (typical values)",
+                "description": "Common finite positive values for a where computation is well-conditioned.",
+                "representative_samples": [
+                    0.1,
+                    0.25,
+                    0.5,
+                    1,
+                    2.5,
+                    9.9
+                ]
             },
             "x": {
                 "tag": "valid",
                 "type": "number",
-                "format": null,
-                "input_space_category": "Large positive x",
-                "description": "Large x values to test tail behavior and underflow/overflow handling.",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Large nonnegative x",
+                "description": "Large finite nonnegative values to test asymptotic behavior and numerical stability.",
                 "representative_samples": [
                     100,
-                    500,
                     1000,
                     10000,
-                    500000,
-                    100000000
+                    1000000,
+                    12345.67,
+                    99000000.0
                 ]
             }
         },
         "parameter_parameter": []
     },
     {
-        "op_name": "get /api/remainder/{a}/{b}",
+        "op_name": "get /api/gammq/{a}/{x}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
         ],
         "selected_parameters_list": {
             "a": {
                 "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Negative integers within int32 range",
-                "description": "Dividend values that are negative integers and within the 32-bit signed range.",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Scientific notation positive a",
+                "description": "Finite positive values expressed in scientific notation, ensuring parser handles exponents.",
                 "representative_samples": [
-                    -1,
-                    -7,
-                    -42,
-                    -256,
-                    -1000,
-                    -999999
+                    300.0,
+                    2000.0,
+                    75.0,
+                    6.7,
+                    0.09,
+                    0.00042
                 ]
             },
-            "b": {
+            "x": {
                 "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Positive nonzero int32 values",
-                "description": "Divisor values that are positive integers within 32-bit signed range (must not be zero).",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Moderate positive x (typical values)",
+                "description": "Common finite nonnegative values used in statistical applications.",
                 "representative_samples": [
+                    0.5,
                     1,
-                    2,
-                    3,
-                    7,
-                    42,
-                    1000
+                    2.5,
+                    5,
+                    10,
+                    25
                 ]
             }
         },
         "parameter_parameter": []
     },
     {
-        "op_name": "get /api/remainder/{a}/{b}",
+        "op_name": "get /api/gammq/{a}/{x}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1"
         ],
         "selected_parameters_list": {
             "a": {
                 "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Negative integers within int32 range",
-                "description": "Dividend values that are negative integers and within the 32-bit signed range.",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Large positive a",
+                "description": "Finite larger values of a to test scaling and convergence behavior.",
                 "representative_samples": [
-                    -1,
-                    -7,
-                    -42,
-                    -256,
-                    -1000,
-                    -999999
-                ]
-            },
-            "b": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Positive nonzero int32 values",
-                "description": "Divisor values that are positive integers within 32-bit signed range (must not be zero).",
-                "representative_samples": [
-                    1,
-                    2,
-                    3,
-                    7,
-                    42,
-                    1000
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/remainder/{a}/{b}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Boundary and near-boundary int32 values",
-                "description": "Dividend values at the edges of 32-bit signed integer limits or near them.",
-                "representative_samples": [
-                    -2147483648,
-                    -2147483647,
-                    -2147483000,
-                    2147483000,
-                    2147483646,
-                    2147483647
-                ]
-            },
-            "b": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Negative nonzero int32 values",
-                "description": "Divisor values that are negative integers within 32-bit signed range (must not be zero).",
-                "representative_samples": [
-                    -1,
-                    -2,
-                    -3,
-                    -7,
-                    -42,
-                    -1000
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/remainder/{a}/{b}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Non-negative small integers (0–1000)",
-                "description": "Dividend values that are integers within int32 and commonly used small numbers, including zero.",
-                "representative_samples": [
-                    0,
-                    1,
-                    7,
-                    42,
-                    256,
+                    10,
+                    20,
+                    50,
+                    100,
+                    250.5,
                     1000
                 ]
             },
-            "b": {
+            "x": {
                 "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Boundary nonzero int32 values",
-                "description": "Divisor values at or near the 32-bit signed integer boundaries, excluding zero.",
+                "type": "number",
+                "format": "^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][+-]?\\d+)?$",
+                "input_space_category": "Moderate positive x (typical values)",
+                "description": "Common finite nonnegative values used in statistical applications.",
                 "representative_samples": [
-                    -2147483648,
-                    -2147483647,
-                    -2147483000,
-                    2147483000,
-                    2147483646,
-                    2147483647
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/remainder/{a}/{b}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Boundary and near-boundary int32 values",
-                "description": "Dividend values at the edges of 32-bit signed integer limits or near them.",
-                "representative_samples": [
-                    -2147483648,
-                    -2147483647,
-                    -2147483000,
-                    2147483000,
-                    2147483646,
-                    2147483647
-                ]
-            },
-            "b": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Negative nonzero int32 values",
-                "description": "Divisor values that are negative integers within 32-bit signed range (must not be zero).",
-                "representative_samples": [
-                    -1,
-                    -2,
-                    -3,
-                    -7,
-                    -42,
-                    -1000
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/remainder/{a}/{b}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Boundary and near-boundary int32 values",
-                "description": "Dividend values at the edges of 32-bit signed integer limits or near them.",
-                "representative_samples": [
-                    -2147483648,
-                    -2147483647,
-                    -2147483000,
-                    2147483000,
-                    2147483646,
-                    2147483647
-                ]
-            },
-            "b": {
-                "tag": "valid",
-                "type": "integer",
-                "format": null,
-                "input_space_category": "Positive nonzero int32 values",
-                "description": "Divisor values that are positive integers within 32-bit signed range (must not be zero).",
-                "representative_samples": [
+                    0.5,
                     1,
-                    2,
-                    3,
-                    7,
-                    42,
-                    1000
+                    2.5,
+                    5,
+                    10,
+                    25
                 ]
             }
         },
@@ -1993,37 +1343,38 @@
         "op_name": "get /api/remainder/{a}/{b}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1"
         ],
         "selected_parameters_list": {
             "a": {
                 "tag": "valid",
                 "type": "integer",
-                "format": null,
-                "input_space_category": "Negative integers within int32 range",
-                "description": "Dividend values that are negative integers and within the 32-bit signed range.",
+                "format": "^-?\\d+$",
+                "input_space_category": "Typical negative int32 values",
+                "description": "Negative integers within 32-bit signed range, encoded as plain decimal strings with a leading minus sign.",
                 "representative_samples": [
-                    -1,
-                    -7,
-                    -42,
-                    -256,
-                    -1000,
-                    -999999
+                    "-2",
+                    "-15",
+                    "-999",
+                    "-32768",
+                    "-1000000",
+                    "-2147487"
                 ]
             },
             "b": {
                 "tag": "valid",
                 "type": "integer",
-                "format": null,
-                "input_space_category": "Positive nonzero int32 values",
-                "description": "Divisor values that are positive integers within 32-bit signed range (must not be zero).",
+                "format": "^-?\\d+$",
+                "input_space_category": "Boundary extremes (non-zero)",
+                "description": "Edge values at or near the int32 limits, explicitly excluding zero.",
                 "representative_samples": [
-                    1,
-                    2,
-                    3,
-                    7,
-                    42,
-                    1000
+                    "2147483647",
+                    "2147483646",
+                    "-2147483648",
+                    "-2147483647",
+                    "999999",
+                    "-999999"
                 ]
             }
         },
@@ -2033,37 +1384,38 @@
         "op_name": "get /api/remainder/{a}/{b}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1"
         ],
         "selected_parameters_list": {
             "a": {
                 "tag": "valid",
                 "type": "integer",
-                "format": null,
-                "input_space_category": "Boundary and near-boundary int32 values",
-                "description": "Dividend values at the edges of 32-bit signed integer limits or near them.",
+                "format": "^-?\\d+$",
+                "input_space_category": "Boundary and special values",
+                "description": "Edge values at or near the int32 boundaries and zero; all encoded as plain decimal strings.",
                 "representative_samples": [
-                    -2147483648,
-                    -2147483647,
-                    -2147483000,
-                    2147483000,
-                    2147483646,
-                    2147483647
+                    "0",
+                    "-0",
+                    "2147483647",
+                    "-2147483648",
+                    "2147483646",
+                    "-2147483647"
                 ]
             },
             "b": {
                 "tag": "valid",
                 "type": "integer",
-                "format": null,
-                "input_space_category": "Positive nonzero int32 values",
-                "description": "Divisor values that are positive integers within 32-bit signed range (must not be zero).",
+                "format": "^-?\\d+$",
+                "input_space_category": "Boundary extremes (non-zero)",
+                "description": "Edge values at or near the int32 limits, explicitly excluding zero.",
                 "representative_samples": [
-                    1,
-                    2,
-                    3,
-                    7,
-                    42,
-                    1000
+                    "2147483647",
+                    "2147483646",
+                    "-2147483648",
+                    "-2147483647",
+                    "999999",
+                    "-999999"
                 ]
             }
         },
@@ -2073,37 +1425,38 @@
         "op_name": "get /api/remainder/{a}/{b}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1"
         ],
         "selected_parameters_list": {
             "a": {
                 "tag": "valid",
                 "type": "integer",
-                "format": null,
-                "input_space_category": "Boundary and near-boundary int32 values",
-                "description": "Dividend values at the edges of 32-bit signed integer limits or near them.",
+                "format": "^-?\\d+$",
+                "input_space_category": "Typical positive int32 values",
+                "description": "Positive integers within 32-bit signed range, encoded as plain decimal strings without non-numeric characters.",
                 "representative_samples": [
-                    -2147483648,
-                    -2147483647,
-                    -2147483000,
-                    2147483000,
-                    2147483646,
-                    2147483647
+                    "1",
+                    "7",
+                    "42",
+                    "256",
+                    "123456",
+                    "2147483"
                 ]
             },
             "b": {
                 "tag": "valid",
                 "type": "integer",
-                "format": null,
-                "input_space_category": "Boundary nonzero int32 values",
-                "description": "Divisor values at or near the 32-bit signed integer boundaries, excluding zero.",
+                "format": "^-?\\d+$",
+                "input_space_category": "Boundary extremes (non-zero)",
+                "description": "Edge values at or near the int32 limits, explicitly excluding zero.",
                 "representative_samples": [
-                    -2147483648,
-                    -2147483647,
-                    -2147483000,
-                    2147483000,
-                    2147483646,
-                    2147483647
+                    "2147483647",
+                    "2147483646",
+                    "-2147483648",
+                    "-2147483647",
+                    "999999",
+                    "-999999"
                 ]
             }
         },
@@ -2113,37 +1466,284 @@
         "op_name": "get /api/remainder/{a}/{b}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1"
         ],
         "selected_parameters_list": {
             "a": {
                 "tag": "valid",
                 "type": "integer",
-                "format": null,
-                "input_space_category": "Non-negative small integers (0–1000)",
-                "description": "Dividend values that are integers within int32 and commonly used small numbers, including zero.",
+                "format": "^-?\\d+$",
+                "input_space_category": "Boundary and special values",
+                "description": "Edge values at or near the int32 boundaries and zero; all encoded as plain decimal strings.",
                 "representative_samples": [
-                    0,
-                    1,
-                    7,
-                    42,
-                    256,
-                    1000
+                    "0",
+                    "-0",
+                    "2147483647",
+                    "-2147483648",
+                    "2147483646",
+                    "-2147483647"
                 ]
             },
             "b": {
                 "tag": "valid",
                 "type": "integer",
-                "format": null,
-                "input_space_category": "Positive nonzero int32 values",
-                "description": "Divisor values that are positive integers within 32-bit signed range (must not be zero).",
+                "format": "^-?\\d+$",
+                "input_space_category": "Zero-padded non-zero decimals",
+                "description": "Valid non-zero int32 values represented with leading zeros in the path segment.",
                 "representative_samples": [
-                    1,
-                    2,
-                    3,
-                    7,
-                    42,
-                    1000
+                    "0001",
+                    "0010",
+                    "000123",
+                    "-0005",
+                    "0002147483",
+                    "0000000001"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/remainder/{a}/{b}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Boundary and special values",
+                "description": "Edge values at or near the int32 boundaries and zero; all encoded as plain decimal strings.",
+                "representative_samples": [
+                    "0",
+                    "-0",
+                    "2147483647",
+                    "-2147483648",
+                    "2147483646",
+                    "-2147483647"
+                ]
+            },
+            "b": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Typical negative non-zero int32 values",
+                "description": "Negative non-zero integers within 32-bit signed range, encoded as plain decimal strings with a leading minus sign.",
+                "representative_samples": [
+                    "-1",
+                    "-2",
+                    "-7",
+                    "-100",
+                    "-123456",
+                    "-2147483648"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/remainder/{a}/{b}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Typical positive int32 values",
+                "description": "Positive integers within 32-bit signed range, encoded as plain decimal strings without non-numeric characters.",
+                "representative_samples": [
+                    "1",
+                    "7",
+                    "42",
+                    "256",
+                    "123456",
+                    "2147483"
+                ]
+            },
+            "b": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Zero-padded non-zero decimals",
+                "description": "Valid non-zero int32 values represented with leading zeros in the path segment.",
+                "representative_samples": [
+                    "0001",
+                    "0010",
+                    "000123",
+                    "-0005",
+                    "0002147483",
+                    "0000000001"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/remainder/{a}/{b}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Typical positive int32 values",
+                "description": "Positive integers within 32-bit signed range, encoded as plain decimal strings without non-numeric characters.",
+                "representative_samples": [
+                    "1",
+                    "7",
+                    "42",
+                    "256",
+                    "123456",
+                    "2147483"
+                ]
+            },
+            "b": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Typical negative non-zero int32 values",
+                "description": "Negative non-zero integers within 32-bit signed range, encoded as plain decimal strings with a leading minus sign.",
+                "representative_samples": [
+                    "-1",
+                    "-2",
+                    "-7",
+                    "-100",
+                    "-123456",
+                    "-2147483648"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/remainder/{a}/{b}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Boundary and special values",
+                "description": "Edge values at or near the int32 boundaries and zero; all encoded as plain decimal strings.",
+                "representative_samples": [
+                    "0",
+                    "-0",
+                    "2147483647",
+                    "-2147483648",
+                    "2147483646",
+                    "-2147483647"
+                ]
+            },
+            "b": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Typical positive non-zero int32 values",
+                "description": "Positive non-zero integers within 32-bit signed range, encoded as plain decimal strings.",
+                "representative_samples": [
+                    "1",
+                    "2",
+                    "7",
+                    "100",
+                    "123456",
+                    "2147483647"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/remainder/{a}/{b}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Typical negative int32 values",
+                "description": "Negative integers within 32-bit signed range, encoded as plain decimal strings with a leading minus sign.",
+                "representative_samples": [
+                    "-2",
+                    "-15",
+                    "-999",
+                    "-32768",
+                    "-1000000",
+                    "-2147487"
+                ]
+            },
+            "b": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Typical positive non-zero int32 values",
+                "description": "Positive non-zero integers within 32-bit signed range, encoded as plain decimal strings.",
+                "representative_samples": [
+                    "1",
+                    "2",
+                    "7",
+                    "100",
+                    "123456",
+                    "2147483647"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /api/remainder/{a}/{b}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Boundary and special values",
+                "description": "Edge values at or near the int32 boundaries and zero; all encoded as plain decimal strings.",
+                "representative_samples": [
+                    "0",
+                    "-0",
+                    "2147483647",
+                    "-2147483648",
+                    "2147483646",
+                    "-2147483647"
+                ]
+            },
+            "b": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^-?\\d+$",
+                "input_space_category": "Typical positive non-zero int32 values",
+                "description": "Positive non-zero integers within 32-bit signed range, encoded as plain decimal strings.",
+                "representative_samples": [
+                    "1",
+                    "2",
+                    "7",
+                    "100",
+                    "123456",
+                    "2147483647"
                 ]
             }
         },
@@ -2153,70 +1753,18 @@
         "op_name": "get /api/triangle/{a}/{b}/{c}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1",
+            "space4-subspace2"
         ],
         "selected_parameters_list": {
             "a": {
                 "tag": "valid",
                 "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive int32 edge length",
-                "description": "Large but valid positive integers within int32 range.",
-                "representative_samples": [
-                    100000,
-                    2500000,
-                    123456789,
-                    1500000000,
-                    2000000000,
-                    2147483646
-                ]
-            },
-            "b": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive int32 edge length",
-                "description": "Large but valid positive integers within int32 range.",
-                "representative_samples": [
-                    100001,
-                    2000000,
-                    987654321,
-                    1600000000,
-                    1999999999,
-                    2147483646
-                ]
-            },
-            "c": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Typical medium edge length (11-1000)",
-                "description": "Medium-sized positive integer edge lengths within a normal range.",
-                "representative_samples": [
-                    14,
-                    30,
-                    60,
-                    120,
-                    300,
-                    900
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/triangle/{a}/{b}/{c}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Small positive edge length (1-10)",
-                "description": "Positive small integer edge lengths commonly used for triangles.",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
                 "representative_samples": [
                     1,
                     2,
@@ -2229,324 +1777,187 @@
             "b": {
                 "tag": "valid",
                 "type": "integer",
-                "format": "int32",
-                "input_space_category": "Typical medium edge length (11-1000)",
-                "description": "Medium-sized positive integer edge lengths within a normal range.",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
                 "representative_samples": [
-                    11,
-                    20,
-                    33,
-                    90,
-                    400,
-                    750
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
                 ]
             },
             "c": {
                 "tag": "valid",
                 "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive int32 edge length",
-                "description": "Large but valid positive integers within int32 range.",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "High positive integers near max int32",
+                "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
                 "representative_samples": [
-                    500000,
-                    10000000,
-                    123000000,
-                    147483647,
-                    1900000000,
-                    2147483646
+                    2147483647,
+                    2147483000,
+                    2000000000,
+                    1999999999,
+                    1500000000,
+                    1000000000
                 ]
             }
         },
-        "parameter_parameter": []
+        "parameter_parameter": [
+            "a + b > c",
+            "a + c > b",
+            "b + c > a",
+            "Exactly two of a, b, c are equal and the remaining one is different (i.e., a = b and c != a; or a = c and b != a; or b = c and a != b)"
+        ]
     },
     {
         "op_name": "get /api/triangle/{a}/{b}/{c}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1",
+            "space4-subspace3"
         ],
         "selected_parameters_list": {
             "a": {
                 "tag": "valid",
                 "type": "integer",
-                "format": "int32",
-                "input_space_category": "Typical medium edge length (11-1000)",
-                "description": "Medium-sized positive integer edge lengths within a normal range.",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Typical mid-range positive integers",
+                "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
                 "representative_samples": [
                     12,
                     25,
-                    64,
-                    128,
-                    512,
-                    999
+                    100,
+                    256,
+                    999,
+                    12345
                 ]
             },
             "b": {
                 "tag": "valid",
                 "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive int32 edge length",
-                "description": "Large but valid positive integers within int32 range.",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "High positive integers near max int32",
+                "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
                 "representative_samples": [
-                    100001,
-                    2000000,
-                    987654321,
-                    1600000000,
+                    2147483647,
+                    2147483000,
+                    2000000000,
                     1999999999,
-                    2147483646
+                    1500000000,
+                    1000000000
                 ]
             },
             "c": {
                 "tag": "valid",
                 "type": "integer",
-                "format": "int32",
-                "input_space_category": "Typical medium edge length (11-1000)",
-                "description": "Medium-sized positive integer edge lengths within a normal range.",
-                "representative_samples": [
-                    14,
-                    30,
-                    60,
-                    120,
-                    300,
-                    900
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/triangle/{a}/{b}/{c}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive int32 edge length",
-                "description": "Large but valid positive integers within int32 range.",
-                "representative_samples": [
-                    100000,
-                    2500000,
-                    123456789,
-                    1500000000,
-                    2000000000,
-                    2147483646
-                ]
-            },
-            "b": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Typical medium edge length (11-1000)",
-                "description": "Medium-sized positive integer edge lengths within a normal range.",
-                "representative_samples": [
-                    11,
-                    20,
-                    33,
-                    90,
-                    400,
-                    750
-                ]
-            },
-            "c": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Small positive edge length (1-10)",
-                "description": "Positive small integer edge lengths commonly used for triangles.",
-                "representative_samples": [
-                    2,
-                    3,
-                    5,
-                    6,
-                    7,
-                    10
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/triangle/{a}/{b}/{c}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive int32 edge length",
-                "description": "Large but valid positive integers within int32 range.",
-                "representative_samples": [
-                    100000,
-                    2500000,
-                    123456789,
-                    1500000000,
-                    2000000000,
-                    2147483646
-                ]
-            },
-            "b": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Small positive edge length (1-10)",
-                "description": "Positive small integer edge lengths commonly used for triangles.",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
                 "representative_samples": [
                     1,
+                    2,
                     3,
                     4,
-                    7,
-                    8,
-                    9
-                ]
-            },
-            "c": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Typical medium edge length (11-1000)",
-                "description": "Medium-sized positive integer edge lengths within a normal range.",
-                "representative_samples": [
-                    14,
-                    30,
-                    60,
-                    120,
-                    300,
-                    900
+                    5,
+                    6
                 ]
             }
         },
-        "parameter_parameter": []
+        "parameter_parameter": [
+            "a + b > c",
+            "a + c > b",
+            "b + c > a",
+            "a != b",
+            "b != c",
+            "a != c"
+        ]
     },
     {
         "op_name": "get /api/triangle/{a}/{b}/{c}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1",
+            "space4-subspace3"
         ],
         "selected_parameters_list": {
             "a": {
                 "tag": "valid",
                 "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive int32 edge length",
-                "description": "Large but valid positive integers within int32 range.",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "High positive integers near max int32",
+                "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
                 "representative_samples": [
-                    100000,
-                    2500000,
-                    123456789,
-                    1500000000,
+                    2147483647,
+                    2147483000,
                     2000000000,
-                    2147483646
-                ]
-            },
-            "b": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive int32 edge length",
-                "description": "Large but valid positive integers within int32 range.",
-                "representative_samples": [
-                    100001,
-                    2000000,
-                    987654321,
-                    1600000000,
                     1999999999,
-                    2147483646
-                ]
-            },
-            "c": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive int32 edge length",
-                "description": "Large but valid positive integers within int32 range.",
-                "representative_samples": [
-                    500000,
-                    10000000,
-                    123000000,
-                    147483647,
-                    1900000000,
-                    2147483646
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/triangle/{a}/{b}/{c}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive int32 edge length",
-                "description": "Large but valid positive integers within int32 range.",
-                "representative_samples": [
-                    100000,
-                    2500000,
-                    123456789,
                     1500000000,
-                    2000000000,
-                    2147483646
+                    1000000000
                 ]
             },
             "b": {
                 "tag": "valid",
                 "type": "integer",
-                "format": "int32",
-                "input_space_category": "Typical medium edge length (11-1000)",
-                "description": "Medium-sized positive integer edge lengths within a normal range.",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
                 "representative_samples": [
-                    11,
-                    20,
-                    33,
-                    90,
-                    400,
-                    750
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
                 ]
             },
             "c": {
                 "tag": "valid",
                 "type": "integer",
-                "format": "int32",
-                "input_space_category": "Typical medium edge length (11-1000)",
-                "description": "Medium-sized positive integer edge lengths within a normal range.",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Typical mid-range positive integers",
+                "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
                 "representative_samples": [
-                    14,
-                    30,
-                    60,
-                    120,
-                    300,
-                    900
+                    12,
+                    25,
+                    100,
+                    256,
+                    999,
+                    12345
                 ]
             }
         },
-        "parameter_parameter": []
+        "parameter_parameter": [
+            "a + b > c",
+            "a + c > b",
+            "b + c > a",
+            "a != b",
+            "b != c",
+            "a != c"
+        ]
     },
     {
         "op_name": "get /api/triangle/{a}/{b}/{c}",
         "tag": "normal",
         "selected_spaces": [
-            "space1-subspace1"
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1",
+            "space4-subspace2"
         ],
         "selected_parameters_list": {
             "a": {
                 "tag": "valid",
                 "type": "integer",
-                "format": "int32",
-                "input_space_category": "Small positive edge length (1-10)",
-                "description": "Positive small integer edge lengths commonly used for triangles.",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
                 "representative_samples": [
                     1,
                     2,
@@ -2559,144 +1970,423 @@
             "b": {
                 "tag": "valid",
                 "type": "integer",
-                "format": "int32",
-                "input_space_category": "Typical medium edge length (11-1000)",
-                "description": "Medium-sized positive integer edge lengths within a normal range.",
-                "representative_samples": [
-                    11,
-                    20,
-                    33,
-                    90,
-                    400,
-                    750
-                ]
-            },
-            "c": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive int32 edge length",
-                "description": "Large but valid positive integers within int32 range.",
-                "representative_samples": [
-                    500000,
-                    10000000,
-                    123000000,
-                    147483647,
-                    1900000000,
-                    2147483646
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/triangle/{a}/{b}/{c}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive int32 edge length",
-                "description": "Large but valid positive integers within int32 range.",
-                "representative_samples": [
-                    100000,
-                    2500000,
-                    123456789,
-                    1500000000,
-                    2000000000,
-                    2147483646
-                ]
-            },
-            "b": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Small positive edge length (1-10)",
-                "description": "Positive small integer edge lengths commonly used for triangles.",
-                "representative_samples": [
-                    1,
-                    3,
-                    4,
-                    7,
-                    8,
-                    9
-                ]
-            },
-            "c": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Large positive int32 edge length",
-                "description": "Large but valid positive integers within int32 range.",
-                "representative_samples": [
-                    500000,
-                    10000000,
-                    123000000,
-                    147483647,
-                    1900000000,
-                    2147483646
-                ]
-            }
-        },
-        "parameter_parameter": []
-    },
-    {
-        "op_name": "get /api/triangle/{a}/{b}/{c}",
-        "tag": "normal",
-        "selected_spaces": [
-            "space1-subspace1"
-        ],
-        "selected_parameters_list": {
-            "a": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Typical medium edge length (11-1000)",
-                "description": "Medium-sized positive integer edge lengths within a normal range.",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Typical mid-range positive integers",
+                "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
                 "representative_samples": [
                     12,
                     25,
-                    64,
-                    128,
-                    512,
-                    999
-                ]
-            },
-            "b": {
-                "tag": "valid",
-                "type": "integer",
-                "format": "int32",
-                "input_space_category": "Small positive edge length (1-10)",
-                "description": "Positive small integer edge lengths commonly used for triangles.",
-                "representative_samples": [
-                    1,
-                    3,
-                    4,
-                    7,
-                    8,
-                    9
+                    100,
+                    256,
+                    999,
+                    12345
                 ]
             },
             "c": {
                 "tag": "valid",
                 "type": "integer",
-                "format": "int32",
-                "input_space_category": "Typical medium edge length (11-1000)",
-                "description": "Medium-sized positive integer edge lengths within a normal range.",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
                 "representative_samples": [
-                    14,
-                    30,
-                    60,
-                    120,
-                    300,
-                    900
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
                 ]
             }
         },
-        "parameter_parameter": []
+        "parameter_parameter": [
+            "a + b > c",
+            "a + c > b",
+            "b + c > a",
+            "Exactly two of a, b, c are equal and the remaining one is different (i.e., a = b and c != a; or a = c and b != a; or b = c and a != b)"
+        ]
+    },
+    {
+        "op_name": "get /api/triangle/{a}/{b}/{c}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1",
+            "space4-subspace1"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                "representative_samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            },
+            "b": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                "representative_samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            },
+            "c": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Typical mid-range positive integers",
+                "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                "representative_samples": [
+                    12,
+                    25,
+                    100,
+                    256,
+                    999,
+                    12345
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "a + b > c",
+            "a + c > b",
+            "b + c > a",
+            "a = b",
+            "b = c"
+        ]
+    },
+    {
+        "op_name": "get /api/triangle/{a}/{b}/{c}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1",
+            "space4-subspace2"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Typical mid-range positive integers",
+                "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                "representative_samples": [
+                    12,
+                    25,
+                    100,
+                    256,
+                    999,
+                    12345
+                ]
+            },
+            "b": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "High positive integers near max int32",
+                "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                "representative_samples": [
+                    2147483647,
+                    2147483000,
+                    2000000000,
+                    1999999999,
+                    1500000000,
+                    1000000000
+                ]
+            },
+            "c": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                "representative_samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "a + b > c",
+            "a + c > b",
+            "b + c > a",
+            "Exactly two of a, b, c are equal and the remaining one is different (i.e., a = b and c != a; or a = c and b != a; or b = c and a != b)"
+        ]
+    },
+    {
+        "op_name": "get /api/triangle/{a}/{b}/{c}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1",
+            "space4-subspace3"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                "representative_samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            },
+            "b": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "High positive integers near max int32",
+                "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                "representative_samples": [
+                    2147483647,
+                    2147483000,
+                    2000000000,
+                    1999999999,
+                    1500000000,
+                    1000000000
+                ]
+            },
+            "c": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                "representative_samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "a + b > c",
+            "a + c > b",
+            "b + c > a",
+            "a != b",
+            "b != c",
+            "a != c"
+        ]
+    },
+    {
+        "op_name": "get /api/triangle/{a}/{b}/{c}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1",
+            "space4-subspace2"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                "representative_samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            },
+            "b": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Typical mid-range positive integers",
+                "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                "representative_samples": [
+                    12,
+                    25,
+                    100,
+                    256,
+                    999,
+                    12345
+                ]
+            },
+            "c": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                "representative_samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "a + b > c",
+            "a + c > b",
+            "b + c > a",
+            "Exactly two of a, b, c are equal and the remaining one is different (i.e., a = b and c != a; or a = c and b != a; or b = c and a != b)"
+        ]
+    },
+    {
+        "op_name": "get /api/triangle/{a}/{b}/{c}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1",
+            "space4-subspace1"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                "representative_samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            },
+            "b": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                "representative_samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            },
+            "c": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Typical mid-range positive integers",
+                "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                "representative_samples": [
+                    12,
+                    25,
+                    100,
+                    256,
+                    999,
+                    12345
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "a + b > c",
+            "a + c > b",
+            "b + c > a",
+            "a = b",
+            "b = c"
+        ]
+    },
+    {
+        "op_name": "get /api/triangle/{a}/{b}/{c}",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1",
+            "space4-subspace3"
+        ],
+        "selected_parameters_list": {
+            "a": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Lower bound small positive integers",
+                "description": "Positive base-10 integers without leading zeros, close to the lower bound (1 to small values).",
+                "representative_samples": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            },
+            "b": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "Typical mid-range positive integers",
+                "description": "Common-sized positive integers in base-10, no formatting and within int32 range.",
+                "representative_samples": [
+                    12,
+                    25,
+                    100,
+                    256,
+                    999,
+                    12345
+                ]
+            },
+            "c": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "^[1-9]\\d*$",
+                "input_space_category": "High positive integers near max int32",
+                "description": "Large positive integers near the upper bound of int32 (<= 2,147,483,647) provided as plain base-10.",
+                "representative_samples": [
+                    2147483647,
+                    2147483000,
+                    2000000000,
+                    1999999999,
+                    1500000000,
+                    1000000000
+                ]
+            }
+        },
+        "parameter_parameter": [
+            "a + b > c",
+            "a + c > b",
+            "b + c > a",
+            "a != b",
+            "b != c",
+            "a != c"
+        ]
     }
 ]

@@ -1,0 +1,3255 @@
+[
+    {
+        "op_name": "get /search",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space4-subspace1",
+            "space6-subspace1",
+            "space7-subspace2",
+            "space8-subspace1",
+            "space9-subspace1",
+            "space10-subspace1",
+            "space13-subspace1",
+            "space15-subspace2",
+            "space16-subspace1",
+            "space17-subspace2",
+            "space18-subspace1",
+            "space19-subspace1",
+            "space21-subspace2",
+            "space22-subspace1",
+            "space23-subspace2",
+            "space26-subspace2",
+            "space29-subspace1",
+            "space30-subspace2"
+        ],
+        "selected_parameters_list": {
+            "part": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(snippet)$",
+                "input_space_category": "Exact 'snippet' value",
+                "description": "The only allowed part for this endpoint.",
+                "representative_samples": [
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet"
+                ]
+            },
+            "channelId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(UC)[A-Za-z0-9_-]{22}$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitted channelId means do not restrict by creator channel.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "eventType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(completed|live|upcoming)$",
+                "input_space_category": "Live broadcasts",
+                "description": "Restrict search to currently live broadcasts (requires type=video).",
+                "representative_samples": [
+                    "live",
+                    "live",
+                    "live",
+                    "live",
+                    "live",
+                    "live"
+                ]
+            },
+            "forDeveloper": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean false",
+                "description": "Do not restrict by developer uploads.",
+                "representative_samples": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ]
+            },
+            "forMine": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting forMine leaves ownership unrestricted.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "location": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Typical coordinates",
+                "description": "Valid lat/lon in parentheses within geographic bounds.",
+                "representative_samples": [
+                    "(37.42307,-122.08427)",
+                    "(40.68925,-74.04450)",
+                    "(48.85837,2.29448)",
+                    "(-33.85678,151.21530)",
+                    "(35.68950,139.69171)",
+                    "(-22.95192,-43.21049)"
+                ]
+            },
+            "locationRadius": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Imperial units",
+                "description": "Radius in feet or miles.",
+                "representative_samples": [
+                    "10000ft",
+                    "5280ft",
+                    "1mi",
+                    "0.5mi",
+                    "250ft",
+                    "10mi"
+                ]
+            },
+            "maxResults": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "integer range 0-50",
+                "input_space_category": "Typical mid-range",
+                "description": "Common page sizes within range.",
+                "representative_samples": [
+                    10,
+                    15,
+                    20,
+                    25,
+                    30,
+                    40
+                ]
+            },
+            "pageToken": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{1,80}$",
+                "input_space_category": "Base64url-like tokens",
+                "description": "URL-safe tokens with - and _ characters.",
+                "representative_samples": [
+                    "EAAa-AB_C",
+                    "Q0FBRV9fLQ",
+                    "T0pRU19f",
+                    "YWJjZGVfLV8",
+                    "UEFHRV9UT0s",
+                    "TkVYVF9QQUdF"
+                ]
+            },
+            "publishedBefore": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "q": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Simple single-term query",
+                "description": "Plain keyword without operators.",
+                "representative_samples": [
+                    "music",
+                    "football",
+                    "cooking",
+                    "travel",
+                    "news",
+                    "technology"
+                ]
+            },
+            "regionCode": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "relatedToVideoId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{11}$",
+                "input_space_category": "IDs with underscores or hyphens",
+                "description": "Valid video IDs can include _ and -.",
+                "representative_samples": [
+                    "abc_def-ghi",
+                    "A1B2C3D4E5F",
+                    "_-A1b2C3D4E",
+                    "Q1w2E3r4T5Y",
+                    "ZZZ_zzZ-123",
+                    "__--__--__-"
+                ]
+            },
+            "relevanceLanguage": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Simplified Chinese tag",
+                "description": "Special language tag for Simplified Chinese.",
+                "representative_samples": [
+                    "zh-Hans",
+                    "zh-Hans",
+                    "zh-Hans",
+                    "zh-Hans",
+                    "zh-Hans",
+                    "zh-Hans"
+                ]
+            },
+            "topicId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(\\/m\\/|\\/g\\/|\\/en\\/)[A-Za-z0-9_\\-]+$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "type": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(video|channel|playlist)(,(video|channel|playlist)){0,2}$",
+                "input_space_category": "Multiple resource types",
+                "description": "Comma-separated list of distinct types.",
+                "representative_samples": [
+                    "video,channel",
+                    "channel,playlist",
+                    "video,playlist",
+                    "playlist,video",
+                    "channel,video",
+                    "playlist,channel"
+                ]
+            },
+            "videoCaption": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|closedCaption|none)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoDimension": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(2d|3d|any)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoLicense": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|creativeCommon|youtube)$",
+                "input_space_category": "Creative Commons",
+                "description": "Filter to Creative Commons licensed videos (requires type=video).",
+                "representative_samples": [
+                    "creativeCommon",
+                    "creativeCommon",
+                    "creativeCommon",
+                    "creativeCommon",
+                    "creativeCommon",
+                    "creativeCommon"
+                ]
+            },
+            "videoSyndicated": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|true)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting leaves syndication unfiltered.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /search",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace2",
+            "space4-subspace2",
+            "space6-subspace2",
+            "space7-subspace2",
+            "space11-subspace1",
+            "space12-subspace1",
+            "space13-subspace2",
+            "space15-subspace1",
+            "space18-subspace1",
+            "space19-subspace2",
+            "space20-subspace2",
+            "space21-subspace2",
+            "space22-subspace1",
+            "space23-subspace2",
+            "space24-subspace2",
+            "space25-subspace1",
+            "space27-subspace2",
+            "space28-subspace2",
+            "space29-subspace1"
+        ],
+        "selected_parameters_list": {
+            "part": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(snippet)$",
+                "input_space_category": "Lowercase 'snippet' token",
+                "description": "Lowercase exact token as required.",
+                "representative_samples": [
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet"
+                ]
+            },
+            "channelId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(UC)[A-Za-z0-9_-]{22}$",
+                "input_space_category": "Standard YouTube channel ID (UC prefix)",
+                "description": "A 24-character channel ID starting with UC followed by 22 base64url characters.",
+                "representative_samples": [
+                    "UC_x5XG1OV2P6uZZ5FSM9Ttw",
+                    "UCBR8-60-B28hp2BmDPdntcQ",
+                    "UC295-Dw_tDNtZXFeAPAW6Aw",
+                    "UC-lHJZR3Gqxm24_Vd_AJ5Yw",
+                    "UCS5Oz6CHmeoF7vSad0qqXfw",
+                    "UC4R8DWoMoI7CAwX8_LjQHig"
+                ]
+            },
+            "channelType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|show)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitted channelType means no restriction by channel type.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "eventType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(completed|live|upcoming)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "forDeveloper": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitted forDeveloper means no restriction by developer uploads.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "forMine": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting forMine leaves ownership unrestricted.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "onBehalfOfContentOwner": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9._-]{3,64}$",
+                "input_space_category": "UUID-like identifiers",
+                "description": "IDs using UUID-style strings.",
+                "representative_samples": [
+                    "550e8400-e29b-41d4-a716-446655440000",
+                    "a3f1c2b4-9d87-4e6f-8a2b-1c3d5e7f9a10",
+                    "1b2f3a4c-5678-4de9-9012-34ab56cd78ef",
+                    "00000000-0000-0000-0000-000000000001",
+                    "9f8d7c6b-5a4e-3d2c-1b0a-abcdefabcdef",
+                    "ABCDEF12-3456-7890-ABCD-1234567890AB"
+                ]
+            },
+            "order": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(date|rating|relevance|title|videoCount|viewCount)$",
+                "input_space_category": "Default relevance ordering",
+                "description": "Sort by relevance.",
+                "representative_samples": [
+                    "relevance",
+                    "relevance",
+                    "relevance",
+                    "relevance",
+                    "relevance",
+                    "relevance"
+                ]
+            },
+            "pageToken": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{1,80}$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "No token returns the first page of results.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "publishedBefore": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "UTC Zulu time",
+                "description": "RFC3339 timestamps ending with Z.",
+                "representative_samples": [
+                    "2023-12-31T23:59:59Z",
+                    "2022-01-01T00:00:00Z",
+                    "2010-05-15T12:00:00Z",
+                    "2000-01-01T00:00:00Z",
+                    "1995-06-30T23:59:59Z",
+                    "2024-04-01T08:15:00Z"
+                ]
+            },
+            "relatedToVideoId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{11}$",
+                "input_space_category": "Standard 11-char video IDs",
+                "description": "Base64url-style 11-character IDs.",
+                "representative_samples": [
+                    "dQw4w9WgXcQ",
+                    "kxopViU98Xo",
+                    "9bZkp7q19f0",
+                    "M7FIvfx5J10",
+                    "e-ORhEE9VVg",
+                    "3JZ_D3ELwOQ"
+                ]
+            },
+            "relevanceLanguage": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "safeSearch": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(moderate|none|strict)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "topicId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(\\/m\\/|\\/g\\/|\\/en\\/)[A-Za-z0-9_\\-]+$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "type": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(video|channel|playlist)(,(video|channel|playlist)){0,2}$",
+                "input_space_category": "Multiple resource types",
+                "description": "Comma-separated list of distinct types.",
+                "representative_samples": [
+                    "video,channel",
+                    "channel,playlist",
+                    "video,playlist",
+                    "playlist,video",
+                    "channel,video",
+                    "playlist,channel"
+                ]
+            },
+            "videoCaption": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|closedCaption|none)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoCategoryId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting does not filter by category.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "videoDefinition": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|high|standard)$",
+                "input_space_category": "Any",
+                "description": "No restriction on definition (requires type=video).",
+                "representative_samples": [
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any"
+                ]
+            },
+            "videoDuration": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|long|medium|short)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoEmbeddable": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|true)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting leaves embeddability unfiltered.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "videoLicense": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|creativeCommon|youtube)$",
+                "input_space_category": "Any license",
+                "description": "No filtering by license (requires type=video).",
+                "representative_samples": [
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /search",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space4-subspace1",
+            "space5-subspace1",
+            "space6-subspace1",
+            "space7-subspace2",
+            "space8-subspace2",
+            "space9-subspace1",
+            "space10-subspace2",
+            "space12-subspace1",
+            "space13-subspace1",
+            "space14-subspace1",
+            "space16-subspace1",
+            "space17-subspace2",
+            "space18-subspace1",
+            "space19-subspace1",
+            "space20-subspace2",
+            "space21-subspace1",
+            "space24-subspace2",
+            "space26-subspace2",
+            "space27-subspace2",
+            "space28-subspace1",
+            "space29-subspace2",
+            "space30-subspace2",
+            "space31-subspace1"
+        ],
+        "selected_parameters_list": {
+            "part": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(snippet)$",
+                "input_space_category": "Exact 'snippet' value",
+                "description": "The only allowed part for this endpoint.",
+                "representative_samples": [
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet"
+                ]
+            },
+            "channelId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(UC)[A-Za-z0-9_-]{22}$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitted channelId means do not restrict by creator channel.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "eventType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(completed|live|upcoming)$",
+                "input_space_category": "Upcoming broadcasts",
+                "description": "Restrict search to upcoming broadcasts (requires type=video).",
+                "representative_samples": [
+                    "upcoming",
+                    "upcoming",
+                    "upcoming",
+                    "upcoming",
+                    "upcoming",
+                    "upcoming"
+                ]
+            },
+            "forContentOwner": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean true",
+                "description": "Restrict to resources owned by the content owner (requires CMS auth and onBehalfOfContentOwner).",
+                "representative_samples": [
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true
+                ]
+            },
+            "forDeveloper": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean false",
+                "description": "Do not restrict by developer uploads.",
+                "representative_samples": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ]
+            },
+            "forMine": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting forMine leaves ownership unrestricted.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "location": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting location means no geo filtering.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "locationRadius": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Imperial units",
+                "description": "Radius in feet or miles.",
+                "representative_samples": [
+                    "10000ft",
+                    "5280ft",
+                    "1mi",
+                    "0.5mi",
+                    "250ft",
+                    "10mi"
+                ]
+            },
+            "maxResults": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "integer range 0-50",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "order": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(date|rating|relevance|title|videoCount|viewCount)$",
+                "input_space_category": "Chronological, rating, or title",
+                "description": "Sort by date, rating, or title.",
+                "representative_samples": [
+                    "date",
+                    "rating",
+                    "title",
+                    "date",
+                    "rating",
+                    "title"
+                ]
+            },
+            "pageToken": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{1,80}$",
+                "input_space_category": "Base64url-like tokens",
+                "description": "URL-safe tokens with - and _ characters.",
+                "representative_samples": [
+                    "EAAa-AB_C",
+                    "Q0FBRV9fLQ",
+                    "T0pRU19f",
+                    "YWJjZGVfLV8",
+                    "UEFHRV9UT0s",
+                    "TkVYVF9QQUdF"
+                ]
+            },
+            "publishedAfter": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "With timezone offset",
+                "description": "RFC3339 timestamps with explicit offsets.",
+                "representative_samples": [
+                    "2020-05-10T14:00:00+02:00",
+                    "2018-03-25T01:30:00-05:00",
+                    "2017-06-10T23:59:59+00:00",
+                    "2022-12-31T23:00:00+09:30",
+                    "2005-09-15T08:45:00-03:15",
+                    "2021-01-01T00:00:00+05:30"
+                ]
+            },
+            "q": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Multi-term phrases",
+                "description": "Multiple words separated by spaces.",
+                "representative_samples": [
+                    "funny cats",
+                    "how to bake bread",
+                    "guitar lessons",
+                    "space documentaries",
+                    "best coding tutorials",
+                    "daily yoga"
+                ]
+            },
+            "regionCode": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "relatedToVideoId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{11}$",
+                "input_space_category": "Standard 11-char video IDs",
+                "description": "Base64url-style 11-character IDs.",
+                "representative_samples": [
+                    "dQw4w9WgXcQ",
+                    "kxopViU98Xo",
+                    "9bZkp7q19f0",
+                    "M7FIvfx5J10",
+                    "e-ORhEE9VVg",
+                    "3JZ_D3ELwOQ"
+                ]
+            },
+            "relevanceLanguage": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Traditional Chinese tag",
+                "description": "Special language tag for Traditional Chinese.",
+                "representative_samples": [
+                    "zh-Hant",
+                    "zh-Hant",
+                    "zh-Hant",
+                    "zh-Hant",
+                    "zh-Hant",
+                    "zh-Hant"
+                ]
+            },
+            "safeSearch": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(moderate|none|strict)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "topicId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(\\/m\\/|\\/g\\/|\\/en\\/)[A-Za-z0-9_\\-]+$",
+                "input_space_category": "Freebase /m/ topics",
+                "description": "IDs starting with /m/.",
+                "representative_samples": [
+                    "/m/02mjmr",
+                    "/m/01k8wb",
+                    "/m/09s1f",
+                    "/m/05z1_",
+                    "/m/02j71",
+                    "/m/0d6lp"
+                ]
+            },
+            "videoCategoryId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting does not filter by category.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "videoDimension": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(2d|3d|any)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoDuration": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|long|medium|short)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoEmbeddable": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|true)$",
+                "input_space_category": "Embeddable only",
+                "description": "Only videos embeddable off YouTube (requires type=video).",
+                "representative_samples": [
+                    "true",
+                    "true",
+                    "true",
+                    "true",
+                    "true",
+                    "true"
+                ]
+            },
+            "videoLicense": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|creativeCommon|youtube)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoSyndicated": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|true)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting leaves syndication unfiltered.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "videoType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|episode|movie)$",
+                "input_space_category": "Any",
+                "description": "Do not filter by video type (requires type=video).",
+                "representative_samples": [
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /search",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace1",
+            "space5-subspace1",
+            "space6-subspace1",
+            "space7-subspace2",
+            "space9-subspace1",
+            "space10-subspace1",
+            "space11-subspace2",
+            "space12-subspace1",
+            "space13-subspace1",
+            "space14-subspace1",
+            "space16-subspace2",
+            "space17-subspace1",
+            "space20-subspace2",
+            "space21-subspace2",
+            "space22-subspace1",
+            "space25-subspace2",
+            "space26-subspace1",
+            "space30-subspace2"
+        ],
+        "selected_parameters_list": {
+            "part": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(snippet)$",
+                "input_space_category": "Exact 'snippet' value",
+                "description": "The only allowed part for this endpoint.",
+                "representative_samples": [
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet"
+                ]
+            },
+            "channelId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(UC)[A-Za-z0-9_-]{22}$",
+                "input_space_category": "Standard YouTube channel ID (UC prefix)",
+                "description": "A 24-character channel ID starting with UC followed by 22 base64url characters.",
+                "representative_samples": [
+                    "UC_x5XG1OV2P6uZZ5FSM9Ttw",
+                    "UCBR8-60-B28hp2BmDPdntcQ",
+                    "UC295-Dw_tDNtZXFeAPAW6Aw",
+                    "UC-lHJZR3Gqxm24_Vd_AJ5Yw",
+                    "UCS5Oz6CHmeoF7vSad0qqXfw",
+                    "UC4R8DWoMoI7CAwX8_LjQHig"
+                ]
+            },
+            "channelType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|show)$",
+                "input_space_category": "Value show",
+                "description": "Restrict search to show-type channels.",
+                "representative_samples": [
+                    "show",
+                    "show",
+                    "show",
+                    "show",
+                    "show",
+                    "show"
+                ]
+            },
+            "forContentOwner": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean false",
+                "description": "Do not restrict by content owner.",
+                "representative_samples": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ]
+            },
+            "forDeveloper": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean true",
+                "description": "Restrict to videos uploaded via the developer's application (uses auth to identify developer).",
+                "representative_samples": [
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true
+                ]
+            },
+            "forMine": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting forMine leaves ownership unrestricted.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "locationRadius": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Kilometers unit (<=1000km)",
+                "description": "Radius in kilometers within allowed limit.",
+                "representative_samples": [
+                    "0.1km",
+                    "1km",
+                    "15km",
+                    "250km",
+                    "999km",
+                    "1000km"
+                ]
+            },
+            "maxResults": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "integer range 0-50",
+                "input_space_category": "Upper boundary",
+                "description": "Maximum allowed value.",
+                "representative_samples": [
+                    50,
+                    50,
+                    50,
+                    50,
+                    50,
+                    50
+                ]
+            },
+            "onBehalfOfContentOwner": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9._-]{3,64}$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting this parameter means no CMS-owner scoping.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "order": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(date|rating|relevance|title|videoCount|viewCount)$",
+                "input_space_category": "Default relevance ordering",
+                "description": "Sort by relevance.",
+                "representative_samples": [
+                    "relevance",
+                    "relevance",
+                    "relevance",
+                    "relevance",
+                    "relevance",
+                    "relevance"
+                ]
+            },
+            "pageToken": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{1,80}$",
+                "input_space_category": "Base64url-like tokens",
+                "description": "URL-safe tokens with - and _ characters.",
+                "representative_samples": [
+                    "EAAa-AB_C",
+                    "Q0FBRV9fLQ",
+                    "T0pRU19f",
+                    "YWJjZGVfLV8",
+                    "UEFHRV9UT0s",
+                    "TkVYVF9QQUdF"
+                ]
+            },
+            "publishedAfter": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "With timezone offset",
+                "description": "RFC3339 timestamps with explicit offsets.",
+                "representative_samples": [
+                    "2020-05-10T14:00:00+02:00",
+                    "2018-03-25T01:30:00-05:00",
+                    "2017-06-10T23:59:59+00:00",
+                    "2022-12-31T23:00:00+09:30",
+                    "2005-09-15T08:45:00-03:15",
+                    "2021-01-01T00:00:00+05:30"
+                ]
+            },
+            "q": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "regionCode": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Asia-Pacific country codes",
+                "description": "Valid ISO alpha-2 codes for APAC.",
+                "representative_samples": [
+                    "JP",
+                    "KR",
+                    "CN",
+                    "AU",
+                    "IN",
+                    "NZ"
+                ]
+            },
+            "safeSearch": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(moderate|none|strict)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "topicId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(\\/m\\/|\\/g\\/|\\/en\\/)[A-Za-z0-9_\\-]+$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "type": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(video|channel|playlist)(,(video|channel|playlist)){0,2}$",
+                "input_space_category": "Multiple resource types",
+                "description": "Comma-separated list of distinct types.",
+                "representative_samples": [
+                    "video,channel",
+                    "channel,playlist",
+                    "video,playlist",
+                    "playlist,video",
+                    "channel,video",
+                    "playlist,channel"
+                ]
+            },
+            "videoDefinition": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|high|standard)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoDimension": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(2d|3d|any)$",
+                "input_space_category": "Any dimension",
+                "description": "Do not filter by dimension (requires type=video).",
+                "representative_samples": [
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any"
+                ]
+            },
+            "videoSyndicated": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|true)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting leaves syndication unfiltered.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /search",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space3-subspace1",
+            "space4-subspace1",
+            "space7-subspace2",
+            "space8-subspace1",
+            "space9-subspace1",
+            "space10-subspace1",
+            "space11-subspace1",
+            "space12-subspace2",
+            "space15-subspace2",
+            "space16-subspace1",
+            "space17-subspace1",
+            "space18-subspace1",
+            "space19-subspace1",
+            "space20-subspace1",
+            "space21-subspace2",
+            "space24-subspace1",
+            "space25-subspace2",
+            "space26-subspace2",
+            "space27-subspace2",
+            "space29-subspace2",
+            "space30-subspace1",
+            "space31-subspace2"
+        ],
+        "selected_parameters_list": {
+            "part": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(snippet)$",
+                "input_space_category": "Lowercase 'snippet' token",
+                "description": "Lowercase exact token as required.",
+                "representative_samples": [
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet"
+                ]
+            },
+            "channelId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(UC)[A-Za-z0-9_-]{22}$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitted channelId means do not restrict by creator channel.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "channelType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|show)$",
+                "input_space_category": "Value any",
+                "description": "Search not restricted to a specific channel type.",
+                "representative_samples": [
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any"
+                ]
+            },
+            "eventType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(completed|live|upcoming)$",
+                "input_space_category": "Live broadcasts",
+                "description": "Restrict search to currently live broadcasts (requires type=video).",
+                "representative_samples": [
+                    "live",
+                    "live",
+                    "live",
+                    "live",
+                    "live",
+                    "live"
+                ]
+            },
+            "forMine": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting forMine leaves ownership unrestricted.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "location": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Boundary coordinates",
+                "description": "Valid edge lat/lon values within limits.",
+                "representative_samples": [
+                    "(90.00000,0.00000)",
+                    "(-90.00000,0.00000)",
+                    "(0.00000,180.00000)",
+                    "(0.00000,-180.00000)",
+                    "(0.00000,0.00000)",
+                    "(45.00000,-180.00000)"
+                ]
+            },
+            "locationRadius": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Kilometers unit (<=1000km)",
+                "description": "Radius in kilometers within allowed limit.",
+                "representative_samples": [
+                    "0.1km",
+                    "1km",
+                    "15km",
+                    "250km",
+                    "999km",
+                    "1000km"
+                ]
+            },
+            "maxResults": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "integer range 0-50",
+                "input_space_category": "Lower boundary and defaults",
+                "description": "Values near lower bound and default.",
+                "representative_samples": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ]
+            },
+            "onBehalfOfContentOwner": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9._-]{3,64}$",
+                "input_space_category": "Short alphanumeric owner IDs",
+                "description": "Simple owner identifiers.",
+                "representative_samples": [
+                    "owner123",
+                    "AcmeCo",
+                    "MediaCo42",
+                    "ContentOwnerA",
+                    "YTPartner_01",
+                    "Owner_XYZ"
+                ]
+            },
+            "order": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(date|rating|relevance|title|videoCount|viewCount)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "publishedBefore": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "q": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Multi-term phrases",
+                "description": "Multiple words separated by spaces.",
+                "representative_samples": [
+                    "funny cats",
+                    "how to bake bread",
+                    "guitar lessons",
+                    "space documentaries",
+                    "best coding tutorials",
+                    "daily yoga"
+                ]
+            },
+            "regionCode": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Asia-Pacific country codes",
+                "description": "Valid ISO alpha-2 codes for APAC.",
+                "representative_samples": [
+                    "JP",
+                    "KR",
+                    "CN",
+                    "AU",
+                    "IN",
+                    "NZ"
+                ]
+            },
+            "relatedToVideoId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{11}$",
+                "input_space_category": "Standard 11-char video IDs",
+                "description": "Base64url-style 11-character IDs.",
+                "representative_samples": [
+                    "dQw4w9WgXcQ",
+                    "kxopViU98Xo",
+                    "9bZkp7q19f0",
+                    "M7FIvfx5J10",
+                    "e-ORhEE9VVg",
+                    "3JZ_D3ELwOQ"
+                ]
+            },
+            "relevanceLanguage": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Standard ISO 639-1 codes",
+                "description": "Two-letter lowercase language codes.",
+                "representative_samples": [
+                    "en",
+                    "es",
+                    "fr",
+                    "de",
+                    "ja",
+                    "ru"
+                ]
+            },
+            "safeSearch": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(moderate|none|strict)$",
+                "input_space_category": "Moderate",
+                "description": "Default moderation level.",
+                "representative_samples": [
+                    "moderate",
+                    "moderate",
+                    "moderate",
+                    "moderate",
+                    "moderate",
+                    "moderate"
+                ]
+            },
+            "topicId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(\\/m\\/|\\/g\\/|\\/en\\/)[A-Za-z0-9_\\-]+$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoCategoryId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Additional category IDs",
+                "description": "More valid category IDs.",
+                "representative_samples": [
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27"
+                ]
+            },
+            "videoDefinition": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|high|standard)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoDimension": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(2d|3d|any)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoDuration": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|long|medium|short)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoLicense": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|creativeCommon|youtube)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoSyndicated": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|true)$",
+                "input_space_category": "Syndicated only",
+                "description": "Only videos playable outside youtube.com (requires type=video).",
+                "representative_samples": [
+                    "true",
+                    "true",
+                    "true",
+                    "true",
+                    "true",
+                    "true"
+                ]
+            },
+            "videoType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|episode|movie)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /search",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space4-subspace2",
+            "space5-subspace2",
+            "space7-subspace1",
+            "space8-subspace2",
+            "space9-subspace2",
+            "space10-subspace1",
+            "space14-subspace1",
+            "space15-subspace2",
+            "space18-subspace2",
+            "space20-subspace1",
+            "space21-subspace2",
+            "space23-subspace1",
+            "space24-subspace1",
+            "space25-subspace2",
+            "space26-subspace1",
+            "space27-subspace2",
+            "space28-subspace2",
+            "space29-subspace2",
+            "space30-subspace2",
+            "space31-subspace1"
+        ],
+        "selected_parameters_list": {
+            "part": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(snippet)$",
+                "input_space_category": "Exact 'snippet' value",
+                "description": "The only allowed part for this endpoint.",
+                "representative_samples": [
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet"
+                ]
+            },
+            "channelId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(UC)[A-Za-z0-9_-]{22}$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitted channelId means do not restrict by creator channel.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "eventType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(completed|live|upcoming)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "forContentOwner": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitted forContentOwner means no restriction by owner context.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "forMine": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean true",
+                "description": "Restrict results to videos owned by the authenticated user (requires type=video).",
+                "representative_samples": [
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true
+                ]
+            },
+            "location": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting location means no geo filtering.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "locationRadius": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "maxResults": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "integer range 0-50",
+                "input_space_category": "Upper boundary",
+                "description": "Maximum allowed value.",
+                "representative_samples": [
+                    50,
+                    50,
+                    50,
+                    50,
+                    50,
+                    50
+                ]
+            },
+            "publishedAfter": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "UTC Zulu time",
+                "description": "RFC3339 timestamps ending with Z.",
+                "representative_samples": [
+                    "2020-01-01T00:00:00Z",
+                    "2019-12-31T23:59:59Z",
+                    "1970-01-01T00:00:00Z",
+                    "2024-02-29T12:30:45Z",
+                    "1999-07-16T08:15:30Z",
+                    "2021-11-30T16:00:00Z"
+                ]
+            },
+            "publishedBefore": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "relatedToVideoId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{11}$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting relatedToVideoId disables related video filtering.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "safeSearch": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(moderate|none|strict)$",
+                "input_space_category": "Moderate",
+                "description": "Default moderation level.",
+                "representative_samples": [
+                    "moderate",
+                    "moderate",
+                    "moderate",
+                    "moderate",
+                    "moderate",
+                    "moderate"
+                ]
+            },
+            "topicId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(\\/m\\/|\\/g\\/|\\/en\\/)[A-Za-z0-9_\\-]+$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoCaption": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|closedCaption|none)$",
+                "input_space_category": "Closed caption",
+                "description": "Only videos with captions (requires type=video).",
+                "representative_samples": [
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption"
+                ]
+            },
+            "videoCategoryId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Additional category IDs",
+                "description": "More valid category IDs.",
+                "representative_samples": [
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27"
+                ]
+            },
+            "videoDefinition": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|high|standard)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoDimension": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(2d|3d|any)$",
+                "input_space_category": "Any dimension",
+                "description": "Do not filter by dimension (requires type=video).",
+                "representative_samples": [
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any"
+                ]
+            },
+            "videoDuration": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|long|medium|short)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoEmbeddable": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|true)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting leaves embeddability unfiltered.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "videoLicense": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|creativeCommon|youtube)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoSyndicated": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|true)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting leaves syndication unfiltered.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "videoType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|episode|movie)$",
+                "input_space_category": "Any",
+                "description": "Do not filter by video type (requires type=video).",
+                "representative_samples": [
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /search",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space3-subspace1",
+            "space4-subspace2",
+            "space5-subspace2",
+            "space6-subspace2",
+            "space9-subspace1",
+            "space10-subspace2",
+            "space13-subspace1",
+            "space14-subspace2",
+            "space16-subspace2",
+            "space17-subspace2",
+            "space19-subspace1",
+            "space20-subspace2",
+            "space21-subspace2",
+            "space23-subspace1",
+            "space24-subspace1",
+            "space25-subspace2",
+            "space28-subspace1",
+            "space29-subspace2",
+            "space30-subspace2",
+            "space31-subspace2"
+        ],
+        "selected_parameters_list": {
+            "part": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(snippet)$",
+                "input_space_category": "Correctly spelled 'snippet'",
+                "description": "Duplicate valid category to emphasize exact value requirement.",
+                "representative_samples": [
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet"
+                ]
+            },
+            "channelId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(UC)[A-Za-z0-9_-]{22}$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitted channelId means do not restrict by creator channel.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "channelType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|show)$",
+                "input_space_category": "Value any",
+                "description": "Search not restricted to a specific channel type.",
+                "representative_samples": [
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any"
+                ]
+            },
+            "eventType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(completed|live|upcoming)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "forContentOwner": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitted forContentOwner means no restriction by owner context.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "forDeveloper": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitted forDeveloper means no restriction by developer uploads.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "locationRadius": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Meters unit",
+                "description": "Radius in meters.",
+                "representative_samples": [
+                    "1500m",
+                    "250m",
+                    "999m",
+                    "50m",
+                    "1m",
+                    "7500m"
+                ]
+            },
+            "maxResults": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "integer range 0-50",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "pageToken": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{1,80}$",
+                "input_space_category": "Short opaque tokens",
+                "description": "Typical small tokens returned by the API.",
+                "representative_samples": [
+                    "CAUQAA",
+                    "EAAaAA",
+                    "QAA",
+                    "CBQQAA",
+                    "CDIQAA",
+                    "ChIQAQ"
+                ]
+            },
+            "publishedAfter": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "q": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "regionCode": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "relevanceLanguage": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Standard ISO 639-1 codes",
+                "description": "Two-letter lowercase language codes.",
+                "representative_samples": [
+                    "en",
+                    "es",
+                    "fr",
+                    "de",
+                    "ja",
+                    "ru"
+                ]
+            },
+            "safeSearch": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(moderate|none|strict)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "topicId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(\\/m\\/|\\/g\\/|\\/en\\/)[A-Za-z0-9_\\-]+$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoCaption": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|closedCaption|none)$",
+                "input_space_category": "Closed caption",
+                "description": "Only videos with captions (requires type=video).",
+                "representative_samples": [
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption"
+                ]
+            },
+            "videoCategoryId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Additional category IDs",
+                "description": "More valid category IDs.",
+                "representative_samples": [
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27"
+                ]
+            },
+            "videoDefinition": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|high|standard)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoEmbeddable": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|true)$",
+                "input_space_category": "Embeddable only",
+                "description": "Only videos embeddable off YouTube (requires type=video).",
+                "representative_samples": [
+                    "true",
+                    "true",
+                    "true",
+                    "true",
+                    "true",
+                    "true"
+                ]
+            },
+            "videoLicense": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|creativeCommon|youtube)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoSyndicated": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|true)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting leaves syndication unfiltered.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "videoType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|episode|movie)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /search",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace1",
+            "space3-subspace2",
+            "space5-subspace1",
+            "space6-subspace2",
+            "space9-subspace2",
+            "space10-subspace2",
+            "space12-subspace1",
+            "space13-subspace1",
+            "space14-subspace2",
+            "space15-subspace2",
+            "space16-subspace2",
+            "space18-subspace1",
+            "space19-subspace2",
+            "space23-subspace2",
+            "space24-subspace1",
+            "space25-subspace1",
+            "space26-subspace2",
+            "space27-subspace2",
+            "space28-subspace1",
+            "space29-subspace1",
+            "space31-subspace1"
+        ],
+        "selected_parameters_list": {
+            "part": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(snippet)$",
+                "input_space_category": "Exact 'snippet' value",
+                "description": "The only allowed part for this endpoint.",
+                "representative_samples": [
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet"
+                ]
+            },
+            "channelId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(UC)[A-Za-z0-9_-]{22}$",
+                "input_space_category": "Standard YouTube channel ID (UC prefix)",
+                "description": "A 24-character channel ID starting with UC followed by 22 base64url characters.",
+                "representative_samples": [
+                    "UC_x5XG1OV2P6uZZ5FSM9Ttw",
+                    "UCBR8-60-B28hp2BmDPdntcQ",
+                    "UC295-Dw_tDNtZXFeAPAW6Aw",
+                    "UC-lHJZR3Gqxm24_Vd_AJ5Yw",
+                    "UCS5Oz6CHmeoF7vSad0qqXfw",
+                    "UC4R8DWoMoI7CAwX8_LjQHig"
+                ]
+            },
+            "channelType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|show)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitted channelType means no restriction by channel type.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "forContentOwner": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean true",
+                "description": "Restrict to resources owned by the content owner (requires CMS auth and onBehalfOfContentOwner).",
+                "representative_samples": [
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true
+                ]
+            },
+            "forDeveloper": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitted forDeveloper means no restriction by developer uploads.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "locationRadius": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "maxResults": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "integer range 0-50",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "order": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(date|rating|relevance|title|videoCount|viewCount)$",
+                "input_space_category": "Chronological, rating, or title",
+                "description": "Sort by date, rating, or title.",
+                "representative_samples": [
+                    "date",
+                    "rating",
+                    "title",
+                    "date",
+                    "rating",
+                    "title"
+                ]
+            },
+            "pageToken": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{1,80}$",
+                "input_space_category": "Base64url-like tokens",
+                "description": "URL-safe tokens with - and _ characters.",
+                "representative_samples": [
+                    "EAAa-AB_C",
+                    "Q0FBRV9fLQ",
+                    "T0pRU19f",
+                    "YWJjZGVfLV8",
+                    "UEFHRV9UT0s",
+                    "TkVYVF9QQUdF"
+                ]
+            },
+            "publishedAfter": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "publishedBefore": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "q": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "relatedToVideoId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{11}$",
+                "input_space_category": "Standard 11-char video IDs",
+                "description": "Base64url-style 11-character IDs.",
+                "representative_samples": [
+                    "dQw4w9WgXcQ",
+                    "kxopViU98Xo",
+                    "9bZkp7q19f0",
+                    "M7FIvfx5J10",
+                    "e-ORhEE9VVg",
+                    "3JZ_D3ELwOQ"
+                ]
+            },
+            "relevanceLanguage": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoCaption": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|closedCaption|none)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoCategoryId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "Common category IDs",
+                "description": "Typical YouTube video category IDs (string form).",
+                "representative_samples": [
+                    "1",
+                    "2",
+                    "10",
+                    "17",
+                    "20",
+                    "28"
+                ]
+            },
+            "videoDefinition": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|high|standard)$",
+                "input_space_category": "Any",
+                "description": "No restriction on definition (requires type=video).",
+                "representative_samples": [
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any"
+                ]
+            },
+            "videoDimension": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(2d|3d|any)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoDuration": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|long|medium|short)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoEmbeddable": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|true)$",
+                "input_space_category": "Embeddable only",
+                "description": "Only videos embeddable off YouTube (requires type=video).",
+                "representative_samples": [
+                    "true",
+                    "true",
+                    "true",
+                    "true",
+                    "true",
+                    "true"
+                ]
+            },
+            "videoLicense": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|creativeCommon|youtube)$",
+                "input_space_category": "Creative Commons",
+                "description": "Filter to Creative Commons licensed videos (requires type=video).",
+                "representative_samples": [
+                    "creativeCommon",
+                    "creativeCommon",
+                    "creativeCommon",
+                    "creativeCommon",
+                    "creativeCommon",
+                    "creativeCommon"
+                ]
+            },
+            "videoType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|episode|movie)$",
+                "input_space_category": "Episode",
+                "description": "Filter to episodes (requires type=video).",
+                "representative_samples": [
+                    "episode",
+                    "episode",
+                    "episode",
+                    "episode",
+                    "episode",
+                    "episode"
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /search",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space4-subspace2",
+            "space5-subspace1",
+            "space6-subspace2",
+            "space7-subspace1",
+            "space8-subspace2",
+            "space9-subspace1",
+            "space10-subspace1",
+            "space13-subspace2",
+            "space14-subspace2",
+            "space15-subspace2",
+            "space16-subspace1",
+            "space17-subspace1",
+            "space19-subspace2",
+            "space20-subspace1",
+            "space22-subspace1",
+            "space23-subspace1",
+            "space24-subspace2",
+            "space26-subspace1",
+            "space28-subspace1",
+            "space29-subspace2",
+            "space30-subspace1",
+            "space31-subspace2"
+        ],
+        "selected_parameters_list": {
+            "part": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(snippet)$",
+                "input_space_category": "Exact 'snippet' value",
+                "description": "The only allowed part for this endpoint.",
+                "representative_samples": [
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet"
+                ]
+            },
+            "channelId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(UC)[A-Za-z0-9_-]{22}$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitted channelId means do not restrict by creator channel.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "eventType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(completed|live|upcoming)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "forContentOwner": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean true",
+                "description": "Restrict to resources owned by the content owner (requires CMS auth and onBehalfOfContentOwner).",
+                "representative_samples": [
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true
+                ]
+            },
+            "forDeveloper": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitted forDeveloper means no restriction by developer uploads.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "forMine": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean false",
+                "description": "Do not restrict to the authenticated user's videos.",
+                "representative_samples": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ]
+            },
+            "location": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting location means no geo filtering.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "locationRadius": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Meters unit",
+                "description": "Radius in meters.",
+                "representative_samples": [
+                    "1500m",
+                    "250m",
+                    "999m",
+                    "50m",
+                    "1m",
+                    "7500m"
+                ]
+            },
+            "maxResults": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "integer range 0-50",
+                "input_space_category": "Upper boundary",
+                "description": "Maximum allowed value.",
+                "representative_samples": [
+                    50,
+                    50,
+                    50,
+                    50,
+                    50,
+                    50
+                ]
+            },
+            "pageToken": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{1,80}$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "No token returns the first page of results.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "publishedAfter": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "publishedBefore": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "q": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Multi-term phrases",
+                "description": "Multiple words separated by spaces.",
+                "representative_samples": [
+                    "funny cats",
+                    "how to bake bread",
+                    "guitar lessons",
+                    "space documentaries",
+                    "best coding tutorials",
+                    "daily yoga"
+                ]
+            },
+            "regionCode": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Europe country codes",
+                "description": "Valid ISO alpha-2 codes for Europe.",
+                "representative_samples": [
+                    "GB",
+                    "DE",
+                    "FR",
+                    "IT",
+                    "ES",
+                    "NL"
+                ]
+            },
+            "relevanceLanguage": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "safeSearch": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(moderate|none|strict)$",
+                "input_space_category": "Moderate",
+                "description": "Default moderation level.",
+                "representative_samples": [
+                    "moderate",
+                    "moderate",
+                    "moderate",
+                    "moderate",
+                    "moderate",
+                    "moderate"
+                ]
+            },
+            "type": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(video|channel|playlist)(,(video|channel|playlist)){0,2}$",
+                "input_space_category": "Multiple resource types",
+                "description": "Comma-separated list of distinct types.",
+                "representative_samples": [
+                    "video,channel",
+                    "channel,playlist",
+                    "video,playlist",
+                    "playlist,video",
+                    "channel,video",
+                    "playlist,channel"
+                ]
+            },
+            "videoCaption": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|closedCaption|none)$",
+                "input_space_category": "Closed caption",
+                "description": "Only videos with captions (requires type=video).",
+                "representative_samples": [
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption"
+                ]
+            },
+            "videoCategoryId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[0-9]+$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting does not filter by category.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "videoDimension": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(2d|3d|any)$",
+                "input_space_category": "Any dimension",
+                "description": "Do not filter by dimension (requires type=video).",
+                "representative_samples": [
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any"
+                ]
+            },
+            "videoEmbeddable": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|true)$",
+                "input_space_category": "Embeddable only",
+                "description": "Only videos embeddable off YouTube (requires type=video).",
+                "representative_samples": [
+                    "true",
+                    "true",
+                    "true",
+                    "true",
+                    "true",
+                    "true"
+                ]
+            },
+            "videoLicense": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|creativeCommon|youtube)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoSyndicated": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|true)$",
+                "input_space_category": "Any",
+                "description": "Do not filter by syndication (requires type=video).",
+                "representative_samples": [
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any",
+                    "any"
+                ]
+            },
+            "videoType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|episode|movie)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    },
+    {
+        "op_name": "get /search",
+        "tag": "normal",
+        "selected_spaces": [
+            "space1-subspace1",
+            "space2-subspace2",
+            "space3-subspace1",
+            "space4-subspace1",
+            "space5-subspace1",
+            "space7-subspace1",
+            "space8-subspace2",
+            "space10-subspace2",
+            "space11-subspace1",
+            "space12-subspace2",
+            "space14-subspace1",
+            "space16-subspace1",
+            "space18-subspace1",
+            "space19-subspace2",
+            "space21-subspace1",
+            "space23-subspace1",
+            "space26-subspace2",
+            "space30-subspace2"
+        ],
+        "selected_parameters_list": {
+            "part": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(snippet)$",
+                "input_space_category": "Lowercase 'snippet' token",
+                "description": "Lowercase exact token as required.",
+                "representative_samples": [
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet",
+                    "snippet"
+                ]
+            },
+            "channelId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(UC)[A-Za-z0-9_-]{22}$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitted channelId means do not restrict by creator channel.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "channelType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|show)$",
+                "input_space_category": "Value show",
+                "description": "Restrict search to show-type channels.",
+                "representative_samples": [
+                    "show",
+                    "show",
+                    "show",
+                    "show",
+                    "show",
+                    "show"
+                ]
+            },
+            "eventType": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(completed|live|upcoming)$",
+                "input_space_category": "Live broadcasts",
+                "description": "Restrict search to currently live broadcasts (requires type=video).",
+                "representative_samples": [
+                    "live",
+                    "live",
+                    "live",
+                    "live",
+                    "live",
+                    "live"
+                ]
+            },
+            "forContentOwner": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean false",
+                "description": "Do not restrict by content owner.",
+                "representative_samples": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ]
+            },
+            "forMine": {
+                "tag": "valid",
+                "type": "boolean",
+                "format": null,
+                "input_space_category": "Boolean true",
+                "description": "Restrict results to videos owned by the authenticated user (requires type=video).",
+                "representative_samples": [
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true
+                ]
+            },
+            "location": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting location means no geo filtering.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            },
+            "maxResults": {
+                "tag": "valid",
+                "type": "integer",
+                "format": "integer range 0-50",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "onBehalfOfContentOwner": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9._-]{3,64}$",
+                "input_space_category": "Short alphanumeric owner IDs",
+                "description": "Simple owner identifiers.",
+                "representative_samples": [
+                    "owner123",
+                    "AcmeCo",
+                    "MediaCo42",
+                    "ContentOwnerA",
+                    "YTPartner_01",
+                    "Owner_XYZ"
+                ]
+            },
+            "order": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(date|rating|relevance|title|videoCount|viewCount)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "publishedAfter": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "UTC Zulu time",
+                "description": "RFC3339 timestamps ending with Z.",
+                "representative_samples": [
+                    "2020-01-01T00:00:00Z",
+                    "2019-12-31T23:59:59Z",
+                    "1970-01-01T00:00:00Z",
+                    "2024-02-29T12:30:45Z",
+                    "1999-07-16T08:15:30Z",
+                    "2021-11-30T16:00:00Z"
+                ]
+            },
+            "q": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "Multi-term phrases",
+                "description": "Multiple words separated by spaces.",
+                "representative_samples": [
+                    "funny cats",
+                    "how to bake bread",
+                    "guitar lessons",
+                    "space documentaries",
+                    "best coding tutorials",
+                    "daily yoga"
+                ]
+            },
+            "relatedToVideoId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^[A-Za-z0-9_-]{11}$",
+                "input_space_category": "Standard 11-char video IDs",
+                "description": "Base64url-style 11-character IDs.",
+                "representative_samples": [
+                    "dQw4w9WgXcQ",
+                    "kxopViU98Xo",
+                    "9bZkp7q19f0",
+                    "M7FIvfx5J10",
+                    "e-ORhEE9VVg",
+                    "3JZ_D3ELwOQ"
+                ]
+            },
+            "relevanceLanguage": {
+                "tag": "valid",
+                "type": "string",
+                "format": null,
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "topicId": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(\\/m\\/|\\/g\\/|\\/en\\/)[A-Za-z0-9_\\-]+$",
+                "input_space_category": "Freebase /m/ topics",
+                "description": "IDs starting with /m/.",
+                "representative_samples": [
+                    "/m/02mjmr",
+                    "/m/01k8wb",
+                    "/m/09s1f",
+                    "/m/05z1_",
+                    "/m/02j71",
+                    "/m/0d6lp"
+                ]
+            },
+            "videoCaption": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|closedCaption|none)$",
+                "input_space_category": "Closed caption",
+                "description": "Only videos with captions (requires type=video).",
+                "representative_samples": [
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption",
+                    "closedCaption"
+                ]
+            },
+            "videoDimension": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(2d|3d|any)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Parameter omitted in this scalable space.",
+                "representative_samples": [
+                    null
+                ]
+            },
+            "videoSyndicated": {
+                "tag": "valid",
+                "type": "string",
+                "format": "^(any|true)$",
+                "input_space_category": "<MISS_KEY>",
+                "description": "Omitting leaves syndication unfiltered.",
+                "representative_samples": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            }
+        },
+        "parameter_parameter": []
+    }
+]

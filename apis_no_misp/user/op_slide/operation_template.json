@@ -1,0 +1,1488 @@
+[
+    {
+        "method": "post",
+        "url": "/login",
+        "op_name": "post /login",
+        "param_list": [
+            {
+                "param_name": "password",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "username",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/login",
+            "summary": "login",
+            "description": null,
+            "parameters": [],
+            "requestBody": {
+                "description": "loginRequestDTO",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "title": "LoginRequestDTO",
+                            "type": "object",
+                            "properties": {
+                                "password": {
+                                    "type": "string"
+                                },
+                                "username": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserDTO"
+                            }
+                        }
+                    }
+                },
+                "201": {
+                    "description": "Created",
+                    "content": {}
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "loginUsingPOST"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "get",
+        "url": "/users",
+        "op_name": "get /users",
+        "param_list": [],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/users",
+            "summary": "getUserPresentationList",
+            "description": null,
+            "parameters": [],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserListDTO"
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "getUserPresentationListUsingGET"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "post",
+        "url": "/users",
+        "op_name": "post /users",
+        "param_list": [
+            {
+                "param_name": "address",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "address2",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "birthDate",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "city",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "contactNote",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "country",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "email",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "enabled",
+                "param_type": "body",
+                "val_type": "boolean",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "facebook",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "gender",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "linkedin",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "mobile",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "name",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "note",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "password",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "secured",
+                "param_type": "body",
+                "val_type": "boolean",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "skype",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "surname",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "username",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "website",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "zipCode",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/users",
+            "summary": "createUser",
+            "description": null,
+            "parameters": [],
+            "requestBody": {
+                "description": "createOrUpdateUserDTO",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "title": "CreateOrUpdateUserDTO",
+                            "type": "object",
+                            "properties": {
+                                "address": {
+                                    "type": "string"
+                                },
+                                "address2": {
+                                    "type": "string"
+                                },
+                                "birthDate": {
+                                    "type": "string",
+                                    "format": "date"
+                                },
+                                "city": {
+                                    "type": "string"
+                                },
+                                "contactNote": {
+                                    "type": "string"
+                                },
+                                "country": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "enabled": {
+                                    "type": "boolean"
+                                },
+                                "facebook": {
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                },
+                                "linkedin": {
+                                    "type": "string"
+                                },
+                                "mobile": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "note": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                },
+                                "secured": {
+                                    "type": "boolean"
+                                },
+                                "skype": {
+                                    "type": "string"
+                                },
+                                "surname": {
+                                    "type": "string"
+                                },
+                                "username": {
+                                    "type": "string"
+                                },
+                                "website": {
+                                    "type": "string"
+                                },
+                                "zipCode": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserDTO"
+                            }
+                        }
+                    }
+                },
+                "201": {
+                    "description": "Created",
+                    "content": {}
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "createUserUsingPOST"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "get",
+        "url": "/users/rbac/permissions",
+        "op_name": "get /users/rbac/permissions",
+        "param_list": [],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/users/rbac/permissions",
+            "summary": "getPermissionPresentationList",
+            "description": null,
+            "parameters": [],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/PermissionDTO"
+                                }
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "getPermissionPresentationListUsingGET"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "get",
+        "url": "/users/rbac/roles",
+        "op_name": "get /users/rbac/roles",
+        "param_list": [],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/users/rbac/roles",
+            "summary": "getRolePresentationList",
+            "description": null,
+            "parameters": [],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/RoleDTO"
+                                }
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "getRolePresentationListUsingGET"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "post",
+        "url": "/users/rbac/roles",
+        "op_name": "post /users/rbac/roles",
+        "param_list": [
+            {
+                "param_name": "",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/users/rbac/roles",
+            "summary": "createRole",
+            "description": null,
+            "parameters": [],
+            "requestBody": {
+                "description": "role",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RoleDTO"
+                            }
+                        }
+                    }
+                },
+                "201": {
+                    "description": "Created",
+                    "content": {}
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "createRoleUsingPOST"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "get",
+        "url": "/users/rbac/roles/{roleId}",
+        "op_name": "get /users/rbac/roles/{roleId}",
+        "param_list": [
+            {
+                "param_name": "roleId",
+                "param_type": "path",
+                "val_type": "integer",
+                "is_required": true,
+                "description": "roleId"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/users/rbac/roles/{roleId}",
+            "summary": "getRoleById",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "roleId",
+                    "in": "path",
+                    "description": "roleId",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RoleDTO"
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "getRoleByIdUsingGET"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "delete",
+        "url": "/users/rbac/roles/{roleId}",
+        "op_name": "delete /users/rbac/roles/{roleId}",
+        "param_list": [
+            {
+                "param_name": "roleId",
+                "param_type": "path",
+                "val_type": "integer",
+                "is_required": true,
+                "description": "roleId"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "DELETE",
+            "path": "/users/rbac/roles/{roleId}",
+            "summary": "deleteRoleById",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "roleId",
+                    "in": "path",
+                    "description": "roleId",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "204": {
+                    "description": "No Content",
+                    "content": {}
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                }
+            },
+            "operationId": "deleteRoleByIdUsingDELETE"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "post",
+        "url": "/users/rbac/roles/{roleId}/permissions/{permissionKey}",
+        "op_name": "post /users/rbac/roles/{roleId}/permissions/{permissionKey}",
+        "param_list": [
+            {
+                "param_name": "permissionKey",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "permissionKey"
+            },
+            {
+                "param_name": "roleId",
+                "param_type": "path",
+                "val_type": "integer",
+                "is_required": true,
+                "description": "roleId"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/users/rbac/roles/{roleId}/permissions/{permissionKey}",
+            "summary": "addPermissionOnRole",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "permissionKey",
+                    "in": "path",
+                    "description": "permissionKey",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "roleId",
+                    "in": "path",
+                    "description": "roleId",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RoleDTO"
+                            }
+                        }
+                    }
+                },
+                "201": {
+                    "description": "Created",
+                    "content": {}
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "addPermissionOnRoleUsingPOST"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "delete",
+        "url": "/users/rbac/roles/{roleId}/permissions/{permissionKey}",
+        "op_name": "delete /users/rbac/roles/{roleId}/permissions/{permissionKey}",
+        "param_list": [
+            {
+                "param_name": "permissionKey",
+                "param_type": "path",
+                "val_type": "string",
+                "is_required": true,
+                "description": "permissionKey"
+            },
+            {
+                "param_name": "roleId",
+                "param_type": "path",
+                "val_type": "integer",
+                "is_required": true,
+                "description": "roleId"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "DELETE",
+            "path": "/users/rbac/roles/{roleId}/permissions/{permissionKey}",
+            "summary": "removePermissionOnRole",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "permissionKey",
+                    "in": "path",
+                    "description": "permissionKey",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "roleId",
+                    "in": "path",
+                    "description": "roleId",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RoleDTO"
+                            }
+                        }
+                    }
+                },
+                "204": {
+                    "description": "No Content",
+                    "content": {}
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                }
+            },
+            "operationId": "removePermissionOnRoleUsingDELETE"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "post",
+        "url": "/users/register",
+        "op_name": "post /users/register",
+        "param_list": [
+            {
+                "param_name": "email",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "gender",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "name",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "password",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "surname",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "username",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/users/register",
+            "summary": "registerNewUserAccount",
+            "description": null,
+            "parameters": [],
+            "requestBody": {
+                "description": "registerUserAccountDTO",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "title": "RegisterUserAccountDTO",
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                },
+                                "surname": {
+                                    "type": "string"
+                                },
+                                "username": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserDTO"
+                            }
+                        }
+                    }
+                },
+                "201": {
+                    "description": "Created",
+                    "content": {}
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "registerNewUserAccountUsingPOST"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "get",
+        "url": "/users/{id}",
+        "op_name": "get /users/{id}",
+        "param_list": [
+            {
+                "param_name": "id",
+                "param_type": "path",
+                "val_type": "integer",
+                "is_required": true,
+                "description": "id"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "GET",
+            "path": "/users/{id}",
+            "summary": "getUserById",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "id",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserDTO"
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "getUserByIdUsingGET"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "put",
+        "url": "/users/{id}",
+        "op_name": "put /users/{id}",
+        "param_list": [
+            {
+                "param_name": "id",
+                "param_type": "path",
+                "val_type": "integer",
+                "is_required": true,
+                "description": "id"
+            },
+            {
+                "param_name": "address",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "address2",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "birthDate",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "city",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "contactNote",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "country",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "email",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "enabled",
+                "param_type": "body",
+                "val_type": "boolean",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "facebook",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "gender",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "linkedin",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "mobile",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "name",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "note",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "password",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "secured",
+                "param_type": "body",
+                "val_type": "boolean",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "skype",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "surname",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "username",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "website",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            },
+            {
+                "param_name": "zipCode",
+                "param_type": "body",
+                "val_type": "string",
+                "is_required": false,
+                "description": ""
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "PUT",
+            "path": "/users/{id}",
+            "summary": "updateUser",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "id",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            ],
+            "requestBody": {
+                "description": "updateUserDTO",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "title": "CreateOrUpdateUserDTO",
+                            "type": "object",
+                            "properties": {
+                                "address": {
+                                    "type": "string"
+                                },
+                                "address2": {
+                                    "type": "string"
+                                },
+                                "birthDate": {
+                                    "type": "string",
+                                    "format": "date"
+                                },
+                                "city": {
+                                    "type": "string"
+                                },
+                                "contactNote": {
+                                    "type": "string"
+                                },
+                                "country": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "enabled": {
+                                    "type": "boolean"
+                                },
+                                "facebook": {
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                },
+                                "linkedin": {
+                                    "type": "string"
+                                },
+                                "mobile": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "note": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                },
+                                "secured": {
+                                    "type": "boolean"
+                                },
+                                "skype": {
+                                    "type": "string"
+                                },
+                                "surname": {
+                                    "type": "string"
+                                },
+                                "username": {
+                                    "type": "string"
+                                },
+                                "website": {
+                                    "type": "string"
+                                },
+                                "zipCode": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": true
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserDTO"
+                            }
+                        }
+                    }
+                },
+                "201": {
+                    "description": "Created",
+                    "content": {}
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "updateUserUsingPUT"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "delete",
+        "url": "/users/{id}",
+        "op_name": "delete /users/{id}",
+        "param_list": [
+            {
+                "param_name": "id",
+                "param_type": "path",
+                "val_type": "integer",
+                "is_required": true,
+                "description": "id"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "DELETE",
+            "path": "/users/{id}",
+            "summary": "deleteById",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "id",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "204": {
+                    "description": "No Content",
+                    "content": {}
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                }
+            },
+            "operationId": "deleteByIdUsingDELETE"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "post",
+        "url": "/users/{id}/roles/{roleId}",
+        "op_name": "post /users/{id}/roles/{roleId}",
+        "param_list": [
+            {
+                "param_name": "id",
+                "param_type": "path",
+                "val_type": "integer",
+                "is_required": true,
+                "description": "id"
+            },
+            {
+                "param_name": "roleId",
+                "param_type": "path",
+                "val_type": "integer",
+                "is_required": true,
+                "description": "roleId"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "POST",
+            "path": "/users/{id}/roles/{roleId}",
+            "summary": "addRole",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "id",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                {
+                    "name": "roleId",
+                    "in": "path",
+                    "description": "roleId",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserDTO"
+                            }
+                        }
+                    }
+                },
+                "201": {
+                    "description": "Created",
+                    "content": {}
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                },
+                "404": {
+                    "description": "Not Found",
+                    "content": {}
+                }
+            },
+            "operationId": "addRoleUsingPOST"
+        },
+        "dependencies": []
+    },
+    {
+        "method": "delete",
+        "url": "/users/{id}/roles/{roleId}",
+        "op_name": "delete /users/{id}/roles/{roleId}",
+        "param_list": [
+            {
+                "param_name": "id",
+                "param_type": "path",
+                "val_type": "integer",
+                "is_required": true,
+                "description": "id"
+            },
+            {
+                "param_name": "roleId",
+                "param_type": "path",
+                "val_type": "integer",
+                "is_required": true,
+                "description": "roleId"
+            }
+        ],
+        "raw_doc_slide": {
+            "method": "DELETE",
+            "path": "/users/{id}/roles/{roleId}",
+            "summary": "removeRole",
+            "description": null,
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "id",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                {
+                    "name": "roleId",
+                    "in": "path",
+                    "description": "roleId",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            ],
+            "requestBody": {},
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserDTO"
+                            }
+                        }
+                    }
+                },
+                "204": {
+                    "description": "No Content",
+                    "content": {}
+                },
+                "401": {
+                    "description": "Unauthorized",
+                    "content": {}
+                },
+                "403": {
+                    "description": "Forbidden",
+                    "content": {}
+                }
+            },
+            "operationId": "removeRoleUsingDELETE"
+        },
+        "dependencies": []
+    }
+]

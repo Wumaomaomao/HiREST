@@ -177,6 +177,9 @@ cython_debug/
 apis/*/log
 apis/*/exec_log
 apis/*/result
+*/*/result
+*/*/log
+*/*/exec_log
 apis/demo/
 apis_old/
 

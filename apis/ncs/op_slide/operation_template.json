@@ -75,7 +75,10 @@
             },
             "operationId": "bessjUsingGET"
         },
-        "dependencies": []
+        "dependencies": [
+            "Parameter n should be a non-negative integer order for the Bessel function J_n(x);",
+            "Parameter x is a real-valued argument; there is no inter-parameter constraint between n and x."
+        ]
     },
     {
         "method": "get",
@@ -153,7 +156,10 @@
             },
             "operationId": "expintUsingGET"
         },
-        "dependencies": []
+        "dependencies": [
+            "For the exponential integral E_n(x), parameter n must be a positive integer (n ≥ 1);",
+            "Parameter x must be a positive real number (x > 0); there is no inter-parameter constraint between n and x beyond domain validity."
+        ]
     },
     {
         "method": "get",
@@ -249,7 +255,10 @@
             },
             "operationId": "fisherUsingGET"
         },
-        "dependencies": []
+        "dependencies": [
+            "Parameters m and n (degrees of freedom) must be positive integers (m > 0 and n > 0);",
+            "Parameter x must be a non-negative real number (x ≥ 0); there is no inter-parameter constraint between x and m,n beyond domain validity."
+        ]
     },
     {
         "method": "get",
@@ -327,7 +336,10 @@
             },
             "operationId": "gammqUsingGET"
         },
-        "dependencies": []
+        "dependencies": [
+            "For the complemented incomplete gamma Q(a, x), parameter a must be greater than 0 (a > 0);",
+            "Parameter x must be a non-negative real number (x ≥ 0); there is no inter-parameter constraint between a and x beyond domain validity."
+        ]
     },
     {
         "method": "get",
@@ -405,7 +417,9 @@
             },
             "operationId": "remainderUsingGET"
         },
-        "dependencies": []
+        "dependencies": [
+            "To compute the remainder a mod b, parameter b must not be 0."
+        ]
     },
     {
         "method": "get",
@@ -501,6 +515,10 @@
             },
             "operationId": "checkTriangleUsingGET"
         },
-        "dependencies": []
+        "dependencies": [
+            "All three edges a, b, and c must be positive integers;",
+            "To form a valid (non-degenerate) triangle, the triangle inequalities must hold simultaneously: a + b > c, a + c > b, and b + c > a;",
+            "If a = b = c, the triangle is equilateral; if exactly two of a, b, c are equal, the triangle is isosceles; if all three are different, it is scalene."
+        ]
     }
 ]

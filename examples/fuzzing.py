@@ -2,6 +2,7 @@ import json
 import logging, logging.config, argparse
 from datetime import datetime
 from pathlib import Path
+import subprocess
 
 from hirest.fuzzer.case_manager import CaseManager
 from hirest.fuzzer.input_space_manager import InputSpaceManager
@@ -86,6 +87,7 @@ def config_logging(
     service_name: str,
     exec_log_only: bool = False,
     no_log: bool = False,
+    bugs_mode: bool = False,
 ):
     service_name = service_name.lower()
     date = datetime.now().strftime("%Y-%m-%d")
@@ -102,6 +104,12 @@ def config_logging(
     result_dir = Path(f"apis/{service_name}/result/{date}")
     result_dir.mkdir(parents=True, exist_ok=True)
     result_filepath = result_dir / f"{service_name}_result_{date}_{time}.json"
+
+    bugs_filepath = None
+    if bugs_mode:
+        bugs_dir = Path(f"apis/bugs/{service_name}/{date}")
+        bugs_dir.mkdir(parents=True, exist_ok=True)
+        bugs_filepath = bugs_dir / "errors.json"
 
     hirest_handlers = ["console", "file"]
     executor_handlers = ["exec_file"]
@@ -171,11 +179,14 @@ def config_logging(
     }
 
     logging.config.dictConfig(LOGGING_CONFIG)
-    return {
+    paths = {
         "log_filepath": str(log_filepath),
         "exec_log_filepath": str(exec_log_filepath),
         "result_filepath": str(result_filepath),
     }
+    if bugs_filepath is not None:
+        paths["bugs_filepath"] = str(bugs_filepath)
+    return paths
 
 
 SERVICE = {
@@ -223,6 +234,9 @@ if __name__ == "__main__":
     parser.add_argument('--exec-log-only', action='store_true', help='Disable normal logs and only keep exec_log output')
     parser.add_argument('--no-log', action='store_true', help='Disable normal log and exec_log, only keep result output')
     parser.add_argument('--BM', action='store_true', help='Enable BM mode: use primitive mutation operators instead of hierarchical space mutation')
+    parser.add_argument('--bugs', action='store_true', help='Enable bugs mode: append every 5xx request/response pair to apis/bugs/<service>/<date>/errors.json in real time')
+    parser.add_argument('--trend', action='store_true', help='Enable trend mode: dump JaCoCo coverage every 50 sent requests')
+    parser.add_argument('--trend-interval', type=int, default=50, help='Trend dump interval in sent requests (default: 50)')
     args = parser.parse_args()
 
     if args.exec_log_only and args.no_log:
@@ -235,9 +249,17 @@ if __name__ == "__main__":
         exec_log_only: bool = False,
         no_log: bool = False,
         bm_mode: bool = False,
+        bugs_mode: bool = False,
+        trend_mode: bool = False,
+        trend_interval: int = 50,
     ):
         base_url = SERVICE[service_name]["base_url"]
-        logging_paths = config_logging(service_name, exec_log_only=exec_log_only, no_log=no_log)
+        logging_paths = config_logging(
+            service_name,
+            exec_log_only=exec_log_only,
+            no_log=no_log,
+            bugs_mode=bugs_mode,
+        )
         logger = logging.getLogger(__name__)
 
         input_space_manager = InputSpaceManager()
@@ -276,7 +298,41 @@ if __name__ == "__main__":
             )
         renderer = Renderer(base_url=base_url, bm_mode=bm_mode)
         executor = Executor()
-        response_checker = RespChecker(summary_only=no_log)
+        response_checker = RespChecker(
+            summary_only=no_log,
+            bugs_mode=bugs_mode,
+            bugs_filepath=logging_paths.get("bugs_filepath"),
+        )
+
+        def run_jacoco_dump(reason: str) -> None:
+            jacoco_script = Path(base_path) / "scripts" / "jacoco_dump.py"
+            cmd = ["python", str(jacoco_script), service_name]
+            try:
+                logger.info(
+                    "[trend] %s, running JaCoCo dump: %s",
+                    reason,
+                    " ".join(cmd),
+                )
+                subprocess.run(
+                    cmd,
+                    cwd=str(Path(base_path) / "scripts"),
+                    check=True,
+                )
+            except Exception as exc:
+                logger.error("[trend] JaCoCo dump failed (%s): %s", reason, exc)
+
+        def on_request_sent(sent_count: int) -> None:
+            if not trend_mode:
+                return
+            if trend_interval <= 0:
+                return
+            if sent_count % trend_interval != 0:
+                return
+            run_jacoco_dump(f"request_count={sent_count}")
+
+        if trend_mode:
+            # Baseline dump before sending any request.
+            run_jacoco_dump("before_first_request")
 
         fuzzer = Fuzzer(
             input_space_manager=input_space_manager,
@@ -287,6 +343,7 @@ if __name__ == "__main__":
             response_checker=response_checker,
             max_requests=max_requests,
             time_limit=time_limit,
+            on_request_sent=on_request_sent,
         )
 
         fuzzer.start()
@@ -298,6 +355,8 @@ if __name__ == "__main__":
         else:
             print(f"[HiREST][RESULT] Summary result is saved in: {logging_paths['result_filepath']}")
             print("[HiREST][RESULT] Summary key path in JSON: summary")
+        if bugs_mode:
+            print(f"[HiREST][BUGS] 5xx errors are appended to: {logging_paths['bugs_filepath']}")
 
     fuzzing_service(
         args.service,
@@ -306,5 +365,8 @@ if __name__ == "__main__":
         args.exec_log_only,
         args.no_log,
         args.BM,
+        args.bugs,
+        args.trend,
+        args.trend_interval,
     )
 

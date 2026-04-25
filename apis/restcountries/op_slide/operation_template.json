@@ -204,7 +204,9 @@
             },
             "operationId": "v1Name"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the query parameter fullText is provided, the path parameter name must also be provided;"
+        ]
     },
     {
         "method": "get",
@@ -512,7 +514,9 @@
             },
             "operationId": "v2Alphacode"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the query parameter fields is provided, the path parameter alphacode must also be provided;"
+        ]
     },
     {
         "method": "get",
@@ -569,7 +573,9 @@
             },
             "operationId": "v2Alphacodes"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the query parameter fields is provided, the query parameter codes must also be provided;"
+        ]
     },
     {
         "method": "get",
@@ -626,7 +632,9 @@
             },
             "operationId": "v2Currency"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the query parameter fields is provided, the path parameter currency must also be provided;"
+        ]
     },
     {
         "method": "get",
@@ -698,7 +706,10 @@
             },
             "operationId": "v2Name"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the query parameter fields is provided, the path parameter name must also be provided;",
+            "If the query parameter fullText is provided, the path parameter name must also be provided;"
+        ]
     },
     {
         "method": "get",
@@ -755,7 +766,9 @@
             },
             "operationId": "v2Callingcode"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the query parameter fields is provided, the path parameter callingcode must also be provided;"
+        ]
     },
     {
         "method": "get",
@@ -812,7 +825,9 @@
             },
             "operationId": "v2Capital"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the query parameter fields is provided, the path parameter capital must also be provided;"
+        ]
     },
     {
         "method": "get",
@@ -869,7 +884,9 @@
             },
             "operationId": "v2Region"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the query parameter fields is provided, the path parameter region must also be provided;"
+        ]
     },
     {
         "method": "get",
@@ -926,7 +943,9 @@
             },
             "operationId": "v2Subregion"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the query parameter fields is provided, the path parameter subregion must also be provided;"
+        ]
     },
     {
         "method": "get",
@@ -983,7 +1002,9 @@
             },
             "operationId": "v2Lang"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the query parameter fields is provided, the path parameter lang must also be provided;"
+        ]
     },
     {
         "method": "get",
@@ -1040,7 +1061,9 @@
             },
             "operationId": "v2Demonym"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the query parameter fields is provided, the path parameter demonym must also be provided;"
+        ]
     },
     {
         "method": "get",
@@ -1097,6 +1120,8 @@
             },
             "operationId": "v2Regionalbloc"
         },
-        "dependencies": []
+        "dependencies": [
+            "If the query parameter fields is provided, the path parameter regionalbloc must also be provided;"
+        ]
     }
 ]
