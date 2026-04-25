@@ -1,6 +1,7 @@
 # HiREST
 
-Replication Package for the paper: **Enhancing Automated REST API Testing via Hierarchical Input Space Mutation**
+Replication Package for the paper: **Hierarchical Input Space Partition guided
+Fuzzing for REST APIs**
 
 # QuickStart
 ## Environment Setup
