@@ -182,5 +182,6 @@ apis/*/result
 */*/exec_log
 apis/demo/
 apis_old/
-
-scripts/
+scripts/service_logs
+scripts/jacoco/exec
+scripts/jacoco_code_cov_package/requests_coverage_data
